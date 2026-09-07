@@ -1,8 +1,10 @@
 # From directional sensing to task completion: mapping the operating envelope of wind-aware quadrotor allocation and control
 
-Simulation logs, derived statistical tables, figure code and manuscript source for a 15-figure, 14-table study with a 54-entry cited bibliography measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, including estimate quality, temporally structured profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer.
+Simulation logs, derived statistical tables, figure code and manuscript source for a 13-figure, 12-table study with a 54-entry cited bibliography measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, including estimate quality, temporally structured profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer.
 
-This repository has not been deposited in a public archive, so it has no persistent identifier yet. One will be recorded here when an archive exists.
+Archived at [10.5281/zenodo.22644574](https://doi.org/10.5281/zenodo.22644574).
+
+Repository: https://github.com/PeterPonyu/wind-aware-allocation-band
 
 ## What is here
 
