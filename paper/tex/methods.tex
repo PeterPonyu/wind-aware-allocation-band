@@ -1,0 +1,738 @@
+%% Independent methods file. Not woven into main.tex prose.
+%% Every quantity described here resolves to a hash-bound evidence entry.
+
+\subsection{Simulation and disturbance setup}
+
+All episodes run in an open-source rigid-body quadrotor simulator built on a
+general-purpose physics engine~\cite{panerati2021gym,coumans2016pybullet,
+ozturk2025mrtasim}. The
+rigid-body and state variables follow the standard multirotor modeling
+convention~\cite{mahony2012multirotor}; the airframe is the simulator's stock
+nano-quadrotor model: \DroneMass{}~g, with a
+per-airframe hover thrust of \HoverThrust{}~N. An episode places \NDrones{} of these
+airframes and \NDrones{} randomly drawn waypoints in a shared arena and runs for six
+simulated seconds with physics integrated at 240~Hz and control issued at 48~Hz.
+Everything runs headless on one CPU core; no graphics or accelerator is involved.
+
+The physical and control grids are fixed throughout the study by
+Eq.~\eqref{eq:time-grid}:
+\begin{equation}
+  T=6~\mathrm{s},\qquad f_{\mathrm{phys}}=240~\mathrm{Hz},\qquad
+  f_{\mathrm{ctrl}}=48~\mathrm{Hz},\qquad
+  \Delta t_{\mathrm{ctrl}}=f_{\mathrm{ctrl}}^{-1} .
+  \label{eq:time-grid}
+\end{equation}
+Each control action is held for five rigid-body integration steps, and every
+campaign uses this same horizon and sampling contract.
+
+The primary endpoint is the completion rate. An airframe is marked complete at its
+first entry into the capture ball, rather than only at the final time. For airframe
+$i$ with active assignment $a_i(t)$, the completion time, rate and continuous
+closest-approach endpoint are defined in Eq.~\eqref{eq:endpoints}:
+\begin{equation}
+  \begin{aligned}
+  d_i(t)&=\lVert\mathbf{x}_i(t)-\mathbf{y}_{a_i(t)}\rVert_2,\\
+  \tau_i&=\inf\{t\in[0,T]:d_i(t)\le r_c\},\\
+  C&=\frac{1}{N}\sum_{i=1}^{N}\mathbb{1}(\tau_i\le T),\qquad
+  d_i^{\min}=\min_{0\le t\le T}d_i(t) .
+  \end{aligned}
+  \label{eq:endpoints}
+\end{equation}
+Equation~\eqref{eq:endpoints} defines the thresholded and continuous endpoints
+used throughout the study. Here $N=\NDrones{}$ and $r_c=\CaptureRadius{}$~m. Because there are four
+airframes, each episode takes one of five discrete completion values. The
+continuous endpoint remains informative when the thresholded rate is pinned at
+zero and explains how a small tracking shift can move an airframe across the
+capture boundary.
+
+Each seed $s$ initializes one reproducible scene stream. With
+$G=\lceil\sqrt{N}\rceil$, the launch positions and raw waypoint draws are
+generated according to Eq.~\eqref{eq:scene-draw}:
+\begin{equation}
+  \begin{aligned}
+  x^{0}_{i,x}&=0.4(i\bmod G)-0.2,&
+  x^{0}_{i,y}&=0.4\lfloor i/G\rfloor-0.2,&
+  x^{0}_{i,z}&=0.1,\\
+  \mathbf{y}^{0}_j&\sim\mathcal{U}(\mathcal{B}),&
+  \mathcal{B}&=[-0.8,0.8]^2\times[0.4,0.9].
+  \end{aligned}
+  \label{eq:scene-draw}
+\end{equation}
+Equation~\eqref{eq:scene-draw} fixes the launch grid, waypoint support and seeded
+draw for $i,j=0,\ldots,N-1$. Coordinates remain in metres and forces in newtons;
+the preprocessing stage applies no image or learned transformation.
+
+The scene-geometry extension is a deterministic post-draw transform. Let
+$\mathbf{c}_x$ and $\mathbf{c}_y$ be the launch and raw-target horizontal
+centroids, let $\rho\in\{1,1.30\}$ denote nominal or expanded spread, and let
+$\chi\in\{0,1\}$ denote aligned or crossed orientation. The transformed horizontal
+target coordinates are defined by Eq.~\eqref{eq:geometry-transform}:
+\begin{equation}
+  \begin{aligned}
+  \mathbf{u}_j&=\mathbf{c}_y+\rho(\mathbf{y}^{0}_{j,xy}-\mathbf{c}_y),\\
+  \mathbf{v}_j&=(1-\chi)\mathbf{u}_j+\chi\{\mathbf{c}_x-(\mathbf{u}_j-\mathbf{c}_x)\},\\
+  \mathbf{y}_{j,xy}&=\mathbf{v}_j+\mathbb{1}(\text{far})[0.22,-0.18]^{\top},
+  \qquad y_{j,z}=y^{0}_{j,z} .
+\end{aligned}
+  \label{eq:geometry-transform}
+\end{equation}
+
+The transform consumes no additional random numbers, making the
+nominal--near--aligned cell an exact scene anchor. The wind vector applied to
+the rigid-body solver during control interval $k$ is specified by
+Eq.~\eqref{eq:force-vector}:
+\begin{equation}
+  \mathbf{w}_k=m_k[\cos\theta_k,\;\sin\theta_k,\;0]^{\top},
+  \qquad t_k=k\Delta t_{\mathrm{ctrl}},
+  \label{eq:force-vector}
+\end{equation}
+The value is held over the five physics sub-steps, so scene, heading, phase and
+treatment pairing are explicit before evaluation.
+
+The simulator supplies the rigid-body dynamics; we add a transparent force
+profile to expose the allocation--control interface while complementing established
+wind-measurement, identification and
+disturbance-observer practice~\cite{abichandani2020wind,wi2024windstress,
+chen2016dobc,rodriguezmata2018highgain,wang2021esoquadrotor}. At every physics
+sub-step, the horizontal force in
+Eq.~\eqref{eq:force-vector} is applied to each airframe through the engine's
+external-force interface. For the constant profile, $m_k=m$ and
+$\theta_k=\theta$; for temporal profiles the profile advances only at the
+control grid. This is a real force entering the rigid-body solver before the state
+is logged.
+
+A trajectory-validation checkpoint identified and corrected the force-application
+reference point before the reported campaigns were admitted. The engine's
+world-frame external-force call expects an absolute world point; using the live
+centre-of-mass position at every sub-step therefore applies a pure translational
+disturbance without an unintended moment arm. A raw-trajectory check confirmed
+the correction through the expected attitude and displacement response. Every
+number reported here comes from the validated implementation, and the trajectory
+check is retained as a reusable gate for external-force experiments.
+
+\subsection{Evaluation protocol}
+
+Every evaluation preserves the same simulator, seeded scene and endpoint while
+changing one declared information or geometry factor at a time. The primary
+comparison is the paired aware--agnostic contrast in Eq.~\eqref{eq:paired-estimand};
+the support campaigns reuse that unit so their results can be read on the same
+operating-envelope scale.
+
+The fixed simulator and endpoint contract is summarized in
+Table~\ref{tab:parameter-contract}; the opened factors and their inferential
+units are separated into the campaign design contract in
+Table~\ref{tab:campaign-contract}. Keeping these roles distinct makes the first
+table a compact reproduction anchor and the second a map of how the evidence
+expands. Neither table is a second source of numerical results: values reported
+in the Results remain emitted from the hash-bound evidence tables.
+\input{../revision/parameter_and_compatibility_table}
+\input{../revision/campaign_design_table}
+
+\subsection{Allocation and control}
+
+The wind-agnostic arm assigns airframes to waypoints by solving a linear
+assignment problem on Euclidean distance with the Hungarian algorithm
+~\cite{kuhn1955hungarian,gerkey2004formal,dias2006market,choi2009cbba}, and flies
+the resulting targets with one simulator-stock \texttt{DSLPIDControl} instance per
+airframe.
+
+The controller gains, motor model, PWM/RPM conversion and saturation path are
+unchanged from the vendored simulator implementation and are listed in the
+parameter contract. This stock position layer is consistent with the standard
+rigid-body tracking formulation for quadrotors~\cite{lee2010se3}; the present
+study varies the information supplied to the allocation--control interface while
+holding the underlying stabilizing controller fixed.
+
+For the wind-aware arm, let $\widehat{\mathbf w}_k$ be the supplied estimate and let
+$\mathbf{u}_{ij,k}$ point from airframe $i$ to waypoint $j$. The assignment cost
+and target used by the two arms are defined in Eq.~\eqref{eq:assignment-cost}:
+\begin{equation}
+  J_{ij,k}=\lVert\mathbf{y}_j-\mathbf{x}_{i,k}\rVert_2
+  +\lambda\max\!\left(0,-\mathbf{u}_{ij,k}^{\top}\widehat{\mathbf w}_k\right),
+  \qquad
+  \mathbf{u}_{ij,k}=\frac{\mathbf{y}_j-\mathbf{x}_{i,k}}
+  {\lVert\mathbf{y}_j-\mathbf{x}_{i,k}\rVert_2},
+  \label{eq:assignment-cost}
+\end{equation}
+Equation~\eqref{eq:assignment-cost} adds the directional penalty to the Euclidean
+distance while retaining a normalized direction vector for each candidate pair.
+
+The assignment returned at control step $k$ is the one-to-one minimizer in
+Eq.~\eqref{eq:assignment}:
+\begin{equation}
+  \begin{aligned}
+  \mathbf{Z}_k&=\underset{\mathbf{Z}\in\mathcal{P}_N}{\arg\min}\;
+  \sum_{i=1}^{N}\sum_{j=1}^{N}J_{ij,k}z_{ij,k},\\
+  \mathcal{P}_N&=\left\{\mathbf{Z}\in\{0,1\}^{N\times N}:\;
+  \sum_jz_{ij}=1,\;\sum_iz_{ij}=1\right\}.
+  \end{aligned}
+  \label{eq:assignment}
+\end{equation}
+Equation~\eqref{eq:assignment} applies the one-to-one constraints at each
+re-planning step. Here $z_{ij,k}=1$ records that airframe $i$ takes waypoint $j$; the Hungarian
+algorithm solves this minimization at each re-planning step. This comparator
+follows the assignment--trajectory decomposition used in cooperative UAV studies
+~\cite{beard2002target,turpin2014goal} and in steady-wind task/path formulations
+~\cite{luo2018integrated}. It retains the same scene, stock controller, horizon
+and assignment solver while changing one information input, so the measured
+contribution is the paired endpoint change under a controlled contrast.
+
+The target-position feedforward rule is defined separately for the two arms in
+Eq.~\eqref{eq:target-feedforward}:
+\begin{equation}
+  \mathbf{r}_{j,k}=\mathbf{y}_j-\gamma\widehat{\mathbf w}_k
+  \quad\text{(aware)},
+  \qquad
+  \mathbf{r}_{j,k}=\mathbf{y}_j
+  \quad\text{(agnostic)},
+  \label{eq:target-feedforward}
+\end{equation}
+Equation~\eqref{eq:target-feedforward} defines the target supplied to the stock
+position controller in each arm. Here $\lambda=0.25$ in the aware arm and $\gamma$ is the tested target
+feedforward gain (the inherited value is \FeedforwardGainDefault{}~m/N). The
+assignment is re-solved once per
+simulated second over unfinished pairs; the replanning count is defined by
+Eq.~\eqref{eq:replanning}:
+\begin{equation}
+  R=\sum_{k\in\mathcal{K}}\mathbb{1}(A_k\ne A_{k-1}),
+  \qquad \mathcal{K}=\{48,96,144,192,240\},
+  \label{eq:replanning}
+\end{equation}
+Equation~\eqref{eq:replanning} counts assignment changes on the declared control
+steps. Here $A_k$ is the active assignment. The penalty weight and feedforward gain
+are fixed for the primary envelope and opened only in the declared sensitivity
+campaign.
+
+A causal estimator starts from the zero vector, consumes the current measurement
+and its prior state, and updates at 48~Hz; the controller clips commands through
+the stock simulator saturation path. The aware arm therefore receives a
+current-and-past signal only.
+
+\subsection{Paired design and metrics}
+
+Both arms are run on the same \NSeeds{} seeds at each disturbance level, and a seed
+fixes the waypoint layout and the disturbance heading. The comparison is therefore
+paired within seed, not a comparison of independent samples. Across
+\NWindLevels{} disturbance levels, two arms and \NSeeds{} seeds, the primary sweep is
+\NEpisodesOracle{} episodes.
+
+The paired seed is the inferential unit for every primary and support comparison;
+episode rows are retained for audit and visualization but are not treated as
+independent samples. The exact test, interval construction and multiplicity rule
+are stated once in the Statistical analysis subsection below.
+
+For clarity, the estimand at force $w$ is the seed-level paired contrast defined
+in Eq.~\eqref{eq:paired-estimand}:
+\begin{equation}
+  \Delta_s(w)=C_{s,\,\mathrm{aware}}(w)-C_{s,\,\mathrm{agnostic}}(w),
+  \qquad
+  \bar\Delta(w)=\frac{1}{S}\sum_{s=1}^{S}\Delta_s(w),
+  \label{eq:paired-estimand}
+\end{equation}
+where $C$ is Eq.~\eqref{eq:endpoints} and $S$ is the number of paired seeds.
+The continuous companion is summarized by the seed-level mean of $d_i^{\min}$
+from Eq.~\eqref{eq:endpoints}. For a supplied wind estimate, the diagnostic
+reported beside the task endpoint is the relative vector error defined by
+Eq.~\eqref{eq:relative-error}:
+\begin{equation}
+  e_k=\frac{\lVert\widehat{\mathbf w}_k-\mathbf w_k\rVert_2}
+  {\max(\lVert\mathbf w_k\rVert_2,\,\epsilon)},
+  \qquad \epsilon>0,
+  \label{eq:relative-error}
+\end{equation}
+Equation~\eqref{eq:relative-error} defines the relative vector-error diagnostic.
+Temporal summaries average $e_k$ over the control grid before averaging over
+seeds. The replanning count is the event metric in Eq.~\eqref{eq:replanning}; it
+is descriptive and is never substituted for the primary endpoint.
+
+\subsection{Statistical analysis}
+
+The intervals in the force, temporal, ablation and gain tables are $t$ intervals
+on the seed-level contrasts in Eq.~\eqref{eq:paired-estimand}. The resulting
+95~percent interval and its seed-level variance are given by
+Eq.~\eqref{eq:paired-ci}:
+\begin{equation}
+  \begin{aligned}
+  \mathrm{CI}_{95\%}(w)&=\bar\Delta(w)\pm
+  t_{0.975,S-1}\frac{s_{\Delta}(w)}{\sqrt{S}},\\
+  s_{\Delta}^2(w)&=\frac{1}{S-1}\sum_{s=1}^{S}
+  [\Delta_s(w)-\bar\Delta(w)]^2 .
+  \end{aligned}
+  \label{eq:paired-ci}
+\end{equation}
+Each level is also tested with an exact two-sided Wilcoxon signed-rank
+test~\cite{wilcoxon1945individual} implemented in a standard scientific computing
+library~\cite{virtanen2020scipy}, with zero differences dropped. Where every
+paired difference at a level is exactly zero the signed-rank statistic is
+undefined; the table records a dash, distinct from a $p$ value of one. To
+guard against selecting the best of \NWindLevels{} levels after the fact, in
+the spirit of family-wise multiple-comparison control~\cite{dunn1961multiple},
+the threshold is defined by Eq.~\eqref{eq:bonferroni}:
+\begin{equation}
+  \alpha_{\mathrm{Bonf}}=\frac{0.05}{\NWindLevels{}}
+  =\BonferroniAlpha{}.
+  \label{eq:bonferroni}
+\end{equation}
+
+The exact signed-rank values use the same contrasts with zero differences removed;
+the $t$ interval is reported alongside the exact test for the seed-level families.
+The revised support receipt keeps its inferential unit explicit: crossed-layout
+intervals use an ordinary bootstrap over layout clusters, whereas geometry and
+scale tests use their declared seed-level contrasts. Episode rows and bootstrap
+draws are never counted as independent experimental units.
+
+For a support family with $m$ testable contrasts, we use a deterministic Holm
+step-down adjustment. If $p_{(r)}$ is the $r$th raw value after sorting by
+increasing $p$ (ties are broken by the contrast identifier), its adjusted value is
+defined by Eq.~\eqref{eq:holm}:
+
+\begin{equation}
+  p^{\mathrm{Holm}}_{(r)}=
+  \min\!\left\{1,\;\max_{1\leq j\leq r}(m-j+1)p_{(j)}\right\},
+  \qquad r=1,\ldots,m .
+  \label{eq:holm}
+\end{equation}
+This deterministic step-down value is used for each named support family.
+
+To report what the geometry design can resolve, we add a minimum-detectable-effect
+(MDE) planning diagnostic. It is calculated on the declared seed-level
+inferential units, uses the familywise level $\GeometryMDEAlpha{}$ for the
+\GeometryMDEFamily{} geometry contrasts and
+does not constitute an equivalence test. For a two-sided familywise level
+$\alpha_F$, target power $\pi$, $n$ paired units and observed contrast standard
+deviation $s$, the planning approximation is defined in Eq.~\eqref{eq:mde}:
+\begin{equation}
+  \operatorname{MDE}_{\pi}=
+  \left[t_{1-\alpha_F/2,\,n-1}+\Phi^{-1}(\pi)\right]\frac{s}{\sqrt{n}} .
+  \label{eq:mde}
+\end{equation}
+The MDE is a sensitivity calculation rather than a claim that effects below it
+are absent; no equivalence margin was prespecified. It records the resolution of
+the executed design and identifies the effect range for a follow-up campaign.
+
+The raw exact value and the corresponding adjusted value are retained together in
+the bound receipt. The primary seven-force family remains governed by the
+predeclared Bonferroni threshold above; Holm is used only for the explicitly named
+support families in the campaign contract.
+
+The seven-force ladder is the primary confirmatory family. Estimate-noise,
+temporal, pathway, gain, crossed, geometry and scale analyses are separately
+named support or descriptive families; their correction rules and cluster units
+are printed in Table~\ref{tab:campaign-contract}. This keeps the unit of
+inference explicit and prevents the episode count from being mistaken for an
+independent-sample size. This simulation design follows reporting practice that
+separates the data-generating design, estimand and analysis family
+~\cite{morris2019simulation}. Every generated table is re-derived from its
+bound receipt, checked for its declared row count and pairing, and emitted by the
+same R pass that emits the manuscript macros; the prose reads those values directly.
+
+For the estimate-noise table, the complete disturbance-by-noise family contains
+15 comparisons and uses the declared threshold 0.0033. The 0.30 and 0.50 rows
+cross that threshold; the 0.10 row is retained as a positive descriptive estimate,
+and the 1.00 row has exact $p=\MaxSigmaP{}$ and is reported without a
+multiplicity-adjusted significance claim. The crossed, geometry and scale
+intervals use their declared layout or seed-level units, and their support status
+is reported separately from the primary force-family claim.
+
+\subsection{Information quality and temporal profiles}
+
+The two arms above both give the wind-aware controller the exact disturbance
+vector. This is the key information condition in the reference experiment, and
+the manipulation below relaxes it. The wind-aware arm is re-run with the
+disturbance vector it receives corrupted by relative magnitude noise
+$\sigma/|w| \in \{\SigmaGrid\}$ and matched angular noise, redrawn
+independently at every 48~Hz control step. In this independent-noise condition,
+the supplied estimate is generated from the true magnitude $m_k$ and heading
+$\theta_k$ according to Eq.~\eqref{eq:independent-noise}:
+\begin{equation}
+  \begin{aligned}
+  \widetilde m_k&=\max\{0,m_k(1+\sigma\xi_k)\},&
+  \widetilde\theta_k&=\theta_k+\sigma\eta_k,\\
+  \widehat{\mathbf w}_k&=\widetilde m_k
+  [\cos\widetilde\theta_k,\sin\widetilde\theta_k,0]^{\top},&
+  \xi_k,\eta_k&\stackrel{\mathrm{iid}}{\sim}\mathcal{N}(0,1).
+  \end{aligned}
+  \label{eq:independent-noise}
+\end{equation}
+The magnitude and angular perturbations are independent at each control step.
+The manipulation is applied at the three disturbance levels that bracket the
+region of interest, giving \NEpisodesNoise{} episodes.
+
+Because the wind-agnostic arm never reads the disturbance estimate and is
+deterministic given a seed, its recorded outcomes serve as the fixed reference for
+every noise condition. A regression check confirms this: at zero estimate noise the
+re-run reproduces the original completion of \SigmaZeroAware{} exactly.
+
+Two aspects of this manipulation are recorded with the data. First, the decision
+point fixed before the run was $\sigma/|w| = \PreregSigma{}$; the nearest executed
+grid level is \NearestSigma{}, so the pre-set decision is evaluated on that
+grid-aligned condition. Second, redrawing the noise
+independently at each control step is a controlled first robustness layer: it is
+zero-mean around the truth and a feedforward term integrating over roughly three
+hundred control steps per episode can average much of it away. The temporal
+extension below makes bias and correlation explicit and tests how the operating
+envelope responds when the estimate has memory.
+
+The next experiment makes the disturbance and its estimate evolve together. Wind
+gust estimation and wind-perturbation tracking studies motivate treating the
+estimator state and vehicle response as separate observable quantities
+~\cite{azid2021windgust,perozzi2018wind}. Three profiles are used: a constant
+force, a slow sinusoidal gust and a faster sinusoidal gust. With $P$ the selected
+period and phase $\phi$, the centred profile is defined by
+Eq.~\eqref{eq:temporal-profile}:
+\begin{equation}
+  \begin{aligned}
+  q(t)&=\sin(2\pi t/P+\phi)-\sin\phi,\\
+  m(t)&=m_0[1+a_mq(t)],\\
+  \theta(t)&=\theta_0+a_\theta q(t).
+  \end{aligned}
+  \label{eq:temporal-profile}
+\end{equation}
+The slow profile uses
+$(a_m,a_\theta)=(0.18,0.22)$, the fast profile uses $(0.12,0.16)$, and the
+constant profile sets both amplitudes to zero. Substitution into
+Eq.~\eqref{eq:force-vector} gives the true force
+presented to the simulator. The estimator is a first-order causal filter with
+configurable response time, angular bias, magnitude bias and measurement noise.
+Writing $b_m$ for the magnitude bias, $b_\theta$ for the angular bias and
+$\boldsymbol\nu_k$ for zero-mean measurement noise, the current measurement is
+defined by Eq.~\eqref{eq:causal-measurement}:
+\begin{equation}
+  \mathbf{z}_k=R(b_\theta)\,m_k(1+b_m)[\cos\theta_k,\sin\theta_k,0]^{\top}
+  +\boldsymbol\nu_k,
+  \label{eq:causal-measurement}
+\end{equation}
+where $R(b_\theta)$ rotates the horizontal components by $b_\theta$. Its state
+update is given by Eq.~\eqref{eq:causal-estimator}:
+\begin{equation}
+  \widehat{\mathbf w}_k=(1-\alpha)\widehat{\mathbf w}_{k-1}+\alpha\mathbf{z}_k,
+  \qquad
+  \alpha=\begin{cases}1,&\tau=0,\\
+  1-\exp(-\Delta t_{\mathrm{ctrl}}/\tau),&\tau>0,
+  \end{cases}
+  \label{eq:causal-estimator}
+\end{equation}
+Here $\tau=0$ is the exact-vector oracle condition. The filter uses the current
+measurement and its previous state; this causal vector is the signal supplied to
+the wind-aware arm.
+
+
+The named presets are fixed before reading the outcomes: the causal condition has
+response time $\tau=0.18$~s, zero angular and magnitude bias, and 0.04 measurement
+noise fraction; the biased-causal condition has $\tau=0.32$~s, $12^\circ$ angular
+bias, 0.06 magnitude bias and 0.08 noise fraction. Both states start at the zero
+vector, use the same 48~Hz control grid, and draw their independent measurement
+stream from a seed-derived generator. These are controlled simulator estimators
+designed to expose timing, bias and noise effects before a physical-sensor replay.
+
+
+For each profile we use the shoulder and transition forces (0.10, 0.15 and
+0.20~N) and \NTemporalSeeds{} paired seeds. The baseline episode and every wind-aware condition
+share the seed, waypoint layout, disturbance phase and simulator configuration. The
+three estimator conditions are an exact-vector oracle, a causal estimate and a
+causal estimate with controlled bias. The resulting campaign contains
+\NTemporalEpisodes{} episode records, with the baseline retained once per paired
+condition.
+
+Each record stores the true and estimated vectors, relative magnitude error, angular
+error and profile metadata. The constant/oracle subset is also a regression of the
+legacy control path over \NTemporalLegacyRows{} rows; it must remain identical before
+the temporal results are admitted to the manuscript.
+
+\subsection{Pathway, geometry and team-size campaigns}
+
+The wind-aware stack has two directional pathways: an upwind assignment cost and a
+target-position feedforward term. To identify the pathway carrying the measured task
+gain, we repeat the temporal design with the feedforward term selectively disabled
+while retaining the directional assignment cost. This support campaign contains
+\NAblationEpisodes{} paired records and uses the same profiles, forces, seeds and
+estimator states as the primary campaign. Its allocation-only contrast is read
+alongside the complete-arm contrast to localize the pathway while retaining the
+same endpoint.
+
+We then vary only the target-position feedforward gain in a fixed seven-point grid
+from zero through 1.40~m/N, including the inherited \FeedforwardGainDefault{}~m/N
+setting. The causal estimator, profiles, forces, seeds and phases are held fixed,
+and every gain condition is paired to the same baseline record. The gain campaign
+contains \NGainEpisodes{} episode records. The grid describes the tested
+controller envelope; its upper edge is the measured boundary of that grid, and the
+inherited setting remains the reference used by the primary temporal comparison.
+
+The seed-level spread and the crossed heading--layout sweep identify scene context
+as a first-class axis, so we open that axis with a small, fully crossed campaign.
+It contains \NGeometryEpisodes{} episode records: two levels each of target spread,
+target range and crossing orientation, crossed with the three force levels around
+the transition, \NGeometrySeeds{} seeds and the two allocator arms. The declared
+conditions are nominal versus expanded target spread, near versus far target range,
+and aligned versus crossed target geometry. The nominal--near--aligned cell is the
+legacy scene exactly and serves as the compatibility anchor for the extension.
+
+The expanded spread scales the target cloud by 1.30 about its centroid. The far
+condition applies a fixed $[0.22,-0.18]$~m horizontal offset, and the crossed
+condition reflects the target cloud through the launch-centroid frame. These
+deterministic transformations define the tested operational factor space.
+The transforms are applied after the seeded layout is drawn and consume no random
+numbers, so the same seed, heading, phase, controller and endpoint are paired
+across every cell.
+
+At force $w_k$ and factor $f$, the four settings of the other two geometry factors
+are first averaged within each seed. Let $q=1,\ldots,4$ index those settings and
+let $s=1,\ldots,S$ index the paired seeds. The seed-level contrast and its grand
+mean are defined in Eq.~\eqref{eq:geometry-contrast}:
+\begin{equation}
+  \begin{aligned}
+  d_{s,q,k}(f)&=\Delta_{s,q,k}^{\mathrm{high}}(f)-
+    \Delta_{s,q,k}^{\mathrm{low}}(f),\\
+  D_{s,k}(f)&=\frac{1}{4}\sum_{q=1}^{4}d_{s,q,k}(f),\\
+  \bar D_k(f)&=\frac{1}{S}\sum_{s=1}^{S}D_{s,k}(f),
+  \qquad S=30.
+  \end{aligned}
+  \label{eq:geometry-contrast}
+\end{equation}
+where $k$ indexes the three force levels and $\Delta$ is the paired estimand in
+Eq.~\eqref{eq:paired-estimand}. The manuscript-facing interval and exact
+signed-rank test use the 30 values $D_{s,k}(f)$, so one seed contributes one
+inferential unit after the crossed settings have been averaged. The 120 terms
+$d_{s,q,k}(f)$ remain a named sensitivity readout, and the 1,440 episode rows provide
+the full audit record; inferential support remains at the seed level. The campaign is a targeted
+support experiment that extends the operating envelope along scene factors while
+preserving the primary seven-level sweep.
+
+To test whether the transition is retained when the homogeneous team grows, we
+repeat the same paired endpoint on the declared swarm-size grid
+\ScaleSizeGrid{} airframes and force grid \ScaleForceGrid{}~N. For each of the
+\NScaleSeeds{} seeds, the waypoint stream, disturbance heading, controller,
+allocator and six-second horizon are held fixed while the number of airframes and
+matched waypoints defines the team-size factor. The wind-aware arm uses the causal
+directional estimate; the wind-agnostic arm is the same Euclidean reference.
+The scale campaign therefore adds a team-size axis while preserving the definition
+of completion and the unit of inference.
+
+For swarm size $n$, force level $w$ and seed $s$, the scale estimand is defined in
+Eq.~\eqref{eq:scale-estimand}:
+\begin{equation}
+  \Delta_{n,w,s}=C^{\mathrm{aware}}_{n,w,s}-C^{\mathrm{agnostic}}_{n,w,s},
+  \qquad
+  \bar\Delta_{n,w}=\frac{1}{S}\sum_{s=1}^{S}\Delta_{n,w,s},
+  \qquad S=\NScaleSeeds{},
+  \label{eq:scale-estimand}
+\end{equation}
+Equation~\eqref{eq:scale-estimand} defines the size--force contrast and its
+seed-level mean. The confidence interval and exact signed-rank test are applied to the $S$
+seed-level differences at each size--force cell. The disturbance heading is
+assigned from the primary seed-indexed heading record, so the comparison tests
+team size rather than introducing a second heading draw.
+
+The $n=4$ rows at the constant profile are checked field by field against the
+causal temporal campaign's baseline and causal rows for seeds 0--29, forces 0.10,
+0.15 and 0.20~N, and both treatments (180 rows in total). The seed sets overlap
+exactly; this compatibility regression is reported alongside, and separately from,
+the ten-seed oracle row in Table~\ref{tab:band}. The full record contains
+\NScaleEpisodes{} episode rows,
+with each row retained for audit, continuous miss-distance summaries and the
+figure-level operating-envelope map.
+
+\subsection{Scene-context campaigns}
+
+The disturbance heading is a seed-indexed condition. It is drawn once per seed
+and then reused at every force level, in both arms, and in the second sweep; the
+figure code verifies that one seed carries one heading in both records. This
+reuse makes a direct repeat question available: two seeds with nearly the same
+heading run the same disturbance twice, and their remaining differences are the
+other factors fixed by the seed.
+
+\begin{definition}[Disturbance repeat]\label{def:repeat}
+Write an episode as $(a, w, \theta, z)$: the arm $a$, the force magnitude $w$,
+the heading $\theta$ on the circle, and $z$ for everything else a seed fixes,
+here the waypoint layout. For a tolerance $\varepsilon > 0$, two episodes are a
+\emph{disturbance repeat} at $w$ when they share $a$ and $w$ and their headings
+satisfy $d(\theta,\theta') \le \varepsilon$, where $d$ is the shorter of the two
+arcs between them. The \emph{repeat gap} $D_\varepsilon(w)$ is the largest
+difference in completion rate over all disturbance repeats at $w$, taken over
+both arms.
+\end{definition}
+
+\begin{proposition}[What a repeat measures]\label{prop:repeat}
+Suppose completion at $w$ is a function $f_w(a,\theta)$ of the arm and the
+heading alone, and that $f_w$ is constant on every arc of width $\varepsilon$.
+Then $D_\varepsilon(w) = 0$. Consequently $D_\varepsilon(w) > 0$ identifies a
+scene-dependent component in completion at $w$, and its value is a lower bound on
+the range over which completion at $w$ varies with $z$.
+\end{proposition}
+
+\begin{proof}
+Both members of a repeat share $a$ and $w$, and the arc between their headings
+has width at most $\varepsilon$, so $f_w$ assigns them the same value and every
+repeat difference vanishes. The bound follows because each repeat difference is
+realised by two episodes differing only in $z$.
+\end{proof}
+
+\begin{proposition}[Saturation-aware repeat gap]\label{prop:vacuous}
+If at level $w$ every episode of every arm records the same completion, then
+$D_\varepsilon(w) = 0$ irrespective of what completion depends on.
+\end{proposition}
+
+\begin{proof}
+Every difference taken in Definition~\ref{def:repeat} is a difference of two
+equal numbers.
+\end{proof}
+
+Proposition~\ref{prop:vacuous} establishes how the repeat gap should be read
+alongside the question of whether the seeds differed at all. A saturated ceiling
+and a saturated floor both return a gap of zero, so the pair of measures separates
+endpoint convergence from scene variation. Of the \NWindLevels{} force levels
+swept, the \NInformativeLevels{} variable levels carry the scene-dependence signal,
+while the remaining levels define the saturated calibration boundaries.
+
+\begin{proposition}[Tolerance-stable repeat set]\label{prop:tol}
+$D_\varepsilon$ depends on $\varepsilon$ only through the set of pairs it
+admits. If no pairwise heading separation of the executed design lies in
+$(\alpha,\beta]$, then every $\varepsilon \in [\alpha,\beta)$ admits the same
+pairs and returns the same $D_\varepsilon$ at every level.
+\end{proposition}
+
+\begin{proof}
+The admitted set is $\{(i,j) : d(\theta_i,\theta_j) \le \varepsilon\}$, which
+changes only as $\varepsilon$ crosses a realised separation.
+\end{proof}
+
+The executed design satisfies the hypothesis of Proposition~\ref{prop:tol} with
+a margin large enough to make the repeat set stable: \NRepeats{} pairs of
+seeds lie within \WidestRepeat{} degrees of one another and the next-closest
+pair is \NearestDistinct{} degrees apart, so every tolerance between those two
+numbers admits the same \NRepeats{} pairs. We state $\varepsilon = \RepeatTol{}$
+degrees and report the interval beside it as the pre-specified operating rule.
+
+\begin{corollary}[Paired units are preserved]\label{cor:notn}
+The comparison is paired within seed, so the units of the signed-rank test are
+the \NSeeds{} per-seed differences. Two seeds forming a disturbance repeat still
+differ in $z$ and remain distinct units, so a positive $D_\varepsilon$ leaves
+both the number of pairs and the exactness of the test untouched.
+\end{corollary}
+
+The repeat gap and the paired mean answer different questions and should be read
+together. The gap measures how much episode outcomes vary at nearly identical
+directional input, whereas the paired mean estimates the arm contrast; reporting
+both preserves the distinction between scene heterogeneity and treatment effect.
+
+The repeat design localizes variation outside the disturbance while keeping the
+waypoint layout and other seed-fixed factors coupled. The crossed heading--layout
+sweep below then resolves those factors into named margins and their interaction.
+
+The original record reads the heading drawn by each seed. The designed measurement
+uses an explicit heading argument; when none is supplied the routine consumes the
+seeded draw, so an assigned heading leaves the waypoint layout at a given seed
+exactly as the drawn heading would have left it. Two checks support this contract:
+every episode of the original record re-runs to the same numbers, and an episode
+assigned the heading its seed would have drawn reproduces that seed's episode
+field for field.
+
+On that basis we ran a crossed sweep at the same \NWindLevels{} force levels and
+in the same two arms: \NAssignedHeadings{} headings spaced \HeadingStep{}
+degrees apart around the full circle, each flown with every one of \NScenes{}
+waypoint layouts, for \NEpisodesDesigned{} episodes and \NPairsPerForce{} paired
+comparisons at every level. The simulator, controller, allocator, layout
+generator, capture radius and episode length remain fixed. This direct coverage
+turns the ten-draw context question into a full crossed record while preserving
+the original endpoint.
+
+\begin{definition}[Crossed disturbance design]\label{def:crossed}
+A design is \emph{crossed} at force $w$ if its episodes at $w$ are indexed by
+pairs $(\theta_i, z_j)$ with $i \le H$ and $j \le S$, carrying exactly one
+episode per arm at each pair, with the headings $\theta_i$ fixed in advance and
+the layouts $z_j$ drawn independently of them. Write
+$\delta_{ij}$ for the paired difference in completion at $(\theta_i, z_j)$,
+$\bar\delta_{i\cdot}$ and $\bar\delta_{\cdot j}$ for its margins, and
+$\bar\delta$ for its mean.
+\end{definition}
+
+\begin{proposition}[What crossing separates]\label{prop:crossed}
+The corresponding variance decomposition identity in a crossed design is given by
+Eq.~\eqref{eq:crossed-decomp}:
+\begin{equation}
+  \begin{aligned}
+  \sum_{i,j}(\delta_{ij}-\bar\delta)^2
+  \;=\; S\sum_i(\bar\delta_{i\cdot}-\bar\delta)^2
+  \;+\; H\sum_j(\bar\delta_{\cdot j}-\bar\delta)^2
+  \\
+  \;+\; \sum_{i,j}(\delta_{ij}-\bar\delta_{i\cdot}-\bar\delta_{\cdot j}
+  +\bar\delta)^2 .
+\end{aligned}
+\label{eq:crossed-decomp}
+\end{equation}
+Equation~\eqref{eq:crossed-decomp} partitions the observed variation into heading,
+layout and joint interaction components.
+If $\delta_{ij} = g(\theta_i)$ for some $g$, the second and third terms vanish;
+if $\delta_{ij} = h(z_j)$, the first and third do. A non-zero third term
+therefore identifies a joint heading--layout component beyond the two marginal
+effects, making the interaction contribution explicit.
+\end{proposition}
+
+\begin{proof}
+Expand $\delta_{ij}-\bar\delta$ as the sum of the two centred margins and the
+remainder; the three are orthogonal under summation over the full rectangle, so
+the cross terms vanish and the identity is arithmetic, with nothing estimated.
+The two special cases make the corresponding margins constant.
+\end{proof}
+
+\begin{corollary}[The zero-tolerance repeat set]\label{cor:zerotol}
+A crossed design contains, at every heading, $\binom{S}{2}$ pairs of episodes
+per arm whose headings are equal. Definition~\ref{def:repeat} at
+$\varepsilon = 0$ therefore admits a non-empty set, and $D_0(w)>0$ directly
+identifies scene dependence at fixed arm and heading, with no tolerance or
+smoothness assumption.
+\end{corollary}
+
+\begin{proof}
+Take $\varepsilon=0$ in Definition~\ref{def:repeat}: two episodes at the same
+$\theta_i$ satisfy $d(\theta,\theta')=0$, so they form a repeat. If completion
+at $w$ were $f_w(a,\theta)$ then every such pair would agree, so a positive
+$D_0(w)$ directly identifies the additional scene component without the arc
+hypothesis used in Proposition~\ref{prop:repeat}.
+\end{proof}
+
+Corollary~\ref{cor:zerotol} provides a zero-tolerance complement to
+Proposition~\ref{prop:tol} for the crossed record. The repeated headings make the
+scene component directly observable, without relying on a tolerance interval.
+
+Intervals on the crossed record are taken over layout clusters, not over cells. The
+\NAssignedHeadings{} headings are a fixed grid that covers the circle, so they
+are averaged within each layout rather than treated as sampled units. The
+\NCrossedClusters{} layouts are the independent clusters; the interval at each
+force level is an ordinary percentile bootstrap over their layout-level means.
+With $H=\NAssignedHeadings{}$ and $S=\NCrossedClusters{}$, the estimand and one
+bootstrap replicate are defined in Eq.~\eqref{eq:crossed-bootstrap}:
+\begin{equation}
+  \begin{aligned}
+  \bar\delta_j(w)&=\frac{1}{H}\sum_{i=1}^{H}\delta_{ij}(w),&
+  \bar\delta(w)&=\frac{1}{S}\sum_{j=1}^{S}\bar\delta_j(w),\\
+  \bar\delta^{*(b)}(w)&=\frac{1}{S}\sum_{j=1}^{S}\bar\delta_{J_{bj}}(w),&
+  J_{bj}&\stackrel{\mathrm{iid}}{\sim}\operatorname{Unif}\{1,\ldots,S\},
+  \end{aligned}
+  \label{eq:crossed-bootstrap}
+\end{equation}
+Equation~\eqref{eq:crossed-bootstrap} defines the layout-cluster mean and its
+deterministic bootstrap replicate. Here $b=1,\ldots,B$ and $B=\NCrossedBootstrap{}$. The reported 95\% interval
+is the empirical 2.5th--97.5th percentile range of the bootstrap means. Treating
+all \NPairsPerForce{} cells as independent would understate uncertainty and is
+not done. The crossed receipt does not add a signed-rank $p$ value to this
+interval readout; its Holm family metadata is retained for the separate endpoint
+audit.
+
+\subsection{Reproducibility}
+
+No number in this manuscript is typed by hand. Every episode log and derived table
+this study rests on is recorded with its SHA-256 digest in a manifest that
+accompanies the manuscript source. The figure and table code verifies each digest
+against the bytes on disk before it reads them and aborts on any mismatch, and it
+emits both the figures and the numeric macros that the text prints. A changed
+artifact therefore breaks the build rather than silently changing a sentence.
+This separation of source, computation and rendered claim follows
+reproducible-research and simulation-reporting guidance~\cite{peng2011repro,sandve2013repro,
+monks2019stress,ozturk2025mrtasim}.
+
+Figures are generated in R with patchwork from the same bound tables: each panel
+is constructed as an independent plot, then composed with the width or height
+ratio recorded in the figure-layout contract. Panel tags are added as plot tags at
+the upper-left and titles remain centred within their own panel; the exported PDF
+is checked for the declared physical canvas before it enters the manuscript.

@@ -1,0 +1,241 @@
+{
+  "table_id": "001-T4",
+  "kind": "iid_noise_0p15N",
+  "status": "ok",
+  "source": "data/e-raw-noise/sweep_noise_20260713T124223Z.jsonl",
+  "baseline_source": "data/e-raw-oracle/sweep_20260713T122953Z.jsonl",
+  "noise_provenance": {
+    "script": "source-tree/001-drone-swarm/sweep_noise.py",
+    "gym_pybullet_drones_commit": "e712698",
+    "timestamp_utc": "2026-07-13T12:42:23.379297Z",
+    "wind_levels": [
+      0.1,
+      0.15,
+      0.2
+    ],
+    "noise_levels": [
+      0.0,
+      0.1,
+      0.3,
+      0.5,
+      1.0
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "treatment": "wind_aware only -- baseline reused from data/e-raw-oracle/sweep_20260713T122953Z.jsonl",
+    "baseline_source": "data/e-raw-oracle/sweep_20260713T122953Z.jsonl"
+  },
+  "caveat": "Noise is i.i.d. per 48 Hz step around an oracle vector \u2014 not a biased/temporally correlated sensor. Do not retitle as survives realistic wind estimation.",
+  "not_seal_gpio": true,
+  "new_sweep": false,
+  "rows": [
+    {
+      "wind_N": 0.15,
+      "noise_frac": 0.0,
+      "n": 10,
+      "wind_aware_mean": 0.6,
+      "wind_aware_std": 0.25495097567963926,
+      "baseline_mean_july": 0.05,
+      "paired_delta_mean": 0.55,
+      "paired_delta_std": 0.2449489742783178,
+      "wilcoxon": {
+        "n_pairs": 10,
+        "n_nonzero": 9,
+        "n_zeros_dropped": 1,
+        "method": "scipy.stats.wilcoxon exact, zeros dropped",
+        "p_two_sided": 0.00390625,
+        "statistic": 0.0
+      }
+    },
+    {
+      "wind_N": 0.15,
+      "noise_frac": 0.1,
+      "n": 10,
+      "wind_aware_mean": 0.575,
+      "wind_aware_std": 0.31721443851123804,
+      "baseline_mean_july": 0.05,
+      "paired_delta_mean": 0.525,
+      "paired_delta_std": 0.3051638903933426,
+      "wilcoxon": {
+        "n_pairs": 10,
+        "n_nonzero": 8,
+        "n_zeros_dropped": 2,
+        "method": "scipy.stats.wilcoxon exact, zeros dropped",
+        "p_two_sided": 0.0078125,
+        "statistic": 0.0
+      }
+    },
+    {
+      "wind_N": 0.15,
+      "noise_frac": 0.3,
+      "n": 10,
+      "wind_aware_mean": 0.6,
+      "wind_aware_std": 0.16583123951777,
+      "baseline_mean_july": 0.05,
+      "paired_delta_mean": 0.55,
+      "paired_delta_std": 0.15,
+      "wilcoxon": {
+        "n_pairs": 10,
+        "n_nonzero": 10,
+        "n_zeros_dropped": 0,
+        "method": "scipy.stats.wilcoxon exact, zeros dropped",
+        "p_two_sided": 0.001953125,
+        "statistic": 0.0
+      }
+    },
+    {
+      "wind_N": 0.15,
+      "noise_frac": 0.5,
+      "n": 10,
+      "wind_aware_mean": 0.7,
+      "wind_aware_std": 0.2449489742783178,
+      "baseline_mean_july": 0.05,
+      "paired_delta_mean": 0.65,
+      "paired_delta_std": 0.22912878474779202,
+      "wilcoxon": {
+        "n_pairs": 10,
+        "n_nonzero": 10,
+        "n_zeros_dropped": 0,
+        "method": "scipy.stats.wilcoxon exact, zeros dropped",
+        "p_two_sided": 0.001953125,
+        "statistic": 0.0
+      }
+    },
+    {
+      "wind_N": 0.15,
+      "noise_frac": 1.0,
+      "n": 10,
+      "wind_aware_mean": 0.35,
+      "wind_aware_std": 0.3,
+      "baseline_mean_july": 0.05,
+      "paired_delta_mean": 0.3,
+      "paired_delta_std": 0.291547594742265,
+      "wilcoxon": {
+        "n_pairs": 10,
+        "n_nonzero": 6,
+        "n_zeros_dropped": 4,
+        "method": "scipy.stats.wilcoxon exact, zeros dropped",
+        "p_two_sided": 0.03125,
+        "statistic": 0.0
+      }
+    }
+  ],
+  "appendix_non_discriminating_0p10_0p20": [
+    {
+      "wind_N": 0.1,
+      "noise_frac": 0.0,
+      "n": 10,
+      "wind_aware_mean": 0.975,
+      "wind_aware_std": 0.075,
+      "paired_delta_mean": 0.025,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.1,
+      "noise_frac": 0.1,
+      "n": 10,
+      "wind_aware_mean": 0.975,
+      "wind_aware_std": 0.075,
+      "paired_delta_mean": 0.025,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.1,
+      "noise_frac": 0.3,
+      "n": 10,
+      "wind_aware_mean": 0.925,
+      "wind_aware_std": 0.11456439237389601,
+      "paired_delta_mean": -0.025,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.1,
+      "noise_frac": 0.5,
+      "n": 10,
+      "wind_aware_mean": 0.95,
+      "wind_aware_std": 0.09999999999999999,
+      "paired_delta_mean": 0.0,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.1,
+      "noise_frac": 1.0,
+      "n": 10,
+      "wind_aware_mean": 0.925,
+      "wind_aware_std": 0.11456439237389601,
+      "paired_delta_mean": -0.025,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.2,
+      "noise_frac": 0.0,
+      "n": 10,
+      "wind_aware_mean": 0.05,
+      "wind_aware_std": 0.1,
+      "paired_delta_mean": 0.025,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.2,
+      "noise_frac": 0.1,
+      "n": 10,
+      "wind_aware_mean": 0.05,
+      "wind_aware_std": 0.15,
+      "paired_delta_mean": 0.025,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.2,
+      "noise_frac": 0.3,
+      "n": 10,
+      "wind_aware_mean": 0.025,
+      "wind_aware_std": 0.075,
+      "paired_delta_mean": 0.0,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.2,
+      "noise_frac": 0.5,
+      "n": 10,
+      "wind_aware_mean": 0.1,
+      "wind_aware_std": 0.16583123951777,
+      "paired_delta_mean": 0.075,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    },
+    {
+      "wind_N": 0.2,
+      "noise_frac": 1.0,
+      "n": 10,
+      "wind_aware_mean": 0.025,
+      "wind_aware_std": 0.075,
+      "paired_delta_mean": 0.0,
+      "load_bearing": false,
+      "note": "non-discriminating wind; appendix only"
+    }
+  ],
+  "png": "source-tree/001-drone-swarm/results/sota_copy/complements/complement_wind_noise_015.png",
+  "complement": true,
+  "not_official_r": true,
+  "not_official_sr_fkr": true,
+  "do_not_invent_sr_fkr": true,
+  "written_utc": "2026-08-16T12:55:44Z"
+}

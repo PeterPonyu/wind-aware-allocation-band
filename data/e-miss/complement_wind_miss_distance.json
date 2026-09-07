@@ -1,0 +1,91 @@
+{
+  "table_id": "001-T5",
+  "kind": "miss_distance_companion",
+  "status": "ok",
+  "source": "data/e-raw-oracle/sweep_20260713T122953Z.jsonl",
+  "why": "completion is a 0.15 m radius step-function; distance shows residual miss when completion is 0.",
+  "object_effect_seed0_illustration_only": {
+    "source": "source-tree/001-drone-swarm/results/object_effect/wind_aware_vs_baseline_trajectory/metrics.json",
+    "baseline_mean_min_dist_m": 0.35723355310734245,
+    "wind_aware_mean_min_dist_m": 0.3244028379259559,
+    "note": "single-seed illustration; not the n=10 table"
+  },
+  "rows": [
+    {
+      "wind_N": 0.0,
+      "n": 10,
+      "baseline_mean_min_dist_m": 0.14017599463892316,
+      "baseline_std_min_dist_m": 0.0024417674077782453,
+      "wind_aware_mean_min_dist_m": 0.14017599463892316,
+      "wind_aware_std_min_dist_m": 0.0024417674077782453,
+      "baseline_mean_of_max_min_dist_m": 0.14648504164479137,
+      "wind_aware_mean_of_max_min_dist_m": 0.14648504164479137
+    },
+    {
+      "wind_N": 0.05,
+      "n": 10,
+      "baseline_mean_min_dist_m": 0.14377724541849338,
+      "baseline_std_min_dist_m": 0.002888782889706203,
+      "wind_aware_mean_min_dist_m": 0.1435136809700539,
+      "wind_aware_std_min_dist_m": 0.001700234476134087,
+      "baseline_mean_of_max_min_dist_m": 0.1482931999406402,
+      "wind_aware_mean_of_max_min_dist_m": 0.14727837367342994
+    },
+    {
+      "wind_N": 0.1,
+      "n": 10,
+      "baseline_mean_min_dist_m": 0.15798940386070096,
+      "baseline_std_min_dist_m": 0.019194877431295703,
+      "wind_aware_mean_min_dist_m": 0.15268370358558706,
+      "wind_aware_std_min_dist_m": 0.015837647673722227,
+      "baseline_mean_of_max_min_dist_m": 0.1878664206079569,
+      "wind_aware_mean_of_max_min_dist_m": 0.16982183570951878
+    },
+    {
+      "wind_N": 0.15,
+      "n": 10,
+      "baseline_mean_min_dist_m": 0.24358560157693104,
+      "baseline_std_min_dist_m": 0.06528813658727538,
+      "wind_aware_mean_min_dist_m": 0.22585119228881556,
+      "wind_aware_std_min_dist_m": 0.09029295141732686,
+      "baseline_mean_of_max_min_dist_m": 0.39956442973822887,
+      "wind_aware_mean_of_max_min_dist_m": 0.38756703909693335
+    },
+    {
+      "wind_N": 0.2,
+      "n": 10,
+      "baseline_mean_min_dist_m": 0.4238124988107016,
+      "baseline_std_min_dist_m": 0.15619934194075727,
+      "wind_aware_mean_min_dist_m": 0.41381508876746986,
+      "wind_aware_std_min_dist_m": 0.1846400995320305,
+      "baseline_mean_of_max_min_dist_m": 0.6566297333655766,
+      "wind_aware_mean_of_max_min_dist_m": 0.658896389997625
+    },
+    {
+      "wind_N": 0.25,
+      "n": 10,
+      "baseline_mean_min_dist_m": 0.5635237105996553,
+      "baseline_std_min_dist_m": 0.13836338051982552,
+      "wind_aware_mean_min_dist_m": 0.5475077034495542,
+      "wind_aware_std_min_dist_m": 0.1388560174497063,
+      "baseline_mean_of_max_min_dist_m": 0.8251303023916939,
+      "wind_aware_mean_of_max_min_dist_m": 0.8193570424333197
+    },
+    {
+      "wind_N": 0.3,
+      "n": 10,
+      "baseline_mean_min_dist_m": 0.5968651869565297,
+      "baseline_std_min_dist_m": 0.1377515960585342,
+      "wind_aware_mean_min_dist_m": 0.5950903517435753,
+      "wind_aware_std_min_dist_m": 0.1382550862780695,
+      "baseline_mean_of_max_min_dist_m": 0.8357628513956286,
+      "wind_aware_mean_of_max_min_dist_m": 0.8357120321548995
+    }
+  ],
+  "png": "source-tree/001-drone-swarm/results/sota_copy/complements/complement_wind_miss_distance.png",
+  "complement": true,
+  "not_official_r": true,
+  "not_official_sr_fkr": true,
+  "do_not_invent_sr_fkr": true,
+  "written_utc": "2026-08-16T12:55:45Z"
+}

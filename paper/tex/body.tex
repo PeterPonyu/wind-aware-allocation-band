@@ -1,0 +1,1027 @@
+%% The manuscript body, shared by every binding of this paper.
+%% The class, the front matter and the bibliography style belong to the
+%% binding; everything a reader reads belongs here, once.
+\section{Introduction}
+A quadrotor that knows which way the wind is blowing can make a better allocation
+decision and fly the assigned waypoint with a more useful target bias. At the
+vehicle level, directional disturbance information is now estimated, modelled and
+used for control: unknown-input filters have been validated for wind-gust
+compensation~\cite{azid2021windgust}, aerodynamic tracking laws have been tested
+under wind perturbations~\cite{perozzi2018wind}, and onboard wind measurement and
+simulation practices have been systematized~\cite{abichandani2020wind,wi2024windstress,
+wetz2021distributed,schiano2014wind,gonzalezrocha2019sensingwind,
+wang2018windestimation}.
+Wind-aware planners likewise make direction and reachability explicit in their
+costs~\cite{thanellas2019spatialwind,heidari2021windplanning,techy2009minimum};
+recent work extends that line to flow prediction, safety and formation adaptation
+~\cite{seal2025,wespr2026,knodedw2025}. These advances leave a team-level question:
+where does directional information have the most operational leverage when several
+aircraft compete for tasks?
+
+The question sits on a mature multirotor modelling and trajectory-generation
+foundation~\cite{mahony2012multirotor,mellinger2011minimum,lee2010se3}, including flatness-based
+tracking models that expose aerodynamic effects in high-speed flight
+~\cite{faessler2018flatness}. At the coordination level, task-allocation taxonomies,
+market-based coordination and consensus auctions provide established abstractions
+for capability, coupling and robustness~\cite{gerkey2004formal,dias2006market,
+choi2009cbba,korsah2013taxonomy,khamis2015mrta,chakraa2023mrta}; end-to-end UAV assignment and intercept studies
+connect those abstractions to feasible trajectories~\cite{beard2002target,turpin2014goal}.
+Recent surveys organise the adjacent task-assignment, path-planning and
+mission-planning design spaces, but leave the information-to-completion interface
+as an empirical question~\cite{poudel2022uavassignment,aggarwal2020pathplanning,
+song2023mission}.
+Steady-wind formulations further show that assignment and route choice can be
+coupled~\cite{luo2018integrated}. Aerial-swarm surveys and a recent UAV-allocation
+review make clear that coordination, uncertainty and scalability remain coupled
+systems problems~\cite{chung2018swarm,skaltsis2023uavallocation,
+honig2018trajectory,lee2025redistribution}.
+We answer this team-level question with an operating-envelope measurement. The
+instance is task allocation: \NDrones{} quadrotors must reach \NDrones{} waypoints,
+and the wind-aware arm changes both which aircraft claims which waypoint and how
+the resulting target is flown. The allocation literature provides the design
+language, while swarm-scale replanning work highlights the value of testing
+environmental changes as a declared factor~\cite{hierarchical2025}. We sweep the
+disturbance across \NWindLevels{} levels from zero to beyond the airframe's hover
+thrust, run both arms on the same seeds, and evaluate each level with an exact
+paired test.
+The main contribution is a linked measurement contract: directional information
+enters the allocation cost and target-position feedforward, the same estimand is
+then carried through estimate quality, temporal dynamics, pathway and gain
+conditions, and the resulting completion boundary is opened along declared scene
+and homogeneous team-size axes. The paper contributes a systems measurement of
+where information has leverage and a reproducible way to compare
+allocation--control interfaces built from established components. The convergent
+shoulder and high-force edge are measured calibration boundaries: they mark
+where the endpoint is saturated and distinguish that boundary from the transition
+where directional information changes completion.
+Panels A and B of Fig.~\ref{fig:system-overview} make the measured object explicit before the
+statistical results: the same directional input is shown entering the
+allocation--control path, and the paired endpoint view keeps thresholded
+completion beside the continuous closest-approach quantity.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=\linewidth]{fig0_system_overview.pdf}
+\caption{\CapSystemOverview}
+\label{fig:system-overview}
+\end{figure*}
+
+The study follows the information path from capability to mechanism. It first
+locates the transition and tests estimate-noise robustness, then resolves scene
+context with seed-level repeats and a crossed heading--layout design. A continuous
+tracking endpoint shows how the thresholded gain is formed. Temporal profiles,
+pathway and feedforward-gain controls, scene-geometry factors and a homogeneous
+team-size axis then open the same estimand along progressively more operational
+dimensions. The exact-vector oracle is the reference for every extension, so the
+eight evidence blocks form one measured operating envelope with a continuous
+information-to-completion trace. The framework is compatible with established aerial-swarm hardware and software
+stacks~\cite{preiss2017crazyswarm,brambilla2013swarm,michael2010grasp}. Each measured
+axis can therefore be carried into a larger or physical experiment without changing
+the estimand; the tested simulator envelope is the calibrated reference for that
+transfer.
+
+\section{Methods}
+\input{methods}
+\input{transfer_protocol}
+
+\section{Results}
+
+\subsection{Operating envelope}
+
+Table~\ref{tab:band} and Fig.~\ref{fig:band}A give the full sweep. The continuous
+closest-approach companion is carried in Fig.~\ref{fig:miss} and is read alongside
+the thresholded endpoint.
+At \KneeLevel{}~N, which is \KneePctHover{} percent of one airframe's hover thrust, the
+wind-agnostic allocator completes \KneeAgnostic{} of waypoints on average and the
+wind-aware allocator completes \KneeAware{}. The paired difference is
+$+\KneeDelta{}$ with an exact two-sided signed-rank $p$ of \KneeP{}, which clears
+the Bonferroni-corrected threshold of \BonferroniAlpha{} for \NWindLevels{} levels.
+The two marginal standard deviations overlap at that level, so the ladder on its
+own understates the separation: every seed moves in the same direction even though
+the arms' dispersions do not separate. Fig.~\ref{fig:band}B therefore plots the
+seed-paired difference the test is actually computed on, and its 95~percent
+interval excludes zero at \KneeLevel{}~N and at no other force in the sweep.
+This force is specific to the \CaptureRadius{}~m capture radius that defines
+completion here; Panels A and B of Fig.~\ref{fig:radius} rerun the ladder at two further radii and
+finds a transition of comparable size at a different force in each, so
+\KneeLevel{}~N should be read as the transition of this operating point rather
+than a constant of the allocator.
+
+The full sweep gives the envelope around that transition. At and below
+\SaturationLevel{}~N both allocators complete nearly every waypoint, establishing a
+saturated shoulder; at and above \CollapseLevel{}~N both arms occupy the measured
+high-force edge. The four all-zero levels and the two levels with $p=1$ provide
+explicit convergence boundaries for the endpoint, alongside the transition where
+the arms separate. Taken together, the shoulder, transition and high-force edge
+map where directional information has operational leverage; the complete ladder
+makes each regime visible.
+
+\begin{table}[tbp]
+\centering
+\caption{Completion rate by wind force for the wind-agnostic and wind-aware arms,
+over \NSeeds{} paired seeds per level. Entries are mean $\pm$ standard deviation;
+intervals and exact signed-rank $p$ values use seed-level paired differences. A dash
+identifies a saturated all-zero level where no signed-rank statistic is defined.}
+\label{tab:band}
+\generatedtable{generated_table_band}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig1_wind_band.pdf}
+\caption{\CapBand}
+\label{fig:band}
+\end{figure}
+
+\subsection{Estimate-noise robustness}
+
+Table~\ref{tab:noise}, Fig.~\ref{fig:noise}A and Fig.~\ref{fig:noise}B report the
+controlled estimate perturbation that motivates this robustness analysis.
+Panel A tracks the transition force, while Panel B verifies its neighbouring
+force levels. Introducing controlled perturbations to the wind vector supplied to
+the wind-aware allocator preserves the band. The paired advantage is
+$+\SigmaZeroDelta{}$ with an exact input, and remains statistically aligned with
+that value across relative noise of \NearestSigma{} and \BestSigma{}, where
+the point estimates are $+\NearestSigmaDelta{}$ and $+\BestSigmaDelta{}$.
+
+At the largest tested relative noise, \MaxSigma{}, where the corruption is as large
+as the signal and the heading error has a standard deviation of roughly a radian,
+the measured advantage reaches its robustness edge at $+\MaxSigmaDelta{}$ with an
+exact $p$ of \MaxSigmaP{}. Every 95~percent interval in the table excludes zero, the
+weakest lower bound being \WeakestLower{} at that edge.
+
+The decision point fixed before the runs was relative noise of \PreregSigma{};
+the nearest executed grid level is \NearestSigma{}, so we evaluate the pre-set
+decision on that grid-aligned condition, where the interval is bounded away from
+zero. Counting the complete disturbance-by-noise family gives a strict
+Bonferroni threshold of \NoiseBonferroni{}. The 0.30 and 0.50 relative-noise
+conditions clear that family threshold; the 0.10 condition is retained as a
+positive descriptive estimate below that threshold, and the 1.00 condition
+($p=\MaxSigmaP{}$) marks the measured edge without a multiplicity-adjusted
+significance claim. Read together, the curve is a profile of how directional information translates
+into allocation benefit as estimate quality changes.
+The neighbouring disturbance levels stay flat at every noise level, which answers a
+question the point estimates alone would leave open: degrading the estimate leaves
+the transition location stable and changes the advantage within the measured band.
+That stability is a useful calibration result for selecting the next estimator
+quality regime.
+
+\begin{table}[tbp]
+\centering
+\caption{Effect of relative wind-estimate noise on the paired advantage at
+\KneeLevel{}~N over \NSeeds{} paired seeds. The reference arm is deterministic given
+a seed, so its recorded outcome is reused exactly for each noise level. Intervals are 95~percent $t$ intervals on seed-level differences;
+$p$ values are exact two-sided signed-rank tests.}
+\label{tab:noise}
+\generatedtable{generated_table_noise}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig2_noise_sensitivity.pdf}
+\caption{\CapNoise}
+\label{fig:noise}
+\end{figure}
+
+\subsection{Episode-level distribution}
+
+Because an episode assigns \NDrones{} quadrotors to \NDrones{} waypoints, its
+completion rate takes one of five values, and a mean over \NSeeds{} seeds can hide
+very different distributions. Fig.~\ref{fig:spread} opens the two means at the
+discriminating level. The wind-aware mean of \KneeAware{} is concentrated rather
+than diffuse: \AwareTopSeeds{} of \NSeeds{} seeds finish three of the four
+waypoints, while \AwareZeroSeeds{} seed finishes none. The wind-agnostic mean of
+\KneeAgnostic{} is similarly concentrated, with \AgnosticZeroSeeds{} of
+\NSeeds{} seeds finishing nothing.
+
+This distribution is part of the contribution. The gain is a near-categorical
+change in outcome for most seeds, with a smaller set of matched scenes producing
+the same endpoint under both arms. Reporting the mean together with this
+distribution makes the operating envelope useful for aggregate planning and
+episode-level expectations.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig3_seed_spread.pdf}
+\caption{\CapSpread}
+\label{fig:spread}
+\end{figure}
+
+\subsection{Continuous tracking endpoint}
+
+The completion rate is a step function of a continuous quantity: an aircraft counts
+as finished when its closest approach falls inside the \CaptureRadius{}~m capture
+radius. Fig.~\ref{fig:miss} plots that continuous quantity directly and shows
+how the operational gain is formed. At the discriminating level
+the mean closest approach is \MissAgnosticKnee{}~m for the wind-agnostic allocator
+and \MissAwareKnee{}~m for the wind-aware one, a difference of under two
+centimetres, while the completion rates at the same level differ by
+$\KneeDelta{}$. At the largest disturbance the two arms are closer still,
+\MissAgnosticCollapse{}~m against \MissAwareCollapse{}~m, and neither completes
+anything.
+
+The wind-aware allocator flies slightly more accurately at the disturbance where
+that small improvement moves most aircraft across the capture boundary. This is the
+operational leverage of the method: allocation and feedforward turn a modest
+continuous tracking shift into a substantial task-level change at the transition.
+The continuous endpoint makes that mechanism explicit and links the completion
+jump to its physical displacement. This yields a general measurement principle
+that extends beyond wind: when an endpoint thresholds a continuous quantity, the
+reported effect is determined by where the boundary sits relative to the two
+distributions as well as by the intervention. Pairing the rate with its continuous
+companion therefore shows both the operational payoff and the physical scale of
+the tracking change.
+
+The object-level bridge in Fig.~\ref{fig:system-overview}B makes that relationship
+visible at the seed level. At the transition, \BridgeLowerPairs{} of the
+\NSeeds{} matched seeds move to a lower mean closest approach under the aware
+arm, with a mean shift of $\BridgeDistanceShift{}$~m and a completion gain of
+$+\BridgeCompletionGain{}$ rate units. This is a descriptive reuse of the
+primary record, not a second inferential test.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig4_miss_distance.pdf}
+\caption{\CapMiss}
+\label{fig:miss}
+\end{figure}
+
+\subsection{Scene-context variation}
+
+The previous subsection leaves an important systems question. If the wind-aware
+mean is a mixture over seeds, which part of the episode context carries that
+spread? A seed fixes both the force heading and the waypoint layout, so near
+repetitions provide a direct probe of how the operating envelope depends on
+context. The record supports a joint reading: the force level locates the
+transition, while the scene determines how strongly an individual episode
+expresses it.
+Table~\ref{tab:seedpairs} prints the discriminating cell one seed at a time.
+The heading and replanning columns expose context that is absent from aggregate
+summaries.
+The heading is drawn once per seed and reused at every force level, in both arms
+and in the second sweep; near-matched seeds therefore repeat one disturbance while
+retaining different layouts. Fig.~\ref{fig:headings}A shows the \NSeeds{} draws
+and Fig.~\ref{fig:headings}B their complete separation spectrum. \NRepeats{} pairs
+lie within \WidestRepeat{} degrees (the closest is \ClosestRepeat{}), resolving to
+\NHeadings{} distinct headings with \LargestHeadingGroup{} inside one
+\HeadingGroupSpan{}-degree arc. The next pair is \NearestDistinct{} degrees away,
+so Proposition~\ref{prop:tol} gives the same repeat set throughout the displayed
+tolerance interval.
+
+Table~\ref{tab:repeats} and Fig.~\ref{fig:repeats} report how those
+repetitions spread. At the discriminating level, \RepeatDisagreeKnee{}
+of the \NRepeats{} repeated disturbances disagree, and the largest disagreement
+is \RepeatGapKneeDrones{} of the \NDrones{} airframes. The two seeds whose
+headings differ by \ClosestRepeat{} degrees return different outcomes, and one
+pair spans the entire range the wind-aware arm ever reached. By Proposition~\ref{prop:repeat} the completion
+rate at \KneeLevel{}~N is jointly shaped by the disturbance and the scene
+context, and the gap of $\RepeatGapKnee{}$ quantifies the context-dependent
+variation that an operating-envelope design can accommodate.
+The comparison level matters as much as the number. \NDegenerateLevels{} of the
+\NWindLevels{} levels are constant across seeds; Proposition~\ref{prop:vacuous}
+therefore identifies their repeat gaps as saturated ceiling or floor calibration
+values. The remaining \NInformativeLevels{} levels carry the scene-variation signal:
+at \CollapseLevel{}~N the seed spread is \CollapseSeedSpread{} and
+\RepeatDisagreeCollapse{} repeat pairs disagree, at \SaturationLevel{}~N
+\RepeatDisagreeShoulder{} disagree by \RepeatGapShoulderDrones{} airframe, and at
+\KneeLevel{}~N \RepeatDisagreeKnee{} disagree by up to
+\RepeatGapKneeDrones{}. Context dependence is consequently concentrated at the
+transition where the arms can be distinguished.
+Replanning is logged when an allocator changes its assignment mid-episode. At the
+discriminating level the wind-agnostic and wind-aware arms replanned
+\ReplanKneeAgnostic{} and \ReplanKneeAware{} times, respectively; the
+\NReplanLoud{} seeds with at least one event carry $+\ReplanLoudDelta{}$ versus
+$+\ReplanQuietDelta{}$ for the \NReplanQuiet{} quiet seeds. With \NSeeds{} seeds
+this remains a descriptive location of variance, reported beside the primary test.
+
+Corollary~\ref{cor:notn} clarifies the inferential unit and its operational
+reading. The test's units are the \NSeeds{} per-seed differences;
+two seeds sharing a heading still differ in their waypoint layouts, and the
+advantage of $+\KneeDelta{}$ at an exact $p$ of \KneeP{} stands as reported.
+The repeat profile shows that the same force heading can differ by
+\RepeatGapKneeDrones{} of \NDrones{} airframes across layouts. The paired mean
+locates the opportunity; the episode-level spread supplies a concrete margin for
+the next scene-aware deployment study.
+
+\begin{table}[tbp]
+\centering
+\caption{Seed-level paired record at \KneeLevel{}~N. Each row uses the same force
+and waypoint layout in both arms. Heading is drawn once per seed and reused across
+force levels; completion is the number of finished airframes, and replanning is the
+number of mid-episode assignment changes.}
+\label{tab:seedpairs}
+\generatedtable{generated_table_seedpairs}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+\caption{Near-matched disturbance repeats. Each row pairs seeds whose headings
+differ by less than \RepeatTol{} degrees; entries are the larger within-arm
+completion difference in airframes. The final row records whether any seeds differ
+at that force, distinguishing informative gaps from saturated levels.}
+\label{tab:repeats}
+\small
+\generatedtable{generated_table_repeats}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig5_heading_coverage.pdf}
+\caption{\CapHeadings}
+\label{fig:headings}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig6_replicate_gap.pdf}
+\caption{\CapRepeats}
+\label{fig:repeats}
+\end{figure}
+
+\subsection{Heading--layout sweep}
+
+The original sampling record supplies near-matched repetitions. We extend that
+record with a designed crossed sweep that resolves the remaining sampling
+question: headings are fixed on a grid and every heading is paired with every
+waypoint layout. The simulator is deterministic, single-core and about a second
+per episode, so this direct coverage test is inexpensive and fully reproducible.
+Before comparing the two records we re-ran the first. All \NReproEpisodes{}
+episodes of the drawn-heading sweep return the same value in all
+\NReproFields{} recorded fields, so the hash-bound record and its generating code
+agree. The crossed record below therefore extends the same validated endpoint.
+The crossed sweep uses a fixed heading grid:
+\NAssignedHeadings{} headings \HeadingStep{} degrees apart, each flown with all
+\NScenes{} waypoint layouts, at every force level and in both arms
+(Definition~\ref{def:crossed}). It leaves \DesignedArc{} degrees unsampled
+against \UnsampledArc{}, and it puts \NPairsPerForce{} paired comparisons at
+each level against \NSeeds{}. Table~\ref{tab:designed} and
+Fig.~\ref{fig:designed}A reports the force-level envelope, while
+Fig.~\ref{fig:designed}B opens its transition cell.
+
+The operating envelope is reproduced, and the transition remains one level wide.
+At \KneeLevel{}~N the paired
+advantage is $+\DesignedKneeDelta{}$ with a 95~percent ordinary-bootstrap
+interval over the \NCrossedClusters{} layout clusters,
+$[+\DesignedKneeLower{}, +\DesignedKneeUpper{}]$. Each layout cluster first
+averages the \NAssignedHeadings{} fixed headings; the \NPairsPerForce{} cells
+support the design and visualization, while the layout clusters provide the
+inferential units. The estimate is from
+\DesignedKneeAgnostic{} completed under the wind-agnostic allocator to
+\DesignedKneeAware{} under the wind-aware one; the ten-draw estimate of
+$+\KneeDelta{}$ sits inside that interval. Exactly \DesignedKneeAdverse{} of the
+\NPairsPerForce{} pairs at that level favours the wind-agnostic arm. The
+neighbouring levels stay where they were, $+\DesignedShoulderDelta{}$ at
+\SaturationLevel{}~N and $+\DesignedCollapseDelta{}$ at \CollapseLevel{}~N, so
+the designed sweep confirms the narrowness of the band.
+The context dependence is visible at exact heading (zero tolerance). At
+\KneeLevel{}~N two episodes at the \emph{same} heading, differing only in
+waypoint layout, span $\ZeroSeparationGap{}$ of paired advantage, from
+$\ZeroSeparationLow{}$ to $\ZeroSeparationHigh{}$. By
+Corollary~\ref{cor:zerotol}, exact-heading repeats establish a scene component
+that is separate from the arm and the wind, without a smoothness assumption.
+The crossed design therefore identifies the residual scene context directly:
+the same directional input expresses different completion outcomes across
+layouts, which makes layout a measurable operating axis.
+This is a complementary readout of the primary endpoint; Corollary~\ref{cor:zerotol}
+keeps the repeated-heading statement tied to the declared design without altering
+the force-family test.
+
+Panel B of Fig.~\ref{fig:designed} opens the discriminating level into
+its heading-by-layout rectangle, one cell per paired episode. Flat rows would
+indicate a heading-only pattern and flat columns a layout-only pattern; the
+observed matrix resolves both margins and their interaction. Of the variation in
+the advantage at that level, \DesignedShareHeading{} per cent lies in the heading
+margin, \DesignedShareScene{} per cent in the layout margin, and
+\DesignedShareResidual{} per cent in the interaction. By
+Proposition~\ref{prop:crossed}, the interaction is the dominant component of the
+measured variation: wind and layout jointly shape the transition, while each
+margin contributes a smaller, interpretable share.
+Read with the paired test, the two statements are complementary. Over
+\NPairsPerForce{} pairs the wind-aware allocator finishes
+\DesignedKneeDelta{} more of \NDrones{} aircraft on average at \KneeLevel{}~N,
+with a tighter estimate than the original ten draws. Exact wind knowledge still
+leaves a scene-dependent spread on an individual flight; the mean locates the
+opportunity and the spread supplies the deployment margin.
+
+\begin{table}[tbp]
+\centering
+\caption{Crossed heading--layout sweep with \NAssignedHeadings{} fixed headings
+spaced \HeadingStep{} degrees apart and \NScenes{} layouts per heading. The
+reported interval is an ordinary bootstrap over \NCrossedClusters{} layout-level
+means after averaging the fixed headings (\NCrossedBootstrap{} draws); the cells are
+summarized through their layout-cluster units. The repeat-gap column is the largest
+same-heading difference; the final columns give the heading, layout and interaction
+shares computed from the displayed crossed cells.}
+\label{tab:designed}
+\small
+\generatedtable{generated_table_designed}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig7_designed_replicates.pdf}
+\caption{\CapDesigned}
+\label{fig:designed}
+\end{figure}
+
+\subsection{Temporal operating profiles}
+
+The constant-force result establishes where directional information has leverage;
+the next question is whether that leverage survives when the vector itself moves.
+We therefore ran a primary campaign across \NTemporalProfiles{} profiles,
+\NTemporalEstimators{} estimate conditions and three force levels, with the same
+paired scene and phase for every arm. The campaign contains \NTemporalEpisodes{}
+episode records. Fig.~\ref{fig:temporal}A and Fig.~\ref{fig:temporal}B, together
+with Table~\ref{tab:temporal}, report the causal-estimate slice at the transition
+alongside the oracle and biased-causal conditions.
+
+At \KneeLevel{}~N the causal estimate gives a paired gain of
+$+\TemporalConstantDelta{}$ for the constant profile, with a 95~percent interval
+$[+\TemporalConstantLower{},+\TemporalConstantUpper{}]$. The slow gust gives
+$+\TemporalSlowDelta{}$ with interval
+$[+\TemporalSlowLower{},+\TemporalSlowUpper{}]$, and the fast gust gives
+$+\TemporalFastDelta{}$ with interval
+$[+\TemporalFastLower{},+\TemporalFastUpper{}]$. The exact two-sided signed-rank
+$p$ values for these three rows are printed in Table~\ref{tab:temporal}.
+The transition is therefore carried into both temporal regimes: its expression
+changes with the rate of the gust, while its location remains a force-scale
+phenomenon expressed across dynamic profiles.
+
+The observer diagnostics make that statement operational. Mean relative vector
+tracking error is \TemporalTrackingConstant{}~percent for the constant profile,
+\TemporalTrackingSlow{}~percent for the slow gust and \TemporalTrackingFast{}~percent
+for the fast gust. The neighbouring force cells move by no more than
+\TemporalShoulderMax{} in paired gain for the causal condition, so the temporal
+extension preserves the narrow shoulder--transition--edge structure of the
+original envelope. The \NTemporalLegacyRows{} constant/oracle regression rows
+reproduce the legacy control path, tying the new dynamic readout to the established
+reference while preserving the original endpoint.
+
+\begin{table}[tbp]
+\centering
+\caption{Temporal operating-envelope results at the transition force. Each row is a
+profile--estimator condition; intervals use the \NTemporalSeeds{} paired seeds,
+tracking is mean relative vector error, and $p$ is an exact signed-rank test against
+the reference arm. The oracle uses the exact vector, the causal condition uses a
+first-order update, and the biased-causal condition adds the stated bias and noise.}
+\label{tab:temporal}
+\small
+\generatedtable{generated_table_temporal}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig8_temporal_envelope.pdf}
+\caption{\CapTemporal}
+\label{fig:temporal}
+\end{figure}
+
+\subsection{Pathway and gain}
+
+The complete wind-aware arm combines an upwind assignment cost with a
+target-position feedforward term. A feedforward-off support campaign retains the
+directional assignment cost and selectively disables the target-position bias, producing
+\NAblationEpisodes{} paired records under the same temporal profiles, force levels,
+seeds and estimate states. At the transition, the allocation-only gains are
+$+\AllocOnlyConstant{}$, $+\AllocOnlySlow{}$ and $+\AllocOnlyFast{}$ for the
+constant, slow-gust and fast-gust profiles; the corresponding complete-arm gains
+are $+\CompleteConstant{}$, $+\CompleteSlow{}$ and $+\CompleteFast{}$. In this
+benchmark the comparison localizes the observed task-level change to the
+target-position pathway while preserving the directional assignment component,
+thereby identifying a concrete tuning lever for the interface.
+
+This pathway result identifies the present tuning leverage; the assignment cost
+remains an explicit component to test across the next scene geometries.
+
+The controller setting is then opened as an explicit factor. A
+\NGainEpisodes{}-episode sensitivity campaign varies the feedforward gain from zero
+to 1.40~m/N on the fixed seven-point grid, with every condition paired to the same
+scene and causal estimate. Around the inherited \FeedforwardGainDefault{}~m/N
+setting, the tested profiles occupy a broad positive plateau from
+\GainPlateauMin{} to \GainPlateauMax{} in paired completion gain. At the upper
+tested edge the gains are $+\GainEdgeConstant{}$, $+\GainEdgeSlow{}$ and
+$+\GainEdgeFast{}$ for the three profiles. Fig.~\ref{fig:mechanism}A and
+Fig.~\ref{fig:mechanism}B, together with Table~\ref{tab:mechanism}, make the
+design choice visible: the inherited setting is inside a measured operating
+region, while the upper tested edge marks the boundary of the gain grid.
+
+\begin{table}[tbp]
+\centering
+\caption{Pathway and feedforward-gain sensitivity at the transition force. The
+allocation-only arm retains the upwind assignment cost but disables target
+feedforward; the complete arm uses the inherited gain. Plateau and upper-edge
+columns summarize the tested gain grid. Entries are paired completion gains.}
+\label{tab:mechanism}
+\small
+\generatedtable{generated_table_mechanism}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig9_mechanism_gain.pdf}
+\caption{\CapMechanism}
+\label{fig:mechanism}
+\end{figure}
+
+\subsection{Scene-geometry factors}
+
+The crossed heading--layout result identifies scene context as a major source of
+episode variation. We therefore opened that context with a targeted factorised
+campaign that resolves ``layout'' into named factors. The
+campaign contains \NGeometryEpisodes{} episodes across eight combinations of
+target spread, target range and crossing orientation, three force levels and
+\NGeometrySeeds{} paired seeds. The nominal--near--aligned cell is the exact legacy
+scene, so the extension has a direct compatibility anchor.
+Table~\ref{tab:geometry} lists the nine force-by-factor contrasts and their
+declared paired units. Fig.~\ref{fig:geometry}A gives
+the high-minus-low factor contrasts, each formed by first averaging the four
+crossed settings of the other two factors within each of the \NGeometryClusters{}
+seed clusters; the inferential vector therefore has \NGeometryClusters{} terms.
+The \NGeometryTermSensitivity{} seed-by-setting terms serve as a sensitivity
+readout, while the primary support-unit count remains the seed-cluster vector.
+Fig.~\ref{fig:geometry}B
+shows all condition-by-force means. At the transition force, crossing the target
+geometry gives the largest contrast, $+\GeometryKneeCrossing{}$
+$[+\GeometryKneeCrossingLower{},+\GeometryKneeCrossingUpper{}]$ with an exact
+two-sided signed-rank $p=\GeometryKneeCrossingP{}$ (Holm-adjusted
+$p=\GeometryKneeCrossingHolm{}$ within the nine-contrast support family).
+Expanding target spread shifts the gain by
+$\GeometryKneeSpread{}$ $[\GeometryKneeSpreadLower{},\GeometryKneeSpreadUpper{}]$,
+while moving the target range farther shifts it by
+$\GeometryKneeRange{}$ $[\GeometryKneeRangeLower{},+\GeometryKneeRangeUpper{}]$.
+The crossing contrast is therefore a concrete scene-design lever in this
+benchmark, whereas the spread and range contrasts quantify the direction and
+precision of two neighbouring changes. The range estimate is a precision
+boundary rather than an equivalence claim: its 30-cluster interval reaches the
+zero boundary at the displayed resolution, while the 120-term sensitivity
+interval is $[\GeometryRangeSensitivityLower{},+\GeometryRangeSensitivityUpper{}]$.
+Using the declared nine-contrast family, the planning calculation gives an 80\%
+familywise MDE of $\GeometryRangeMDE{}$ completion-rate units for this range
+contrast.
+
+These nine factor-by-force contrasts form one declared geometry-support family.
+The high-minus-low terms are paired within seed and crossed scene condition, then
+averaged within seed before the exact signed-rank test and interval are computed.
+The \NGeometryTermSensitivity{} terms at a force level provide a design-level
+sensitivity analysis, while the \NGeometryEpisodes{} episode rows document the
+full crossed record and its audit trail.
+
+The condition panel keeps the interpretation anchored to the endpoint: the
+nominal legacy cell gives a transition gain of +\GeometryKneeNominal{}, and the
+strongest tested cell reaches +\GeometryKneeBest{}. The factor effects define a
+controlled operating-envelope map within the declared simulator and provide a
+repeatable bridge from ``scene matters'' to an experimental program in which target
+geometry can be selected, measured and extended along named axes.
+
+\begin{table}[tbp]
+\centering
+\caption{Factorised scene-geometry campaign. Each row is a high-minus-low contrast
+for one factor and force, with the other two factors crossed. Intervals and exact
+signed-rank tests use \NGeometryClusters{} seed-level contrasts after averaging
+the four crossed settings within seed; the \NGeometryTermSensitivity{}-term
+version is a sensitivity readout. Holm adjustment is across the nine completion
+contrasts in the support family. Levels are deterministic simulator
+transformations; nominal--near--aligned is the legacy compatibility cell.}
+\label{tab:geometry}
+\small
+\generatedtable{generated_table_geometry}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig10_geometry_factorial.pdf}
+\caption{\CapGeometry}
+\label{fig:geometry}
+\end{figure}
+
+\subsection{Team-size transfer}
+
+The final extension asks whether the transition is retained when the homogeneous
+team grows. The scale campaign contributes \NScaleEpisodes{} episode rows across
+\NScaleSizes{} team sizes, \NScaleForces{} force levels and \NScaleSeeds{} paired
+seeds, with the causal directional estimate and the same endpoint used above.
+Fig.~\ref{fig:scale}A shows the complete size--force surface: the transition
+remains concentrated at \KneeLevel{}~N while the neighbouring cells stay close to
+the envelope baseline. This isolates transfer of the main interface across team
+size with the controller and simulator held fixed.
+
+At the transition, the paired gains are $+\ScaleKneeTwo{}$,
+$+\ScaleKneeFour{}$, $+\ScaleKneeSix{}$ and $+\ScaleKneeEight{}$ for the
+declared sizes from \ScaleMinSize{} to \ScaleMaxSize{} airframes. Every
+95~percent transition-cell interval in Table~\ref{tab:scale} remains positive;
+the four-airframe slice is $+\ScaleKneeFour{}$
+$[+\ScaleKneeFourLower{},+\ScaleKneeFourUpper{}]$, and all exact tests are at
+or below the Holm-adjusted bound $\ScaleKneeHolmMax{}$. The transition gain therefore spans a compact
+$+\ScaleKneeMin{}$--$+\ScaleKneeMax{}$ range across the declared sizes.
+
+Panel B of Fig.~\ref{fig:scale} separates the endpoint means at the transition.
+The wind-aware arm remains above the reference at every tested size. The
+four-airframe constant-profile causal slice (30 paired seeds, both arms and three
+force levels; 180 rows) is field-by-field identical to the temporal record and is
+distinct from the ten-seed oracle values in Table~\ref{tab:band}. The full table
+retains the shoulder and high-force cells that delimit this homogeneous-team
+transfer claim.
+
+\begin{table}[tbp]
+\centering
+\caption{Homogeneous swarm-size operating-envelope campaign. Each row is a size--force
+cell over \NScaleSeeds{} paired seeds. Entries are mean completion $\pm$ standard
+deviation; gain intervals are 95~percent $t$ intervals. The final column gives the
+raw exact signed-rank $p$ followed by the Holm-adjusted $p$ across the 12 size--force
+cells. Four-airframe rows are the compatibility slice; other sizes are declared
+extensions.}
+\label{tab:scale}
+\small
+\generatedtable{generated_table_scale}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig11_swarm_scale.pdf}
+\caption{\CapScale}
+\label{fig:scale}
+\end{figure}
+
+\subsection{Endpoint-radius sensitivity}
+
+Completion is scored by a capture radius, so every rate in this paper depends on a
+distance the experiment chose rather than measured. The validation sweep reruns the
+force ladder at radii of \RadiusGrid{}~m over \NRadiusEpisodes{} episodes, holding
+scene, heading, seed pairing and horizon fixed, and the anchor column reproduces
+the primary ladder exactly. Table~\ref{tab:radius} gives the full grid and
+Fig.~\ref{fig:radius}A the paired advantage at each radius. The receipt corrects
+the underlying continuous distance as its own family on the same rows, and it
+moves the same way: the wind-aware arm ends closer to its target in
+\RadiusContinuousCloser{} of the \RadiusContinuousCells{} radius-force cells, with
+\RadiusContinuousHolmSurvivors{} clearing Holm. What the threshold reports is
+therefore a discretization of a distance difference that is already present, not
+an artifact of where the threshold was placed.
+
+The result separates two claims that the primary sweep states together. A
+transition exists at every tested radius and its size is comparable across them,
+from $+\RadiusPeakDeltaMin{}$ to $+\RadiusPeakDeltaMax{}$ completion. Its location
+is not stable: the largest advantage sits at \RadiusTightPeakForce{}~N for the
+\RadiusTightLevel{}~m radius, \RadiusAnchorPeakForce{}~N for the
+\CaptureRadius{}~m anchor and \RadiusWidePeakForce{}~N for the
+\RadiusWideLevel{}~m radius, a span of \RadiusPeakForceSpan{}~N in force across a
+\RadiusSpanM{}~m change in radius. Fig.~\ref{fig:radius}B shows the
+mechanism directly, since a tighter radius makes the same disturbance harder and
+shifts the whole completion ladder toward lower forces. The headline force is
+therefore a property of the operating point, and the claim this paper supports is
+that directional information has its largest leverage at the force where the task
+is on the edge of feasibility, not that this force is \KneeLevel{}~N in general.
+
+Two limits belong with that reading. Within this predeclared
+\RadiusHolmFamily{}-test validation family only \RadiusHolmSurvivors{} of the
+cells clears a Holm-corrected 5~percent threshold, and the anchor cell reaches
+\RadiusAnchorHolmP{}; with \NRadiusSeeds{} seeds per cell the family is
+underpowered for cell-wise correction and is reported as a sensitivity readout
+rather than a second confirmation. The primary seven-force result retains its own
+Bonferroni family and is unchanged.
+
+\begin{table}[tbp]
+\centering
+\caption{Completion by capture radius and wind force for both allocators, over
+\NRadiusSeeds{} paired seeds per cell. ``Paired diff.'' is the wind-aware minus
+wind-agnostic seed-level mean with its 95~percent interval, and ``Holm $p$'' is
+corrected within the \RadiusHolmFamily{}-test endpoint-radius validation family.
+Cells with an undefined exact test are all-zero differences.}
+\label{tab:radius}
+\scriptsize
+\generatedtable{generated_table_radius}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig12_endpoint_radius.pdf}
+\caption{\CapRadius}
+\label{fig:radius}
+\end{figure}
+
+\subsection{Complete pathway factorial}
+
+The ablation reported above removes the target-position feedforward and observes
+the gain collapse. That is consistent with the feedforward carrying the effect and
+equally consistent with the two pathways only working in combination, because the
+cell with assignment disabled and feedforward retained had never been run. Running
+it completes the $2\times2$ over \NFactorialEpisodes{} episodes and
+\NFactorialSeeds{} paired seeds per profile-force cell.
+
+Fig.~\ref{fig:pathway}A and Table~\ref{tab:factorial} give all three terms. At the
+transition force the target-feedforward main effect spans
+$+\FactorialFeedforwardMin{}$ to $+\FactorialFeedforwardMax{}$ completion across
+the three temporal profiles, with a Holm-corrected $p$ of at most
+\FactorialFeedforwardHolmMax{}. The assignment main effect and the
+assignment-by-feedforward interaction stay within \FactorialOtherAbsMax{}
+completion of zero at every profile and force, and \NFactorialHolmSignificant{} of
+the \NumFactorialCells{} tested effects clear the corrected threshold, all of them
+feedforward terms. In this benchmark the directional estimate therefore acts
+through the target-position feedforward, the upwind assignment cost contributes no
+detectable share on its own, and there is no evidence that the two interact. The
+continuous endpoint carries its own corrected family and agrees: at the transition
+force the feedforward term moves the mean minimum distance to target by
+\FactorialContFeedforwardMin{} to \FactorialContFeedforwardMax{}~m, closer in every
+profile, while the assignment and interaction terms stay within
+\FactorialContOtherAbsMax{}~m of zero and none of them clears its threshold on that
+endpoint either. This is a mechanism statement about this interface and task, not a
+general claim about allocation.
+
+\subsection{Safety and feasibility diagnostics}
+
+The feasibility campaign completes the execution envelope with descriptive
+state and clearance diagnostics. It records \NSafetyMetrics{} diagnostics over
+\NSafetyEpisodes{} episodes at \SafetyForceGrid{}~N, and every episode in both
+arms remains finite. Table~\ref{tab:safety} gives the full diagnostic record and
+Fig.~\ref{fig:pathway}B shows the observed clearance range. The closest
+airframe pair is \SafetyWorstSeparation{}~m, in the
+\SafetyWorstSeparationArm{} arm at \SafetyWorstSeparationForce{}~N; the
+transition-force reference values are \SafetyAgnosticSeparationKnee{}~m and
+\SafetyAwareSeparationKnee{}~m, and the largest motor-limit fraction is
+\SafetyMotorMax{}. \SafetyGeomHullContacts{} of the \NSafetyEpisodes{} episodes
+reach the declared hull-contact distance \SafetyGeomHullContactM{}~m. These
+measurements define the benchmark's feasibility boundary and identify the
+additional separation constraint required by a physical implementation.
+
+That gap is reported as an observation about these episodes rather than as a
+property of the allocator, because most of the metric's variance belongs to the
+benchmark instead of to either arm. The scene's minimum target separation
+correlates with the observed minimum airframe separation at
+\SafetyGeomTargetCorr{}, and \SafetyGeomCloseTargetContacts{} of the
+\SafetyGeomHullContacts{} sub-contact episodes fall in the half of scenes whose
+targets sit closer than twice the capture radius, against
+\SafetyGeomFarTargetContacts{} in the other half. Within a scene, where both arms
+fly identical targets, the arm that finished more airframes flew closer in
+\SafetyGeomPairedCloser{} pairs and farther in \SafetyGeomPairedFarther{}, with
+\SafetyGeomPairedTied{} ties: an airframe that reaches its target sits at target
+separation, while one carried off by the wind ends far from everything. The metric
+tracks arrival, so on this measure the arm that completes more of the task scores
+worse. The scale of the numbers is structural for the same reason. Targets are
+drawn with no minimum-separation constraint while completion is scored inside the
+capture radius, so two airframes can both be scored finished with their hulls
+overlapping, in \SafetyGeomOverlapPrimary{}\% of scenes at the primary radius and
+between \SafetyGeomOverlapMin{}\% and \SafetyGeomOverlapMax{}\% across the radii
+of the endpoint sweep; that sweep therefore varies how physically admissible
+success is as well as how strict it is.
+
+The transition result does not rest on these episodes: completion and observed
+separation correlate at \SafetyGeomCompletionCorr{} across the campaign. What the
+clearance row supports is narrower than a comparison between allocators, and it is
+a caution about the task rather than about the feedforward. Contact-scale
+separations were reached on a four-airframe simulated task whose objective carries
+no collision constraint and whose physics branch models no inter-airframe
+downwash, at mean separations of roughly two hull diameters, which is inside the
+regime where rotor wake would dominate a physical flight. Only the scalar
+three-dimensional separation is logged, so a pair separated mostly in altitude
+could clear the hull at these distances and the counts above are an upper bound on
+contacts. An implementation that adopts the feedforward needs a separation
+constraint supplied from outside the present objective. What was checked is the
+list in Table~\ref{tab:safety}; what was not checked includes collision avoidance
+under a safety filter, degraded or failed airframes, communication loss, energy
+budgets and any physical flight.
+
+\begin{table}[tbp]
+\centering
+\caption{Complete assignment-by-feedforward factorial on paired completion, over
+\NFactorialSeeds{} paired seeds per profile-force cell. Each term is a seed-level
+paired contrast within the cell and ``Holm $p$'' is corrected across the
+\NumFactorialCells{} tested effects. Cells with an undefined exact test are
+all-zero differences.}
+\label{tab:factorial}
+\scriptsize
+\generatedtable{generated_table_factorial}
+\end{table}
+
+\begin{table}[tbp]
+\centering
+\caption{Descriptive safety and feasibility diagnostics over \NSafetyEpisodes{}
+episodes at a constant profile, \NSafetySeeds{} seeds per allocator and force.
+Each cell gives the mean over seeds with the worst observed episode in
+parentheses; ``worst'' is the minimum for separation and the maximum for the
+remaining rows. No test is reported and none is implied.}
+\label{tab:safety}
+\small
+\generatedtable{generated_table_safety}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig13_pathway_safety.pdf}
+\caption{\CapPathwaySafety}
+\label{fig:pathway}
+\end{figure}
+
+\subsection{Evidence}
+
+The campaign results are read on their declared inferential units and presented as
+a layered synthesis rather than an omnibus score. Table~\ref{tab:evidence} makes
+the hierarchy explicit: \NEvidenceBlocks{} synthesis blocks span
+\NEvidenceCampaigns{} campaign views and \NEvidenceRows{} episode rows, while
+their units remain the ten primary seeds, twelve crossed layout clusters (each
+after heading aggregation) or thirty paired seeds specified by each design. This
+descriptive architecture keeps every estimate tied to the design that produced it.
+
+Fig.~\ref{fig:evidence}A places the transition estimates on one rate scale while
+retaining each campaign's interval. The primary oracle estimate is
+$+\KneeDelta{}$; the crossed layout estimate is $+\DesignedKneeDelta{}$;
+the causal temporal profiles span $+\TemporalSlowDelta{}$ to
+$+\TemporalConstantDelta{}$; and the homogeneous size axis spans
+$+\ScaleKneeMin{}$ to $+\ScaleKneeMax{}$. The estimate-noise rows show the
+same endpoint from the exact vector through the tested high-noise edge. The
+agreement is therefore visible as a set of condition-specific estimates, with
+design differences retained rather than compressed into a pooled number. Fig.~\ref{fig:evidence}B reports episode volume on a logarithmic axis, with each
+point labelled by the seed or layout-cluster unit supporting its interval. Together the
+panels show the breadth of the campaign while keeping episode volume separate from
+inferential replication. The three reviewer-validation blocks appear in the volume
+panel and in Table~\ref{tab:evidence} but not in the estimate panel, because none
+of them estimates the same quantity: the radius sweep varies the endpoint that
+defines the estimate, the factorial contrasts pathways rather than allocators, and
+the safety block reports no estimate at all.
+
+\begin{table}[tbp]
+\centering
+\caption{Cross-campaign evidence architecture. ``Rows'' counts episode records and
+``Inferential unit'' gives the seed or layout-cluster unit used for intervals. The
+pathway-ablation and gain-sensitivity receipts form one block; transition values
+are descriptive estimates that retain each view's inferential unit.}
+\label{tab:evidence}
+\small
+\generatedtable{generated_table_evidence}
+\end{table}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig14_evidence_summary.pdf}
+\caption{\CapEvidence}
+\label{fig:evidence}
+\end{figure}
+
+\section{Discussion}
+
+The study's central result is a reproducible operating envelope for a directional
+allocation--control interface. At the knee, the paired force ladder resolves a
+task-level gain; the estimate campaign measures the information quality that
+supports it; the temporal campaign carries the signal through a causal observer;
+and the continuous endpoint identifies the physical displacement at the capture
+boundary. The crossed, geometry and swarm-size campaigns make scene context and team scale
+explicit design axes. This systems view extends the capability and coordination
+questions described in multi-robot allocation surveys and taxonomies
+~\cite{korsah2013taxonomy,dias2006market,khamis2015mrta,chakraa2023mrta} and the
+assignment--trajectory coupling demonstrated for large interchangeable teams
+~\cite{turpin2014goal,beard2002target}. It also gives swarm
+implementations a common measurement language alongside established aerial-swarm
+platforms~\cite{preiss2017crazyswarm}.
+The sequence is the contribution: it shows where information changes the outcome,
+how broadly that change persists, and which scene factor amplifies it. Positive
+transition gains across the declared homogeneous sizes show that the interface
+extends beyond one fleet cardinality, while the force ladder keeps the result
+anchored to its operating window. This is consistent with the swarm-engineering
+perspective that allocation, control and embodiment should be evaluated together
+~\cite{brambilla2013swarm}. The measurement complements vehicle-level modelling
+and disturbance rejection~\cite{mahony2012multirotor,chen2016dobc,
+gonzalezrocha2019sensingwind,wang2018windestimation} by locating the task-level
+leverage of a directional estimate. The convergence cells complete that
+operating-envelope description. The saturated shoulder and
+high-force edge show where both arms share the same endpoint, while the transition
+identifies the force range in which directional information changes completion.
+Likewise, a range contrast centred near zero is a measured geometry result under
+the declared transformation. The primary 30-cluster interval reaches the zero
+boundary at the displayed resolution, and the 120-term sensitivity interval is
+explicitly reported as $[\GeometryRangeSensitivityLower{},+\GeometryRangeSensitivityUpper{}]$.
+The planning calculation gives an 80\% familywise MDE of
+$\GeometryRangeMDE{}$ completion-rate units for the cluster-level range contrast.
+This is a precision boundary, not an equivalence claim: no equivalence margin was
+prespecified, and effects below that MDE remain unresolved by this design.
+
+The factorised campaign gives the next level of resolution. At the knee, crossing
+orientation changes the paired gain by
+$+\GeometryKneeCrossing{}$ $[+\GeometryKneeCrossingLower{},+\GeometryKneeCrossingUpper{}]$,
+while expanded spread changes it by
+$\GeometryKneeSpread{}$ $[\GeometryKneeSpreadLower{},\GeometryKneeSpreadUpper{}]$.
+The range contrast is smaller and its cluster interval terminates at the zero
+boundary at displayed precision. The sensitivity interval spans zero, and its
+MDE records the resolution of the executed geometry design rather than converting
+that interval into an equivalence statement. The selective pattern points the
+next allocation--control design toward geometry-aware
+assignment and target placement. In a deployment, crossing status can be exposed
+as a planning feature and the measured margin carried into assignment or
+controller gains. This is an actionable hypothesis for larger swarms: condition
+schedule and controller margins on whether targets are aligned or require
+crossing, then test the same paired estimand. The interpretation is consistent
+with formation and cooperative-motion surveys in which topology and time-varying
+geometry alter coordinated-flight feasibility~\cite{dong2017formation,
+liu2018formation}; here the same idea is expressed as a measurable
+allocation--control contrast.
+Every extension preserves the paired unit and the evidence-binding pipeline. The
+original ten-seed force sweep supplies the exact transition test; the
+\NEpisodesDesigned{}-episode crossed record supplies fixed heading coverage; the
+\NTemporalEpisodes{}-episode temporal record supplies estimator dynamics; the
+\NAblationEpisodes{}- and \NGainEpisodes{}-episode campaigns localize the pathway
+and expose gain sensitivity; the \NGeometryEpisodes{}-episode record opens the
+scene factors; the \NScaleEpisodes{}-episode record tests the same transition
+across homogeneous team cardinalities; the \NRadiusEpisodes{}-episode radius
+sweep asks whether the endpoint definition carries the result; the
+\NFactorialEpisodes{}-episode factorial closes the pathway design; and the
+\NSafetyEpisodes{}-episode descriptive record states what was measured about
+clearance and actuator headroom. Each block has its own declared design,
+receipt and equation-defined estimand, so the paper expands the same result by
+adding an interpretable axis at a time. This layered architecture keeps the
+computational budget transparent and
+separates simulator calibration from vehicle implementation. A causal estimate
+preserves the measured transition in the present simulator, while disturbance
+observers and robust controllers provide natural physical implementations
+~\cite{chen2016dobc,rodriguezmata2018highgain,wang2021esoquadrotor,azid2021windgust,
+schiano2014wind,wetz2021distributed,gonzalezrocha2019sensingwind,
+wang2018windestimation}.
+The new size axis gives those follow-on studies a calibrated starting point. It
+also complements recent work that couples trajectory feasibility to large-team
+allocation and redistribution~\cite{honig2018trajectory,lee2025redistribution}:
+retain the paired estimand, then widen topology or sensing while preserving the
+endpoint.
+
+Three validation campaigns change how the headline number should be read. The
+capture radius that defines completion is a choice rather than a measurement, and
+rerunning the ladder over \RadiusGrid{}~m keeps a transition of similar size while
+moving it across \RadiusPeakForceSpan{}~N of force. What the evidence supports is
+that directional information has its largest leverage where the task sits at the
+edge of feasibility; \KneeLevel{}~N is where that edge falls for this scene,
+horizon and radius, not a constant of the interface. Completing the $2\times2$
+pathway design attributes the gain to the target-position feedforward alone, with
+no detectable assignment main effect and no interaction, so on this benchmark a
+wind estimate pays for itself in how a vehicle flies to its target rather than in
+which vehicle is chosen. That narrows where a physical implementation should spend
+its estimation budget. The safety record is a benchmark-level feasibility diagnostic rather than a
+second performance claim. It records the observed clearance range and motor-limit
+margin, while the separation metric correlates at
+\SafetyGeomTargetCorr{} with where the benchmark placed the targets, and within a
+scene it is the arm that arrives, rather than the arm that is wind-aware, that
+records the smaller number. Read as a comparison between allocators it mostly
+measures target placement. Read as a statement about the task, it identifies a
+clear deployment requirement: contact-scale separations in a benchmark whose objective carries
+no collision constraint, whose targets are drawn with no minimum separation, and
+whose physics branch models no inter-airframe downwash. Nothing measured here
+constrains collision safety, and an implementation that adopts the feedforward
+should carry a separation constraint that the present objective does not contain.
+The calibration map uses one rigid-body model, a six-second episode, the declared
+geometry transformations and a homogeneous size axis from \ScaleMinSize{} to
+\ScaleMaxSize{} airframes. The coordinator is a software allocator over
+\NDrones{} independent simulated airframes, which makes the interface and its
+endpoint explicit. Heterogeneous vehicles, obstacle topology, continuous team
+size and field-sensor traces are the next named transfer axes; the current figures,
+tables and numbered methods provide a stable baseline for opening them one at a
+time. The transferable protocol is concrete: retain the paired endpoint, preserve the
+allocation--control interface, time-align wind-sensor traces with vehicle state,
+identify each vehicle's mass and available thrust, replay the disturbance at the
+declared update rate, and evaluate both capture-radius and closest-distance
+endpoints. Disturbance-observer and robust-control methods provide natural
+vehicle-level implementations for that stage~\cite{rodriguezmata2018highgain,
+wang2021esoquadrotor,perozzi2018wind,schiano2014wind,wetz2021distributed}. The
+present envelope is the calibration reference against which those physical and
+larger-team implementations can be compared, and the resulting benchmark is a
+quantitative launch point for larger topology, field and cross-domain
+experiments, with every current claim tied to the demonstrated simulator
+envelope.
+\section*{Data and code availability}
+
+The episode-level logs, derived statistical tables, and figure and table code that
+produce every number in this manuscript accompany the manuscript source. Each
+artifact is recorded with its SHA-256 digest in a manifest, and the figure code
+verifies those digests before reading the bytes, so every rebuild is synchronized
+with the recorded evidence.
+
+The simulator is a separately available open-source dependency used unmodified apart
+from the disturbance injection described in the Methods. The archive supplies all
+study-specific code and records needed to reproduce the reported analyses, while the
+release ledger records external repository and archive states separately.
+\input{generated_availability}
+
+\section*{Statements and declarations}
+
+\paragraph{Funding} No external funding was designated for this study. The work
+used local CPU compute and open-source software.
+
+\paragraph{Competing interests} The author declares no financial or non-financial
+competing interests relevant to this work.
+
+\ifdefined\ANONYMOUS
+\paragraph{Author contributions} The sole author performed conceptualization,
+methodology, software, validation, formal analysis, investigation,
+visualization, writing--- original draft, and writing---review and editing.
+\else
+\paragraph{Author contributions} Zeyu Fu: conceptualization, methodology,
+software, validation, formal analysis, investigation, visualization, writing---
+original draft, and writing---review and editing.
+\fi
+
+\paragraph{Ethics approval and consent to participate} Not applicable. This
+computational study involves no human participants, animal subjects, personally
+identifying data or field flights.
+
+\paragraph{Consent for publication} Not applicable; no identifiable participant
+data are included.
+
+\paragraph{Use of generative AI tools} Generative AI tools assisted with code
+scaffolding, analysis scripts and language editing under the author's direction.
+The author inspected the simulator implementation, reviewed the analyses and
+retains responsibility for the accuracy, integrity and final wording of the work.
+All reported numbers are emitted programmatically from digest-bound artifacts,
+and the build verifies those artifacts before typesetting.

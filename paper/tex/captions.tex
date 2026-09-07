@@ -1,0 +1,223 @@
+%% Independent caption file. Every caption is self-contained: readable without
+%% the body text, without cross-references, and without float numbers.
+
+\newcommand{\CapSystemOverview}{%
+Research object and endpoint bridge for the wind-aware allocation--control
+measurement. Panel A is a schematic of four matched quadrotors, four waypoint
+targets and a horizontal disturbance vector. Dashed paths represent the shared
+assignment-to-control task; the two labelled paths distinguish the Euclidean
+wind-agnostic cost from the wind-aware upwind cost plus target-position bias.
+Panel B is a descriptive seed-paired view at the transition force
+\KneeLevel{}~N: each arrow connects the same seed under the two arms in mean
+closest-approach versus completion-rate coordinates. The vertical reference is
+the per-airframe capture radius used to define completion. Displayed arrows use
+the paired seed record as the unit; the panel reports a descriptive endpoint view
+with the seed-level inferential unit preserved. %
+}
+
+\newcommand{\CapBand}{%
+Operating envelope of task completion against steady horizontal wind force for a
+wind-agnostic and a wind-aware allocator flying the same \NDrones{} quadrotors on
+the same \NSeeds{} seeds per force level, with both panels on one shared force
+axis. Panel A is the completion ladder: points are means over seeds and bars are
+one standard deviation, clipped at the zero and one bounds of the rate, and the
+upper axis restates force as a percentage of the \HoverThrust{}~N hover thrust of
+one airframe. Panel B is the seed-paired advantage of the wind-aware over the
+wind-agnostic allocator, in completion-rate points, with bars giving the
+95~percent $t$ interval over the \NSeeds{} paired seeds. Panel B carries the
+quantity the significance test is computed on, and its interval clears zero at
+\KneeLevel{}~N alone, where the paired gain is $+\KneeDelta{}$ at an exact
+two-sided signed-rank $p$ of \KneeP{}. The two panels are drawn together because
+the Panel A bars are dispersions of two marginal means and overlap at the
+transition even though every seed moves in the same direction, so the paired
+contrast is displayed rather than left to be inferred from that overlap. Shading
+separates the near-complete shoulder at and below \SaturationLevel{}~N and the
+high-force edge at and above \CollapseLevel{}~N from the unshaded transition,
+whose \KneeLevel{}~N level the dashed line marks and where directional
+information has the largest operational leverage. Panel A's red and blue legend
+identifies the two allocation arms; Panel B is a single paired-difference series
+and therefore has no second arm legend.%
+}
+
+\newcommand{\CapNoise}{%
+Profile of the directional signal as wind-estimate quality changes. The horizontal
+axis is relative magnitude noise redrawn independently at every control step. Panel
+A shows the paired advantage in completion rate at the transition force
+\KneeLevel{}~N, with bars giving the 95~percent $t$ interval over \NSeeds{} paired
+seeds and labels giving the exact two-sided signed-rank $p$ value; the dashed line
+marks the decision level fixed before execution. Panel B places the two neighbouring
+force levels on the same vertical scale, showing that the operating transition stays
+localized while estimate quality changes. A paired advantage of zero marks equal
+completion for the two arms. In both panels, paired advantage means aware-minus-
+agnostic completion rate for the same seed. %
+}
+
+\newcommand{\CapSpread}{%
+Distribution behind the two completion means at the transition force
+\KneeLevel{}~N. Each episode assigns \NDrones{} quadrotors to \NDrones{} waypoints,
+so a single episode can score zero, one quarter, one half, three quarters or one.
+The bars count how many of the \NSeeds{} seeds land on each value for the two arms;
+the distribution displays the episode-level margin carried by the aggregate
+operating-envelope gain. %
+}
+
+\newcommand{\CapHeadings}{%
+Coverage of the force headings drawn by the \NSeeds{} seeds and the repeat groups
+in the displayed record. Panel A places each seed's heading on the circle, one
+spoke per seed; the heading is fixed by the seed and reused at every force level,
+in both allocators and in the estimate-noise sweep. The draws resolve to
+\NHeadings{} distinct headings, with \NRepeats{} near-matched pairs and a largest
+unvisited arc of \UnsampledArc{} degrees. Panel B orders all
+$\NSeeds{}(\NSeeds{}-1)/2$ pairwise separations on a logarithmic axis; the empty
+gap between the retained group and the next separation makes the stated grouping
+stable across the displayed tolerance interval. %
+}
+
+\newcommand{\CapRepeats}{%
+Context spread under near-matched force headings. At each force level the bar gives
+the largest completion difference between two episodes of the same allocator whose
+headings differ by less than \RepeatTol{} degrees, expressed as the number of
+airframes, out of \NDrones{}, by which the episodes differ. The strip below records
+whether any seeds at that force level varied in completion; a zero bar at a fully
+uniform level marks a saturated shoulder or floor, while the informative levels
+show where waypoint context changes the outcome under nearly identical directional
+input. %
+}
+
+\newcommand{\CapDesigned}{%
+Heading-by-layout operating-envelope map from a crossed design. \NAssignedHeadings{}
+headings \HeadingStep{} degrees apart are each flown with all \NScenes{} waypoint
+layouts, at every force level and under both allocators, for \NEpisodesDesigned{}
+episodes and \NPairsPerForce{} paired comparisons per level. Panel A shows paired advantage
+against force, with the band giving an ordinary-bootstrap 95~percent interval over
+the \NCrossedClusters{} layout-level means after averaging the fixed headings
+(\NCrossedBootstrap{} deterministic resamples); crosses mark the \NSeeds{} seed
+estimates from the independently drawn-heading condition.
+Panel B opens the transition force into its heading-by-layout rectangle, one cell
+per paired episode; rows are assigned headings and columns are scene layouts, and
+colour is the paired completion advantage. The heat map displays the same cells
+used to compute the heading, layout and interaction shares. %
+}
+
+\newcommand{\CapMiss}{%
+Continuous tracking quantity behind the thresholded completion endpoint. Points give
+the mean closest approach of each quadrotor to its assigned waypoint, averaged over
+seeds, with bars of one standard deviation; the dashed line is the
+\CaptureRadius{}~m capture radius that defines completion. Both allocators are
+measured at the same forces, and the two series are offset horizontally by a fixed
+0.0055~N purely so that their overlapping bars remain separable; the axis ticks
+mark the true force levels. The two allocators occupy
+nearby trajectories across the force ladder, and the measured distance shift at the
+transition moves aircraft across the capture boundary to produce the task-level
+operating gain. %
+}
+
+\newcommand{\CapTemporal}{%
+Temporal operating-envelope extension for a causal directional estimate. Panel A
+shows paired completion gain against true force for constant, slow-gust and fast-gust
+profiles, with exact, causal and biased-causal estimate conditions and 95~percent
+intervals over \NTemporalSeeds{} paired seeds. Panel B shows mean relative vector-tracking error
+for the same profiles and estimate conditions. The transition remains concentrated
+near \KneeLevel{}~N, while the tracking-error profile quantifies the cost of temporal
+rate and links estimator dynamics to the measured task-level response. Colours and
+symbols identify the three estimate conditions consistently across both panels. %
+}
+
+\newcommand{\CapMechanism}{%
+Mechanism and gain-sensitivity extension at the transition force \KneeLevel{}~N.
+Panel A gives paired completion gain across the tested target-feedforward gains for
+each true-force profile; the dashed line marks the inherited gain
+\FeedforwardGainDefault{}~m/N. Panel B compares the complete arm with an
+allocation-cost-only ablation that retains directional assignment and selectively
+removes the target-position bias. The separation identifies the pathway through
+which the directional estimate is converted into task completion in this benchmark.
+Intervals in both panels are paired 95~percent $t$ intervals over the declared
+profile-specific seeds; the upper gain-grid point marks the measured edge of the
+tested gain envelope. %
+}
+
+\newcommand{\CapGeometry}{%
+Factorised scene-geometry extension of the directional operating envelope. Panel A
+shows high-minus-low contrasts for target spread, target range and crossing
+orientation at each tested force; intervals are 95~percent cluster-aware intervals
+over 30 seed-level factor contrasts after averaging the four crossed settings
+within seed; the 120-term version is sensitivity-only. Raw exact signed-rank
+values and nine-contrast Holm adjustments define the support-family readout, and
+the zero line marks no change in the wind-aware advantage. Panel B shows the mean
+paired advantage in all eight scene conditions
+across the three force levels, with each row defined by one spread, range and
+crossing setting. The nominal--near--aligned cell is the legacy compatibility
+condition; the remaining cells are deterministic scene transformations. Together,
+the panels define the tested simulator geometry envelope and its named transfer
+axes. %
+}
+
+\newcommand{\CapScale}{%
+Homogeneous swarm-size extension of the directional operating envelope. Panel A
+shows the paired completion gain against team size for two, four, six and eight
+airframes at the three tested force levels; points are means over the same 30
+paired seeds per cell and bars are 95~percent $t$ intervals. Raw exact signed-rank
+values and their Holm adjustments are reported over the 12 size--force cells.
+Panel B opens the transition force at \KneeLevel{}~N and shows the wind-agnostic and
+wind-aware completion endpoints separately, with means and 95~percent intervals over
+the same seed pairs. The constant-profile four-airframe slice contains 180 rows:
+30 seeds, two arms and three force levels with the causal estimator. The ten-seed
+exact-vector condition is a distinct oracle slice, and the other team sizes are
+declared simulator cells. Together the panels define the measured homogeneous-size
+transfer envelope. %
+}
+
+\newcommand{\CapRadius}{%
+Sensitivity of the operating envelope to the capture radius that defines task
+completion, over \NRadiusEpisodes{} episodes at radii of \RadiusGrid{}~m and
+\NRadiusSeeds{} paired seeds per radius and force. Panel A gives the paired
+completion advantage of the wind-aware over the wind-agnostic allocator against
+steady horizontal wind force, one series per radius, with bars showing 95~percent
+intervals over the paired seeds and the series offset horizontally so that
+overlapping bars remain separable. The labelled point on each series is that
+radius' largest advantage. Panel B gives the two completion ladders those
+advantages are differences of, one facet per radius, with the dashed rule marking
+the same labelled force. The transition survives every tested radius at a
+comparable size, between $+\RadiusPeakDeltaMin{}$ and $+\RadiusPeakDeltaMax{}$
+completion, but it does not stay at one force: it moves from
+\RadiusTightPeakForce{}~N at the tightest radius to \RadiusWidePeakForce{}~N at
+the widest, so the force at which directional information pays is a property of
+the operating point rather than a constant. Within this
+\RadiusHolmFamily{}-test validation family only \RadiusHolmSurvivors{} cell
+clears a Holm-corrected 5~percent threshold, which follows from
+\NRadiusSeeds{} seeds per cell rather than from evidence against the larger
+primary sweep. %
+}
+
+\newcommand{\CapPathwaySafety}{%
+Complete pathway decomposition and the descriptive safety diagnostics, from two
+separate campaigns of \NFactorialEpisodes{} and \NSafetyEpisodes{} episodes.
+Panel A gives all three terms of the assignment-by-feedforward factorial as
+paired completion effects against true horizontal force, one facet per temporal
+profile, with bars showing 95~percent intervals over \NFactorialSeeds{} paired
+seeds and the terms offset horizontally for legibility. The target-feedforward
+main effect carries the whole gain at the transition force, between
+$+\FactorialFeedforwardMin{}$ and $+\FactorialFeedforwardMax{}$ completion across
+profiles; the assignment main effect and the interaction stay within
+\FactorialOtherAbsMax{} of zero and neither clears its Holm-corrected threshold at
+any force. Panel B is descriptive only and carries no test: for each allocator and
+force it gives the range of the per-episode minimum pairwise airframe separation
+over \NSafetySeeds{} seeds, with the point at the mean of that range and the
+dashed rule at the closest airframe pair recorded anywhere in the campaign,
+\SafetyWorstSeparation{}~m. The panel is a benchmark-level feasibility diagnostic;
+because target placement and arrival status contribute to the metric, it is not
+interpreted as an allocator-causal clearance effect. %
+}
+
+\newcommand{\CapEvidence}{%
+Cross-campaign evidence synthesis for the directional operating envelope. Panel A
+places the transition paired-completion estimates from the primary, estimate-noise,
+crossed-layout, causal-temporal and homogeneous-size views on a common rate axis;
+bars are the view-specific 95~percent intervals and colours identify the evidence
+block. The crossed-layout estimate is shown with its interval because that record
+uses a layout-cluster bootstrap. Panel B shows the episode-row volume of each of the
+eight views on a logarithmic axis, with the text next to each point naming the seed
+or layout-cluster unit that supports its analysis; pathway ablation and gain
+sensitivity are two views of one pathway/gain synthesis block. The figure is
+descriptive by design and preserves each view's inferential unit. %
+}

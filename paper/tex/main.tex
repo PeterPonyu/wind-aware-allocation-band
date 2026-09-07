@@ -1,0 +1,82 @@
+%% Working draft. Structure is generated; prose is authored here.
+%% Build from the repository root with: bash scripts/build_paper.sh <this paper dir>
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{placeins}
+\usepackage{caption}
+\usepackage[margin=1in]{geometry}
+% For every included figure, pdfTeX records the absolute path it was read from
+% in a /PTEX.FileName object.  Those objects are not rendered, so a text dump of
+% the PDF does not show them, but they travel with the file and spell out the
+% build machine's home directory, user name and worktree layout.  Suppressing
+% them costs nothing: they exist for debugging, not for the reader.
+\pdfsuppressptexinfo=-1
+
+\usepackage[hidelinks]{hyperref}
+% Blind-review copies are compiled as
+%   pdflatex "\def\ANONYMOUS{1}\input{main}"
+% Identified output is the default.  hyperref writes the name into the PDF
+% /Author key as well as the title page, so both go through this one macro.
+\ifdefined\ANONYMOUS\newcommand{\PDFAUTHOR}{}\else\newcommand{\PDFAUTHOR}{Zeyu Fu}\fi
+\hypersetup{
+  pdftitle={From directional sensing to task completion: mapping the operating envelope of wind-aware quadrotor allocation and control},
+  pdfauthor={\PDFAUTHOR},
+  pdfsubject={Wind-aware quadrotor allocation and control operating envelope},
+  pdfkeywords={task allocation, quadrotor swarm, wind disturbance, reproducibility}
+}
+\numberwithin{equation}{section}
+
+\graphicspath{{../figs/out/}}
+\setlength{\emergencystretch}{2em}
+
+%% Every float here is small enough to share a page with text; the defaults are
+%% conservative enough to push each one onto a page of its own.
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{topnumber}{2}
+\setcounter{totalnumber}{3}
+\captionsetup[table]{skip=5pt}
+\captionsetup[figure]{skip=4pt}
+
+%% Numbers and tables are emitted by the figure code from hash-bound evidence.
+\input{generated_numbers}
+\input{captions}
+\input{theorems}
+\newcommand{\generatedtable}[1]{\input{#1}}
+
+\title{From directional sensing to task completion: mapping the operating envelope
+of wind-aware quadrotor allocation and control}
+\ifdefined\ANONYMOUS
+\author{Author and affiliation withheld for blind review}
+\else
+\author{Zeyu Fu\\
+Army Medical University, Chongqing, China\\
+\texttt{fuzeyu99@126.com}\\
+ORCID: 0009-0001-8329-0108}
+\fi
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\input{body}
+
+{\footnotesize
+\bibliographystyle{unsrt}
+\bibliography{references}
+}
+
+\end{document}

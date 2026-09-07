@@ -1,0 +1,31 @@
+# Archived bindings. Tab-separated: id<TAB>path<TAB>role<TAB>note
+#
+# id	path	role	note
+E-RAW-ORACLE	data/e-raw-oracle/sweep_20260713T122953Z.jsonl	raw_episode_log	140 episodes, 7 disturbance levels x 10 seeds x 2 treatments, oracle disturbance vector
+E-RAW-NOISE	data/e-raw-noise/sweep_noise_20260713T124223Z.jsonl	raw_episode_log	150 episodes, 3 disturbance levels x 5 noise levels x 10 seeds, treatment arm only
+E-KNEE	data/e-knee/paper_measurement_wind_knee.json	derived_table	per-level paired means, sd and exact Wilcoxon over the full 7-level grid
+E-NOISE	data/e-noise/complement_wind_noise_015.json	derived_table	paired deltas and exact Wilcoxon versus estimate-noise level at the load-bearing level
+E-SPREAD	data/e-spread/complement_wind_knee_seed_spread.json	derived_table	per-seed completion value counts behind the two means at the load-bearing level
+E-PAIRS	data/e-pairs/complement_wind_knee_seed_pairs.json	derived_table	seed-level paired outcomes and replan counts at the load-bearing level
+E-MISS	data/e-miss/complement_wind_miss_distance.json	derived_table	continuous miss-distance companion to the thresholded completion endpoint
+E-RAW-DESIGNED	data/e-raw-designed/sweep_designed_20260828T182851Z.jsonl	raw_episode_log	4032 episodes, 7 disturbance levels x 24 assigned headings x 12 scenes x 2 treatments, oracle disturbance vector
+E-DESIGNED	data/e-designed/complement_wind_designed_replicates.json	derived_table	per-level paired advantage, repeat gap at zero angular separation, and the heading/scene/interaction split
+E-REPRO	data/e-repro/complement_wind_reproduction.json	derived_table	field-by-field re-run of all 140 episodes of the drawn-heading record
+E-RAW-TEMPORAL	data/e-raw-temporal/temporal_campaign_20260828.jsonl	raw_episode_log	1080 episodes, 3 force levels x 3 temporal profiles x 30 seeds x (baseline plus three estimator conditions)
+E-TEMPORAL	data/e-temporal/temporal_analysis_20260828.json	derived_table	paired completion, exact tests, tracking diagnostics and legacy-oracle regression for the temporal campaign
+E-RAW-ABLATION	data/e-raw-ablation/temporal_ablation_20260828.jsonl	raw_episode_log	810 episodes, 3 profiles x 3 force levels x 30 seeds x 3 estimators; transition-force subset supports the feedforward-off mechanism check
+E-ABLATION	data/e-ablation/temporal_ablation_analysis_20260828.json	derived_table	allocation-only versus complete-arm paired gains at the transition force
+E-RAW-GAIN	data/e-raw-gain/gain_campaign_20260828.jsonl	raw_episode_log	1890 episodes, 3 force levels x 3 temporal profiles x 7 feedforward gains x 30 causal-estimator seeds
+E-GAIN	data/e-gain/gain_analysis_20260828.json	derived_table	paired gain sensitivity, intervals, exact tests and per-profile edge summaries
+E-RAW-GEOMETRY	data/e-raw-geometry/geometry_campaign_20260829.jsonl	raw_episode_log	1440 episodes, 2 x 2 x 2 scene-geometry factors x 3 force levels x 30 seeds x 2 treatments
+E-GEOMETRY	data/e-geometry/geometry_analysis_20260829.json	derived_table	paired geometry-factor contrasts, condition-by-force means and continuous scene diagnostics
+E-RAW-SCALE	data/e-raw-scale/scale_campaign_20260829.jsonl	raw_episode_log	720 episodes, 4 swarm sizes x 3 force levels x 30 seeds x 2 treatments; causal wind-aware arm with seed-indexed assigned headings
+E-SCALE	data/e-scale/scale_analysis_20260829.json	derived_table	paired scale-by-force summaries, exact tests, continuous miss-distance summaries and four-airframe compatibility regression
+E-RAW-RADIUS	data/e-raw-radius/revision_radius_campaign_20260829.jsonl	raw_episode_log	420 episodes, 3 endpoint radii x 7 force levels x 10 seeds x 2 treatments
+E-RADIUS	data/e-radius/revision_radius_analysis_20260829.json	derived_table	triple-radius endpoint sensitivity with paired seed contrasts, Holm correction and primary-reference checks
+E-RAW-FACTORIAL	data/e-raw-factorial/revision_factorial_campaign_20260829.jsonl	raw_episode_log	270 episodes for the missing assignment-by-feedforward cell in the 2 x 2 pathway design
+E-FACTORIAL	data/e-factorial/revision_factorial_analysis_20260829.json	derived_table	complete 2 x 2 pathway main effects and interaction on 30 paired seeds per profile-force cell
+E-RAW-SAFETY	data/e-raw-safety/revision_safety_campaign_20260829.jsonl	raw_episode_log	60 descriptive safety/feasibility episodes, 3 force levels x 10 seeds x 2 treatments
+E-SAFETY	data/e-safety/revision_safety_analysis_20260829.json	derived_table	descriptive separation, motor-limit, non-finite-state, timing and replan diagnostics with provenance gates
+E-REV-STATS	data/e-rev-stats/revision_statistics_20260829.json	derived_table	cluster-aware reanalysis with explicit inferential units, endpoint-separated families, Holm metadata and provenance gates
+E-SAFETY-GEOM	data/e-safety-geom/safety_geometry_confound_20260831.json	derived_table	how much of the separation metric is set by target placement rather than by the allocator: target/observed correlation, within-scene pairing, hull-contact counts and the structural overlap rate by capture radius

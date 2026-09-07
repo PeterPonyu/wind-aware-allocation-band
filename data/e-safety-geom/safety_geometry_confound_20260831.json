@@ -1,0 +1,39 @@
+{
+  "by_arm": {
+    "baseline": {
+      "episodes": 30,
+      "hull_contacts": 2
+    },
+    "wind_aware": {
+      "episodes": 30,
+      "hull_contacts": 8
+    }
+  },
+  "capture_radius_m": 0.15,
+  "close_target_scenes": {
+    "episodes": 30,
+    "hull_contacts": 9
+  },
+  "corr_completion_vs_observed": -0.0945,
+  "corr_target_separation_vs_observed": 0.7603,
+  "episodes": 60,
+  "episodes_below_hull_contact": 10,
+  "episodes_below_rotor_contact": 14,
+  "far_target_scenes": {
+    "episodes": 30,
+    "hull_contacts": 1
+  },
+  "hull_contact_m": 0.12,
+  "num_drones": 4,
+  "rotor_contact_m": 0.12567,
+  "structural_overlap_rate": {
+    "0.10": 0.1145,
+    "0.15": 0.3086,
+    "0.20": 0.5449
+  },
+  "within_scene_pairing": {
+    "completion_tied": 19,
+    "higher_completion_flew_closer": 9,
+    "higher_completion_flew_farther": 2
+  }
+}

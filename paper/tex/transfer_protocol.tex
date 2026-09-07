@@ -1,0 +1,33 @@
+\subsection{Computational validation and transfer protocol}
+
+The validation target is the declared simulator operating envelope, not an
+implicit claim of completed field flight. Four checks are applied before a result
+enters the manuscript. First, numerical reproducibility is enforced by the
+SHA-256 evidence manifest, deterministic seeds and a clean-room rerun of the
+legacy receipt. Second, internal system validity is established with paired
+aware--agnostic episodes: the simulator, scene, horizon, controller, allocator
+interface and endpoint are held fixed while one information or geometry factor
+is opened at a time. Third, endpoint validity is checked by reading thresholded
+completion together with closest approach and by repeating the force ladder over
+capture radii. Fourth, transfer validity is represented by a declared parameter
+correspondence rather than by an unreported hardware claim.
+
+The correspondence is operational. A target vehicle is specified by mass,
+available thrust, controller update rate, wind-estimator update rate and capture
+criterion; the simulator quantities in the parameter contract are the initial
+values for those fields. A hardware or hardware-in-the-loop extension should
+re-estimate mass and thrust, time-align measured wind with vehicle state, replay
+the same constant and temporal profiles at the declared update rate, and run
+both arms on identical scenes or recorded traces. The primary acceptance
+quantity remains the paired completion contrast at the transition, with the
+continuous closest-approach endpoint and the clearance diagnostic reported
+alongside it. This protocol makes the current computation a reproducible
+pre-flight screening and mechanism-isolation study while leaving physical
+transfer as a separately testable stage.
+
+The distinction is part of the contribution. The present paper establishes what
+can be measured, reproduced and stress-tested before hardware is committed; it
+does not substitute simulator evidence for field evidence. All conclusions are
+therefore indexed to the stated rigid-body simulator, force profiles, geometry
+cells and homogeneous team sizes, and the transfer protocol identifies exactly
+which quantities must be revalidated when those conditions change.

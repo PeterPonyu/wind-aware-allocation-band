@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: >-
+  Code and data for: From directional sensing to task completion: mapping the operating envelope of wind-aware quadrotor allocation and control
+message: If you use this code or data, please cite this archive and the manuscript.
+type: dataset
+authors:
+  - given-names: Zeyu
+    family-names: Fu
+    email: fuzeyu99@126.com
+    orcid: 'https://orcid.org/0009-0001-8329-0108'
+    affiliation: 'Army Medical University, Chongqing, China'
+abstract: >-
+  Simulation logs, derived statistical tables, figure code and manuscript source for a 15-figure, 14-table study with a 54-entry cited bibliography measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, including estimate quality, temporally structured profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer.
+keywords:
+  - task allocation
+  - quadrotor swarm
+  - wind disturbance
+  - effect size
+  - thresholded endpoint
+  - reproducibility
+license: MIT
+version: 0.1.0
+date-released: '2026-09-07'
+# No DOI: this work has not been deposited in a public archive.
+# The field is added when the archive exists, not before.

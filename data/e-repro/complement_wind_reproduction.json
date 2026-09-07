@@ -1,0 +1,64 @@
+{
+ "table_id": "001-T6",
+ "kind": "reproduction_of_bound_sweep",
+ "source": "data/e-raw-oracle/sweep_20260713T122953Z.jsonl",
+ "generated_utc": "2026-08-28T18:32:17+00:00",
+ "recorded_utc": "2026-07-13T12:29:53.506219Z",
+ "n_episodes": 140,
+ "gym_pybullet_drones_commit_recorded": "e712698",
+ "gym_pybullet_drones_commit_now": "e712698",
+ "tolerance": 1e-12,
+ "fields": [
+  {
+   "field": "completion_rate",
+   "n_identical": 140,
+   "n_episodes": 140,
+   "all_identical": true,
+   "max_abs_difference": 0.0,
+   "outcome_field": true
+  },
+  {
+   "field": "num_finished",
+   "n_identical": 140,
+   "n_episodes": 140,
+   "all_identical": true,
+   "max_abs_difference": 0.0,
+   "outcome_field": true
+  },
+  {
+   "field": "replan_events",
+   "n_identical": 140,
+   "n_episodes": 140,
+   "all_identical": true,
+   "max_abs_difference": 0.0,
+   "outcome_field": true
+  },
+  {
+   "field": "wind_angle_rad",
+   "n_identical": 140,
+   "n_episodes": 140,
+   "all_identical": true,
+   "max_abs_difference": 0.0,
+   "outcome_field": true
+  },
+  {
+   "field": "mean_min_dist_to_target_m",
+   "n_identical": 140,
+   "n_episodes": 140,
+   "all_identical": true,
+   "max_abs_difference": 0.0,
+   "outcome_field": false
+  },
+  {
+   "field": "max_min_dist_to_target_m",
+   "n_identical": 140,
+   "n_episodes": 140,
+   "all_identical": true,
+   "max_abs_difference": 0.0,
+   "outcome_field": false
+  }
+ ],
+ "all_fields_identical": true,
+ "disagreements": [],
+ "wall_clock_sec": 30.026
+}

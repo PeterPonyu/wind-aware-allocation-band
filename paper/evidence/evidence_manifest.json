@@ -1,0 +1,236 @@
+{
+  "schema": "evidence-manifest/v1",
+  "state": "BOUND",
+  "bound_utc": "2026-09-03T15:41:07Z",
+  "allowed_roots": [
+    "data",
+    "paper/evidence"
+  ],
+  "allowed_roots_note": "Archived layout. Artifacts the paper produced itself stay beside the paper; everything else was copied into data/. Digests describe the archived bytes; files whose recorded paths were redacted are listed in REDACTION.md with both digests.",
+  "entries": [
+    {
+      "id": "E-RAW-ORACLE",
+      "path": "data/e-raw-oracle/sweep_20260713T122953Z.jsonl",
+      "role": "raw_episode_log",
+      "note": "140 episodes, 7 disturbance levels x 10 seeds x 2 treatments, oracle disturbance vector",
+      "bytes": 50485,
+      "sha256": "b855b63ebd2b8db3473e3a30d2ea569cc9a784b052a60a6e5dfc6baafa94350d"
+    },
+    {
+      "id": "E-RAW-NOISE",
+      "path": "data/e-raw-noise/sweep_noise_20260713T124223Z.jsonl",
+      "role": "raw_episode_log",
+      "note": "150 episodes, 3 disturbance levels x 5 noise levels x 10 seeds, treatment arm only",
+      "bytes": 58050,
+      "sha256": "89f1ae113983e49101f59d66042be2a0975336a0ee1753602a9a073db4283597"
+    },
+    {
+      "id": "E-KNEE",
+      "path": "data/e-knee/paper_measurement_wind_knee.json",
+      "role": "derived_table",
+      "note": "per-level paired means, sd and exact Wilcoxon over the full 7-level grid",
+      "bytes": 4335,
+      "sha256": "5855b54129773604bf025215702b2eb7508de8b45320e9dbdb6ef50d5b8c6df5"
+    },
+    {
+      "id": "E-NOISE",
+      "path": "data/e-noise/complement_wind_noise_015.json",
+      "role": "derived_table",
+      "note": "paired deltas and exact Wilcoxon versus estimate-noise level at the load-bearing level",
+      "bytes": 6385,
+      "sha256": "ac245394268b680f942e10ff58e1c81d2231168521daf51d7af5eb5a14b80cc1"
+    },
+    {
+      "id": "E-SPREAD",
+      "path": "data/e-spread/complement_wind_knee_seed_spread.json",
+      "role": "derived_table",
+      "note": "per-seed completion value counts behind the two means at the load-bearing level",
+      "bytes": 808,
+      "sha256": "f5e8c149ef4923281f79b50339edb91ff6660aaa0ad5601fc55518e333084a6c"
+    },
+    {
+      "id": "E-PAIRS",
+      "path": "data/e-pairs/complement_wind_knee_seed_pairs.json",
+      "role": "derived_table",
+      "note": "seed-level paired outcomes and replan counts at the load-bearing level",
+      "bytes": 3635,
+      "sha256": "2eb8ce3d4a2e0a26b2068072e783a0231d7b470f9c7d122b832c8d7ea69ae9d4"
+    },
+    {
+      "id": "E-MISS",
+      "path": "data/e-miss/complement_wind_miss_distance.json",
+      "role": "derived_table",
+      "note": "continuous miss-distance companion to the thresholded completion endpoint",
+      "bytes": 3618,
+      "sha256": "4b3482f0fbaf04d483e0b60e075c4c3febf9b52c535fcc716afe51da58255de4"
+    },
+    {
+      "id": "E-RAW-DESIGNED",
+      "path": "data/e-raw-designed/sweep_designed_20260828T182851Z.jsonl",
+      "role": "raw_episode_log",
+      "note": "4032 episodes, 7 disturbance levels x 24 assigned headings x 12 scenes x 2 treatments, oracle disturbance vector",
+      "bytes": 1832016,
+      "sha256": "2d4797933aaddd5a53a835490a43ded28afb8bbe8039a3756237038cf28663fc"
+    },
+    {
+      "id": "E-DESIGNED",
+      "path": "data/e-designed/complement_wind_designed_replicates.json",
+      "role": "derived_table",
+      "note": "per-level paired advantage, repeat gap at zero angular separation, and the heading/scene/interaction split",
+      "bytes": 6215,
+      "sha256": "f4586da25a28d3765e60a449c949de684b3cacde88a26119455800174b3c5125"
+    },
+    {
+      "id": "E-REPRO",
+      "path": "data/e-repro/complement_wind_reproduction.json",
+      "role": "derived_table",
+      "note": "field-by-field re-run of all 140 episodes of the drawn-heading record",
+      "bytes": 1467,
+      "sha256": "ed4a167ec0d5b26ffd33347d72599c3542901f1487b16fd04c9b83f4fd328bfc"
+    },
+    {
+      "id": "E-RAW-TEMPORAL",
+      "path": "data/e-raw-temporal/temporal_campaign_20260828.jsonl",
+      "role": "raw_episode_log",
+      "note": "1080 episodes, 3 force levels x 3 temporal profiles x 30 seeds x (baseline plus three estimator conditions)",
+      "bytes": 1075173,
+      "sha256": "9089fe0e5f9879e0e18a578f597b91de9db41c5b39f70fe0b9dfe5b8b4428baa"
+    },
+    {
+      "id": "E-TEMPORAL",
+      "path": "data/e-temporal/temporal_analysis_20260828.json",
+      "role": "derived_table",
+      "note": "paired completion, exact tests, tracking diagnostics and legacy-oracle regression for the temporal campaign",
+      "bytes": 20993,
+      "sha256": "2dd9f31ba6425f65bde4f4f570f40e1b0bb1b4d176d0fad37cfe85f462a0564e"
+    },
+    {
+      "id": "E-RAW-ABLATION",
+      "path": "data/e-raw-ablation/temporal_ablation_20260828.jsonl",
+      "role": "raw_episode_log",
+      "note": "810 episodes, 3 profiles x 3 force levels x 30 seeds x 3 estimators; transition-force subset supports the feedforward-off mechanism check",
+      "bytes": 973302,
+      "sha256": "eb4f0015128a19bdf0dae1c4d00f8fc2d59c64ea897c7abb048df84fe526f59d"
+    },
+    {
+      "id": "E-ABLATION",
+      "path": "data/e-ablation/temporal_ablation_analysis_20260828.json",
+      "role": "derived_table",
+      "note": "allocation-only versus complete-arm paired gains at the transition force",
+      "bytes": 29035,
+      "sha256": "ccd1c23fd5511e92517c1c19b8388a2e568a67aec87bd6d0b6e45cd047c28461"
+    },
+    {
+      "id": "E-RAW-GAIN",
+      "path": "data/e-raw-gain/gain_campaign_20260828.jsonl",
+      "role": "raw_episode_log",
+      "note": "1890 episodes, 3 force levels x 3 temporal profiles x 7 feedforward gains x 30 causal-estimator seeds",
+      "bytes": 2353112,
+      "sha256": "ace8e336308150c69162f54101b538e0505100362a63951e0731a2d14dbc8282"
+    },
+    {
+      "id": "E-GAIN",
+      "path": "data/e-gain/gain_analysis_20260828.json",
+      "role": "derived_table",
+      "note": "paired gain sensitivity, intervals, exact tests and per-profile edge summaries",
+      "bytes": 49107,
+      "sha256": "4119f0095c87a1bf07b07156778e0c32ff7fa22bb625c3bb8db7b9c662e487b5"
+    },
+    {
+      "id": "E-RAW-GEOMETRY",
+      "path": "data/e-raw-geometry/geometry_campaign_20260829.jsonl",
+      "role": "raw_episode_log",
+      "note": "1440 episodes, 2 x 2 x 2 scene-geometry factors x 3 force levels x 30 seeds x 2 treatments",
+      "bytes": 1828659,
+      "sha256": "884f0a4e1b972ca0e26f054c9706350294bd9c06dd15e4cac301f77e3486a1f0"
+    },
+    {
+      "id": "E-GEOMETRY",
+      "path": "data/e-geometry/geometry_analysis_20260829.json",
+      "role": "derived_table",
+      "note": "paired geometry-factor contrasts, condition-by-force means and continuous scene diagnostics",
+      "bytes": 184114,
+      "sha256": "63708d936e82aac1a5bfecb74c916ad1e7206c35c0bba14f033bce95ffd9291a"
+    },
+    {
+      "id": "E-RAW-SCALE",
+      "path": "data/e-raw-scale/scale_campaign_20260829.jsonl",
+      "role": "raw_episode_log",
+      "note": "720 episodes, 4 swarm sizes x 3 force levels x 30 seeds x 2 treatments; causal wind-aware arm with seed-indexed assigned headings",
+      "bytes": 858067,
+      "sha256": "51d63382868778c453ad6d4417082bc9cb684323c8d74928ef98f82ce7d95b19"
+    },
+    {
+      "id": "E-SCALE",
+      "path": "data/e-scale/scale_analysis_20260829.json",
+      "role": "derived_table",
+      "note": "paired scale-by-force summaries, exact tests, continuous miss-distance summaries and four-airframe compatibility regression",
+      "bytes": 52820,
+      "sha256": "1559ddc9fce6d68ae080ca5398dd3485f33096272c11dd51a38a944d57c04d13"
+    },
+    {
+      "id": "E-RAW-RADIUS",
+      "path": "data/e-raw-radius/revision_radius_campaign_20260829.jsonl",
+      "role": "raw_episode_log",
+      "note": "420 episodes, 3 endpoint radii x 7 force levels x 10 seeds x 2 treatments",
+      "bytes": 458239,
+      "sha256": "f109e4a78f96b39ba100ca80764fb6655a1a769fed68839e9a63606293a275ce"
+    },
+    {
+      "id": "E-RADIUS",
+      "path": "data/e-radius/revision_radius_analysis_20260829.json",
+      "role": "derived_table",
+      "note": "triple-radius endpoint sensitivity with paired seed contrasts, Holm correction and primary-reference checks",
+      "bytes": 52429,
+      "sha256": "affa3b255a60d21dd4899bcccbd1bd173bff8bbd6e6b6899b368bc5c0aff5840"
+    },
+    {
+      "id": "E-RAW-FACTORIAL",
+      "path": "data/e-raw-factorial/revision_factorial_campaign_20260829.jsonl",
+      "role": "raw_episode_log",
+      "note": "270 episodes for the missing assignment-by-feedforward cell in the 2 x 2 pathway design",
+      "bytes": 434802,
+      "sha256": "7cff4d2252d8724f647bfdc8ae43035482a97a0f5862e8bf267e718f99d557a7"
+    },
+    {
+      "id": "E-FACTORIAL",
+      "path": "data/e-factorial/revision_factorial_analysis_20260829.json",
+      "role": "derived_table",
+      "note": "complete 2 x 2 pathway main effects and interaction on 30 paired seeds per profile-force cell",
+      "bytes": 44669,
+      "sha256": "24a57cac88e579592b0b6f70b88f9c619532c1c3a6add8dcf00a9d2f8e755524"
+    },
+    {
+      "id": "E-RAW-SAFETY",
+      "path": "data/e-raw-safety/revision_safety_campaign_20260829.jsonl",
+      "role": "raw_episode_log",
+      "note": "60 descriptive safety/feasibility episodes, 3 force levels x 10 seeds x 2 treatments",
+      "bytes": 96879,
+      "sha256": "e21ea79e4ed6502ef5e7ef1974fabe7df992506b62996da790369b0ce9223c56"
+    },
+    {
+      "id": "E-SAFETY",
+      "path": "data/e-safety/revision_safety_analysis_20260829.json",
+      "role": "derived_table",
+      "note": "descriptive separation, motor-limit, non-finite-state, timing and replan diagnostics with provenance gates",
+      "bytes": 31135,
+      "sha256": "911856b2252a1a9f07f8d7a758381a54103dfc6e756500b4e7d7717dafea767c"
+    },
+    {
+      "id": "E-REV-STATS",
+      "path": "data/e-rev-stats/revision_statistics_20260829.json",
+      "role": "derived_table",
+      "note": "cluster-aware reanalysis with explicit inferential units, endpoint-separated families, Holm metadata and provenance gates",
+      "bytes": 312535,
+      "sha256": "bcf250a294d1764710bd2d4ca5cb9c70dad7c2d62e92ad3f52568211b9960963"
+    },
+    {
+      "id": "E-SAFETY-GEOM",
+      "path": "data/e-safety-geom/safety_geometry_confound_20260831.json",
+      "role": "derived_table",
+      "note": "how much of the separation metric is set by target placement rather than by the allocator: target/observed correlation, within-scene pairing, hull-contact counts and the structural overlap rate by capture radius",
+      "bytes": 836,
+      "sha256": "8e90d670486ed2e14df4ab40ee381178fb650963cbc722bd9e69f5f5cddf8fff"
+    }
+  ]
+}

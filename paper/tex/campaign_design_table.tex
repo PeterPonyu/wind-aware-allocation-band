@@ -1,0 +1,40 @@
+\begin{table}[!htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.10}
+\caption{Campaign design and inferential contract. Episode rows support audit and
+visualization; inferential units and evidence roles are stated explicitly.}
+\label{tab:campaign-contract}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.18\linewidth}
+>{\raggedright\arraybackslash}p{0.31\linewidth}
+>{\raggedright\arraybackslash}p{0.18\linewidth}
+>{\raggedright\arraybackslash}p{0.21\linewidth}@{}}
+\toprule
+Campaign & Declared grid and records & Inferential unit & Evidence role \\
+\midrule
+Primary envelope & Seven forces; two arms; \NSeeds{} paired seeds
+($\NEpisodesOracle{}$ rows). & Seed-level paired difference. & Confirmatory family;
+$\alpha=0.05/7$. \\
+Estimate noise & Three forces $\times$ five noise levels $\times$ \NSeeds{} seeds
+($\NEpisodesNoise{}$ rows). & Seed-level paired difference. & Robustness profile;
+15-comparison threshold. \\
+Temporal & Three profiles $\times$ three estimators $\times$ three forces
+$\times$ \NTemporalSeeds{} seeds ($\NTemporalEpisodes{}$ rows). & Seed-level
+paired difference. & Causal envelope. \\
+Pathway and gain & Ablation ($\NAblationEpisodes{}$ rows) plus seven-point gain
+grid ($\NGainEpisodes{}$ rows). & Profile-specific seed pairs. & Pathway and
+gain boundary. \\
+Crossed design & \NAssignedHeadings{} headings $\times$ \NScenes{} layouts
+$\times$ seven forces $\times$ two arms ($\NEpisodesDesigned{}$ rows). &
+\NScenes{} layout clusters per force (layout means after averaging the fixed
+headings); ordinary bootstrap over clusters. & Heading, layout and interaction. \\
+Scene geometry & $2^3$ scene cells $\times$ three forces $\times$ \NGeometrySeeds{}
+seeds $\times$ two arms ($\NGeometryEpisodes{}$ rows). & 30 seed-level factor
+contrasts per force after averaging four crossed settings; 120-term sensitivity. &
+Scene-context support. \\
+Swarm size & Four sizes $\times$ three forces $\times$ \NScaleSeeds{} seeds
+$\times$ two arms ($\NScaleEpisodes{}$ rows). & 30 seed-level pairs per cell. &
+Transfer axis; four-airframe compatibility. \\
+\bottomrule
+\end{tabular}
+\end{table}

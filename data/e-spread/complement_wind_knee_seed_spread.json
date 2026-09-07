@@ -1,0 +1,31 @@
+{
+  "table_id": "001-T3",
+  "kind": "seed_spread_0p15N",
+  "source": "data/e-raw-oracle/sweep_20260713T122953Z.jsonl",
+  "wind_N": 0.15,
+  "baseline_value_counts": {
+    "0.00": 8,
+    "0.25": 2,
+    "0.50": 0,
+    "0.75": 0,
+    "1.00": 0
+  },
+  "wind_aware_value_counts": {
+    "0.00": 1,
+    "0.25": 1,
+    "0.50": 1,
+    "0.75": 7,
+    "1.00": 0
+  },
+  "baseline_mean": 0.05,
+  "baseline_std": 0.1,
+  "wind_aware_mean": 0.6,
+  "wind_aware_std": 0.25495097567963926,
+  "honesty": "0.60 mean is a 0/0.25/0.50/0.75 mix, not a tight 60% success.",
+  "png": "source-tree/001-drone-swarm/results/sota_copy/complements/complement_wind_knee_seed_spread.png",
+  "complement": true,
+  "not_official_r": true,
+  "not_official_sr_fkr": true,
+  "do_not_invent_sr_fkr": true,
+  "written_utc": "2026-08-16T12:55:44Z"
+}

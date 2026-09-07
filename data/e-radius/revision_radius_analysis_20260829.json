@@ -1,0 +1,2163 @@
+{
+  "analysis_run_utc": "2026-08-30T13:06:00.364249+00:00",
+  "campaign_stage": "full",
+  "design": {
+    "control_frequency_hz": 48,
+    "duration_sec": 6.0,
+    "endpoint": "completion_rate plus per-drone minimum closest distance",
+    "estimator": "historical oracle path (estimator_name omitted)",
+    "forces_N": [
+      0.0,
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3
+    ],
+    "gpu_hours": 0,
+    "heading_source": "seed-indexed heading reused from primary temporal baseline",
+    "network": false,
+    "num_drones": 4,
+    "pairing": "same radius, force, seed, scene and assigned heading across treatments",
+    "schema": "001-endpoint-radius-campaign/v1",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "simulation_only": true,
+    "success_radii_m": [
+      0.1,
+      0.15,
+      0.2
+    ],
+    "treatments": [
+      "baseline",
+      "wind_aware"
+    ],
+    "validation_family": "endpoint_radius_reviewer_validation",
+    "wind_profile": "constant"
+  },
+  "design_sha256": "27ce35adfb8b11dcb715d8c1f84e6605b71b12865c207c2e67d9c4ee2b580d7d",
+  "gates": {
+    "declared_row_count": true,
+    "design_integrity": true,
+    "finite_outputs": true,
+    "local_only": true,
+    "pairing_integrity": true,
+    "per_drone_metrics_present": true,
+    "primary_reference_matches": true
+  },
+  "generated_utc": "2026-08-30T13:04:24.400613+00:00",
+  "holm": {
+    "completion_family": "radius_validation_completion",
+    "continuous_family": "radius_validation_continuous_distance",
+    "m_completion": 21,
+    "m_continuous": 21,
+    "m_threshold": 21,
+    "threshold_family": "radius_validation_threshold_crossing_count"
+  },
+  "inferential_ready": true,
+  "n_pairs_per_cell": 10,
+  "n_rows": 420,
+  "pairing_errors": [],
+  "primary_reference_check": {
+    "all_identical": true,
+    "checked": 420,
+    "errors": [],
+    "primary_provenance": {
+      "campaign_stage": "primary",
+      "design": {
+        "baseline_reuse": "one baseline row per (profile, force, seed), paired to every estimator",
+        "control_frequency_hz": 48,
+        "duration_sec": 6.0,
+        "estimators": [
+          "oracle",
+          "causal",
+          "causal_biased"
+        ],
+        "forces_N": [
+          0.1,
+          0.15,
+          0.2
+        ],
+        "gpu_hours": 0,
+        "network": false,
+        "profiles": [
+          "constant",
+          "slow_gust",
+          "fast_gust"
+        ],
+        "schema": "001-temporal-wind-campaign/v1",
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29
+        ],
+        "simulation_only": true,
+        "treatments": [
+          "baseline",
+          "wind_aware"
+        ]
+      },
+      "design_sha256": "4c9cae8d70556e41b933230976029d169321710071ecf96b97e53606dbb631ef",
+      "gpu_used": false,
+      "gym_pybullet_drones_commit": "e712698",
+      "local_only": true,
+      "network_used": false,
+      "run_script": "source-tree/001-drone-swarm/run_experiment.py",
+      "schema": "001-temporal-wind-campaign/v1",
+      "script": "source-tree/001-drone-swarm/run_temporal_campaign.py",
+      "timestamp_utc": "2026-08-29T05:32:38.041422+00:00"
+    }
+  },
+  "primary_source": "data/e-raw-temporal/temporal_campaign_20260828.jsonl",
+  "primary_source_sha256": "9089fe0e5f9879e0e18a578f597b91de9db41c5b39f70fe0b9dfe5b8b4428baa",
+  "radius_crossings": [
+    {
+      "anchor_completion_delta_mean": 0.025,
+      "anchor_force_N": 0.15,
+      "anchor_present": true,
+      "first_ci_lower_above_zero_force_N": 0.1,
+      "first_holm_below_0.05_force_N": 0.1,
+      "first_positive_mean_force_N": 0.05,
+      "sign_change_intervals_N": [],
+      "success_radius_m": 0.1
+    },
+    {
+      "anchor_completion_delta_mean": 0.55,
+      "anchor_force_N": 0.15,
+      "anchor_present": true,
+      "first_ci_lower_above_zero_force_N": 0.15,
+      "first_holm_below_0.05_force_N": null,
+      "first_positive_mean_force_N": 0.1,
+      "sign_change_intervals_N": [],
+      "success_radius_m": 0.15
+    },
+    {
+      "anchor_completion_delta_mean": 0.15,
+      "anchor_force_N": 0.15,
+      "anchor_present": true,
+      "first_ci_lower_above_zero_force_N": 0.2,
+      "first_holm_below_0.05_force_N": null,
+      "first_positive_mean_force_N": 0.1,
+      "sign_change_intervals_N": [],
+      "success_radius_m": 0.2
+    }
+  ],
+  "schema": "001-endpoint-radius-analysis/v1",
+  "source": "data/e-raw-radius/revision_radius_campaign_20260829.jsonl",
+  "source_sha256": "f109e4a78f96b39ba100ca80764fb6655a1a769fed68839e9a63606293a275ce",
+  "status": "analysis_ok",
+  "summaries": [
+    {
+      "completion": {
+        "aware_ci95": [
+          1.0,
+          1.0
+        ],
+        "aware_mean": 1.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          1.0,
+          1.0
+        ],
+        "baseline_mean": 1.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.09274043542373661,
+          0.09570043746789192
+        ],
+        "aware_mean": 0.09422043644581427,
+        "aware_sd": 0.0020688987688360703,
+        "baseline_ci95": [
+          0.09274043542373661,
+          0.09570043746789192
+        ],
+        "baseline_mean": 0.09422043644581427,
+        "baseline_sd": 0.0020688987688360703,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "force_N": 0.0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.1,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          4.0,
+          4.0
+        ],
+        "aware_mean": 4.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          4.0,
+          4.0
+        ],
+        "baseline_mean": 4.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          1.0,
+          1.0
+        ],
+        "aware_mean": 1.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.9184460709286475,
+          1.0315539290713525
+        ],
+        "baseline_mean": 0.975,
+        "baseline_sd": 0.07905694150420949,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "paired_delta_mean": 0.025,
+        "paired_delta_sd": 0.07905694150420949,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.09682811787776807,
+          0.09887846144676346
+        ],
+        "aware_mean": 0.09785328966226577,
+        "aware_sd": 0.0014330913365284512,
+        "baseline_ci95": [
+          0.09799286162115978,
+          0.09999504605012471
+        ],
+        "baseline_mean": 0.09899395383564225,
+        "baseline_sd": 0.0013994304187213414,
+        "n": 10,
+        "n_negative": 10,
+        "n_positive": 0,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.0016819664516752352,
+          -0.0005993618950777349
+        ],
+        "paired_delta_mean": -0.001140664173376485,
+        "paired_delta_sd": 0.0007566884079365737,
+        "wilcoxon_p_holm": 0.041015625,
+        "wilcoxon_p_two_sided": 0.001953125
+      },
+      "force_N": 0.05,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.1,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          4.0,
+          4.0
+        ],
+        "aware_mean": 4.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          3.67378428371459,
+          4.12621571628541
+        ],
+        "baseline_mean": 3.9,
+        "baseline_sd": 0.31622776601683794,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "paired_delta_mean": 0.1,
+        "paired_delta_sd": 0.31622776601683794,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.5053382127859426,
+          0.8446617872140575
+        ],
+        "aware_mean": 0.675,
+        "aware_sd": 0.23717082451262844,
+        "baseline_ci95": [
+          -0.0014584297982457028,
+          0.25145842979824573
+        ],
+        "baseline_mean": 0.125,
+        "baseline_sd": 0.1767766952966369,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 10,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          0.4368921418572951,
+          0.663107858142705
+        ],
+        "paired_delta_mean": 0.55,
+        "paired_delta_sd": 0.15811388300841897,
+        "wilcoxon_p_holm": 0.041015625,
+        "wilcoxon_p_two_sided": 0.001953125
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.0941586375930833,
+          0.12172812360926485
+        ],
+        "aware_mean": 0.10794338060117407,
+        "aware_sd": 0.019269741988505337,
+        "baseline_ci95": [
+          0.11960518273167857,
+          0.14987730566132978
+        ],
+        "baseline_mean": 0.13474124419650418,
+        "baseline_sd": 0.021158754934941973,
+        "n": 10,
+        "n_negative": 10,
+        "n_positive": 0,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.039910149637561544,
+          -0.013685577553098691
+        ],
+        "paired_delta_mean": -0.026797863595330117,
+        "paired_delta_sd": 0.018329711969601297,
+        "wilcoxon_p_holm": 0.041015625,
+        "wilcoxon_p_two_sided": 0.001953125
+      },
+      "force_N": 0.1,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.1,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          2.0213528511437704,
+          3.37864714885623
+        ],
+        "aware_mean": 2.7,
+        "aware_sd": 0.9486832980505138,
+        "baseline_ci95": [
+          -0.005833719192982811,
+          1.005833719192983
+        ],
+        "baseline_mean": 0.5,
+        "baseline_sd": 0.7071067811865476,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 10,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          1.7475685674291803,
+          2.65243143257082
+        ],
+        "paired_delta_mean": 2.2,
+        "paired_delta_sd": 0.6324555320336759,
+        "wilcoxon_p_holm": 0.041015625,
+        "wilcoxon_p_two_sided": 0.001953125
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "aware_mean": 0.025,
+        "aware_sd": 0.07905694150420949,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "paired_delta_mean": 0.025,
+        "paired_delta_sd": 0.07905694150420949,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.14424084866102177,
+          0.2855593783526531
+        ],
+        "aware_mean": 0.21490011350683744,
+        "aware_sd": 0.09877484127757534,
+        "baseline_ci95": [
+          0.19398370985874175,
+          0.2926157549430347
+        ],
+        "baseline_mean": 0.24329973240088823,
+        "baseline_sd": 0.06893904585154075,
+        "n": 10,
+        "n_negative": 8,
+        "n_positive": 2,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.06599057770282213,
+          0.009191339914720605
+        ],
+        "paired_delta_mean": -0.02839961889405076,
+        "paired_delta_sd": 0.05254853695280336,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.130859375
+      },
+      "force_N": 0.15,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.1,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "aware_mean": 0.1,
+        "aware_sd": 0.31622776601683794,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "paired_delta_mean": 0.1,
+        "paired_delta_sd": 0.31622776601683794,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.27313513607152684,
+          0.5518097373085056
+        ],
+        "aware_mean": 0.4124724366900162,
+        "aware_sd": 0.1947801152852231,
+        "baseline_ci95": [
+          0.306030012075908,
+          0.5415949855454951
+        ],
+        "baseline_mean": 0.4238124988107016,
+        "baseline_sd": 0.16464856318408616,
+        "n": 10,
+        "n_negative": 7,
+        "n_positive": 3,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.07358571411637008,
+          0.050905589874999296
+        ],
+        "paired_delta_mean": -0.011340062120685394,
+        "paired_delta_sd": 0.08701342151675441,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.625
+      },
+      "force_N": 0.2,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.1,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.44280299195647194,
+          0.6522124149426365
+        ],
+        "aware_mean": 0.5475077034495542,
+        "aware_sd": 0.14636709398705228,
+        "baseline_ci95": [
+          0.45919047315977846,
+          0.6678569480395322
+        ],
+        "baseline_mean": 0.5635237105996553,
+        "baseline_sd": 0.1458478090677403,
+        "n": 10,
+        "n_negative": 7,
+        "n_positive": 3,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.04127454861987456,
+          0.009242534319672552
+        ],
+        "paired_delta_mean": -0.016016007150101003,
+        "paired_delta_sd": 0.03530900625733983,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.232421875
+      },
+      "force_N": 0.25,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.1,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.4908387738352598,
+          0.6993419296518908
+        ],
+        "aware_mean": 0.5950903517435753,
+        "aware_sd": 0.14573365691393037,
+        "baseline_ci95": [
+          0.49299326705039703,
+          0.7007371068626621
+        ],
+        "baseline_mean": 0.5968651869565296,
+        "baseline_sd": 0.14520293162281378,
+        "n": 10,
+        "n_negative": 9,
+        "n_positive": 1,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.0030333093321255333,
+          -0.000516361093783024
+        ],
+        "paired_delta_mean": -0.0017748352129542788,
+        "paired_delta_sd": 0.0017592255119597145,
+        "wilcoxon_p_holm": 0.111328125,
+        "wilcoxon_p_two_sided": 0.005859375
+      },
+      "force_N": 0.3,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.1,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          1.0,
+          1.0
+        ],
+        "aware_mean": 1.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          1.0,
+          1.0
+        ],
+        "baseline_mean": 1.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.13833477409508005,
+          0.14201721518276622
+        ],
+        "aware_mean": 0.14017599463892313,
+        "aware_sd": 0.0025738488416481324,
+        "baseline_ci95": [
+          0.13833477409508005,
+          0.14201721518276622
+        ],
+        "baseline_mean": 0.14017599463892313,
+        "baseline_sd": 0.0025738488416481324,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "force_N": 0.0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.15,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          4.0,
+          4.0
+        ],
+        "aware_mean": 4.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          4.0,
+          4.0
+        ],
+        "baseline_mean": 4.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          1.0,
+          1.0
+        ],
+        "aware_mean": 1.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          1.0,
+          1.0
+        ],
+        "baseline_mean": 1.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.14223161510381446,
+          0.1447957468362933
+        ],
+        "aware_mean": 0.14351368097005388,
+        "aware_sd": 0.0017922045003089702,
+        "baseline_ci95": [
+          0.14159895178320026,
+          0.14595553905378644
+        ],
+        "baseline_mean": 0.14377724541849335,
+        "baseline_sd": 0.003045044532398194,
+        "n": 10,
+        "n_negative": 5,
+        "n_positive": 5,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.0024868340791740625,
+          0.0019597051822951034
+        ],
+        "paired_delta_mean": -0.00026356444843947944,
+        "paired_delta_sd": 0.0031079166387062477,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.4921875
+      },
+      "force_N": 0.05,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.15,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          4.0,
+          4.0
+        ],
+        "aware_mean": 4.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          4.0,
+          4.0
+        ],
+        "baseline_mean": 4.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.9184460709286475,
+          1.0315539290713525
+        ],
+        "aware_mean": 0.975,
+        "aware_sd": 0.07905694150420949,
+        "baseline_ci95": [
+          0.8745947612381967,
+          1.0254052387618033
+        ],
+        "baseline_mean": 0.95,
+        "baseline_sd": 0.10540925533894598,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "paired_delta_mean": 0.025,
+        "paired_delta_sd": 0.07905694150420949,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.14074128754296364,
+          0.16462611962821053
+        ],
+        "aware_mean": 0.15268370358558708,
+        "aware_sd": 0.0166943464760765,
+        "baseline_ci95": [
+          0.14351546070359691,
+          0.17246334701780494
+        ],
+        "baseline_mean": 0.15798940386070093,
+        "baseline_sd": 0.020233177363552204,
+        "n": 10,
+        "n_negative": 7,
+        "n_positive": 3,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.018710260158132187,
+          0.008098859607904385
+        ],
+        "paired_delta_mean": -0.0053057002751139,
+        "paired_delta_sd": 0.01873828262620669,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.322265625
+      },
+      "force_N": 0.1,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.15,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          3.67378428371459,
+          4.12621571628541
+        ],
+        "aware_mean": 3.9,
+        "aware_sd": 0.31622776601683794,
+        "baseline_ci95": [
+          3.4983790449527867,
+          4.101620955047213
+        ],
+        "baseline_mean": 3.8,
+        "baseline_sd": 0.4216370213557839,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "paired_delta_mean": 0.1,
+        "paired_delta_sd": 0.31622776601683794,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.4077536080632209,
+          0.792246391936779
+        ],
+        "aware_mean": 0.6,
+        "aware_sd": 0.26874192494328497,
+        "baseline_ci95": [
+          -0.02540523876180331,
+          0.12540523876180332
+        ],
+        "baseline_mean": 0.05,
+        "baseline_sd": 0.10540925533894599,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 9,
+        "n_zero": 1,
+        "paired_delta_ci95": [
+          0.36529564110084634,
+          0.7347043588991538
+        ],
+        "paired_delta_mean": 0.55,
+        "paired_delta_sd": 0.25819888974716115,
+        "wilcoxon_p_holm": 0.078125,
+        "wilcoxon_p_two_sided": 0.00390625
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.15776557668750119,
+          0.29393680789012994
+        ],
+        "aware_mean": 0.22585119228881556,
+        "aware_sd": 0.09517712771256051,
+        "baseline_ci95": [
+          0.19435492630016385,
+          0.2928162768536984
+        ],
+        "baseline_mean": 0.2435856015769311,
+        "baseline_sd": 0.06881973860132092,
+        "n": 10,
+        "n_negative": 8,
+        "n_positive": 2,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.052017071266398186,
+          0.01654825269016718
+        ],
+        "paired_delta_mean": -0.017734409288115503,
+        "paired_delta_sd": 0.04792385687661409,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.16015625
+      },
+      "force_N": 0.15,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.15,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          1.6310144322528837,
+          3.168985567747116
+        ],
+        "aware_mean": 2.4,
+        "aware_sd": 1.0749676997731399,
+        "baseline_ci95": [
+          -0.10162095504721325,
+          0.5016209550472133
+        ],
+        "baseline_mean": 0.2,
+        "baseline_sd": 0.42163702135578396,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 9,
+        "n_zero": 1,
+        "paired_delta_ci95": [
+          1.4611825644033853,
+          2.938817435596615
+        ],
+        "paired_delta_mean": 2.2,
+        "paired_delta_sd": 1.0327955589886446,
+        "wilcoxon_p_holm": 0.078125,
+        "wilcoxon_p_two_sided": 0.00390625
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          -0.02540523876180331,
+          0.12540523876180332
+        ],
+        "aware_mean": 0.05,
+        "aware_sd": 0.10540925533894599,
+        "baseline_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "baseline_mean": 0.025,
+        "baseline_sd": 0.07905694150420949,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "paired_delta_mean": 0.025,
+        "paired_delta_sd": 0.07905694150420949,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.27458678086531096,
+          0.5530433966696288
+        ],
+        "aware_mean": 0.41381508876746986,
+        "aware_sd": 0.19462775397380205,
+        "baseline_ci95": [
+          0.306030012075908,
+          0.5415949855454951
+        ],
+        "baseline_mean": 0.4238124988107016,
+        "baseline_sd": 0.16464856318408616,
+        "n": 10,
+        "n_negative": 7,
+        "n_positive": 3,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.07192896387050862,
+          0.051934143784045116
+        ],
+        "paired_delta_mean": -0.009997410043231755,
+        "paired_delta_sd": 0.08657434255382211,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.625
+      },
+      "force_N": 0.2,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.15,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          -0.10162095504721325,
+          0.5016209550472133
+        ],
+        "aware_mean": 0.2,
+        "aware_sd": 0.42163702135578396,
+        "baseline_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "baseline_mean": 0.1,
+        "baseline_sd": 0.31622776601683794,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "paired_delta_mean": 0.1,
+        "paired_delta_sd": 0.31622776601683794,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.44280299195647194,
+          0.6522124149426365
+        ],
+        "aware_mean": 0.5475077034495542,
+        "aware_sd": 0.14636709398705228,
+        "baseline_ci95": [
+          0.45919047315977846,
+          0.6678569480395322
+        ],
+        "baseline_mean": 0.5635237105996553,
+        "baseline_sd": 0.1458478090677403,
+        "n": 10,
+        "n_negative": 7,
+        "n_positive": 3,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.04127454861987456,
+          0.009242534319672552
+        ],
+        "paired_delta_mean": -0.016016007150101003,
+        "paired_delta_sd": 0.03530900625733983,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.232421875
+      },
+      "force_N": 0.25,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.15,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.4908387738352598,
+          0.6993419296518908
+        ],
+        "aware_mean": 0.5950903517435753,
+        "aware_sd": 0.14573365691393037,
+        "baseline_ci95": [
+          0.49299326705039703,
+          0.7007371068626621
+        ],
+        "baseline_mean": 0.5968651869565296,
+        "baseline_sd": 0.14520293162281378,
+        "n": 10,
+        "n_negative": 9,
+        "n_positive": 1,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.0030333093321255333,
+          -0.000516361093783024
+        ],
+        "paired_delta_mean": -0.0017748352129542788,
+        "paired_delta_sd": 0.0017592255119597145,
+        "wilcoxon_p_holm": 0.111328125,
+        "wilcoxon_p_two_sided": 0.005859375
+      },
+      "force_N": 0.3,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.15,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          0.0,
+          0.0
+        ],
+        "aware_mean": 0.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          0.0,
+          0.0
+        ],
+        "baseline_mean": 0.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          1.0,
+          1.0
+        ],
+        "aware_mean": 1.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          1.0,
+          1.0
+        ],
+        "baseline_mean": 1.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.1854872251547262,
+          0.19207639306247187
+        ],
+        "aware_mean": 0.18878180910859904,
+        "aware_sd": 0.004605510796489787,
+        "baseline_ci95": [
+          0.1854872251547262,
+          0.19207639306247187
+        ],
+        "baseline_mean": 0.18878180910859904,
+        "baseline_sd": 0.004605510796489787,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "force_N": 0.0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.2,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          4.0,
+          4.0
+        ],
+        "aware_mean": 4.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          4.0,
+          4.0
+        ],
+        "baseline_mean": 4.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          1.0,
+          1.0
+        ],
+        "aware_mean": 1.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          1.0,
+          1.0
+        ],
+        "baseline_mean": 1.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.19031248387776756,
+          0.19473259085123595
+        ],
+        "aware_mean": 0.19252253736450176,
+        "aware_sd": 0.003089441743322216,
+        "baseline_ci95": [
+          0.18819601586485543,
+          0.19310059136168647
+        ],
+        "baseline_mean": 0.19064830361327095,
+        "baseline_sd": 0.0034280618917453777,
+        "n": 10,
+        "n_negative": 2,
+        "n_positive": 8,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.001407435437346055,
+          0.005155902939807671
+        ],
+        "paired_delta_mean": 0.0018742337512308084,
+        "paired_delta_sd": 0.004587457199484076,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.232421875
+      },
+      "force_N": 0.05,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.2,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          4.0,
+          4.0
+        ],
+        "aware_mean": 4.0,
+        "aware_sd": 0.0,
+        "baseline_ci95": [
+          4.0,
+          4.0
+        ],
+        "baseline_mean": 4.0,
+        "baseline_sd": 0.0,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.9184460709286475,
+          1.0315539290713525
+        ],
+        "aware_mean": 0.975,
+        "aware_sd": 0.07905694150420949,
+        "baseline_ci95": [
+          0.8745947612381967,
+          1.0254052387618033
+        ],
+        "baseline_mean": 0.95,
+        "baseline_sd": 0.10540925533894598,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "paired_delta_mean": 0.025,
+        "paired_delta_sd": 0.07905694150420949,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.18991896074780842,
+          0.2089363318699525
+        ],
+        "aware_mean": 0.19942764630888046,
+        "aware_sd": 0.013292225854637957,
+        "baseline_ci95": [
+          0.1936996417367769,
+          0.21425994202844223
+        ],
+        "baseline_mean": 0.20397979188260956,
+        "baseline_sd": 0.014370658981238987,
+        "n": 10,
+        "n_negative": 8,
+        "n_positive": 2,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.014059307328996358,
+          0.004955016181538131
+        ],
+        "paired_delta_mean": -0.004552145573729113,
+        "paired_delta_sd": 0.013290095721005323,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.083984375
+      },
+      "force_N": 0.1,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.2,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          3.67378428371459,
+          4.12621571628541
+        ],
+        "aware_mean": 3.9,
+        "aware_sd": 0.31622776601683794,
+        "baseline_ci95": [
+          3.4983790449527867,
+          4.101620955047213
+        ],
+        "baseline_mean": 3.8,
+        "baseline_sd": 0.4216370213557839,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 9,
+        "paired_delta_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "paired_delta_mean": 0.1,
+        "paired_delta_sd": 0.31622776601683794,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 1.0
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.5608902801392665,
+          0.9891097198607336
+        ],
+        "aware_mean": 0.775,
+        "aware_sd": 0.2993047499344662,
+        "baseline_ci95": [
+          0.4730158823825873,
+          0.7769841176174127
+        ],
+        "baseline_mean": 0.625,
+        "baseline_sd": 0.21245914639969937,
+        "n": 10,
+        "n_negative": 2,
+        "n_positive": 6,
+        "n_zero": 2,
+        "paired_delta_ci95": [
+          -0.10571160586944908,
+          0.4057116058694491
+        ],
+        "paired_delta_mean": 0.15,
+        "paired_delta_sd": 0.35746017649212025,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.3125
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.20523815077651264,
+          0.31934175795926667
+        ],
+        "aware_mean": 0.26228995436788966,
+        "aware_sd": 0.07975292209216044,
+        "baseline_ci95": [
+          0.20330114903228702,
+          0.3027538787241003
+        ],
+        "baseline_mean": 0.25302751387819367,
+        "baseline_sd": 0.06951266483854587,
+        "n": 10,
+        "n_negative": 5,
+        "n_positive": 5,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.014594017011032683,
+          0.03311889799042466
+        ],
+        "paired_delta_mean": 0.009262440489695989,
+        "paired_delta_sd": 0.03334902801807511,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.76953125
+      },
+      "force_N": 0.15,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.2,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          2.243561120557066,
+          3.9564388794429344
+        ],
+        "aware_mean": 3.1,
+        "aware_sd": 1.1972189997378648,
+        "baseline_ci95": [
+          1.8920635295303492,
+          3.107936470469651
+        ],
+        "baseline_mean": 2.5,
+        "baseline_sd": 0.8498365855987975,
+        "n": 10,
+        "n_negative": 2,
+        "n_positive": 6,
+        "n_zero": 2,
+        "paired_delta_ci95": [
+          -0.42284642347779633,
+          1.6228464234777964
+        ],
+        "paired_delta_mean": 0.6,
+        "paired_delta_sd": 1.429840705968481,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.3125
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          0.1604006854588787,
+          0.7395993145411213
+        ],
+        "aware_mean": 0.45,
+        "aware_sd": 0.40483192671637064,
+        "baseline_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "baseline_mean": 0.025,
+        "baseline_sd": 0.07905694150420949,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 4,
+        "paired_delta_ci95": [
+          0.1204477714597717,
+          0.7295522285402283
+        ],
+        "paired_delta_mean": 0.425,
+        "paired_delta_sd": 0.42573465914816,
+        "wilcoxon_p_holm": 0.59375,
+        "wilcoxon_p_two_sided": 0.03125
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.28643589211258413,
+          0.5566726902220195
+        ],
+        "aware_mean": 0.4215542911673018,
+        "aware_sd": 0.18888249756677405,
+        "baseline_ci95": [
+          0.3069917632449414,
+          0.5420509588574378
+        ],
+        "baseline_mean": 0.4245213610511896,
+        "baseline_sd": 0.16429504883841,
+        "n": 10,
+        "n_negative": 7,
+        "n_positive": 3,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.061436113520436146,
+          0.055501973752660576
+        ],
+        "paired_delta_mean": -0.0029670698838877825,
+        "paired_delta_sd": 0.08173408706492781,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.6953125
+      },
+      "force_N": 0.2,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.2,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          0.6416027418355148,
+          2.958397258164485
+        ],
+        "aware_mean": 1.8,
+        "aware_sd": 1.6193277068654826,
+        "baseline_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "baseline_mean": 0.1,
+        "baseline_sd": 0.31622776601683794,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 4,
+        "paired_delta_ci95": [
+          0.4817910858390868,
+          2.918208914160913
+        ],
+        "paired_delta_mean": 1.7,
+        "paired_delta_sd": 1.70293863659264,
+        "wilcoxon_p_holm": 0.59375,
+        "wilcoxon_p_two_sided": 0.03125
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "aware_mean": 0.025,
+        "aware_sd": 0.07905694150420949,
+        "baseline_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "baseline_mean": 0.025,
+        "baseline_sd": 0.07905694150420949,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.44391467430182124,
+          0.6530795490768919
+        ],
+        "aware_mean": 0.5484971116893566,
+        "aware_sd": 0.1461961665737242,
+        "baseline_ci95": [
+          0.45968384546150415,
+          0.668375725116112
+        ],
+        "baseline_mean": 0.5640297852888081,
+        "baseline_sd": 0.1458655657809568,
+        "n": 10,
+        "n_negative": 7,
+        "n_positive": 3,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.04049186429365034,
+          0.009426517094747273
+        ],
+        "paired_delta_mean": -0.015532673599451536,
+        "paired_delta_sd": 0.03489054272805976,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.232421875
+      },
+      "force_N": 0.25,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.2,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "aware_mean": 0.1,
+        "aware_sd": 0.31622776601683794,
+        "baseline_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "baseline_mean": 0.1,
+        "baseline_sd": 0.31622776601683794,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    },
+    {
+      "completion": {
+        "aware_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "aware_mean": 0.025,
+        "aware_sd": 0.07905694150420949,
+        "baseline_ci95": [
+          -0.031553929071352474,
+          0.08155392907135248
+        ],
+        "baseline_mean": 0.025,
+        "baseline_sd": 0.07905694150420949,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      },
+      "continuous_mean_min_distance": {
+        "aware_ci95": [
+          0.4915743702733562,
+          0.6999569768916292
+        ],
+        "aware_mean": 0.5957656735824927,
+        "aware_sd": 0.1456493988342579,
+        "baseline_ci95": [
+          0.49299326705039703,
+          0.7007371068626621
+        ],
+        "baseline_mean": 0.5968651869565296,
+        "baseline_sd": 0.14520293162281378,
+        "n": 10,
+        "n_negative": 8,
+        "n_positive": 2,
+        "n_zero": 0,
+        "paired_delta_ci95": [
+          -0.0024835004384370224,
+          0.000284473690363193
+        ],
+        "paired_delta_mean": -0.0010995133740369146,
+        "paired_delta_sd": 0.0019346805109653417,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": 0.083984375
+      },
+      "force_N": 0.3,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "success_radius_m": 0.2,
+      "threshold_crossing_count": {
+        "aware_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "aware_mean": 0.1,
+        "aware_sd": 0.31622776601683794,
+        "baseline_ci95": [
+          -0.1262157162854099,
+          0.3262157162854099
+        ],
+        "baseline_mean": 0.1,
+        "baseline_sd": 0.31622776601683794,
+        "n": 10,
+        "n_negative": 0,
+        "n_positive": 0,
+        "n_zero": 10,
+        "paired_delta_ci95": [
+          0.0,
+          0.0
+        ],
+        "paired_delta_mean": 0.0,
+        "paired_delta_sd": 0.0,
+        "wilcoxon_p_holm": 1.0,
+        "wilcoxon_p_two_sided": null
+      }
+    }
+  ]
+}

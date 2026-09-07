@@ -1,0 +1,7974 @@
+{
+  "condition_summaries": [
+    {
+      "aware_completion": {
+        "ci95": [
+          0.9120210389954436,
+          0.9879789610045563
+        ],
+        "mean": 0.95,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.10170952554312156,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.9015084173656649,
+          0.9818249159676684
+        ],
+        "mean": 0.9416666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.10754576678801907,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "label": "Nominal spread / Near range / Aligned",
+      "mean_indexed_launch_range_m": 0.702406303484499,
+      "mean_opposition_fraction": 0.8,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          -0.03029935831082485,
+          0.04696602497749151
+        ],
+        "mean": 0.008333333333333333,
+        "n": 30,
+        "n_negative": 2,
+        "n_positive": 3,
+        "n_zero": 25,
+        "sd": 0.10346024834933343,
+        "wilcoxon_p_two_sided": 0.8125
+      },
+      "range": "near",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.5330500164498673,
+          0.7336166502167993
+        ],
+        "mean": 0.6333333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 29,
+        "n_zero": 1,
+        "sd": 0.26856365499004,
+        "wilcoxon_p_two_sided": 3.725290298461914e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.03975822712008989,
+          0.14357510621324343
+        ],
+        "mean": 0.09166666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 10,
+        "n_zero": 20,
+        "sd": 0.13901335419188388,
+        "wilcoxon_p_two_sided": 0.001953125
+      },
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "label": "Nominal spread / Near range / Aligned",
+      "mean_indexed_launch_range_m": 0.702406303484499,
+      "mean_opposition_fraction": 0.8,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          0.4238825524648818,
+          0.6594507808684514
+        ],
+        "mean": 0.5416666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 26,
+        "n_zero": 4,
+        "sd": 0.3154316509749483,
+        "wilcoxon_p_two_sided": 2.9802322387695312e-08
+      },
+      "range": "near",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.024679345473449188,
+          0.10865398785988414
+        ],
+        "mean": 0.06666666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 8,
+        "n_zero": 22,
+        "sd": 0.11244411127720089,
+        "wilcoxon_p_two_sided": 0.0078125
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.0034842207534172207,
+          0.05348422075341722
+        ],
+        "mean": 0.025,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 3,
+        "n_zero": 27,
+        "sd": 0.07628214415734115,
+        "wilcoxon_p_two_sided": 0.25
+      },
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "label": "Nominal spread / Near range / Aligned",
+      "mean_indexed_launch_range_m": 0.702406303484499,
+      "mean_opposition_fraction": 0.8,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          -0.0013808098379905001,
+          0.08471414317132384
+        ],
+        "mean": 0.041666666666666664,
+        "n": 30,
+        "n_negative": 1,
+        "n_positive": 6,
+        "n_zero": 23,
+        "sd": 0.11528325934435352,
+        "wilcoxon_p_two_sided": 0.109375
+      },
+      "range": "near",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.9343907561219646,
+          0.9989425772113687
+        ],
+        "mean": 0.9666666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.08643647591044011,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.8474205093717863,
+          0.9525794906282138
+        ],
+        "mean": 0.9,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.1408104619937615,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "label": "Nominal spread / Near range / Crossed",
+      "mean_indexed_launch_range_m": 0.6430716836859606,
+      "mean_opposition_fraction": 0.6666666666666666,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          0.012215437355746449,
+          0.12111789597758688
+        ],
+        "mean": 0.06666666666666667,
+        "n": 30,
+        "n_negative": 1,
+        "n_positive": 8,
+        "n_zero": 21,
+        "sd": 0.14582307024641866,
+        "wilcoxon_p_two_sided": 0.0390625
+      },
+      "range": "near",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.6131225533326052,
+          0.8035441133340615
+        ],
+        "mean": 0.7083333333333334,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 29,
+        "n_zero": 1,
+        "sd": 0.2549791517283167,
+        "wilcoxon_p_two_sided": 3.725290298461914e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.012021038995443697,
+          0.08797896100455631
+        ],
+        "mean": 0.05,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 24,
+        "sd": 0.10170952554312157,
+        "wilcoxon_p_two_sided": 0.03125
+      },
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "label": "Nominal spread / Near range / Crossed",
+      "mean_indexed_launch_range_m": 0.6430716836859606,
+      "mean_opposition_fraction": 0.6666666666666666,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          0.5501229117473295,
+          0.7665437549193371
+        ],
+        "mean": 0.6583333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 28,
+        "n_zero": 2,
+        "sd": 0.28979283127343103,
+        "wilcoxon_p_two_sided": 7.450580596923828e-09
+      },
+      "range": "near",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.012021038995443697,
+          0.08797896100455631
+        ],
+        "mean": 0.05,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 24,
+        "sd": 0.10170952554312157,
+        "wilcoxon_p_two_sided": 0.03125
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.007017376664116264,
+          0.040350709997449594
+        ],
+        "mean": 0.016666666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 2,
+        "n_zero": 28,
+        "sd": 0.06342703292561562,
+        "wilcoxon_p_two_sided": 0.5
+      },
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "label": "Nominal spread / Near range / Crossed",
+      "mean_indexed_launch_range_m": 0.6430716836859606,
+      "mean_opposition_fraction": 0.6666666666666666,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          -0.0071973342867985846,
+          0.07386400095346525
+        ],
+        "mean": 0.03333333333333333,
+        "n": 30,
+        "n_negative": 1,
+        "n_positive": 5,
+        "n_zero": 24,
+        "sd": 0.10854312136382618,
+        "wilcoxon_p_two_sided": 0.21875
+      },
+      "range": "near",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.8564248937867566,
+          0.9602417728799101
+        ],
+        "mean": 0.9083333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.13901335419188388,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.8412700203754081,
+          0.9753966462912586
+        ],
+        "mean": 0.9083333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.1795988505710345,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "label": "Nominal spread / Far range / Aligned",
+      "mean_indexed_launch_range_m": 0.7542025746601069,
+      "mean_opposition_fraction": 0.7583333333333333,
+      "mean_target_spread_rms_m": 0.5810459095730478,
+      "paired_gain": {
+        "ci95": [
+          -0.06486142392599799,
+          0.06486142392599799
+        ],
+        "mean": 0.0,
+        "n": 30,
+        "n_negative": 5,
+        "n_positive": 3,
+        "n_zero": 22,
+        "sd": 0.1737020834449128,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "range": "far",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.5217151466170811,
+          0.7282848533829189
+        ],
+        "mean": 0.625,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 29,
+        "n_zero": 1,
+        "sd": 0.276601917364387,
+        "wilcoxon_p_two_sided": 3.725290298461914e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.06942617466678179,
+          0.21390715866655152
+        ],
+        "mean": 0.14166666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 12,
+        "n_zero": 18,
+        "sd": 0.19346359068191676,
+        "wilcoxon_p_two_sided": 0.00048828125
+      },
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "label": "Nominal spread / Far range / Aligned",
+      "mean_indexed_launch_range_m": 0.7542025746601069,
+      "mean_opposition_fraction": 0.7583333333333333,
+      "mean_target_spread_rms_m": 0.5810459095730478,
+      "paired_gain": {
+        "ci95": [
+          0.37116851606261125,
+          0.5954981506040554
+        ],
+        "mean": 0.48333333333333334,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 25,
+        "n_zero": 5,
+        "sd": 0.3003828974117389,
+        "wilcoxon_p_two_sided": 5.960464477539063e-08
+      },
+      "range": "far",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          -0.0013808098379905001,
+          0.08471414317132384
+        ],
+        "mean": 0.041666666666666664,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 4,
+        "n_zero": 26,
+        "sd": 0.11528325934435352,
+        "wilcoxon_p_two_sided": 0.125
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.007017376664116264,
+          0.040350709997449594
+        ],
+        "mean": 0.016666666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 2,
+        "n_zero": 28,
+        "sd": 0.06342703292561562,
+        "wilcoxon_p_two_sided": 0.5
+      },
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "label": "Nominal spread / Far range / Aligned",
+      "mean_indexed_launch_range_m": 0.7542025746601069,
+      "mean_opposition_fraction": 0.7583333333333333,
+      "mean_target_spread_rms_m": 0.5810459095730478,
+      "paired_gain": {
+        "ci95": [
+          -0.012581264589864562,
+          0.06258126458986457
+        ],
+        "mean": 0.025,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 2,
+        "n_zero": 28,
+        "sd": 0.10064447498411219,
+        "wilcoxon_p_two_sided": 0.5
+      },
+      "range": "far",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.8600509743193322,
+          0.9732823590140011
+        ],
+        "mean": 0.9166666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.15161960871578067,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.8237130937794268,
+          0.9596202395539066
+        ],
+        "mean": 0.8916666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.18198301044865156,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "label": "Nominal spread / Far range / Crossed",
+      "mean_indexed_launch_range_m": 0.6832747165242228,
+      "mean_opposition_fraction": 0.6583333333333333,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          -0.045840349700135084,
+          0.09584034970013508
+        ],
+        "mean": 0.025,
+        "n": 30,
+        "n_negative": 4,
+        "n_positive": 5,
+        "n_zero": 21,
+        "sd": 0.1897139407380091,
+        "wilcoxon_p_two_sided": 0.65234375
+      },
+      "range": "far",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.6172267735002335,
+          0.7827732264997664
+        ],
+        "mean": 0.7,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.22167077171896785,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.006281858949582664,
+          0.07705147438375066
+        ],
+        "mean": 0.041666666666666664,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 5,
+        "n_zero": 25,
+        "sd": 0.09476225544736293,
+        "wilcoxon_p_two_sided": 0.0625
+      },
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "label": "Nominal spread / Far range / Crossed",
+      "mean_indexed_launch_range_m": 0.6832747165242228,
+      "mean_opposition_fraction": 0.6583333333333333,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          0.5588019639511699,
+          0.7578647027154968
+        ],
+        "mean": 0.6583333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 28,
+        "n_zero": 2,
+        "sd": 0.2665499025974548,
+        "wilcoxon_p_two_sided": 7.450580596923828e-09
+      },
+      "range": "far",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.024679345473449174,
+          0.10865398785988416
+        ],
+        "mean": 0.06666666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 8,
+        "n_zero": 22,
+        "sd": 0.11244411127720091,
+        "wilcoxon_p_two_sided": 0.0078125
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.007017376664116261,
+          0.040350709997449594
+        ],
+        "mean": 0.016666666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 2,
+        "n_zero": 28,
+        "sd": 0.0634270329256156,
+        "wilcoxon_p_two_sided": 0.5
+      },
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "label": "Nominal spread / Far range / Crossed",
+      "mean_indexed_launch_range_m": 0.6832747165242228,
+      "mean_opposition_fraction": 0.6583333333333333,
+      "mean_target_spread_rms_m": 0.5810459095730477,
+      "paired_gain": {
+        "ci95": [
+          0.012021038995443697,
+          0.08797896100455631
+        ],
+        "mean": 0.05,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 24,
+        "sd": 0.10170952554312157,
+        "wilcoxon_p_two_sided": 0.03125
+      },
+      "range": "far",
+      "spread": "nominal"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.8162143423665005,
+          0.9337856576334995
+        ],
+        "mean": 0.875,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.15743088248060064,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.7870190182101737,
+          0.9129809817898262
+        ],
+        "mean": 0.85,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.16866616691580136,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "label": "Expanded spread / Near range / Aligned",
+      "mean_indexed_launch_range_m": 0.8451649660773648,
+      "mean_opposition_fraction": 0.775,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          -0.03677664536982744,
+          0.08677664536982745
+        ],
+        "mean": 0.025,
+        "n": 30,
+        "n_negative": 4,
+        "n_positive": 6,
+        "n_zero": 20,
+        "sd": 0.1654408947484642,
+        "wilcoxon_p_two_sided": 0.4921875
+      },
+      "range": "near",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.5143934994935321,
+          0.7022731671731345
+        ],
+        "mean": 0.6083333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.25157549539861285,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.025058508658505063,
+          0.12494149134149493
+        ],
+        "mean": 0.075,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 8,
+        "n_zero": 22,
+        "sd": 0.133745770155481,
+        "wilcoxon_p_two_sided": 0.0078125
+      },
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "label": "Expanded spread / Near range / Aligned",
+      "mean_indexed_launch_range_m": 0.8451649660773648,
+      "mean_opposition_fraction": 0.775,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          0.43609268839046156,
+          0.6305739782762051
+        ],
+        "mean": 0.5333333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 29,
+        "n_zero": 1,
+        "sd": 0.2604152298810939,
+        "wilcoxon_p_two_sided": 3.725290298461914e-09
+      },
+      "range": "near",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.03148963409521116,
+          0.11851036590478883
+        ],
+        "mean": 0.075,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 9,
+        "n_zero": 21,
+        "sd": 0.11652289992484975,
+        "wilcoxon_p_two_sided": 0.00390625
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.008710247017772522,
+          0.025376913684439187
+        ],
+        "mean": 0.008333333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 29,
+        "sd": 0.04564354645876383,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "label": "Expanded spread / Near range / Aligned",
+      "mean_indexed_launch_range_m": 0.8451649660773648,
+      "mean_opposition_fraction": 0.775,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          0.024679345473449188,
+          0.10865398785988414
+        ],
+        "mean": 0.06666666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 8,
+        "n_zero": 22,
+        "sd": 0.11244411127720089,
+        "wilcoxon_p_two_sided": 0.0078125
+      },
+      "range": "near",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.8370190182101738,
+          0.9629809817898263
+        ],
+        "mean": 0.9,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.16866616691580136,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.7949559915470338,
+          0.9217106751196328
+        ],
+        "mean": 0.8583333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.16972763848109068,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "label": "Expanded spread / Near range / Crossed",
+      "mean_indexed_launch_range_m": 0.7880512035042389,
+      "mean_opposition_fraction": 0.6166666666666667,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          -0.023579694905416608,
+          0.10691302823874993
+        ],
+        "mean": 0.041666666666666664,
+        "n": 30,
+        "n_negative": 4,
+        "n_positive": 8,
+        "n_zero": 18,
+        "sd": 0.17473296539406152,
+        "wilcoxon_p_two_sided": 0.26611328125
+      },
+      "range": "near",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.5568497446920985,
+          0.7098169219745681
+        ],
+        "mean": 0.6333333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.2048268121816715,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.004795994699256886,
+          0.09520400530074312
+        ],
+        "mean": 0.05,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 5,
+        "n_zero": 25,
+        "sd": 0.12105854952787558,
+        "wilcoxon_p_two_sided": 0.0625
+      },
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "label": "Expanded spread / Near range / Crossed",
+      "mean_indexed_launch_range_m": 0.7880512035042389,
+      "mean_opposition_fraction": 0.6166666666666667,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          0.5008024886906663,
+          0.6658641779760004
+        ],
+        "mean": 0.5833333333333334,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.22102166118424607,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "range": "near",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          -0.003484220753417224,
+          0.05348422075341723
+        ],
+        "mean": 0.025,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 3,
+        "n_zero": 27,
+        "sd": 0.07628214415734116,
+        "wilcoxon_p_two_sided": 0.25
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.008710247017772522,
+          0.025376913684439187
+        ],
+        "mean": 0.008333333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 29,
+        "sd": 0.04564354645876383,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "label": "Expanded spread / Near range / Crossed",
+      "mean_indexed_launch_range_m": 0.7880512035042389,
+      "mean_opposition_fraction": 0.6166666666666667,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          -0.007017376664116264,
+          0.040350709997449594
+        ],
+        "mean": 0.016666666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 2,
+        "n_zero": 28,
+        "sd": 0.06342703292561562,
+        "wilcoxon_p_two_sided": 0.5
+      },
+      "range": "near",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.7901830780254319,
+          0.9431502553079015
+        ],
+        "mean": 0.8666666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.20482681218167148,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.7740420779908874,
+          0.9259579220091125
+        ],
+        "mean": 0.85,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.2034190510862431,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "label": "Expanded spread / Far range / Aligned",
+      "mean_indexed_launch_range_m": 0.8917299813765298,
+      "mean_opposition_fraction": 0.725,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          -0.04304880025534963,
+          0.07638213358868295
+        ],
+        "mean": 0.016666666666666666,
+        "n": 30,
+        "n_negative": 4,
+        "n_positive": 5,
+        "n_zero": 21,
+        "sd": 0.15992095748737303,
+        "wilcoxon_p_two_sided": 0.65234375
+      },
+      "range": "far",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.45072054539633266,
+          0.6492794546036674
+        ],
+        "mean": 0.55,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 29,
+        "n_zero": 1,
+        "sd": 0.26587526243036186,
+        "wilcoxon_p_two_sided": 3.725290298461914e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.07371309377942675,
+          0.20962023955390657
+        ],
+        "mean": 0.14166666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 14,
+        "n_zero": 16,
+        "sd": 0.18198301044865156,
+        "wilcoxon_p_two_sided": 0.0001220703125
+      },
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "label": "Expanded spread / Far range / Aligned",
+      "mean_indexed_launch_range_m": 0.8917299813765298,
+      "mean_opposition_fraction": 0.725,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          0.28953309004740113,
+          0.5271335766192655
+        ],
+        "mean": 0.4083333333333333,
+        "n": 30,
+        "n_negative": 2,
+        "n_positive": 26,
+        "n_zero": 2,
+        "sd": 0.3181528946400081,
+        "wilcoxon_p_two_sided": 6.556510925292969e-07
+      },
+      "range": "far",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.019365899183534756,
+          0.13063410081646523
+        ],
+        "mean": 0.075,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 7,
+        "n_zero": 23,
+        "sd": 0.1489908583171094,
+        "wilcoxon_p_two_sided": 0.015625
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.007017376664116264,
+          0.040350709997449594
+        ],
+        "mean": 0.016666666666666666,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 2,
+        "n_zero": 28,
+        "sd": 0.06342703292561562,
+        "wilcoxon_p_two_sided": 0.5
+      },
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "label": "Expanded spread / Far range / Aligned",
+      "mean_indexed_launch_range_m": 0.8917299813765298,
+      "mean_opposition_fraction": 0.725,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          0.011283512896211455,
+          0.1053831537704552
+        ],
+        "mean": 0.058333333333333334,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 24,
+        "sd": 0.1260017332484327,
+        "wilcoxon_p_two_sided": 0.03125
+      },
+      "range": "far",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.8030526942808015,
+          0.9302806390525319
+        ],
+        "mean": 0.8666666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.170361346865265,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.7919861787936149,
+          0.9080138212063851
+        ],
+        "mean": 0.85,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.15536386656646634,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "label": "Expanded spread / Far range / Crossed",
+      "mean_indexed_launch_range_m": 0.8154800982347236,
+      "mean_opposition_fraction": 0.625,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          -0.04788515442273736,
+          0.08121848775607068
+        ],
+        "mean": 0.016666666666666666,
+        "n": 30,
+        "n_negative": 5,
+        "n_positive": 6,
+        "n_zero": 19,
+        "sd": 0.17287295182088022,
+        "wilcoxon_p_two_sided": 0.7001953125
+      },
+      "range": "far",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.5543586421250392,
+          0.7289746912082943
+        ],
+        "mean": 0.6416666666666667,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 30,
+        "n_zero": 0,
+        "sd": 0.23381518391645367,
+        "wilcoxon_p_two_sided": 1.862645149230957e-09
+      },
+      "baseline_completion": {
+        "ci95": [
+          0.03857469855209797,
+          0.1280919681145687
+        ],
+        "mean": 0.08333333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 10,
+        "n_zero": 20,
+        "sd": 0.11986582537134603,
+        "wilcoxon_p_two_sided": 0.001953125
+      },
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "label": "Expanded spread / Far range / Crossed",
+      "mean_indexed_launch_range_m": 0.8154800982347236,
+      "mean_opposition_fraction": 0.625,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          0.4676487604137598,
+          0.6490179062529069
+        ],
+        "mean": 0.5583333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 29,
+        "n_zero": 1,
+        "sd": 0.2428577465461443,
+        "wilcoxon_p_two_sided": 3.725290298461914e-09
+      },
+      "range": "far",
+      "spread": "expanded"
+    },
+    {
+      "aware_completion": {
+        "ci95": [
+          0.011283512896211455,
+          0.1053831537704552
+        ],
+        "mean": 0.058333333333333334,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 24,
+        "sd": 0.1260017332484327,
+        "wilcoxon_p_two_sided": 0.03125
+      },
+      "baseline_completion": {
+        "ci95": [
+          -0.008710247017772522,
+          0.025376913684439187
+        ],
+        "mean": 0.008333333333333333,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 1,
+        "n_zero": 29,
+        "sd": 0.04564354645876383,
+        "wilcoxon_p_two_sided": 1.0
+      },
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "label": "Expanded spread / Far range / Crossed",
+      "mean_indexed_launch_range_m": 0.8154800982347236,
+      "mean_opposition_fraction": 0.625,
+      "mean_target_spread_rms_m": 0.7553596824449623,
+      "paired_gain": {
+        "ci95": [
+          0.012021038995443697,
+          0.08797896100455631
+        ],
+        "mean": 0.05,
+        "n": 30,
+        "n_negative": 0,
+        "n_positive": 6,
+        "n_zero": 24,
+        "sd": 0.10170952554312157,
+        "wilcoxon_p_two_sided": 0.03125
+      },
+      "range": "far",
+      "spread": "expanded"
+    }
+  ],
+  "design": {
+    "baseline_pairing": "same seed, force and geometry condition",
+    "conditions": [
+      "nominal_near_aligned",
+      "nominal_near_crossed",
+      "nominal_far_aligned",
+      "nominal_far_crossed",
+      "expanded_near_aligned",
+      "expanded_near_crossed",
+      "expanded_far_aligned",
+      "expanded_far_crossed"
+    ],
+    "crossing_levels": [
+      "aligned",
+      "crossed"
+    ],
+    "estimator": "oracle",
+    "forces_N": [
+      0.1,
+      0.15,
+      0.2
+    ],
+    "gpu_hours": 0,
+    "network": false,
+    "nominal_compatibility_cell": "nominal_near_aligned",
+    "profile": "constant",
+    "range_levels": [
+      "near",
+      "far"
+    ],
+    "schema": "001-scene-geometry-campaign/v1",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "simulation_only": true,
+    "spread_levels": [
+      "nominal",
+      "expanded"
+    ],
+    "treatments": [
+      "baseline",
+      "wind_aware"
+    ]
+  },
+  "design_sha256": "166ef65591af83a311612a05f44a5d889aef5b7b28c14cdb11287749f39f93b1",
+  "factor_effects": [
+    {
+      "factor": "spread",
+      "force_N": 0.1,
+      "high_level": "expanded",
+      "high_mean_paired_gain": 0.025,
+      "high_minus_low": 0.0,
+      "low_level": "nominal",
+      "low_mean_paired_gain": 0.025,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.038416007477174524,
+          0.038416007477174524
+        ],
+        "mean": 0.0,
+        "n": 120,
+        "n_negative": 21,
+        "n_positive": 26,
+        "n_zero": 73,
+        "sd": 0.21252780342084834,
+        "wilcoxon_p_two_sided": 0.904053463732879
+      }
+    },
+    {
+      "factor": "range",
+      "force_N": 0.1,
+      "high_level": "far",
+      "high_mean_paired_gain": 0.014583333333333334,
+      "high_minus_low": -0.020833333333333332,
+      "low_level": "near",
+      "low_mean_paired_gain": 0.035416666666666666,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.05815421174216849,
+          0.01648754507550183
+        ],
+        "mean": -0.020833333333333332,
+        "n": 120,
+        "n_negative": 32,
+        "n_positive": 21,
+        "n_zero": 67,
+        "sd": 0.20646925151394407,
+        "wilcoxon_p_two_sided": 0.27477884128530117
+      }
+    },
+    {
+      "factor": "crossing",
+      "force_N": 0.1,
+      "high_level": "crossed",
+      "high_mean_paired_gain": 0.0375,
+      "high_minus_low": 0.024999999999999998,
+      "low_level": "aligned",
+      "low_mean_paired_gain": 0.0125,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.01700099306882373,
+          0.06700099306882373
+        ],
+        "mean": 0.025,
+        "n": 120,
+        "n_negative": 20,
+        "n_positive": 32,
+        "n_zero": 68,
+        "sd": 0.23236091891420868,
+        "wilcoxon_p_two_sided": 0.2913430504284795
+      }
+    },
+    {
+      "factor": "spread",
+      "force_N": 0.15,
+      "high_level": "expanded",
+      "high_mean_paired_gain": 0.5208333333333334,
+      "high_minus_low": -0.06458333333333333,
+      "low_level": "nominal",
+      "low_mean_paired_gain": 0.5854166666666667,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.12446963398800243,
+          -0.0046970326786642536
+        ],
+        "mean": -0.06458333333333334,
+        "n": 120,
+        "n_negative": 50,
+        "n_positive": 28,
+        "n_zero": 42,
+        "sd": 0.3313073057032171,
+        "wilcoxon_p_two_sided": 0.03684872575955132
+      }
+    },
+    {
+      "factor": "range",
+      "force_N": 0.15,
+      "high_level": "far",
+      "high_mean_paired_gain": 0.5270833333333333,
+      "high_minus_low": -0.05208333333333337,
+      "low_level": "near",
+      "low_mean_paired_gain": 0.5791666666666667,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.11433012276365231,
+          0.010163456096985643
+        ],
+        "mean": -0.052083333333333336,
+        "n": 120,
+        "n_negative": 50,
+        "n_positive": 33,
+        "n_zero": 37,
+        "sd": 0.34436617171854966,
+        "wilcoxon_p_two_sided": 0.10979699222796946
+      }
+    },
+    {
+      "factor": "crossing",
+      "force_N": 0.15,
+      "high_level": "crossed",
+      "high_mean_paired_gain": 0.6145833333333334,
+      "high_minus_low": 0.12291666666666673,
+      "low_level": "aligned",
+      "low_mean_paired_gain": 0.49166666666666664,
+      "paired_factor_contrast": {
+        "ci95": [
+          0.05901033679413337,
+          0.18682299653919995
+        ],
+        "mean": 0.12291666666666666,
+        "n": 120,
+        "n_negative": 30,
+        "n_positive": 59,
+        "n_zero": 31,
+        "sd": 0.35354720087889213,
+        "wilcoxon_p_two_sided": 0.0002919970383501447
+      }
+    },
+    {
+      "factor": "spread",
+      "force_N": 0.2,
+      "high_level": "expanded",
+      "high_mean_paired_gain": 0.04791666666666667,
+      "high_minus_low": 0.010416666666666671,
+      "low_level": "nominal",
+      "low_mean_paired_gain": 0.0375,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.014710165131645138,
+          0.03554349846497847
+        ],
+        "mean": 0.010416666666666666,
+        "n": 120,
+        "n_negative": 13,
+        "n_positive": 18,
+        "n_zero": 89,
+        "sd": 0.13900846859719262,
+        "wilcoxon_p_two_sided": 0.4797733975574374
+      }
+    },
+    {
+      "factor": "range",
+      "force_N": 0.2,
+      "high_level": "far",
+      "high_mean_paired_gain": 0.04583333333333333,
+      "high_minus_low": 0.006249999999999999,
+      "low_level": "near",
+      "low_mean_paired_gain": 0.03958333333333333,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.019595046164409713,
+          0.03209504616440972
+        ],
+        "mean": 0.00625,
+        "n": 120,
+        "n_negative": 16,
+        "n_positive": 17,
+        "n_zero": 87,
+        "sd": 0.14298182584163766,
+        "wilcoxon_p_two_sided": 0.6720237608533353
+      }
+    },
+    {
+      "factor": "crossing",
+      "force_N": 0.2,
+      "high_level": "crossed",
+      "high_mean_paired_gain": 0.0375,
+      "high_minus_low": -0.010416666666666671,
+      "low_level": "aligned",
+      "low_mean_paired_gain": 0.04791666666666667,
+      "paired_factor_contrast": {
+        "ci95": [
+          -0.03621741016955299,
+          0.015384076836219658
+        ],
+        "mean": -0.010416666666666666,
+        "n": 120,
+        "n_negative": 18,
+        "n_positive": 15,
+        "n_zero": 87,
+        "sd": 0.14273673146672486,
+        "wilcoxon_p_two_sided": 0.4797959038987756
+      }
+    }
+  ],
+  "gates": {
+    "declared_factorial": true,
+    "finite_outputs": true,
+    "local_only": true,
+    "nominal_compatibility_cell_present": true,
+    "pairing_integrity": true
+  },
+  "generated_utc": "2026-08-29T07:23:01.762132+00:00",
+  "n_rows": 1440,
+  "paired_records": [
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 1,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 4,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 5,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 6,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 8,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 9,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 10,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 11,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 12,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 13,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 14,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 15,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 17,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 18,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 19,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 20,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 23,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 25,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 26,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 27,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 28,
+      "spread": "nominal"
+    },
+    {
+      "condition": "nominal_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 29,
+      "spread": "nominal"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "near",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "near",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "near",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "near",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "near",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_near_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "near",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_aligned",
+      "crossing": "aligned",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": -0.25,
+      "range": "far",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.1,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 1.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.75,
+      "range": "far",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.15,
+      "paired_gain": 0.5,
+      "range": "far",
+      "seed": 29,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 0,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 1,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 2,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 3,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 4,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 5,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 6,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 7,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 8,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 9,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 10,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 11,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 12,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 13,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 14,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 15,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 16,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 17,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 18,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 19,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 20,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 21,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 22,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 23,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 24,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 25,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 26,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 27,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.0,
+      "range": "far",
+      "seed": 28,
+      "spread": "expanded"
+    },
+    {
+      "condition": "expanded_far_crossed",
+      "crossing": "crossed",
+      "force_N": 0.2,
+      "paired_gain": 0.25,
+      "range": "far",
+      "seed": 29,
+      "spread": "expanded"
+    }
+  ],
+  "pairing_errors": [],
+  "schema": "001-scene-geometry-analysis/v1",
+  "source": "data/e-raw-geometry/geometry_campaign_20260829.jsonl",
+  "source_sha256": "884f0a4e1b972ca0e26f054c9706350294bd9c06dd15e4cac301f77e3486a1f0",
+  "status": "analysis_ok"
+}

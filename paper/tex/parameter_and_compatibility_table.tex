@@ -1,0 +1,35 @@
+\begin{table}[!htbp]
+\centering
+\small
+\renewcommand{\arraystretch}{1.08}
+\caption{Fixed simulator and endpoint contract. Numerical results are regenerated
+from hash-bound evidence; each row states a reproducibility or comparison field.}
+\label{tab:parameter-contract}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.20\linewidth}
+>{\raggedright\arraybackslash}p{0.52\linewidth}
+>{\raggedright\arraybackslash}p{0.20\linewidth}@{}}
+\toprule
+Contract item & Declaration & Comparison role \\
+\midrule
+Airframe and team & CF2X nano-quadrotor; \DroneMass{}~g; hover
+\HoverThrust{}~N; \NDrones{} matched units. & Shared embodiment \\
+Time grid & $T=6$~s; 240~Hz physics; 48~Hz control; five steps per action. &
+Common horizon and rate \\
+Scene and endpoint & Seeded waypoints; first entry into the \CaptureRadius{}~m
+ball; retain $d_i^{\min}$. & Rate and distance endpoints \\
+Reference arm & Euclidean Hungarian assignment with stock position control;
+direction-free input. & Information-free arm \\
+Wind-aware arm & Same solver/control; upwind penalty $\lambda=0.25$ and
+directional target feedforward. & Directional intervention \\
+Estimator & Oracle, causal and biased-causal presets; causal state starts at zero.
+& Timing and quality \\
+Replanning & Re-solve unfinished pairs at 1~Hz; log assignment changes. &
+Operational trace \\
+Validation checkpoints & Zero-noise regression, force-reference-point trajectory
+check, capture-radius rerun and clean-room rebuild. & Implementation and endpoint
+validity \\
+Provenance & SHA-256 binds logs, tables, figures and macros; local CPU. &
+Rebuild gate \\
+\bottomrule
+\end{tabular}
+\end{table}
