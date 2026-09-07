@@ -2,9 +2,9 @@
 
 The validation target is the declared simulator operating envelope, not an
 implicit claim of completed field flight. Four checks are applied before a result
-enters the manuscript. First, numerical reproducibility is enforced by the
-SHA-256 evidence manifest, deterministic seeds and a clean-room rerun of the
-legacy receipt. Second, internal system validity is established with paired
+enters the manuscript. First, numerical reproducibility is enforced by
+verification manifests, deterministic seeds and independent re-execution.
+Second, internal system validity is established with paired
 aware--agnostic episodes: the simulator, scene, horizon, controller, allocator
 interface and endpoint are held fixed while one information or geometry factor
 is opened at a time. Third, endpoint validity is checked by reading thresholded
@@ -12,12 +12,21 @@ completion together with closest approach and by repeating the force ladder over
 capture radii. Fourth, transfer validity is represented by a declared parameter
 correspondence rather than by an unreported hardware claim.
 
+The fixed simulator contract is treated as a calibration object. The zero-noise
+regression, force-reference-point trajectory check, capture-radius rerun and
+clean-room rebuild are implementation gates, while the paired
+force/noise/temporal/pathway/geometry/size campaigns are the inferential gates.
+This separation prevents a visually plausible trajectory or a single favorable
+endpoint from being mistaken for independent validation.
+
 The correspondence is operational. A target vehicle is specified by mass,
 available thrust, controller update rate, wind-estimator update rate and capture
 criterion; the simulator quantities in the parameter contract are the initial
 values for those fields. A hardware or hardware-in-the-loop extension should
 re-estimate mass and thrust, time-align measured wind with vehicle state, replay
-the same constant and temporal profiles at the declared update rate, and run
+the same constant and temporal profiles at the declared update rate, compose the
+allocation--control stack with an active collision-and-downwash safety barrier
+(such as control barrier functions or velocity obstacles), and run
 both arms on identical scenes or recorded traces. The primary acceptance
 quantity remains the paired completion contrast at the transition, with the
 continuous closest-approach endpoint and the clearance diagnostic reported

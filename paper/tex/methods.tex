@@ -25,6 +25,20 @@ Eq.~\eqref{eq:time-grid}:
 Each control action is held for five rigid-body integration steps, and every
 campaign uses this same horizon and sampling contract.
 
+The simulation substrate intentionally isolates the rigid-body dynamics of the
+allocation--control interface. Four physical and aerodynamic phenomena are
+deliberately unmodeled in this computational baseline:
+(1) inter-rotor and inter-vehicle aerodynamic downwash or turbulent wake vortex
+interactions;
+(2) ground and ceiling proximity aerodynamic effects;
+(3) blade flapping dynamics and translational rotor drag at forward airspeed; and
+(4) motor thermal torque limits and battery voltage sag under sustained counter-wind
+thrust.
+The empirical transition window (\KneeLevel{}~N, or \KneePctHover{}\% of hover thrust)
+is therefore characterized strictly as the operating envelope of the declared
+rigid-body simulation contract, serving as an uncorrupted computational
+benchmark rather than an uncalibrated claim of open-air flight robustness.
+
 The primary endpoint is the completion rate. An airframe is marked complete at its
 first entry into the capture ball, rather than only at the final time. For airframe
 $i$ with active assignment $a_i(t)$, the completion time, rate and continuous
@@ -124,7 +138,7 @@ units are separated into the campaign design contract in
 Table~\ref{tab:campaign-contract}. Keeping these roles distinct makes the first
 table a compact reproduction anchor and the second a map of how the evidence
 expands. Neither table is a second source of numerical results: values reported
-in the Results remain emitted from the hash-bound evidence tables.
+in the Results remain programmatically generated from the evaluated campaign data.
 \input{../revision/parameter_and_compatibility_table}
 \input{../revision/campaign_design_table}
 
@@ -133,8 +147,8 @@ in the Results remain emitted from the hash-bound evidence tables.
 The wind-agnostic arm assigns airframes to waypoints by solving a linear
 assignment problem on Euclidean distance with the Hungarian algorithm
 ~\cite{kuhn1955hungarian,gerkey2004formal,dias2006market,choi2009cbba}, and flies
-the resulting targets with one simulator-stock \texttt{DSLPIDControl} instance per
-airframe.
+the resulting targets with one standard proportional-integral-derivative (PID)
+position controller per airframe.
 
 The controller gains, motor model, PWM/RPM conversion and saturation path are
 unchanged from the vendored simulator implementation and are listed in the
@@ -721,14 +735,12 @@ audit.
 
 \subsection{Reproducibility}
 
-No number in this manuscript is typed by hand. Every episode log and derived table
-this study rests on is recorded with its SHA-256 digest in a manifest that
-accompanies the manuscript source. The figure and table code verifies each digest
-against the bytes on disk before it reads them and aborts on any mismatch, and it
-emits both the figures and the numeric macros that the text prints. A changed
-artifact therefore breaks the build rather than silently changing a sentence.
-This separation of source, computation and rendered claim follows
-reproducible-research and simulation-reporting guidance~\cite{peng2011repro,sandve2013repro,
+Every numerical result reported in this manuscript is programmatically derived
+from the recorded simulation logs and statistical pipelines. Verification
+manifests bind all analytical outputs and figures to the underlying data before
+rendering, ensuring end-to-end consistency across tables and text. This
+separation of source, computation and rendered claim follows reproducible-research
+and simulation-reporting guidance~\cite{peng2011repro,sandve2013repro,
 monks2019stress,ozturk2025mrtasim}.
 
 Figures are generated in R with patchwork from the same bound tables: each panel

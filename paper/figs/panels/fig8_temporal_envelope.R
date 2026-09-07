@@ -62,7 +62,7 @@ right <- ggplot(tracking_plot_data,
            size = FIGURE_ANNOTATION_SIZE, family = FIGURE_FONT_FAMILY,
            colour = "grey30", hjust = 0) +
   scale_fill_manual(values = c("Oracle" = "#2166AC", "Causal" = "#1B7837",
-                               "Causal + bias" = "#B2182B"), name = "Estimate") +
+                               "Causal + bias" = "#B2182B"), guide = "none") +
   scale_colour_manual(values = c("Oracle" = "#2166AC", "Causal" = "#1B7837",
                                  "Causal + bias" = "#B2182B"), guide = "none") +
   scale_y_continuous(name = "Mean relative tracking error (%)", limits = c(0, 33.5),

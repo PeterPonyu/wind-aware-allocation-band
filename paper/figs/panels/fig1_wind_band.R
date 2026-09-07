@@ -109,7 +109,7 @@ contrast <- ggplot(f1_delta, aes(wind, delta)) +
            size = FIGURE_ANNOTATION_SIZE, family = FIGURE_FONT_FAMILY,
            colour = "grey30", hjust = 0) +
   force_axis +
-  scale_y_continuous(name = "Paired advantage (aware minus agnostic)",
+  scale_y_continuous(name = "Paired advantage",
                      limits = c(-0.14, 0.84), breaks = seq(0, 0.8, 0.2)) +
   rtx_theme() +
   theme(axis.title.x.top = element_blank(), axis.text.x.top = element_blank(),

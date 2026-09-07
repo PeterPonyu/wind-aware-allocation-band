@@ -45,7 +45,7 @@ top <- ggplot(annotated, aes(sigma, delta)) +
            colour = "grey25", hjust = 0) +
   scale_x_continuous(name = "Relative wind-estimate noise σ/|w|",
                      breaks = annotated$sigma, expand = expansion(mult = 0.07)) +
-  scale_y_continuous(name = "Paired advantage in completion rate", limits = Y_RANGE) +
+  scale_y_continuous(name = "Paired advantage", limits = Y_RANGE) +
   rtx_theme()
 top <- panel_label(
   top, "A", "Transition-force noise profile",

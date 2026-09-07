@@ -45,7 +45,7 @@ gain <- ggplot(RADIUS_COMPLETION,
   scale_shape_manual(values = radius_shapes, name = "Capture radius") +
   scale_x_continuous(name = "Steady horizontal wind force (N)",
                      breaks = sort(unique(RADIUS_COMPLETION$force_N))) +
-  scale_y_continuous(name = "Paired advantage (aware minus agnostic)",
+  scale_y_continuous(name = "Paired advantage",
                      limits = c(-0.14, 0.94), breaks = seq(0, 0.8, 0.2)) +
   rtx_theme() +
   theme(axis.title.x = element_blank(),

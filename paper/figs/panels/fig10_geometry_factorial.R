@@ -41,19 +41,19 @@ factor_plot <- ggplot(
   ) +
   rtx_theme() +
   theme(
-    legend.position = c(0.985, 0.985),
-    legend.justification = c(1, 1),
+    legend.position = "bottom",
+    legend.direction = "horizontal",
     legend.background = element_blank(),
     legend.box.background = element_blank(),
-    legend.direction = "vertical",
-    legend.spacing.y = unit(0.04, "cm"),
+    legend.spacing.x = unit(0.20, "cm"),
     legend.key.width = unit(0.30, "cm"),
     legend.text = element_text(family = FIGURE_FONT_FAMILY,
                                size = FIGURE_LEGEND_TEXT_SIZE),
     axis.text.x = element_text(family = FIGURE_FONT_FAMILY,
                                size = FIGURE_AXIS_TEXT_SIZE)
   ) +
-  guides(colour = guide_legend(ncol = 1, byrow = TRUE))
+  guides(colour = guide_legend(nrow = 1, byrow = TRUE),
+         shape = guide_legend(nrow = 1, byrow = TRUE))
 factor_plot <- panel_label(
   factor_plot, "A", "Geometry contrasts",
   "Paired factor effects; 30 seed clusters"

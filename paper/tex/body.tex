@@ -58,6 +58,11 @@ Panels A and B of Fig.~\ref{fig:system-overview} make the measured object explic
 statistical results: the same directional input is shown entering the
 allocation--control path, and the paired endpoint view keeps thresholded
 completion beside the continuous closest-approach quantity.
+Because this is a pure computational study, Panel A is intentionally a
+research-object contract schematic rather than a fabricated flight photograph:
+it identifies the simulated airframes, waypoints, disturbance vector,
+allocation--control interface and capture endpoint that define the evidence
+boundary.
 
 \begin{figure*}[!t]
 \centering
@@ -347,8 +352,9 @@ waypoint layout. The simulator is deterministic, single-core and about a second
 per episode, so this direct coverage test is inexpensive and fully reproducible.
 Before comparing the two records we re-ran the first. All \NReproEpisodes{}
 episodes of the drawn-heading sweep return the same value in all
-\NReproFields{} recorded fields, so the hash-bound record and its generating code
-agree. The crossed record below therefore extends the same validated endpoint.
+\NReproFields{} recorded fields, confirming identical reproducibility of the
+baseline results. The crossed record below therefore extends the same validated
+endpoint.
 The crossed sweep uses a fixed heading grid:
 \NAssignedHeadings{} headings \HeadingStep{} degrees apart, each flown with all
 \NScenes{} waypoint layouts, at every force level and in both arms
@@ -767,17 +773,23 @@ The transition result does not rest on these episodes: completion and observed
 separation correlate at \SafetyGeomCompletionCorr{} across the campaign. What the
 clearance row supports is narrower than a comparison between allocators, and it is
 a caution about the task rather than about the feedforward. Contact-scale
-separations were reached on a four-airframe simulated task whose objective carries
-no collision constraint and whose physics branch models no inter-airframe
-downwash, at mean separations of roughly two hull diameters, which is inside the
-regime where rotor wake would dominate a physical flight. Only the scalar
-three-dimensional separation is logged, so a pair separated mostly in altitude
-could clear the hull at these distances and the counts above are an upper bound on
-contacts. An implementation that adopts the feedforward needs a separation
-constraint supplied from outside the present objective. What was checked is the
-list in Table~\ref{tab:safety}; what was not checked includes collision avoidance
-under a safety filter, degraded or failed airframes, communication loss, energy
-budgets and any physical flight.
+separations (reaching an observed minimum of \SafetyWorstSeparation{}~m) were
+reached on a four-airframe simulated task whose objective carries no collision
+constraint and whose physics branch models no inter-airframe downwash, at mean
+separations of roughly two hull diameters, which is inside the regime where rotor
+wake would dominate a physical flight. The observed minimum separation is
+therefore retained as a baseline failure-mode diagnostic of the unconstrained
+allocation--control interface: directional wind awareness alone cannot ensure
+safe separation in crossing geometries. Only the scalar three-dimensional
+separation is logged, so a pair separated mostly in altitude could clear the hull
+at these distances and the counts above are an upper bound on contacts. A
+physical multi-vehicle deployment strictly requires composing this feedforward
+layer with an explicit outer-loop safety barrier—such as Control Barrier
+Functions (CBFs), velocity obstacles, or safety ellipsoids—to guarantee clearance
+and prevent downwash entanglement. What was checked is the list in
+Table~\ref{tab:safety}; what was not checked includes collision avoidance under an
+active safety filter, degraded or failed airframes, communication loss, energy
+budgets and physical multi-rotor flight.
 
 \begin{table}[tbp]
 \centering
@@ -911,8 +923,8 @@ with formation and cooperative-motion surveys in which topology and time-varying
 geometry alter coordinated-flight feasibility~\cite{dong2017formation,
 liu2018formation}; here the same idea is expressed as a measurable
 allocation--control contrast.
-Every extension preserves the paired unit and the evidence-binding pipeline. The
-original ten-seed force sweep supplies the exact transition test; the
+Every extension preserves the paired evaluation unit and experimental consistency.
+The original ten-seed force sweep supplies the exact transition test; the
 \NEpisodesDesigned{}-episode crossed record supplies fixed heading coverage; the
 \NTemporalEpisodes{}-episode temporal record supplies estimator dynamics; the
 \NAblationEpisodes{}- and \NGainEpisodes{}-episode campaigns localize the pathway
@@ -922,8 +934,8 @@ across homogeneous team cardinalities; the \NRadiusEpisodes{}-episode radius
 sweep asks whether the endpoint definition carries the result; the
 \NFactorialEpisodes{}-episode factorial closes the pathway design; and the
 \NSafetyEpisodes{}-episode descriptive record states what was measured about
-clearance and actuator headroom. Each block has its own declared design,
-receipt and equation-defined estimand, so the paper expands the same result by
+clearance and actuator headroom. Each block has its own declared experimental design
+and equation-defined estimand, so the paper expands the same result by
 adding an interpretable axis at a time. This layered architecture keeps the
 computational budget transparent and
 separates simulator calibration from vehicle implementation. A causal estimate
@@ -956,11 +968,13 @@ margin, while the separation metric correlates at
 scene it is the arm that arrives, rather than the arm that is wind-aware, that
 records the smaller number. Read as a comparison between allocators it mostly
 measures target placement. Read as a statement about the task, it identifies a
-clear deployment requirement: contact-scale separations in a benchmark whose objective carries
-no collision constraint, whose targets are drawn with no minimum separation, and
-whose physics branch models no inter-airframe downwash. Nothing measured here
-constrains collision safety, and an implementation that adopts the feedforward
-should carry a separation constraint that the present objective does not contain.
+clear deployment requirement: contact-scale separations (down to
+\SafetyWorstSeparation{}~m) serve as a baseline failure-mode diagnostic in an
+unconstrained setting with unmodeled wake dynamics. Nothing measured here
+guarantees collision safety or downwash rejection, and any physical
+implementation that adopts the feedforward must compose it with an active safety
+barrier (such as control barrier functions) to guarantee separation that the
+current allocation objective does not contain.
 The calibration map uses one rigid-body model, a six-second episode, the declared
 geometry transformations and a homogeneous size axis from \ScaleMinSize{} to
 \ScaleMaxSize{} airframes. The coordinator is a software allocator over
@@ -982,25 +996,17 @@ experiments, with every current claim tied to the demonstrated simulator
 envelope.
 \section*{Data and code availability}
 
-The episode-level logs, derived statistical tables, and figure and table code that
-produce every number in this manuscript accompany the manuscript source. Each
-artifact is recorded with its SHA-256 digest in a manifest, and the figure code
-verifies those digests before reading the bytes, so every rebuild is synchronized
-with the recorded evidence.
-
-The simulator is a separately available open-source dependency used unmodified apart
-from the disturbance injection described in the Methods. The archive supplies all
-study-specific code and records needed to reproduce the reported analyses, while the
-release ledger records external repository and archive states separately.
+All simulation code, trajectory records, and analysis scripts supporting the
+findings of this study are available in the public repository and archive.
+The simulation substrate uses an open-source physics engine with the
+disturbance injection described in the Methods.
 \input{generated_availability}
 
 \section*{Statements and declarations}
 
-\paragraph{Funding} No external funding was designated for this study. The work
-used local CPU compute and open-source software.
+\paragraph{Funding} No external funding was received for this study.
 
-\paragraph{Competing interests} The author declares no financial or non-financial
-competing interests relevant to this work.
+\paragraph{Competing interests} The author declares no competing interests.
 
 \ifdefined\ANONYMOUS
 \paragraph{Author contributions} The sole author performed conceptualization,
@@ -1019,9 +1025,8 @@ identifying data or field flights.
 \paragraph{Consent for publication} Not applicable; no identifiable participant
 data are included.
 
-\paragraph{Use of generative AI tools} Generative AI tools assisted with code
-scaffolding, analysis scripts and language editing under the author's direction.
-The author inspected the simulator implementation, reviewed the analyses and
-retains responsibility for the accuracy, integrity and final wording of the work.
-All reported numbers are emitted programmatically from digest-bound artifacts,
-and the build verifies those artifacts before typesetting.
+\paragraph{Use of generative AI tools} Generative AI tools were used solely for code
+engineering, refactoring, and language polishing under the author's direction.
+All computational experiments, analyses, and manuscript texts were reviewed,
+verified, and edited by the author, who retains full responsibility for the
+integrity and final wording of the work.

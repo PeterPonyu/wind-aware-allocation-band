@@ -36,7 +36,7 @@ curve <- ggplot(f7_curve, aes(wind_N, delta)) +
            label = sprintf("%d drawn\nseeds", N_SEEDS)) +
   scale_x_continuous(name = "Steady horizontal wind force (N)",
                      breaks = f7_curve$wind_N) +
-  scale_y_continuous(name = "Paired advantage of wind-aware allocation",
+  scale_y_continuous(name = "Paired advantage",
                      limits = c(-0.06, 0.80)) +
   rtx_theme() +
   theme(axis.text.x = element_text(family = FIGURE_FONT_FAMILY,
@@ -63,13 +63,14 @@ rect <- ggplot(cells, aes(factor(scene), heading, fill = delta)) +
   theme(
         axis.text.x = element_text(family = FIGURE_FONT_FAMILY,
                                    size = FIGURE_AXIS_TEXT_SIZE),
-        legend.position = "right",
+        legend.position = "bottom",
+        legend.direction = "horizontal",
         legend.background = element_blank(),
         legend.box.background = element_blank(),
-        legend.key.width = unit(0.22, "cm"),
-        legend.key.height = unit(0.55, "cm"),
+        legend.key.width = unit(0.65, "cm"),
+        legend.key.height = unit(0.24, "cm"),
         legend.title = element_text(family = FIGURE_FONT_FAMILY,
-                                    size = FIGURE_LEGEND_TITLE_SIZE),
+                                    size = FIGURE_LEGEND_TITLE_SIZE, vjust = 0.85),
         legend.text = element_text(family = FIGURE_FONT_FAMILY,
                                    size = FIGURE_LEGEND_TEXT_SIZE))
 rect <- panel_label(
@@ -77,6 +78,5 @@ rect <- panel_label(
   "Interaction shown by cell"
 )
 
-save_fig((curve | rect) + plot_layout(widths = c(1.08, 1), guides = "collect") &
-           theme(legend.position = "bottom", legend.box = "horizontal"),
+save_fig((curve | rect) + plot_layout(widths = c(1.08, 1)),
          "fig7_designed_replicates", FIGURE_CANVAS_WIDTH_IN, 3.35)

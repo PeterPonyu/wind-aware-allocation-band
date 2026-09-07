@@ -67,9 +67,10 @@ separation <- ggplot(SAFETY_SEPARATION,
                            min(SAFETY_SEPARATION$min)),
            size = FIGURE_ANNOTATION_SIZE, family = FIGURE_FONT_FAMILY,
            colour = "grey30", hjust = 0, vjust = -0.7) +
-  scale_colour_manual(values = arm_colours, name = NULL) +
+  scale_colour_manual(values = arm_colours, name = NULL,
+                      labels = c("Wind-agnostic", "Wind-aware")) +
   scale_x_discrete(name = "Steady horizontal wind force (N)") +
-  scale_y_continuous(name = "Minimum pairwise separation (m)",
+  scale_y_continuous(name = "Minimum separation (m)",
                      limits = c(0, 0.46), breaks = seq(0, 0.4, 0.1)) +
   rtx_theme() +
   theme(legend.position = "bottom", legend.margin = margin(2, 0, 0, 0))

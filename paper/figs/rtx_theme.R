@@ -35,8 +35,8 @@ FIGURE_PANEL_LABEL_SIZE <- 11.6
 # label flush on the corner reads as part of the frame at print size, so the
 # glyph is held off the corner in both directions.  The title is centred
 # independently below it; the tag is never used as a title prefix.
-FIGURE_PANEL_LABEL_GAP <- 3.2
-FIGURE_PANEL_LABEL_LIFT <- 2.4
+FIGURE_PANEL_LABEL_GAP <- 4.5
+FIGURE_PANEL_LABEL_LIFT <- 0.0
 
 # Wrap width for panel subtitles, in characters.  Two bounds meet here: wrap too
 # late and a subtitle runs under the neighbouring panel, wrap too early and the
@@ -109,7 +109,7 @@ rtx_theme <- function(base_size = FIGURE_BASE_SIZE) {
       legend.background = ggplot2::element_blank(),
       legend.box.background = ggplot2::element_blank(),
       strip.background = ggplot2::element_blank(),
-      plot.margin = ggplot2::margin(t = 11, r = 6, b = 6, l = 8)
+      plot.margin = ggplot2::margin(t = 7.5, r = 6, b = 6, l = 8)
   )
 }
 
@@ -143,12 +143,12 @@ panel_label <- function(plot, label, title, subtitle = NULL) {
       plot.tag.location = "plot",
       plot.tag.position = c(0, 1),
       plot.tag = ggplot2::element_text(
-        family = FIGURE_FONT_FAMILY, hjust = 0, vjust = 0,
+        family = FIGURE_FONT_FAMILY, hjust = 0, vjust = 1,
         size = FIGURE_PANEL_LABEL_SIZE, face = "bold",
         margin = ggplot2::margin(l = FIGURE_PANEL_LABEL_GAP,
                                  b = FIGURE_PANEL_LABEL_LIFT)
       ),
       # Keep enough outer room for the label's ascender and leftward extent.
-      plot.margin = ggplot2::margin(t = 11, r = 6, b = 6, l = 8)
+      plot.margin = ggplot2::margin(t = 7.5, r = 6, b = 6, l = 8)
     )
 }
