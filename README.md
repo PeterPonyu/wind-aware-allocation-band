@@ -8,19 +8,16 @@ Repository: https://github.com/PeterPonyu/wind-aware-allocation-band
 
 ## What is here
 
-- `paper/tex/` — manuscript source. The abstract, the methods and the figure
-  captions are separate files and each is self-contained.
-- `paper/figs/` — the R code that draws every figure and emits every number the
-  manuscript prints.
-- `paper/evidence/` — the manifest binding each artifact to its SHA-256 digest.
-- `data/` — the 28 artifacts the manifest names, at the bytes that
-  were hashed.
+- `paper/tex/` — manuscript source
+- `paper/figs/` — the R code that draws the figures and writes the printed numbers
+- `paper/evidence/` — a file list with SHA-256 hashes
+- `data/` — the 28 data files named in that list
 
-## Not redistributed
+## Not included
 
-The manuscript's evidence manifest binds one further artifact that this archive does not carry. No number in the manuscript is derived from that material; it is bound because the manuscript refers to the content, and held back for the reason below.
+This archive leaves out one extra file named in the paper's evidence list. The paper does not take any number from it.
 
-- A working log kept during development. It is a project record rather than a result: it mixes the build history with scoping notes and forward-looking recommendations that are not claims about the world, and no number in the manuscript comes from it. The defect it records is described in full in the manuscript's methods section.
+- A development log. The paper does not use any number from it. The defect it mentions is already described in the methods.
 
 ## Rebuild
 
@@ -28,9 +25,9 @@ The manuscript's evidence manifest binds one further artifact that this archive 
 bash build.sh
 ```
 
-The build re-hashes every artifact before reading it and stops if any byte has
-moved. Figures and printed numbers are regenerated from those bytes rather than
-transcribed, so the manuscript cannot quietly disagree with its own data.
+The build checks every data file against its hash and stops if a file has
+changed. Figures and printed numbers are generated from those files, not typed
+in by hand.
 
 Requires `python3`, `Rscript` with `digest`, `ggplot2`, `jsonlite`, `patchwork`
 and `systemfonts`, and a TeX distribution with `latexmk`.

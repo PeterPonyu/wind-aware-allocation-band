@@ -40,11 +40,11 @@ the build instead of producing a stale number.
 
 Some of these files recorded the paths of the machine that produced them. Those path strings and source links were refreshed before deposit; `REDACTION.md` states the rules, lists every file touched with both digests, and describes the check that proves no number changed.
 
-## Not redistributed
+## Not included
 
-The manuscript's evidence manifest binds one further artifact that this archive does not carry. No number in the manuscript is derived from that material; it is bound because the manuscript refers to the content, and held back for the reason below.
+This archive leaves out one extra file named in the paper's evidence list. The paper does not take any number from it.
 
-- A working log kept during development. It is a project record rather than a result: it mixes the build history with scoping notes and forward-looking recommendations that are not claims about the world, and no number in the manuscript comes from it. The defect it records is described in full in the manuscript's methods section.
+- A development log. The paper does not use any number from it. The defect it mentions is already described in the methods.
 
 ## Checking the archive without building it
 
@@ -61,5 +61,5 @@ and reports the first artifact that has drifted.
 bash build.sh
 ```
 
-Stage order is verify, regenerate, typeset. Each stage is a hard gate on the
-next.
+The steps are check the files, redraw the figures, then typeset. Each step
+must finish before the next one starts.
