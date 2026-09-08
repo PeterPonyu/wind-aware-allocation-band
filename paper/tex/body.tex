@@ -24,7 +24,7 @@ tracking models that expose aerodynamic effects in high-speed flight
 ~\cite{faessler2018flatness}. At the coordination level, task-allocation taxonomies,
 market-based coordination and consensus auctions provide established abstractions
 for capability, coupling and robustness~\cite{gerkey2004formal,dias2006market,
-choi2009cbba,korsah2013taxonomy,khamis2015mrta,chakraa2023mrta}; end-to-end UAV assignment and intercept studies
+choi2009cbba,korsah2013taxonomy,khamis2015mrta,chakraa2023mrta}; end-to-end unmanned aerial vehicle (UAV) assignment and intercept studies
 connect those abstractions to feasible trajectories~\cite{beard2002target,turpin2014goal}.
 Recent surveys organise the adjacent task-assignment, path-planning and
 mission-planning design spaces, but leave the information-to-completion interface
@@ -94,8 +94,8 @@ transfer.
 \subsection{Operating envelope}
 
 Table~\ref{tab:band} and Fig.~\ref{fig:band}A give the full sweep. The continuous
-closest-approach companion is carried in Fig.~\ref{fig:miss} and is read alongside
-the thresholded endpoint.
+closest-approach companion is reported in the continuous-tracking subsection below
+and is read alongside the thresholded endpoint.
 At \KneeLevel{}~N, which is \KneePctHover{} percent of one airframe's hover thrust, the
 wind-agnostic allocator completes \KneeAgnostic{} of waypoints on average and the
 wind-aware allocator completes \KneeAware{}. The paired difference is
@@ -107,7 +107,7 @@ the arms' dispersions do not separate. Fig.~\ref{fig:band}B therefore plots the
 seed-paired difference the test is actually computed on, and its 95~percent
 interval excludes zero at \KneeLevel{}~N and at no other force in the sweep.
 This force is specific to the \CaptureRadius{}~m capture radius that defines
-completion here; Panels A and B of Fig.~\ref{fig:radius} rerun the ladder at two further radii and
+completion here; the endpoint-radius subsection below reruns the ladder at two further radii and
 finds a transition of comparable size at a different force in each, so
 \KneeLevel{}~N should be read as the transition of this operating point rather
 than a constant of the allocator.
@@ -655,7 +655,7 @@ distance the experiment chose rather than measured. The validation sweep reruns 
 force ladder at radii of \RadiusGrid{}~m over \NRadiusEpisodes{} episodes, holding
 scene, heading, seed pairing and horizon fixed, and the anchor column reproduces
 the primary ladder exactly. Table~\ref{tab:radius} gives the full grid and
-Fig.~\ref{fig:radius}A the paired advantage at each radius. The receipt corrects
+Fig.~\ref{fig:radius}A the paired advantage at each radius. The record corrects
 the underlying continuous distance as its own family on the same rows, and it
 moves the same way: the wind-aware arm ends closer to its target in
 \RadiusContinuousCloser{} of the \RadiusContinuousCells{} radius-force cells, with
@@ -853,7 +853,7 @@ the safety block reports no estimate at all.
 \centering
 \caption{Cross-campaign evidence architecture. ``Rows'' counts episode records and
 ``Inferential unit'' gives the seed or layout-cluster unit used for intervals. The
-pathway-ablation and gain-sensitivity receipts form one block; transition values
+pathway-ablation and gain-sensitivity records form one block; transition values
 are descriptive estimates that retain each view's inferential unit.}
 \label{tab:evidence}
 \small

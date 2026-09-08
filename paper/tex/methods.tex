@@ -150,7 +150,7 @@ assignment problem on Euclidean distance with the Hungarian algorithm
 the resulting targets with one standard proportional-integral-derivative (PID)
 position controller per airframe.
 
-The controller gains, motor model, PWM/RPM conversion and saturation path are
+The controller gains, motor model, pulse-width-modulation to rotor-speed (PWM/RPM) conversion and saturation path are
 unchanged from the vendored simulator implementation and are listed in the
 parameter contract. This stock position layer is consistent with the standard
 rigid-body tracking formulation for quadrotors~\cite{lee2010se3}; the present
@@ -290,7 +290,7 @@ the threshold is defined by Eq.~\eqref{eq:bonferroni}:
 
 The exact signed-rank values use the same contrasts with zero differences removed;
 the $t$ interval is reported alongside the exact test for the seed-level families.
-The revised support receipt keeps its inferential unit explicit: crossed-layout
+The revised support record keeps its inferential unit explicit: crossed-layout
 intervals use an ordinary bootstrap over layout clusters, whereas geometry and
 scale tests use their declared seed-level contrasts. Episode rows and bootstrap
 draws are never counted as independent experimental units.
@@ -325,7 +325,7 @@ are absent; no equivalence margin was prespecified. It records the resolution of
 the executed design and identifies the effect range for a follow-up campaign.
 
 The raw exact value and the corresponding adjusted value are retained together in
-the bound receipt. The primary seven-force family remains governed by the
+the recorded result table. The primary seven-force family remains governed by the
 predeclared Bonferroni threshold above; Holm is used only for the explicitly named
 support families in the campaign contract.
 
@@ -337,7 +337,7 @@ inference explicit and prevents the episode count from being mistaken for an
 independent-sample size. This simulation design follows reporting practice that
 separates the data-generating design, estimand and analysis family
 ~\cite{morris2019simulation}. Every generated table is re-derived from its
-bound receipt, checked for its declared row count and pairing, and emitted by the
+recorded result file, checked for its declared row count and pairing, and emitted by the
 same R pass that emits the manuscript macros; the prose reads those values directly.
 
 For the estimate-noise table, the complete disturbance-by-noise family contains
@@ -729,14 +729,14 @@ Equation~\eqref{eq:crossed-bootstrap} defines the layout-cluster mean and its
 deterministic bootstrap replicate. Here $b=1,\ldots,B$ and $B=\NCrossedBootstrap{}$. The reported 95\% interval
 is the empirical 2.5th--97.5th percentile range of the bootstrap means. Treating
 all \NPairsPerForce{} cells as independent would understate uncertainty and is
-not done. The crossed receipt does not add a signed-rank $p$ value to this
+not done. The crossed-design record does not add a signed-rank $p$ value to this
 interval readout; its Holm family metadata is retained for the separate endpoint
 audit.
 
 \subsection{Reproducibility}
 
 Every numerical result reported in this manuscript is programmatically derived
-from the recorded simulation logs and statistical pipelines. Verification
+from the recorded simulation logs and statistical analysis code. Verification
 manifests bind all analytical outputs and figures to the underlying data before
 rendering, ensuring end-to-end consistency across tables and text. This
 separation of source, computation and rendered claim follows reproducible-research
