@@ -961,6 +961,187 @@ evidence_table <- data.frame(
 )
 
 ## ---------------------------------------------------------------------------
+## Controller-identification audit (audit20260907).  Numbers are asserted
+## against the bound summaries and then emitted; the existing factorial Holm
+## family above is left untouched.
+## ---------------------------------------------------------------------------
+
+read_audit <- function(id) {
+  jsonlite::fromJSON(read_bound$path(id), simplifyVector = FALSE)
+}
+assert_near <- function(x, target, label, tol = 1e-3) {
+  if (!isTRUE(abs(as.numeric(x) - target) < tol)) {
+    stop(sprintf("%s: expected ≈ %s, got %s", label, target, x))
+  }
+  invisible(TRUE)
+}
+assert_audit_jsonl <- function(receipt, raw_id, label) {
+  actual <- digest::digest(read_bound$path(raw_id), algo = "sha256", file = TRUE)
+  expected <- receipt$source_jsonl_sha256
+  if (is.null(expected) || !identical(as.character(expected), actual)) {
+    stop(label, " receipt does not hash the bound raw source")
+  }
+  invisible(TRUE)
+}
+audit_pick <- function(rows, setting) {
+  hit <- Filter(function(row) identical(as.character(row$setting), setting), rows)
+  if (length(hit) != 1L) stop("audit table is missing setting ", setting)
+  hit[[1]]
+}
+audit_ci <- function(pair) as.numeric(pair)
+
+audit_predecl <- read_audit("E-AUDIT-PREDECL")
+audit_receipt <- read_audit("E-AUDIT-RECEIPT")
+audit_a1 <- read_audit("E-AUDIT-A1")
+audit_a1b <- read_audit("E-AUDIT-A1B")
+audit_a2 <- read_audit("E-AUDIT-A2")
+audit_a3 <- read_audit("E-AUDIT-A3")
+audit_a4 <- read_audit("E-AUDIT-A4")
+audit_a5 <- read_audit("E-AUDIT-A5")
+audit_a7 <- read_audit("E-AUDIT-A7")
+assert_audit_jsonl(audit_a1, "E-AUDIT-A1-RAW", "A1")
+assert_audit_jsonl(audit_a2, "E-AUDIT-A2-RAW", "A2")
+assert_audit_jsonl(audit_a7, "E-AUDIT-A7-RAW", "A7")
+invisible(audit_receipt)
+
+STOCK_FACTS <- audit_predecl$stock_controller_facts_read_from_source
+assert_near(STOCK_FACTS$I_COEFF_FOR_xy_N_per_m_s, 0.05, "stock Ki")
+assert_near(STOCK_FACTS$integral_wind_up_time_constant_Kp_over_Ki_s, 8.0, "integral tau")
+assert_near(STOCK_FACTS$episode_horizon_s, 6.0, "episode horizon")
+assert_near(STOCK_FACTS$integral_clamp_xy_m_s, 2.0, "integral clamp")
+assert_near(STOCK_FACTS$max_steady_integral_force_xy_N, 0.1, "max steady integral force")
+
+STOCK_REPRO <- audit_a1$stock_reproduces_bound_primary_sweep
+if (!identical(as.integer(STOCK_REPRO$n_match), 140L) ||
+    !identical(as.integer(STOCK_REPRO$n_checked), 140L)) {
+  stop("A1 stock reproduction is not 140/140")
+}
+A1_KI_TEN <- audit_pick(audit_a1$gain_at_0p15N_by_setting, "ki0.10_clamp2")
+A1_STOCK <- audit_pick(audit_a1$gain_at_0p15N_by_setting, "ki0.05_clamp2")
+A1_KI_TEN_CI <- audit_ci(A1_KI_TEN$gain_ci95_t)
+assert_near(A1_KI_TEN$paired_gain_0p15N, 0.008333, "Ki=0.10 paired gain")
+if (!isTRUE(all.equal(as.numeric(A1_KI_TEN$wilcoxon_p), 0.84375))) {
+  stop("Ki=0.10 Wilcoxon p is not 0.84375")
+}
+if (!isTRUE(all.equal(as.numeric(A1_KI_TEN$sign_p), 0.7265625))) {
+  stop("Ki=0.10 sign p is not 0.7265625")
+}
+assert_near(A1_KI_TEN_CI[1], -0.049073, "Ki=0.10 CI lo", tol = 2e-3)
+assert_near(A1_KI_TEN_CI[2], 0.065740, "Ki=0.10 CI hi", tol = 2e-3)
+assert_near(A1_KI_TEN$baseline_completion_0p15N, 0.791667, "Ki=0.10 baseline")
+assert_near(A1_KI_TEN$aware_completion_0p15N, 0.80, "Ki=0.10 aware")
+assert_near(A1_KI_TEN$baseline_knee_first_below_0p5_N, 0.20, "Ki=0.10 baseline knee")
+assert_near(A1_KI_TEN$aware_knee_first_below_0p5_N, 0.20, "Ki=0.10 aware knee")
+if (!identical(as.character(audit_a1$prediction_P1$overall), "MIXED")) {
+  stop("A1 prediction P1 is not MIXED")
+}
+assert_near(A1_STOCK$paired_gain_0p15N, 0.541667, "stock paired gain")
+for (clamp_name in c("ki0.05_clamp4", "ki0.05_clamp8")) {
+  changed <- audit_a1$clamp_binding_vs_stock_by_force[[clamp_name]][["0.15"]]$n_completion_changed
+  if (!identical(as.integer(changed), 0L)) {
+    stop(clamp_name, " changes a 0.15 N completion")
+  }
+}
+
+A1B_DURS <- vapply(audit_a1b$table, function(row) as.numeric(row$duration_s), numeric(1))
+if (!length(A1B_DURS) || any(abs(A1B_DURS - 12) > 1e-9)) {
+  stop("A1b table lacks T=12 rows")
+}
+A1B_STOCK <- audit_pick(audit_a1b$table, "ki0.05_clamp2")
+A1B_CLAMP8 <- audit_pick(audit_a1b$table, "ki0.05_clamp8")
+assert_near(A1B_STOCK$baseline_completion_0p15N, 0.816667, "A1b T=12 stock baseline")
+if (abs(as.numeric(A1B_STOCK$baseline_completion_0p20N) -
+        as.numeric(A1B_CLAMP8$baseline_completion_0p20N)) < 1e-3) {
+  stop("A1b clamp=8 does not change 0.20 N completion at T=12")
+}
+
+if (!identical(as.character(audit_a2$prediction_P2$overall), "CONFIRMED") ||
+    !isTRUE(audit_a2$prediction_P2$gain_0p15N_vanishes_at_T_ge_10)) {
+  stop("A2 prediction P2 is not confirmed with vanishing gain at T>=10")
+}
+a2_gain_at <- function(horizon) {
+  hit <- Filter(function(row) abs(as.numeric(row$duration_s) - horizon) < 1e-9,
+                audit_a2$gain_at_0p15N_by_horizon)
+  if (length(hit) != 1L) stop("A2 is missing horizon T=", horizon)
+  as.numeric(hit[[1]]$paired_gain_0p15N)
+}
+assert_near(a2_gain_at(4), 0.041667, "A2 T=4 gain")
+assert_near(a2_gain_at(6), 0.541667, "A2 T=6 gain")
+assert_near(a2_gain_at(8), 0.141667, "A2 T=8 gain")
+assert_near(a2_gain_at(10), -0.066667, "A2 T=10 gain")
+assert_near(a2_gain_at(12), -0.066667, "A2 T=12 gain")
+
+A3_LOGISTIC <- audit_a3$arms$baseline$logistic
+A3_WIDTH_CI <- audit_ci(A3_LOGISTIC$width_10_90_ci95_cluster)
+if (!identical(as.character(audit_a3$prediction_P3$overall), "CONFIRMED")) {
+  stop("A3 prediction P3 is not CONFIRMED")
+}
+assert_near(A3_LOGISTIC$width_10_90_N, 0.056745, "A3 10-90 width")
+assert_near(A3_WIDTH_CI[1], 0.045130, "A3 width CI lo")
+assert_near(A3_WIDTH_CI[2], 0.068361, "A3 width CI hi")
+
+A4_P5 <- audit_a4$prediction_P5
+A4_NEVER <- A4_P5$per_arm_pooled_F_ge_0p20N
+if (!identical(as.character(A4_P5$overall), "CONFIRMED")) {
+  stop("A4 prediction P5 is not CONFIRMED")
+}
+assert_near(A4_NEVER$baseline$frac_never_within_0p5m, 0.530556, "A4 never-close baseline")
+assert_near(A4_NEVER$wind_aware$frac_never_within_0p5m, 0.533333, "A4 never-close aware")
+assert_near(audit_a4$post_completion_freeze$frac_ground_contact_after_completion,
+            0.866417, "A4 ground contact after completion")
+assert_near(audit_a4$post_completion_freeze$frac_altitude_loss_gt_0p10m,
+            0.943820, "A4 altitude loss after completion")
+
+A5_REG <- audit_a5$regressions$baseline_F50_on_rc
+A5_SLOPE_CI <- audit_ci(A5_REG$slope_ci95)
+if (!identical(as.character(audit_a5$prediction_P4$overall), "MIXED")) {
+  stop("A5 prediction P4 is not MIXED")
+}
+assert_near(A5_REG$slope, 0.682501, "A5 radius slope")
+assert_near(A5_SLOPE_CI[1], 0.541656, "A5 radius slope lo")
+assert_near(A5_SLOPE_CI[2], 0.823347, "A5 radius slope hi")
+if (!(A5_SLOPE_CI[1] < 1 && A5_SLOPE_CI[2] < 1)) {
+  stop("A5 radius-slope CI does not exclude 1.0")
+}
+
+A7_TOTALS <- audit_a7$totals
+if (!identical(as.integer(A7_TOTALS$aware_arm_initial_divergence_episodes), 0L) ||
+    !identical(as.integer(A7_TOTALS$aware_arm_episodes), 210L) ||
+    !identical(as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence), 7L) ||
+    !identical(as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence_primary_seeds), 2L) ||
+    !identical(as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence_at_0p15N), 1L)) {
+  stop("A7 assignment-divergence totals do not match the bound receipt")
+}
+
+AUDIT_A1_GAIN <- do.call(rbind, lapply(audit_a1$gain_at_0p15N_by_setting, function(row) {
+  ci <- audit_ci(row$gain_ci95_t)
+  data.frame(
+    setting = as.character(row$setting),
+    ki = as.numeric(row$ki_xy),
+    clamp = as.numeric(row$clamp_xy),
+    gain = as.numeric(row$paired_gain_0p15N),
+    lo = ci[[1]],
+    hi = ci[[2]],
+    stringsAsFactors = FALSE
+  )
+}))
+AUDIT_A1_GAIN$clamp_label <- factor(
+  sprintf("clamp = %g m/s", AUDIT_A1_GAIN$clamp),
+  levels = sprintf("clamp = %g m/s", sort(unique(AUDIT_A1_GAIN$clamp)))
+)
+AUDIT_A2_HORIZON <- do.call(rbind, lapply(audit_a2$gain_at_0p15N_by_horizon, function(row) {
+  ci <- audit_ci(row$gain_ci95_t)
+  data.frame(
+    horizon = as.numeric(row$duration_s),
+    gain = as.numeric(row$paired_gain_0p15N),
+    lo = ci[[1]],
+    hi = ci[[2]],
+    baseline = as.numeric(row$baseline_completion_0p15N),
+    stringsAsFactors = FALSE
+  )
+}))
+
+## ---------------------------------------------------------------------------
 ## Figures. Each panel reads the objects above and writes one file.
 ## ---------------------------------------------------------------------------
 
@@ -970,7 +1151,8 @@ for (unit in c("fig0_system_overview.R", "fig1_wind_band.R", "fig2_noise_sensiti
                "fig8_temporal_envelope.R", "fig9_mechanism_gain.R",
                "fig10_geometry_factorial.R", "fig11_swarm_scale.R",
                "fig12_endpoint_radius.R", "fig13_pathway_safety.R",
-               "fig14_evidence_summary.R")) {
+               "fig14_evidence_summary.R", "fig14_integral_gain.R",
+               "fig15_horizon.R")) {
   source(file.path("figs", "panels", unit))
 }
 
@@ -1268,7 +1450,48 @@ write_generated(c(
   macro("NEvidenceBlocks", nrow(evidence_table)),
   macro("NEvidenceCampaigns", nrow(EVIDENCE_VOLUME)),
   macro("NEvidenceRows", format(sum(EVIDENCE_VOLUME$episodes), big.mark = ",",
-                                  scientific = FALSE))
+                                  scientific = FALSE)),
+  ## Controller-identification audit (audit20260907).
+  macro("StockKi", fmt(STOCK_FACTS$I_COEFF_FOR_xy_N_per_m_s, 2)),
+  macro("IntegralTauS", formatC(STOCK_FACTS$integral_wind_up_time_constant_Kp_over_Ki_s,
+                                format = "f", digits = 0)),
+  macro("EpisodeHorizonS", formatC(STOCK_FACTS$episode_horizon_s, format = "f", digits = 0)),
+  macro("IntegralClampXy", formatC(STOCK_FACTS$integral_clamp_xy_m_s, format = "f", digits = 0)),
+  macro("MaxSteadyIntegralForceN", fmt(STOCK_FACTS$max_steady_integral_force_xy_N, 1)),
+  macro("AuditStockMatch", as.integer(STOCK_REPRO$n_match)),
+  macro("AuditKiTenGain", signed_cell(A1_KI_TEN$paired_gain_0p15N, 3)),
+  macro("AuditKiTenWilcoxonP", fmt(A1_KI_TEN$wilcoxon_p, 2)),
+  macro("AuditKiTenSignP", fmt(A1_KI_TEN$sign_p, 2)),
+  macro("AuditKiTenCiLo", signed_cell(A1_KI_TEN_CI[[1]], 3)),
+  macro("AuditKiTenCiHi", signed_cell(A1_KI_TEN_CI[[2]], 3)),
+  macro("AuditKiTenBase", fmt(A1_KI_TEN$baseline_completion_0p15N, 2)),
+  macro("AuditKiTenAware", fmt(A1_KI_TEN$aware_completion_0p15N, 2)),
+  macro("AuditKiTenKnee", fmt(A1_KI_TEN$baseline_knee_first_below_0p5_N, 2)),
+  macro("AuditPOneOverall", tolower(as.character(audit_a1$prediction_P1$overall))),
+  macro("AuditClampChanged", 0),
+  macro("AuditStockGain", signed_cell(A1_STOCK$paired_gain_0p15N, 2)),
+  macro("AuditAOneBTwelveBase", fmt(A1B_STOCK$baseline_completion_0p15N, 2)),
+  macro("AuditClampMattersLongHorizon", "does"),
+  macro("AuditGainTFour", signed_cell(a2_gain_at(4), 2)),
+  macro("AuditGainTSix", signed_cell(a2_gain_at(6), 2)),
+  macro("AuditGainTEight", signed_cell(a2_gain_at(8), 2)),
+  macro("AuditGainTTen", signed_cell(a2_gain_at(10), 2)),
+  macro("AuditGainTTwelve", signed_cell(a2_gain_at(12), 2)),
+  macro("AuditWidthTenNinety", fmt(A3_LOGISTIC$width_10_90_N, 3)),
+  macro("AuditWidthCiLo", fmt(A3_WIDTH_CI[[1]], 3)),
+  macro("AuditWidthCiHi", fmt(A3_WIDTH_CI[[2]], 3)),
+  macro("AuditNeverCloseBase", fmt(A4_NEVER$baseline$frac_never_within_0p5m, 2)),
+  macro("AuditNeverCloseAware", fmt(A4_NEVER$wind_aware$frac_never_within_0p5m, 2)),
+  macro("AuditGroundContactAfter", fmt(audit_a4$post_completion_freeze$frac_ground_contact_after_completion, 2)),
+  macro("AuditAltLossAfter", fmt(audit_a4$post_completion_freeze$frac_altitude_loss_gt_0p10m, 2)),
+  macro("AuditRadiusSlope", fmt(A5_REG$slope, 2)),
+  macro("AuditRadiusSlopeLo", fmt(A5_SLOPE_CI[[1]], 2)),
+  macro("AuditRadiusSlopeHi", fmt(A5_SLOPE_CI[[2]], 2)),
+  macro("AuditInitialDivergence", as.integer(A7_TOTALS$aware_arm_initial_divergence_episodes)),
+  macro("AuditAwareEpisodes", as.integer(A7_TOTALS$aware_arm_episodes)),
+  macro("AuditUsedDivergence", as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence)),
+  macro("AuditUsedDivergencePrimary", as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence_primary_seeds)),
+  macro("AuditUsedDivergenceKnee", as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence_at_0p15N))
 ), "generated_numbers.tex")
 
 ## Endpoint-radius sensitivity: the whole grid, so the reader can see the

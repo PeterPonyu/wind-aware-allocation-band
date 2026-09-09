@@ -1,7 +1,7 @@
 {
   "schema": "evidence-manifest/v1",
   "state": "BOUND",
-  "bound_utc": "2026-09-03T15:41:07Z",
+  "bound_utc": "2026-09-08T13:03:10Z",
   "allowed_roots": [
     "data",
     "paper/evidence"
@@ -231,6 +231,102 @@
       "note": "how much of the separation metric is set by target placement rather than by the allocator: target/observed correlation, within-scene pairing, hull-contact counts and the structural overlap rate by capture radius",
       "bytes": 836,
       "sha256": "8e90d670486ed2e14df4ab40ee381178fb650963cbc722bd9e69f5f5cddf8fff"
+    },
+    {
+      "id": "E-AUDIT-PREDECL",
+      "path": "data/e-audit-predecl/PREDECLARATION.json",
+      "role": "derived_table",
+      "note": "stock controller facts read from source and pre-declared predictions P1-P5",
+      "bytes": 8160,
+      "sha256": "583b7d8efe219ecc6c652e148111cc5b9e949f5d62c54eb0e6a532ab3ac389a0"
+    },
+    {
+      "id": "E-AUDIT-RECEIPT",
+      "path": "data/e-audit-receipt/RECEIPT.json",
+      "role": "derived_table",
+      "note": "controller-identification audit receipt and frozen-source hashes",
+      "bytes": 10138,
+      "sha256": "df07c961450cd24c49323e13d4cdd36e6c78ee39cc283bf27b2b91f7a217d905"
+    },
+    {
+      "id": "E-AUDIT-A1",
+      "path": "data/e-audit-a1/a1_summary.json",
+      "role": "derived_table",
+      "note": "integral-gain and clamp sweep at the stock six-second horizon",
+      "bytes": 73245,
+      "sha256": "ed70975035f73a3b345aaa83077274bab16aa33ddecc56f334f544aa5ef076c9"
+    },
+    {
+      "id": "E-AUDIT-A1B",
+      "path": "data/e-audit-a1b/a1b_summary.json",
+      "role": "derived_table",
+      "note": "clamp sweep at the twelve-second horizon",
+      "bytes": 35279,
+      "sha256": "6ccf3d0a940b714819db7557eea79807e1cb5cf445a07a98e82c391e83a3ffaa"
+    },
+    {
+      "id": "E-AUDIT-A2",
+      "path": "data/e-audit-a2/a2_summary.json",
+      "role": "derived_table",
+      "note": "horizon sweep under the stock controller",
+      "bytes": 56984,
+      "sha256": "59ed775f0a352f55242b3465ac57fdfd72d3b55756d1dd532b7449e66784a256"
+    },
+    {
+      "id": "E-AUDIT-A3",
+      "path": "data/e-audit-a3/a3_summary.json",
+      "role": "derived_table",
+      "note": "fine force-ladder logistic width of the completion transition",
+      "bytes": 26331,
+      "sha256": "f5da647f675e5e76ee9bd776417c0ab0e5b4c360ee58e743ebdf12c9b0f43503"
+    },
+    {
+      "id": "E-AUDIT-A4",
+      "path": "data/e-audit-a4/a4_crash_accounting.json",
+      "role": "derived_table",
+      "note": "crash and post-completion accounting at high force",
+      "bytes": 1627081,
+      "sha256": "9b4fdc1e936ae37e65a41cbcef7de40f097e249ba2b892f7ad6b1d71a38b7dd9"
+    },
+    {
+      "id": "E-AUDIT-A5",
+      "path": "data/e-audit-a5/a5_summary.json",
+      "role": "derived_table",
+      "note": "capture-radius grid and baseline F50-on-radius slope",
+      "bytes": 67550,
+      "sha256": "90c9cbe6619445c72cd16920dcc6bb3768c08c822bacad1ae0f8fbb1ed457b6b"
+    },
+    {
+      "id": "E-AUDIT-A7",
+      "path": "data/e-audit-a7/a7_assignment_divergence.json",
+      "role": "derived_table",
+      "note": "used-versus-Euclidean assignment divergence at lambda 0.25",
+      "bytes": 34391,
+      "sha256": "68fb0d622bcc4e8fccb518a5c7199d3409d32c0a5867914ce44dfd496310bd09"
+    },
+    {
+      "id": "E-AUDIT-A1-RAW",
+      "path": "data/e-audit-a1-raw/a1_gain_sweep.jsonl",
+      "role": "raw_episode_log",
+      "note": "2520 episodes, Ki and clamp sweep on the seven-level force ladder",
+      "bytes": 2958571,
+      "sha256": "e7584cc2373d14693567941a68324955fb06801b61fcf5b4dadf8d2a6698592c"
+    },
+    {
+      "id": "E-AUDIT-A2-RAW",
+      "path": "data/e-audit-a2-raw/a2_horizon_sweep.jsonl",
+      "role": "raw_episode_log",
+      "note": "2100 episodes, stock-controller horizon sweep",
+      "bytes": 2377309,
+      "sha256": "9a91617d1cb92929226eb26007813f68f0e06aeaf5dd0436b34c948259fa579b"
+    },
+    {
+      "id": "E-AUDIT-A7-RAW",
+      "path": "data/e-audit-a7-raw/a7_assignment_log.jsonl",
+      "role": "raw_episode_log",
+      "note": "420 episodes, assignment-log instrumentation of used, Euclidean and penalised solutions",
+      "bytes": 1275783,
+      "sha256": "302f2cfbee035472ef4add58a1b78ea14d53a5c6a3bc6a68ecb657c489e89007"
     }
   ]
 }

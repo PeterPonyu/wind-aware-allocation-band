@@ -152,10 +152,17 @@ position controller per airframe.
 
 The controller gains, motor model, pulse-width-modulation to rotor-speed (PWM/RPM) conversion and saturation path are
 unchanged from the vendored simulator implementation and are listed in the
-parameter contract. This stock position layer is consistent with the standard
+parameter contract. Read from that source, the stock integral gain is
+\StockKi{}~N/m/s, the wind-up time $K_p/K_i$ is \IntegralTauS{}~s, the
+horizontal integral clamp is \IntegralClampXy{}~m/s, the episode horizon is
+\EpisodeHorizonS{}~s, and the largest steady integral force
+$K_i\times\mathrm{clamp}$ is therefore \MaxSteadyIntegralForceN{}~N. This
+stock position layer is consistent with the standard
 rigid-body tracking formulation for quadrotors~\cite{lee2010se3}; the present
 study varies the information supplied to the allocation--control interface while
-holding the underlying stabilizing controller fixed.
+holding the underlying stabilizing controller fixed, except in the
+controller-identification audit that deliberately changes Ki, clamp and
+horizon.
 
 For the wind-aware arm, let $\widehat{\mathbf w}_k$ be the supplied estimate and let
 $\mathbf{u}_{ij,k}$ point from airframe $i$ to waypoint $j$. The assignment cost

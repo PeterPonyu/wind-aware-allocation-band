@@ -2,27 +2,30 @@
 %% structural labels or citations.
 %% Every numerical value is emitted from the hash-bound evidence pass.
 
-Directional disturbance information can change both which aircraft receives a
-waypoint and how it flies there. We map and quantify a reproducible computational
-operating envelope for this information-to-completion interface in a
-multi-quadrotor allocation--control stack. The system is a Hungarian
-allocation--control stack in a rigid-body simulator: a wind-agnostic arm uses
-Euclidean assignment and the stock position controller, while a wind-aware arm
-adds an upwind assignment cost and target-position feedforward. Shared seeds,
-paired contrasts and a seven-level force ladder define the primary envelope, and
-estimate-noise, temporal, pathway, gain, geometry, swarm-size, capture-radius
-and feasibility campaigns extend the same endpoint. The envelope has a sharp
-transition at \KneeLevel{}~N (\KneePctHover{}~percent of hover thrust), where
-completion rises from \KneeAgnostic{} to \KneeAware{} (paired gain
-+\KneeDelta{}, surviving the pre-specified signed-rank family correction). Relative
-noise through \BestSigma{} preserves the transition, and causal estimates retain
-positive gains under constant and gusting profiles. A complete
+Target-position feedforward from a coarse disturbance estimate can change
+whether a quadrotor finishes a waypoint inside a short episode. We map a
+reproducible operating envelope for this information-to-completion interface
+against a slow integral in a multi-quadrotor stack. A wind-agnostic arm uses
+Euclidean assignment and the stock position controller; a wind-aware arm adds
+an upwind assignment cost and target-position feedforward. Shared seeds, paired
+contrasts and a seven-level force ladder define the primary envelope;
+estimate-noise, temporal, pathway, geometry, swarm-size and capture-radius
+campaigns extend the same endpoint. The envelope has a sharp transition at
+\KneeLevel{}~N (\KneePctHover{}~percent of hover thrust), where completion
+rises from \KneeAgnostic{} to \KneeAware{} (paired gain $+\KneeDelta{}$,
+surviving the pre-specified signed-rank family correction). Doubling the
+baseline integral gain collapses that \KneeLevel{}~N paired advantage to
+\AuditKiTenGain{} (Wilcoxon \AuditKiTenWilcoxonP{}) and moves both arms'
+transition to \AuditKiTenKnee{}~N. Initial assignment never differs from
+Euclidean (\AuditInitialDivergence{} of \AuditAwareEpisodes{}) while replans
+diverge in \AuditUsedDivergence{} episodes. Relative noise through
+\BestSigma{} preserves the transition, and causal estimates retain positive
+gains under constant and gusting profiles. A complete
 assignment-by-feedforward factorial attributes the gain to target feedforward,
 while paired gains stay positive from \ScaleMinSize{} through \ScaleMaxSize{}
 airframes. Rerunning the ladder across capture radii keeps a transition of
 comparable size but moves it from \RadiusTightPeakForce{} to
-\RadiusWidePeakForce{}~N, so force describes an operating point rather than an
-interface constant. The study therefore contributes a simulator operating
-envelope, a transparent computational validation contract, and a parameterized
-transfer protocol for hardware and field validation. Clearance and collision
-are reported as feasibility diagnostics.
+\RadiusWidePeakForce{}~N. The closer is therefore a scoped positive claim:
+feedforward compensates a slow integral inside a \EpisodeHorizonS{}~s
+episode, which locates the operating envelope rather than a general allocator
+property.

@@ -1,6 +1,6 @@
 {
   "title": "From directional sensing to task completion: mapping the operating envelope of wind-aware quadrotor allocation and control",
-  "description": "Simulation logs, derived statistical tables, figure code and manuscript source for a 13-figure, 12-table study with a 54-entry cited bibliography measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, including estimate quality, temporally structured profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer. Code is MIT; manuscript text, figures and recorded result data are CC-BY-4.0. Third-party simulators and datasets are not redistributed.",
+  "description": "Simulation logs, derived statistical tables, figure code and manuscript source for a 17-figure, 12-table study measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, with estimate quality, temporal profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer. Parent-child and air-ground handoff claims are outside scope. Code is MIT; manuscript text, figures and recorded result data are CC-BY-4.0. Third-party simulators and datasets are not redistributed.",
   "upload_type": "dataset",
   "access_right": "open",
   "license": "MIT",

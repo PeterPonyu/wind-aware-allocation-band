@@ -2,8 +2,8 @@
 %% The class, the front matter and the bibliography style belong to the
 %% binding; everything a reader reads belongs here, once.
 \section{Introduction}
-A quadrotor that knows which way the wind is blowing can make a better allocation
-decision and fly the assigned waypoint with a more useful target bias. At the
+A quadrotor that knows which way the wind is blowing can fly an assigned waypoint
+with a more useful target bias. At the
 vehicle level, directional disturbance information is now estimated, modelled and
 used for control: unknown-input filters have been validated for wind-gust
 compensation~\cite{azid2021windgust}, aerodynamic tracking laws have been tested
@@ -14,55 +14,30 @@ wang2018windestimation}.
 Wind-aware planners likewise make direction and reachability explicit in their
 costs~\cite{thanellas2019spatialwind,heidari2021windplanning,techy2009minimum};
 recent work extends that line to flow prediction, safety and formation adaptation
-~\cite{seal2025,wespr2026,knodedw2025}. These advances leave a team-level question:
-where does directional information have the most operational leverage when several
-aircraft compete for tasks?
+~\cite{seal2025,wespr2026,knodedw2025}. A natural team-level hypothesis is that
+the same directional information has operational leverage when several aircraft
+compete for tasks, because it can enter an upwind assignment cost. This paper
+rejects that allocation hypothesis on the present benchmark and identifies a
+different mechanism: target-position feedforward against a slow stock integral.
 
-The question sits on a mature multirotor modelling and trajectory-generation
-foundation~\cite{mahony2012multirotor,mellinger2011minimum,lee2010se3}, including flatness-based
-tracking models that expose aerodynamic effects in high-speed flight
-~\cite{faessler2018flatness}. At the coordination level, task-allocation taxonomies,
-market-based coordination and consensus auctions provide established abstractions
-for capability, coupling and robustness~\cite{gerkey2004formal,dias2006market,
-choi2009cbba,korsah2013taxonomy,khamis2015mrta,chakraa2023mrta}; end-to-end unmanned aerial vehicle (UAV) assignment and intercept studies
-connect those abstractions to feasible trajectories~\cite{beard2002target,turpin2014goal}.
-Recent surveys organise the adjacent task-assignment, path-planning and
-mission-planning design spaces, but leave the information-to-completion interface
-as an empirical question~\cite{poudel2022uavassignment,aggarwal2020pathplanning,
-song2023mission}.
-Steady-wind formulations further show that assignment and route choice can be
-coupled~\cite{luo2018integrated}. Aerial-swarm surveys and a recent UAV-allocation
-review make clear that coordination, uncertainty and scalability remain coupled
-systems problems~\cite{chung2018swarm,skaltsis2023uavallocation,
-honig2018trajectory,lee2025redistribution}.
-We answer this team-level question with an operating-envelope measurement. The
-instance is task allocation: \NDrones{} quadrotors must reach \NDrones{} waypoints,
-and the wind-aware arm changes both which aircraft claims which waypoint and how
-the resulting target is flown. The allocation literature provides the design
-language, while swarm-scale replanning work highlights the value of testing
-environmental changes as a declared factor~\cite{hierarchical2025}. We sweep the
-disturbance across \NWindLevels{} levels from zero to beyond the airframe's hover
-thrust, run both arms on the same seeds, and evaluate each level with an exact
-paired test.
-The main contribution is a linked measurement contract: directional information
-enters the allocation cost and target-position feedforward, the same estimand is
-then carried through estimate quality, temporal dynamics, pathway and gain
-conditions, and the resulting completion boundary is opened along declared scene
-and homogeneous team-size axes. The paper contributes a systems measurement of
-where information has leverage and a reproducible way to compare
-allocation--control interfaces built from established components. The convergent
-shoulder and high-force edge are measured calibration boundaries: they mark
-where the endpoint is saturated and distinguish that boundary from the transition
-where directional information changes completion.
-Panels A and B of Fig.~\ref{fig:system-overview} make the measured object explicit before the
-statistical results: the same directional input is shown entering the
-allocation--control path, and the paired endpoint view keeps thresholded
-completion beside the continuous closest-approach quantity.
-Because this is a pure computational study, Panel A is intentionally a
-research-object contract schematic rather than a fabricated flight photograph:
-it identifies the simulated airframes, waypoints, disturbance vector,
-allocation--control interface and capture endpoint that define the evidence
-boundary.
+The instance is a multi-quadrotor stack in which \NDrones{} airframes must reach
+\NDrones{} waypoints. A wind-agnostic arm uses Euclidean assignment and the stock
+position controller; a wind-aware arm can add an upwind assignment cost and
+target-position feedforward. Shared seeds, paired contrasts and a
+\NWindLevels{}-level force ladder define the primary envelope. The contribution
+is a scoped identification rather than a measurement of allocation leverage:
+against the stock slow integral (\StockKi{}~N/m/s) and the \EpisodeHorizonS{}~s
+horizon, target-position feedforward changes short-episode completion.
+Assignment is inert at the inherited $\lambda=0.25$ only; no $\lambda$ sweep was
+run. Doubling that stock Ki collapses the 0.15~N paired advantage to
+\AuditKiTenGain{}. A complete assignment-by-feedforward factorial attributes the
+gain to the feedforward path. Allocation taxonomies and aerial-swarm surveys
+still supply language for the rejected hypothesis~\cite{gerkey2004formal,
+dias2006market,korsah2013taxonomy,chung2018swarm,skaltsis2023uavallocation}.
+Panels A and B of Fig.~\ref{fig:system-overview} make the measured object
+explicit: the same directional input enters assignment and feedforward, and the
+paired endpoint keeps thresholded completion beside closest approach. Panel A
+is a research-object schematic, not a fabricated flight photograph.
 
 \begin{figure*}[!t]
 \centering
@@ -78,12 +53,10 @@ tracking endpoint shows how the thresholded gain is formed. Temporal profiles,
 pathway and feedforward-gain controls, scene-geometry factors and a homogeneous
 team-size axis then open the same estimand along progressively more operational
 dimensions. The exact-vector oracle is the reference for every extension, so the
-eight evidence blocks form one measured operating envelope with a continuous
-information-to-completion trace. The framework is compatible with established aerial-swarm hardware and software
-stacks~\cite{preiss2017crazyswarm,brambilla2013swarm,michael2010grasp}. Each measured
-axis can therefore be carried into a larger or physical experiment without changing
-the estimand; the tested simulator envelope is the calibrated reference for that
-transfer.
+\NEvidenceBlocks{} synthesis blocks form one measured operating envelope with a
+continuous information-to-completion trace. This remains a computational
+baseline: the tested simulator envelope is the calibration reference, not a
+hardware-general principle.
 
 \section{Methods}
 \input{methods}
@@ -106,6 +79,10 @@ own understates the separation: every seed moves in the same direction even thou
 the arms' dispersions do not separate. Fig.~\ref{fig:band}B therefore plots the
 seed-paired difference the test is actually computed on, and its 95~percent
 interval excludes zero at \KneeLevel{}~N and at no other force in the sweep.
+That one-level reading is scoped to the stock integral gain \StockKi{}~N/m/s,
+the \EpisodeHorizonS{}~s horizon, the \CaptureRadius{}~m capture radius and the
+declared 0.05~N force grid; the controller-identification subsection below
+shows how the same endpoint moves when those settings change.
 This force is specific to the \CaptureRadius{}~m capture radius that defines
 completion here; the endpoint-radius subsection below reruns the ladder at two further radii and
 finds a transition of comparable size at a different force in each, so
@@ -227,7 +204,7 @@ anything.
 
 The wind-aware allocator flies slightly more accurately at the disturbance where
 that small improvement moves most aircraft across the capture boundary. This is the
-operational leverage of the method: allocation and feedforward turn a modest
+operational leverage of the method: target-position feedforward turns a modest
 continuous tracking shift into a substantial task-level change at the transition.
 The continuous endpoint makes that mechanism explicit and links the completion
 jump to its physical displacement. This yields a general measurement principle
@@ -867,133 +844,120 @@ are descriptive estimates that retain each view's inferential unit.}
 \label{fig:evidence}
 \end{figure}
 
+\subsection{The transition belongs to the baseline's integral action}
+
+The primary ladder is a measurement of the stock controller, not a property of
+assignment. The stock position layer uses integral gain \StockKi{}~N/m/s,
+wind-up time \IntegralTauS{}~s, clamp \IntegralClampXy{}~m/s and a
+\EpisodeHorizonS{}~s episode, so the largest steady integral force is
+\MaxSteadyIntegralForceN{}~N. Under those settings the bound primary sweep
+reproduces \AuditStockMatch{} of \AuditStockMatch{} checked episode fields;
+that check confirms the audit flew the same stock controller, not that the
+transition is invariant to Ki. Fig.~\ref{fig:integral-gain} shows the
+0.15~N paired gain against Ki. Doubling Ki to 0.10~N/m/s collapses the
+advantage from \AuditStockGain{} to \AuditKiTenGain{} (Wilcoxon
+\AuditKiTenWilcoxonP{}, sign test \AuditKiTenSignP{}, $t$ interval
+[\AuditKiTenCiLo{}, \AuditKiTenCiHi{}]), with baseline and aware completions
+\AuditKiTenBase{} and \AuditKiTenAware{}. Both arms then first fall below
+half-completion at \AuditKiTenKnee{}~N. Clamp 4 and clamp 8 change
+\AuditClampChanged{} of the 0.15~N completions at the stock horizon, so the
+pre-declared P1 verdict is \AuditPOneOverall{}: the Ki half is confirmed and
+the clamp half is not, at \EpisodeHorizonS{}~s.
+
+Lengthening the episode changes that clamp reading. At 12~s the stock
+baseline completion at 0.15~N is \AuditAOneBTwelveBase{}, and raising the
+clamp to 8 \AuditClampMattersLongHorizon{} change the 0.20~N completion. The
+horizon sweep in Fig.~\ref{fig:horizon} makes the same point along time:
+paired gain is \AuditGainTFour{} at 4~s, \AuditGainTSix{} at the stock
+horizon, \AuditGainTEight{} at 8~s, then \AuditGainTTen{} and
+\AuditGainTTwelve{} once $T\ge 10$~s, where the 0.15~N advantage vanishes.
+The fine force ladder gives the transition a width rather than a single
+rung: the baseline logistic 10--90 width is \AuditWidthTenNinety{}~N
+(\AuditWidthCiLo{} to \AuditWidthCiHi{}), narrower than the 0.05~N primary
+grid, so ``one of seven levels'' is a sampling artefact of that grid.
+
+The assignment path does not carry the gain. On the aware arm, the initial
+assignment differs from Euclidean in \AuditInitialDivergence{} of
+\AuditAwareEpisodes{} episodes. Used (replan) assignments diverge in
+\AuditUsedDivergence{} episodes, of which \AuditUsedDivergencePrimary{}
+fall on the primary-sweep seeds and \AuditUsedDivergenceKnee{} sit at
+0.15~N. That inertness is at the inherited penalty weight $\lambda=0.25$
+only; no $\lambda$ sweep was run.
+
+The high-force edge is a crash regime, not a clean saturation. Pooled at and
+above 0.20~N, a fraction \AuditNeverCloseBase{} (agnostic) and
+\AuditNeverCloseAware{} (aware) of airframes never come within 0.5~m of
+their target. After a completion is recorded, a fraction
+\AuditGroundContactAfter{} later contact the ground and
+\AuditAltLossAfter{} lose more than 0.10~m of altitude, consistent with a
+frozen rotor command rather than a held hover.
+
+The capture-radius fingerprint is likewise not a unit-slope saturation
+curve. Baseline $F_{50}$ against capture radius has slope
+\AuditRadiusSlope{}~N/m (interval [\AuditRadiusSlopeLo{},
+\AuditRadiusSlopeHi{}]), which excludes 1.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig14_integral_gain.pdf}
+\caption{\CapIntegralGain}
+\label{fig:integral-gain}
+\end{figure}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig15_horizon.pdf}
+\caption{\CapHorizon}
+\label{fig:horizon}
+\end{figure}
+
 \section{Discussion}
 
-The study's central result is a reproducible operating envelope for a directional
-allocation--control interface. At the knee, the paired force ladder resolves a
-task-level gain; the estimate campaign measures the information quality that
-supports it; the temporal campaign carries the signal through a causal observer;
-and the continuous endpoint identifies the physical displacement at the capture
-boundary. The crossed, geometry and swarm-size campaigns make scene context and team scale
-explicit design axes. This systems view extends the capability and coordination
-questions described in multi-robot allocation surveys and taxonomies
-~\cite{korsah2013taxonomy,dias2006market,khamis2015mrta,chakraa2023mrta} and the
-assignment--trajectory coupling demonstrated for large interchangeable teams
-~\cite{turpin2014goal,beard2002target}. It also gives swarm
-implementations a common measurement language alongside established aerial-swarm
-platforms~\cite{preiss2017crazyswarm}.
-The sequence is the contribution: it shows where information changes the outcome,
-how broadly that change persists, and which scene factor amplifies it. Positive
-transition gains across the declared homogeneous sizes show that the interface
-extends beyond one fleet cardinality, while the force ladder keeps the result
-anchored to its operating window. This is consistent with the swarm-engineering
-perspective that allocation, control and embodiment should be evaluated together
-~\cite{brambilla2013swarm}. The measurement complements vehicle-level modelling
-and disturbance rejection~\cite{mahony2012multirotor,chen2016dobc,
-gonzalezrocha2019sensingwind,wang2018windestimation} by locating the task-level
-leverage of a directional estimate. The convergence cells complete that
-operating-envelope description. The saturated shoulder and
-high-force edge show where both arms share the same endpoint, while the transition
-identifies the force range in which directional information changes completion.
-Likewise, a range contrast centred near zero is a measured geometry result under
-the declared transformation. The primary 30-cluster interval reaches the zero
-boundary at the displayed resolution, and the 120-term sensitivity interval is
-explicitly reported as $[\GeometryRangeSensitivityLower{},+\GeometryRangeSensitivityUpper{}]$.
-The planning calculation gives an 80\% familywise MDE of
-$\GeometryRangeMDE{}$ completion-rate units for the cluster-level range contrast.
-This is a precision boundary, not an equivalence claim: no equivalence margin was
-prespecified, and effects below that MDE remain unresolved by this design.
+The identified mechanism is target-position feedforward compensating a slow
+integral inside a \EpisodeHorizonS{}~s episode. Prediction P1 is
+\AuditPOneOverall{}: doubling Ki collapses the 0.15~N advantage, which
+confirms that half of the pre-declaration, while clamp 4 and clamp 8 leave
+\AuditClampChanged{} of the 0.15~N completions unchanged at the stock
+horizon and therefore refute the clamp half at $T=\EpisodeHorizonS{}$~s.
+The same clamp \AuditClampMattersLongHorizon{} matter at 12~s. Assignment
+inertness is measured at $\lambda=0.25$ only. These bounds keep the
+operating envelope a property of the stock integral and the short horizon,
+not a general allocator law.
 
-The factorised campaign gives the next level of resolution. At the knee, crossing
-orientation changes the paired gain by
-$+\GeometryKneeCrossing{}$ $[+\GeometryKneeCrossingLower{},+\GeometryKneeCrossingUpper{}]$,
-while expanded spread changes it by
-$\GeometryKneeSpread{}$ $[\GeometryKneeSpreadLower{},\GeometryKneeSpreadUpper{}]$.
-The range contrast is smaller and its cluster interval terminates at the zero
-boundary at displayed precision. The sensitivity interval spans zero, and its
-MDE records the resolution of the executed geometry design rather than converting
-that interval into an equivalence statement. The selective pattern points the
-next allocation--control design toward geometry-aware
-assignment and target placement. In a deployment, crossing status can be exposed
-as a planning feature and the measured margin carried into assignment or
-controller gains. This is an actionable hypothesis for larger swarms: condition
-schedule and controller margins on whether targets are aligned or require
-crossing, then test the same paired estimand. The interpretation is consistent
-with formation and cooperative-motion surveys in which topology and time-varying
-geometry alter coordinated-flight feasibility~\cite{dong2017formation,
-liu2018formation}; here the same idea is expressed as a measurable
-allocation--control contrast.
-Every extension preserves the paired evaluation unit and experimental consistency.
-The original ten-seed force sweep supplies the exact transition test; the
-\NEpisodesDesigned{}-episode crossed record supplies fixed heading coverage; the
-\NTemporalEpisodes{}-episode temporal record supplies estimator dynamics; the
-\NAblationEpisodes{}- and \NGainEpisodes{}-episode campaigns localize the pathway
-and expose gain sensitivity; the \NGeometryEpisodes{}-episode record opens the
-scene factors; the \NScaleEpisodes{}-episode record tests the same transition
-across homogeneous team cardinalities; the \NRadiusEpisodes{}-episode radius
-sweep asks whether the endpoint definition carries the result; the
-\NFactorialEpisodes{}-episode factorial closes the pathway design; and the
-\NSafetyEpisodes{}-episode descriptive record states what was measured about
-clearance and actuator headroom. Each block has its own declared experimental design
-and equation-defined estimand, so the paper expands the same result by
-adding an interpretable axis at a time. This layered architecture keeps the
-computational budget transparent and
-separates simulator calibration from vehicle implementation. A causal estimate
-preserves the measured transition in the present simulator, while disturbance
-observers and robust controllers provide natural physical implementations
-~\cite{chen2016dobc,rodriguezmata2018highgain,wang2021esoquadrotor,azid2021windgust,
-schiano2014wind,wetz2021distributed,gonzalezrocha2019sensingwind,
-wang2018windestimation}.
-The new size axis gives those follow-on studies a calibrated starting point. It
-also complements recent work that couples trajectory feasibility to large-team
-allocation and redistribution~\cite{honig2018trajectory,lee2025redistribution}:
-retain the paired estimand, then widen topology or sensing while preserving the
-endpoint.
+The assignment path does not carry the headline gain. Initial assignment
+differs from Euclidean in \AuditInitialDivergence{} of \AuditAwareEpisodes{}
+episodes, while used (replan) assignments diverge in \AuditUsedDivergence{}
+episodes. The complete factorial localizes the completion change to
+target-position feedforward; the assignment main effect and the
+assignment-by-feedforward interaction stay within \FactorialOtherAbsMax{}
+completion of zero. That inertness is at $\lambda=0.25$ only; no $\lambda$
+sweep was run, so the paper does not promote an allocator law. Support
+campaigns keep the same paired estimand: relative noise through
+\BestSigma{} preserves the transition, and paired gains stay positive from
+\ScaleMinSize{} through \ScaleMaxSize{} airframes. Rerunning the ladder
+across capture radii keeps a transition of comparable size but moves it
+from \RadiusTightPeakForce{} to \RadiusWidePeakForce{}~N, so
+\KneeLevel{}~N is the transition of this operating point rather than a
+constant of an allocator.
 
-Three validation campaigns change how the headline number should be read. The
-capture radius that defines completion is a choice rather than a measurement, and
-rerunning the ladder over \RadiusGrid{}~m keeps a transition of similar size while
-moving it across \RadiusPeakForceSpan{}~N of force. What the evidence supports is
-that directional information has its largest leverage where the task sits at the
-edge of feasibility; \KneeLevel{}~N is where that edge falls for this scene,
-horizon and radius, not a constant of the interface. Completing the $2\times2$
-pathway design attributes the gain to the target-position feedforward alone, with
-no detectable assignment main effect and no interaction, so on this benchmark a
-wind estimate pays for itself in how a vehicle flies to its target rather than in
-which vehicle is chosen. That narrows where a physical implementation should spend
-its estimation budget. The safety record is a benchmark-level feasibility diagnostic rather than a
-second performance claim. It records the observed clearance range and motor-limit
-margin, while the separation metric correlates at
-\SafetyGeomTargetCorr{} with where the benchmark placed the targets, and within a
-scene it is the arm that arrives, rather than the arm that is wind-aware, that
-records the smaller number. Read as a comparison between allocators it mostly
-measures target placement. Read as a statement about the task, it identifies a
-clear deployment requirement: contact-scale separations (down to
-\SafetyWorstSeparation{}~m) serve as a baseline failure-mode diagnostic in an
-unconstrained setting with unmodeled wake dynamics. Nothing measured here
-guarantees collision safety or downwash rejection, and any physical
-implementation that adopts the feedforward must compose it with an active safety
-barrier (such as control barrier functions) to guarantee separation that the
-current allocation objective does not contain.
-The calibration map uses one rigid-body model, a six-second episode, the declared
-geometry transformations and a homogeneous size axis from \ScaleMinSize{} to
-\ScaleMaxSize{} airframes. The coordinator is a software allocator over
-\NDrones{} independent simulated airframes, which makes the interface and its
-endpoint explicit. Heterogeneous vehicles, obstacle topology, continuous team
-size and field-sensor traces are the next named transfer axes; the current figures,
-tables and numbered methods provide a stable baseline for opening them one at a
-time. The transferable protocol is concrete: retain the paired endpoint, preserve the
-allocation--control interface, time-align wind-sensor traces with vehicle state,
-identify each vehicle's mass and available thrust, replay the disturbance at the
-declared update rate, and evaluate both capture-radius and closest-distance
-endpoints. Disturbance-observer and robust-control methods provide natural
-vehicle-level implementations for that stage~\cite{rodriguezmata2018highgain,
-wang2021esoquadrotor,perozzi2018wind,schiano2014wind,wetz2021distributed}. The
-present envelope is the calibration reference against which those physical and
-larger-team implementations can be compared, and the resulting benchmark is a
-quantitative launch point for larger topology, field and cross-domain
-experiments, with every current claim tied to the demonstrated simulator
-envelope.
+The remaining campaigns are support, not a second paper. Geometry contrasts
+and the descriptive safety record stay in Results; they do not reopen an
+allocation--control interface as the question this manuscript answers.
+Nothing measured here is a field validation. Heterogeneous vehicles,
+obstacle topology, a $\lambda$ sweep and field-sensor traces remain named
+transfer axes rather than completed work. The present envelope is a
+computational calibration reference against the stock integral, the
+\EpisodeHorizonS{}~s horizon and the declared capture radius.
+
+\section{Conclusions}
+
+Target-position feedforward compensates a slow stock integral inside a
+\EpisodeHorizonS{}~s episode. That scoped positive claim locates the
+operating envelope: doubling \StockKi{} collapses the 0.15~N paired
+advantage to \AuditKiTenGain{}, prediction P1 is \AuditPOneOverall{}, and
+assignment remains un-swept in $\lambda$. The paper does not claim a
+general allocator property, a hardware principle or a field result.
+
 \section*{Data and code availability}
 
 All simulation code, trajectory records, and analysis scripts supporting the

@@ -10,7 +10,7 @@ authors:
     orcid: 'https://orcid.org/0009-0001-8329-0108'
     affiliation: 'Army Medical University, Chongqing, China'
 abstract: >-
-  Simulation logs, derived statistical tables, figure code and manuscript source for a 13-figure, 12-table study with a 54-entry cited bibliography measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, including estimate quality, temporally structured profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer.
+  Simulation logs, derived statistical tables, figure code and manuscript source for a 17-figure, 12-table study measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, with estimate quality, temporal profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer. Parent-child and air-ground handoff claims are outside scope.
 keywords:
   - task allocation
   - quadrotor swarm
@@ -20,7 +20,7 @@ keywords:
   - reproducibility
 license: MIT
 version: 0.1.0
-date-released: '2026-09-08'
+date-released: '2026-09-09'
 doi: 10.5281/zenodo.22644574
 identifiers:
   - type: doi

@@ -37,6 +37,18 @@ the build instead of producing a stale number.
 | `data/e-safety/revision_safety_analysis_20260829.json` | derived_table | 31135 | `911856b2252a1a9f…` |
 | `data/e-rev-stats/revision_statistics_20260829.json` | derived_table | 312535 | `bcf250a294d17647…` |
 | `data/e-safety-geom/safety_geometry_confound_20260831.json` | derived_table | 836 | `8e90d670486ed2e1…` |
+| `data/e-audit-predecl/PREDECLARATION.json` | derived_table | 8160 | `583b7d8efe219ecc…` |
+| `data/e-audit-receipt/RECEIPT.json` | derived_table | 10138 | `df07c961450cd24c…` |
+| `data/e-audit-a1/a1_summary.json` | derived_table | 73245 | `ed70975035f73a3b…` |
+| `data/e-audit-a1b/a1b_summary.json` | derived_table | 35279 | `6ccf3d0a940b7148…` |
+| `data/e-audit-a2/a2_summary.json` | derived_table | 56984 | `59ed775f0a352f55…` |
+| `data/e-audit-a3/a3_summary.json` | derived_table | 26331 | `f5da647f675e5e76…` |
+| `data/e-audit-a4/a4_crash_accounting.json` | derived_table | 1627081 | `9b4fdc1e936ae37e…` |
+| `data/e-audit-a5/a5_summary.json` | derived_table | 67550 | `90c9cbe6619445c7…` |
+| `data/e-audit-a7/a7_assignment_divergence.json` | derived_table | 34391 | `68fb0d622bcc4e8f…` |
+| `data/e-audit-a1-raw/a1_gain_sweep.jsonl` | raw_episode_log | 2958571 | `e7584cc2373d1469…` |
+| `data/e-audit-a2-raw/a2_horizon_sweep.jsonl` | raw_episode_log | 2377309 | `9a91617d1cb92929…` |
+| `data/e-audit-a7-raw/a7_assignment_log.jsonl` | raw_episode_log | 1275783 | `302f2cfbee035472…` |
 
 Some of these files recorded the paths of the machine that produced them. Those path strings and source links were refreshed before deposit; `REDACTION.md` states the rules, lists every file touched with both digests, and describes the check that proves no number changed.
 

@@ -1,0 +1,342 @@
+{
+  "directory": "source-tree/001-drone-swarm/audit20260907",
+  "frozen_sources_sha256_at_receipt": {
+    "BaseAviary.py": "2f27256e8431886ca61a16e4a12300411be4c46599ca1e753386423fec0dbee8",
+    "DSLPIDControl.py": "5cd645d9b27f84342721863399fd5b4e36ce8493fb9ecce3e076b492004f6605",
+    "run_experiment.py": "be5b80e14cd0914d58be9673a447999d73956088e8c50366c503bb22b672a2bc",
+    "scene_geometry.py": "17beb2a48512431f384477eeb54ff7b3b766943587db519e2d6bf31e2c929c7d",
+    "wind_models.py": "b63bc92296fa1898770e9d1afca2539ace2dfd8ac3b568c7bd1387e729141a8e"
+  },
+  "frozen_sources_unchanged_since_predeclaration": {
+    "DSLPIDControl.py": true,
+    "run_experiment.py": true,
+    "wind_models.py": true
+  },
+  "git_status_experiments_001": [
+    "?? source-tree/001-drone-swarm/audit20260907/"
+  ],
+  "max_workers_used": 10,
+  "outputs": [
+    {
+      "bytes": 8160,
+      "file": "PREDECLARATION.json",
+      "sha256": "583b7d8efe219ecc6c652e148111cc5b9e949f5d62c54eb0e6a532ab3ac389a0"
+    },
+    {
+      "bytes": 2958571,
+      "episode_rows": 2520,
+      "file": "a1_gain_sweep.jsonl",
+      "sha256": "e7584cc2373d14693567941a68324955fb06801b61fcf5b4dadf8d2a6698592c"
+    },
+    {
+      "bytes": 9731,
+      "file": "a1_gain_sweep.py",
+      "sha256": "652a599abc3867e27fd2dac09efec4ac9fb3bddf676773fee0c2a3ae720701d2"
+    },
+    {
+      "bytes": 3155,
+      "file": "a1_run.log",
+      "sha256": "ba8e2da66c2d68ed9cf72a7aef1045ec34a592862f67429392d053e86344c94f"
+    },
+    {
+      "bytes": 73313,
+      "file": "a1_summary.json",
+      "sha256": "ed70975035f73a3b345aaa83077274bab16aa33ddecc56f334f544aa5ef076c9"
+    },
+    {
+      "bytes": 1488639,
+      "episode_rows": 1260,
+      "file": "a1b_clamp_T12.jsonl",
+      "sha256": "744b858e868a9c27e486736c5c7d827bd2eaf207cddd0c3d8292665e5d776b6a"
+    },
+    {
+      "bytes": 6523,
+      "file": "a1b_clamp_long_horizon.py",
+      "sha256": "ffe956cc47ade4fa3975b4a7b1e952bcfcf07275568e1a62ff72b9cccd477621"
+    },
+    {
+      "bytes": 1854,
+      "file": "a1b_run.log",
+      "sha256": "d828ae3fffcfcfb670e0e5faeb712369500245a8e24bbaded3d5f9dd2174bdb0"
+    },
+    {
+      "bytes": 35279,
+      "file": "a1b_summary.json",
+      "sha256": "6ccf3d0a940b714819db7557eea79807e1cb5cf445a07a98e82c391e83a3ffaa"
+    },
+    {
+      "bytes": 2377309,
+      "episode_rows": 2100,
+      "file": "a2_horizon_sweep.jsonl",
+      "sha256": "9a91617d1cb92929226eb26007813f68f0e06aeaf5dd0436b34c948259fa579b"
+    },
+    {
+      "bytes": 7143,
+      "file": "a2_horizon_sweep.py",
+      "sha256": "c79c7d11cfedd930a4bd364b08b3e34bfcac80fb0f855d58a6f3215d55b66c31"
+    },
+    {
+      "bytes": 2925,
+      "file": "a2_run.log",
+      "sha256": "fd3ab6783a99b23cc4d799b1c981ffe059627e6694e1f516732deaa8c431f495"
+    },
+    {
+      "bytes": 56984,
+      "file": "a2_summary.json",
+      "sha256": "59ed775f0a352f55242b3465ac57fdfd72d3b55756d1dd532b7449e66784a256"
+    },
+    {
+      "bytes": 755296,
+      "episode_rows": 660,
+      "file": "a3_fine_ladder.jsonl",
+      "sha256": "c3919ebbc9afe485406e10fd406ec0ab8f86dcbffdb818cfd02d99308079c831"
+    },
+    {
+      "bytes": 10352,
+      "file": "a3_fine_ladder.py",
+      "sha256": "d15eb24980a640db9097602e648084956761cb08fe2043b3db9ef7a9d3a9651f"
+    },
+    {
+      "bytes": 2205,
+      "file": "a3_run.log",
+      "sha256": "1817413b374d032e2b67d857fccd380c7a9aa26609950463d4aa3886e29ba796"
+    },
+    {
+      "bytes": 26331,
+      "file": "a3_summary.json",
+      "sha256": "f5da647f675e5e76ee9bd776417c0ab0e5b4c360ee58e743ebdf12c9b0f43503"
+    },
+    {
+      "bytes": 1627081,
+      "file": "a4_crash_accounting.json",
+      "sha256": "9b4fdc1e936ae37e65a41cbcef7de40f097e249ba2b892f7ad6b1d71a38b7dd9"
+    },
+    {
+      "bytes": 14757,
+      "file": "a4_crash_accounting.py",
+      "sha256": "2f0b29b2b5a7c51ac25f77f3096f2baf915b1355d6f013bb95947353fab66678"
+    },
+    {
+      "bytes": 2632,
+      "file": "a4_run.log",
+      "sha256": "ca019d251c5e6a5a3f84ac1236c131779aadb6acd4b34d88c4418cc59ca93202"
+    },
+    {
+      "bytes": 39307496,
+      "episode_rows": 420,
+      "file": "a4_trajectories.jsonl",
+      "sha256": "09e4f1eb878d7d60062044374792d6e52015b73b0576671a68fb2edb395ebc2f"
+    },
+    {
+      "bytes": 3370484,
+      "episode_rows": 2940,
+      "file": "a5_radius_grid.jsonl",
+      "sha256": "80914b439d61c9d20dcffcaff0bbe4b8e7f6cb56732a055a6d4b65ec2703e810"
+    },
+    {
+      "bytes": 7303,
+      "file": "a5_radius_grid.py",
+      "sha256": "7c22909c264b49e6f33f9dfa3e65123dce416959e78ea35938316521e7c6157a"
+    },
+    {
+      "bytes": 4426,
+      "file": "a5_run.log",
+      "sha256": "767f73af96142f4010aefbb362700cc30a584f32acbd55c84fb012ae388f80d9"
+    },
+    {
+      "bytes": 67550,
+      "file": "a5_summary.json",
+      "sha256": "90c9cbe6619445c72cd16920dcc6bb3768c08c822bacad1ae0f8fbb1ed457b6b"
+    },
+    {
+      "bytes": 10121315,
+      "episode_rows": 8820,
+      "file": "a5b_radius_fine.jsonl",
+      "sha256": "c0f9e91b0dcd15038e1cc2b6fece29facd1a0f1a4f4aa2a5ac690e3c73310f53"
+    },
+    {
+      "bytes": 8665,
+      "file": "a5b_radius_fine.py",
+      "sha256": "c347fe8dc0bbc4d6e45daf7af5fee28e2e27c2788a438ba064f9baea4c04d035"
+    },
+    {
+      "bytes": 3021,
+      "file": "a5b_run.log",
+      "sha256": "0d319d85f6a284db4e6ea381f972f2cca0d22bea2ebeeac643f7161fbcba8200"
+    },
+    {
+      "bytes": 185958,
+      "file": "a5b_summary.json",
+      "sha256": "45651a795cb6ccc353eae99ddcf4b8c4f4cc3cfed9a5939a33ae0350ce46ea24"
+    },
+    {
+      "bytes": 34391,
+      "file": "a7_assignment_divergence.json",
+      "sha256": "68fb0d622bcc4e8fccb518a5c7199d3409d32c0a5867914ce44dfd496310bd09"
+    },
+    {
+      "bytes": 9308,
+      "file": "a7_assignment_divergence.py",
+      "sha256": "4493468cd68a8168fe162b1f4016749c2188985988817083b2066c75bcd08cea"
+    },
+    {
+      "bytes": 1275783,
+      "episode_rows": 420,
+      "file": "a7_assignment_log.jsonl",
+      "sha256": "302f2cfbee035472ef4add58a1b78ea14d53a5c6a3bc6a68ecb657c489e89007"
+    },
+    {
+      "bytes": 3279,
+      "file": "a7_run.log",
+      "sha256": "9d107a0bae416e9346d3c8a28d150c2056e9b9f1ed2d4d5ec48c003c27d72435"
+    },
+    {
+      "bytes": 24206,
+      "file": "audit_common.py",
+      "sha256": "bbbb29a3e53775411b1bfb1b0d28f6a2a3a8242e151379c10f329a82bb2a24e2"
+    },
+    {
+      "bytes": 4555,
+      "file": "smoke_test.json",
+      "sha256": "227b7c716a9de944f43184a85663a05685e6c2ba615198582f3caec117b66b89"
+    },
+    {
+      "bytes": 5157,
+      "file": "smoke_test.py",
+      "sha256": "63c33788f61b2a8e51e3c68336ea7dcc98d44582c451726100453ff8586dac9e"
+    },
+    {
+      "bytes": 3990,
+      "file": "write_receipt.py",
+      "sha256": "70568da37ca65c727545955b6bd3942c298cfc76a86951e94a12750ae1429a9f"
+    }
+  ],
+  "schema": "001-audit20260907-receipt/v1",
+  "summaries": {
+    "a1_summary.json": {
+      "cross_checks": {
+        "stock_reproduces_bound_primary_sweep": {
+          "fields": [
+            "completion_rate",
+            "num_finished",
+            "replan_events",
+            "mean_min_dist_to_target_m",
+            "max_min_dist_to_target_m",
+            "wind_angle_rad"
+          ],
+          "mismatches": [],
+          "n_checked": 140,
+          "n_match": 140,
+          "primary_sweep": "data/e-raw-oracle/sweep_20260713T122953Z.jsonl",
+          "primary_sweep_sha256": "558839280f344b20dff61b40c465e2712d71b9ad012bc635602c9e2a7991c086"
+        }
+      },
+      "rows": 2520,
+      "verdict": {
+        "prediction_P1": "MIXED"
+      },
+      "wall_clock_sec": 82.5
+    },
+    "a1b_summary.json": {
+      "cross_checks": {
+        "cross_check_vs_a2_T12": {
+          "a2_T12_stock_vs_a1b_stock_checked": 420,
+          "identical": 420
+        }
+      },
+      "rows": 1260,
+      "verdict": {},
+      "wall_clock_sec": 71.27108979225159
+    },
+    "a2_summary.json": {
+      "cross_checks": {
+        "cross_check_vs_a1_stock": {
+          "a1_stock_vs_a2_T6_checked": 420,
+          "identical": 420
+        }
+      },
+      "rows": 2100,
+      "verdict": {
+        "prediction_P2": "CONFIRMED"
+      },
+      "wall_clock_sec": 91.88754153251648
+    },
+    "a3_summary.json": {
+      "cross_checks": {
+        "cross_check_vs_a1_stock": {
+          "a1_stock_vs_a3_shared_forces_checked": 180,
+          "identical": 180
+        }
+      },
+      "rows": 660,
+      "verdict": {
+        "prediction_P3": "CONFIRMED"
+      },
+      "wall_clock_sec": 19.027271270751953
+    },
+    "a4_crash_accounting.json": {
+      "cross_checks": {
+        "cross_check_vs_a1_stock": {
+          "a1_stock_vs_a4_checked": 420,
+          "identical": 420
+        }
+      },
+      "rows": 420,
+      "verdict": {
+        "prediction_P5": "CONFIRMED"
+      },
+      "wall_clock_sec": 13.664355278015137
+    },
+    "a5_summary.json": {
+      "cross_checks": {
+        "cross_check_vs_a1_stock": {
+          "a1_stock_vs_a5_r0p15_checked": 420,
+          "identical": 420
+        }
+      },
+      "rows": 2940,
+      "verdict": {
+        "prediction_P4": "MIXED"
+      },
+      "wall_clock_sec": 74.98448014259338
+    },
+    "a5b_summary.json": {
+      "cross_checks": {
+        "cross_check_vs_a3": {
+          "a3_vs_a5b_r0p15_shared_forces_checked": 660,
+          "identical": 660
+        }
+      },
+      "rows": 8820,
+      "verdict": {
+        "prediction_P4_fine_resolution": "MIXED"
+      },
+      "wall_clock_sec": 299.5328257083893
+    },
+    "a7_assignment_divergence.json": {
+      "cross_checks": {
+        "cross_check_vs_a1_stock": {
+          "a1_stock_vs_a7_checked": 420,
+          "identical": 420
+        }
+      },
+      "rows": 420,
+      "verdict": {},
+      "wall_clock_sec": 12.405852556228638
+    }
+  },
+  "total_episode_rows": 19140,
+  "total_recorded_wall_clock_sec": 665.2734162807465,
+  "versions": {
+    "cpu_count": 24,
+    "gym_pybullet_drones_commit": "e712698",
+    "gym_pybullet_drones_version": "2.1.0",
+    "hostname": "zeyufu-ROG-Strix-SCAR-18-G835LX-G835LX",
+    "numpy": "2.2.6",
+    "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+    "pybullet": "3.2.7",
+    "python": "3.10.20",
+    "scipy": "1.15.3"
+  },
+  "written_utc": "2026-09-08T06:03:11+00:00"
+}

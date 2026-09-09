@@ -222,3 +222,26 @@ or layout-cluster unit that supports its analysis; pathway ablation and gain
 sensitivity are two views of one pathway/gain synthesis block. The figure is
 descriptive by design and preserves each view's inferential unit. %
 }
+
+\newcommand{\CapIntegralGain}{%
+Paired completion gain at the \KneeLevel{}~N force against the baseline integral
+gain, from the controller-identification sweep at the stock
+\EpisodeHorizonS{}~s horizon. Points are the seed-paired aware-minus-agnostic
+completion difference; bars are 95~percent $t$ intervals. Clamp settings of
+\IntegralClampXy{}, 4 and 8~m/s are drawn as distinct markers at the same Ki,
+so a clamp that leaves the 0.15~N completions unchanged sits on top of the
+stock marker. Doubling the stock Ki of \StockKi{}~N/m/s collapses the gain from
+\AuditStockGain{} to \AuditKiTenGain{} (interval
+[\AuditKiTenCiLo{}, \AuditKiTenCiHi{}]). %
+}
+
+\newcommand{\CapHorizon}{%
+Horizon sweep under the stock controller (Ki~\StockKi{}~N/m/s, clamp
+\IntegralClampXy{}~m/s). Panel A is the paired completion gain at
+\KneeLevel{}~N against episode duration, with bars giving the 95~percent $t$
+interval; the gain is \AuditGainTSix{} at the stock \EpisodeHorizonS{}~s
+horizon and \AuditGainTTen{} once the horizon reaches 10~s. Panel B is the
+matching wind-agnostic completion at the same force, which rises as the
+episode lengthens and the slow integral is given more time to wind up. Both
+panels share one horizon axis. %
+}

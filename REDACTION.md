@@ -69,3 +69,6 @@ checks.
 | `data/e-raw-safety/revision_safety_campaign_20260829.jsonl` | 6 | 0 | `9c547448dc374bf1…` | `e21ea79e4ed6502e…` |
 | `data/e-safety/revision_safety_analysis_20260829.json` | 8 | 4 | `bc9fb46707890b97…` | `911856b2252a1a9f…` |
 | `data/e-rev-stats/revision_statistics_20260829.json` | 88 | 86 | `85923d3c7695a561…` | `bcf250a294d17647…` |
+| `data/e-audit-predecl/PREDECLARATION.json` | 3 | 0 | `24fc6eea07f00770…` | `583b7d8efe219ecc…` |
+| `data/e-audit-receipt/RECEIPT.json` | 5 | 2 | `0c7faba8f3c74876…` | `df07c961450cd24c…` |
+| `data/e-audit-a1/a1_summary.json` | 2 | 0 | `481916c76cbbdd20…` | `ed70975035f73a3b…` |

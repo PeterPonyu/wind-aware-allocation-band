@@ -1,0 +1,86 @@
+{
+  "schema": "001-audit20260907-predeclaration/v1",
+  "written_utc": "2026-09-08T05:25:50Z",
+  "card": "001-wind-knee-under-estimated-wind",
+  "audit_source": "tmp/scientific-audit-2026-09-07/001-audit.md (sections 2.1-2.4, 5 Tier A items A1-A7)",
+  "status": "written before any experiment in this directory was executed; no simulation output existed at write time",
+  "frozen_sources_sha256": {
+    "source-tree/001-drone-swarm/run_experiment.py": "be5b80e14cd0914d58be9673a447999d73956088e8c50366c503bb22b672a2bc",
+    "source-tree/001-drone-swarm/gym-pybullet-drones/gym_pybullet_drones/control/DSLPIDControl.py": "5cd645d9b27f84342721863399fd5b4e36ce8493fb9ecce3e076b492004f6605",
+    "source-tree/001-drone-swarm/wind_models.py": "b63bc92296fa1898770e9d1afca2539ace2dfd8ac3b568c7bd1387e729141a8e"
+  },
+  "stock_controller_facts_read_from_source": {
+    "P_COEFF_FOR_xy_N_per_m": 0.4,
+    "I_COEFF_FOR_xy_N_per_m_s": 0.05,
+    "D_COEFF_FOR_xy": 0.2,
+    "integral_clamp_xy_m_s": 2.0,
+    "integral_clamp_z_m_s": 0.15,
+    "max_steady_integral_force_xy_N": 0.1,
+    "integral_wind_up_time_constant_Kp_over_Ki_s": 8.0,
+    "episode_horizon_s": 6.0,
+    "capture_radius_m": 0.15,
+    "feedforward_gain_m_per_N": 0.35,
+    "assignment_penalty_m_per_N": 0.25,
+    "primary_force_ladder_N": [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3],
+    "bound_primary_result_at_0p15N": {"baseline_completion": 0.05, "aware_completion": 0.6, "paired_gain": 0.55, "n_seeds": 10}
+  },
+  "confirmatory_endpoint": {
+    "per_episode_outcome": "completion_rate = fraction of the 4 airframes whose first entry into the capture ball (|pos - target| < success_radius_m) occurs before the horizon T; the drone is frozen after first entry, exactly as run_experiment.run_episode computes it",
+    "paired_contrast": "wind_aware minus baseline completion_rate at the same (force, seed[, setting]); the seed fixes the scene and the drawn wind heading for both arms",
+    "unit_of_analysis": "seed (episode pair); episodes are never pooled across seeds as independent units; per-drone outcomes are only used in the A3 logistic fit with seed-clustered standard errors",
+    "primary_test": "exact two-sided Wilcoxon signed-rank on seed-level paired deltas, zero differences removed (scipy.stats.wilcoxon, zero_method='wilcox', correction=False, method='exact'), as in analyze.py / analyze_revision_*.py",
+    "secondary_test": "exact two-sided sign test (binomial on the number of positive vs negative non-zero paired deltas)",
+    "interval": "95% t interval on the paired delta (as analyze_revision_radius.summarize_pair) AND 95% percentile bootstrap over seeds, 10000 resamples, numpy default_rng(20260907)",
+    "knee_definitions": {
+      "knee_first_below_0p5": "smallest ladder force at which an arm's mean completion over seeds is < 0.5",
+      "knee_F50_interp": "force at which the arm's mean completion crosses 0.5, linearly interpolated between adjacent ladder levels",
+      "force_of_peak_gain": "ladder force at which the mean paired gain (aware minus baseline) is largest"
+    }
+  },
+  "predictions": {
+    "P1": {
+      "experiment": "A1 baseline integral gain / clamp sweep",
+      "statement": "With I_COEFF_FOR raised to 0.20 N/(m s) (clamp 2) or the xy integral clamp raised to 8 m s (Ki 0.05), the baseline arm completes at 0.15 N (mean completion >= 0.5) and the wind-aware minus baseline paired gain at 0.15 N falls from about +0.55 (stock) to about 0.",
+      "quantitative": {"stock_gain_0p15N_expected": 0.55, "modified_gain_0p15N_expected": 0.0, "modified_baseline_completion_0p15N_expected_min": 0.5},
+      "confirm_rule": "CONFIRMED if for the (Ki=0.20, clamp=2) and/or (Ki=0.05, clamp=8) settings the paired gain at 0.15 N has |mean| <= 0.15 with a 95% CI that includes 0, and baseline completion >= 0.5; REFUTED if gain stays >= 0.4 with CI excluding 0 for both; otherwise MIXED"
+    },
+    "P2": {
+      "experiment": "A2 horizon sweep, stock controller",
+      "statement": "The baseline knee force rises with horizon T and the wind-aware advantage at 0.15 N vanishes by T ~ 9 s.",
+      "quantitative": {"aware_gain_0p15N_at_T_ge_10_expected_abs_max": 0.15, "baseline_knee_monotone_nondecreasing_in_T": true},
+      "confirm_rule": "CONFIRMED if the baseline knee (F50) is non-decreasing in T and the gain at 0.15 N for T = 10 and 12 s has |mean| <= 0.15 with CI including 0; REFUTED if gain at T >= 10 s stays >= 0.4 with CI excluding 0; otherwise MIXED"
+    },
+    "P3": {
+      "experiment": "A3 fine force ladder 0.10-0.20 N step 0.01, stock controller, T = 6 s",
+      "statement": "The completion transition is a sigmoid roughly 0.05 N wide (10-90 % width) on a 0.01 N ladder, not a one-level (0.05 N grid) step.",
+      "quantitative": {"expected_10_90_width_N": 0.05, "tolerance_N": [0.02, 0.09]},
+      "confirm_rule": "CONFIRMED if the fitted logistic 10-90 % width for the baseline arm lies in [0.02, 0.09] N and at least two 0.01 N levels have mean completion strictly between 0.1 and 0.9; REFUTED if the width is < 0.01 N (single-level step); otherwise MIXED"
+    },
+    "P4": {
+      "experiment": "A5 capture-radius grid, stock controller",
+      "statement": "The force of peak paired advantage (and the baseline knee) tracks the capture radius one-for-one: F*[N] ~ r_c[m], i.e. slope ~ 1 N/m.",
+      "quantitative": {"expected_slope_N_per_m": 1.0, "tolerance": [0.6, 1.4]},
+      "confirm_rule": "CONFIRMED if the OLS slope of the baseline knee F50 (interpolated) on r_c has a 95% CI that contains 1.0 and the point estimate lies in [0.6, 1.4]; REFUTED if the CI excludes [0.6, 1.4]; otherwise MIXED. The peak-gain force is reported alongside but is quantised to the 0.05 N ladder"
+    },
+    "P5": {
+      "experiment": "A4 crash and post-completion accounting from saved trajectories",
+      "statement": "At >= 0.20 N at least 30 % of drones never approach within 0.5 m of their target (crash regime), in both arms; finished drones are uncontrolled and lose altitude after completion.",
+      "quantitative": {"expected_fraction_closest_approach_gt_0p5m_at_F_ge_0p20N_min": 0.30},
+      "confirm_rule": "CONFIRMED if the pooled per-drone fraction with closest approach > 0.5 m over forces >= 0.20 N is >= 0.30 in each arm; REFUTED if < 0.15; otherwise MIXED"
+    }
+  },
+  "planned_grids": {
+    "A1": {"settings_Ki_clamp": [[0.05, 2.0], [0.10, 2.0], [0.20, 2.0], [0.40, 2.0], [0.05, 4.0], [0.05, 8.0]], "forces_N": [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3], "seeds": "0-29", "arms": ["baseline", "wind_aware"], "episodes": 2520, "T_s": 6.0, "radius_m": 0.15},
+    "A2": {"durations_s": [4.0, 6.0, 8.0, 10.0, 12.0], "forces_N": [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3], "seeds": "0-29", "arms": ["baseline", "wind_aware"], "episodes": 2100, "controller": "stock"},
+    "A3": {"forces_N": "0.10..0.20 step 0.01 (11 levels)", "seeds": "0-29", "arms": ["baseline", "wind_aware"], "episodes": 660, "controller": "stock", "T_s": 6.0},
+    "A4": {"forces_N": [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3], "seeds": "0-29 (primary subset 0-9 reported separately)", "arms": ["baseline", "wind_aware"], "trajectory_capture": "FIRE_SAVE_TRAJECTORY=1 (48 Hz positions + finished sets)", "controller": "stock"},
+    "A5": {"radii_m": [0.08, 0.10, 0.12, 0.15, 0.18, 0.20, 0.25], "forces_N": [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3], "seeds": "0-29", "arms": ["baseline", "wind_aware"], "episodes": 2940, "controller": "stock", "T_s": 6.0},
+    "A7": {"forces_N": [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3], "seeds": "0-29 (primary subset 0-9 reported separately)", "arms": ["baseline", "wind_aware"], "instrumentation": "runtime wrapper around run_experiment.hungarian_assign recording the used assignment, the Euclidean assignment and the true-wind-penalised assignment at t = 0 and at every 1 s replan"}
+  },
+  "constraints": {
+    "no_existing_file_modified": true,
+    "monkey_patch_only": "run_experiment.DSLPIDControl, run_experiment.DURATION_SEC, run_experiment.hungarian_assign, run_experiment.WindyCtrlAviary are replaced at runtime inside the driver process; source files untouched",
+    "max_worker_processes": 10,
+    "cpu_only_pybullet_direct": true
+  }
+}

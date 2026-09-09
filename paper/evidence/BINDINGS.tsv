@@ -29,3 +29,15 @@ E-RAW-SAFETY	data/e-raw-safety/revision_safety_campaign_20260829.jsonl	raw_episo
 E-SAFETY	data/e-safety/revision_safety_analysis_20260829.json	derived_table	descriptive separation, motor-limit, non-finite-state, timing and replan diagnostics with provenance gates
 E-REV-STATS	data/e-rev-stats/revision_statistics_20260829.json	derived_table	cluster-aware reanalysis with explicit inferential units, endpoint-separated families, Holm metadata and provenance gates
 E-SAFETY-GEOM	data/e-safety-geom/safety_geometry_confound_20260831.json	derived_table	how much of the separation metric is set by target placement rather than by the allocator: target/observed correlation, within-scene pairing, hull-contact counts and the structural overlap rate by capture radius
+E-AUDIT-PREDECL	data/e-audit-predecl/PREDECLARATION.json	derived_table	stock controller facts read from source and pre-declared predictions P1-P5
+E-AUDIT-RECEIPT	data/e-audit-receipt/RECEIPT.json	derived_table	controller-identification audit receipt and frozen-source hashes
+E-AUDIT-A1	data/e-audit-a1/a1_summary.json	derived_table	integral-gain and clamp sweep at the stock six-second horizon
+E-AUDIT-A1B	data/e-audit-a1b/a1b_summary.json	derived_table	clamp sweep at the twelve-second horizon
+E-AUDIT-A2	data/e-audit-a2/a2_summary.json	derived_table	horizon sweep under the stock controller
+E-AUDIT-A3	data/e-audit-a3/a3_summary.json	derived_table	fine force-ladder logistic width of the completion transition
+E-AUDIT-A4	data/e-audit-a4/a4_crash_accounting.json	derived_table	crash and post-completion accounting at high force
+E-AUDIT-A5	data/e-audit-a5/a5_summary.json	derived_table	capture-radius grid and baseline F50-on-radius slope
+E-AUDIT-A7	data/e-audit-a7/a7_assignment_divergence.json	derived_table	used-versus-Euclidean assignment divergence at lambda 0.25
+E-AUDIT-A1-RAW	data/e-audit-a1-raw/a1_gain_sweep.jsonl	raw_episode_log	2520 episodes, Ki and clamp sweep on the seven-level force ladder
+E-AUDIT-A2-RAW	data/e-audit-a2-raw/a2_horizon_sweep.jsonl	raw_episode_log	2100 episodes, stock-controller horizon sweep
+E-AUDIT-A7-RAW	data/e-audit-a7-raw/a7_assignment_log.jsonl	raw_episode_log	420 episodes, assignment-log instrumentation of used, Euclidean and penalised solutions
