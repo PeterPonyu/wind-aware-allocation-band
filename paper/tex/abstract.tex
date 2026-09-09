@@ -13,19 +13,20 @@ estimate-noise, temporal, pathway, geometry, swarm-size and capture-radius
 campaigns extend the same endpoint. The envelope has a sharp transition at
 \KneeLevel{}~N (\KneePctHover{}~percent of hover thrust), where completion
 rises from \KneeAgnostic{} to \KneeAware{} (paired gain $+\KneeDelta{}$,
-surviving the pre-specified signed-rank family correction). Doubling the
+clearing the predeclared signed-rank family correction). Doubling the
 baseline integral gain collapses that \KneeLevel{}~N paired advantage to
 \AuditKiTenGain{} (Wilcoxon \AuditKiTenWilcoxonP{}) and moves both arms'
-transition to \AuditKiTenKnee{}~N. Initial assignment never differs from
-Euclidean (\AuditInitialDivergence{} of \AuditAwareEpisodes{}) while replans
-diverge in \AuditUsedDivergence{} episodes. Relative noise through
+transition to \AuditKiTenKnee{}~N. At the registered penalty weight
+($\lambda=\LambdaReference{}$), initial assignment never differs from Euclidean
+(\AuditInitialDivergence{} of \AuditAwareEpisodes{}) while replans diverge in
+\AuditUsedDivergence{} episodes. Relative noise through
 \BestSigma{} preserves the transition, and causal estimates retain positive
 gains under constant and gusting profiles. A complete
 assignment-by-feedforward factorial attributes the gain to target feedforward,
 while paired gains stay positive from \ScaleMinSize{} through \ScaleMaxSize{}
 airframes. Rerunning the ladder across capture radii keeps a transition of
 comparable size but moves it from \RadiusTightPeakForce{} to
-\RadiusWidePeakForce{}~N. The closer is therefore a scoped positive claim:
-feedforward compensates a slow integral inside a \EpisodeHorizonS{}~s
-episode, which locates the operating envelope rather than a general allocator
-property.
+\RadiusWidePeakForce{}~N. The contribution is a scoped identification:
+target-position feedforward compensates a slow integral inside a
+\EpisodeHorizonS{}~s episode, and the campaigns map the operating envelope in
+which that compensation changes completion.

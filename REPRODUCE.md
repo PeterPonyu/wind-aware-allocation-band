@@ -49,6 +49,11 @@ the build instead of producing a stale number.
 | `data/e-audit-a1-raw/a1_gain_sweep.jsonl` | raw_episode_log | 2958571 | `e7584cc2373d1469…` |
 | `data/e-audit-a2-raw/a2_horizon_sweep.jsonl` | raw_episode_log | 2377309 | `9a91617d1cb92929…` |
 | `data/e-audit-a7-raw/a7_assignment_log.jsonl` | raw_episode_log | 1275783 | `302f2cfbee035472…` |
+| `data/e-audit-lambda-predecl/PREDECLARATION.json` | derived_table | 7048 | `11d4f2a294cdbc4b…` |
+| `data/e-audit-lambda/lambda_summary.json` | derived_table | 96165 | `526a831fcc394d55…` |
+| `data/e-audit-lambda-receipt/RECEIPT.json` | derived_table | 5398 | `7478ac1bb2b67357…` |
+| `data/e-audit-lambda-raw/lambda_sweep.jsonl` | raw_episode_log | 5843085 | `a30acba9bb57ee7c…` |
+| `data/e-audit-a5b/a5b_summary.json` | derived_table | 185958 | `45651a795cb6ccc3…` |
 
 Some of these files recorded the paths of the machine that produced them. Those path strings and source links were refreshed before deposit; `REDACTION.md` states the rules, lists every file touched with both digests, and describes the check that proves no number changed.
 

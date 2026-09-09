@@ -1,6 +1,6 @@
 # runtime-snapshot/v1
 
-Captured UTC: `2026-09-09T03:35:05Z`
+Captured UTC: `2026-09-09T13:49:55Z`
 
 This file records the interpreter, typesetter and R package versions available when the export was assembled. It does not install them.
 
@@ -13,6 +13,7 @@ This file records the interpreter, typesetter and R package versions available w
 | R package `ggplot2` | `4.0.3` |
 | R package `jsonlite` | `2.0.0` |
 | R package `patchwork` | `1.3.2` |
+| R package `scales` | `1.4.0` |
 | R package `systemfonts` | `1.3.2` |
 
 The figure code is the authority for the package names; the README and this snapshot are generated from that code at export time. This file does not prove remote or archive availability.

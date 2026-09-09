@@ -1,11 +1,17 @@
+%% Draft-only owner placeholder (ruling R15, 2026-09-09). Prints ONLY when the
+%% build defines \DRAFTTODO (e.g. pdflatex "\def\DRAFTTODO{1}\input{main}");
+%% every packet build leaves it undefined, so no unconfirmed declaration text
+%% reaches a PDF. The owner replaces each use with the confirmed sentence.
+\providecommand{\ownertodo}[1]{\ifdefined\DRAFTTODO[TODO-OWNER: #1]\fi}
+
 %% Independent caption file. Every caption is self-contained: readable without
 %% the body text, without cross-references, and without float numbers.
 
 \newcommand{\CapSystemOverview}{%
 Research object and endpoint bridge for the wind-aware allocation--control
-measurement. Panel A is an explicit computational-contract schematic, rather than
-a flight photograph, of four matched quadrotors, four waypoint
-targets and a horizontal disturbance vector. Dashed paths represent the shared
+measurement. Panel A is a drawn schematic of the computational contract: four
+matched quadrotors, four waypoint targets and a horizontal disturbance vector.
+Dashed paths represent the shared
 assignment-to-control task; the two labelled paths distinguish the Euclidean
 wind-agnostic cost from the wind-aware upwind cost plus target-position bias.
 Panel B is a descriptive seed-paired view at the transition force
@@ -180,14 +186,13 @@ radius' largest advantage. Panel B gives the two completion ladders those
 advantages are differences of, one facet per radius, with the dashed rule marking
 the same labelled force. The transition survives every tested radius at a
 comparable size, between $+\RadiusPeakDeltaMin{}$ and $+\RadiusPeakDeltaMax{}$
-completion, but it does not stay at one force: it moves from
+completion, and its location moves with the radius, from
 \RadiusTightPeakForce{}~N at the tightest radius to \RadiusWidePeakForce{}~N at
 the widest, so the force at which directional information pays is a property of
-the operating point rather than a constant. Within this
-\RadiusHolmFamily{}-test validation family only \RadiusHolmSurvivors{} cell
-clears a Holm-corrected 5~percent threshold, which follows from
-\NRadiusSeeds{} seeds per cell rather than from evidence against the larger
-primary sweep. %
+the operating point. Within this \RadiusHolmFamily{}-test validation family
+\RadiusHolmSurvivors{} cell clears a Holm-corrected 5~percent threshold, a
+resolution set by the \NRadiusSeeds{} seeds per cell; the family is a
+sensitivity readout beside the larger primary sweep. %
 }
 
 \newcommand{\CapPathwaySafety}{%
@@ -244,4 +249,19 @@ horizon and \AuditGainTTen{} once the horizon reaches 10~s. Panel B is the
 matching wind-agnostic completion at the same force, which rises as the
 episode lengthens and the slow integral is given more time to wind up. Both
 panels share one horizon axis. %
+}
+
+\newcommand{\CapLambdaSweep}{%
+Pre-declared sweep of the assignment penalty weight $\lambda$ over
+$\{\LambdaGrid{}\}$~m/N under the stock controller at the
+\EpisodeHorizonS{}~s horizon, \LambdaAwareEpisodes{} aware-arm episodes per
+weight. Circles count episodes whose initial ($t=0$) assignment differs from
+the Euclidean assignment; triangles count episodes in which any call,
+initial or replan, differs. The dashed line marks the inherited weight
+$\lambda=\LambdaReference{}$, at which the counts reproduce the bound
+assignment audit exactly. Initial divergence is zero through
+$\lambda=\LambdaInertMax{}$ and first appears at
+$\lambda=\LambdaFirstDivergence{}$; the horizontal axis is pseudo-logarithmic
+so that $\lambda=0$ sits on the same axis. The sweep is descriptive by
+declaration and carries no confirmatory test. %
 }

@@ -35,9 +35,9 @@ interactions;
 (4) motor thermal torque limits and battery voltage sag under sustained counter-wind
 thrust.
 The empirical transition window (\KneeLevel{}~N, or \KneePctHover{}\% of hover thrust)
-is therefore characterized strictly as the operating envelope of the declared
-rigid-body simulation contract, serving as an uncorrupted computational
-benchmark rather than an uncalibrated claim of open-air flight robustness.
+is therefore characterized as the operating envelope of the declared
+rigid-body simulation contract and serves as the computational benchmark
+against which an open-air extension is validated.
 
 The primary endpoint is the completion rate. An airframe is marked complete at its
 first entry into the capture ball, rather than only at the final time. For airframe
@@ -210,8 +210,10 @@ Eq.~\eqref{eq:target-feedforward}:
 \end{equation}
 Equation~\eqref{eq:target-feedforward} defines the target supplied to the stock
 position controller in each arm. Here $\lambda=0.25$ in the aware arm and $\gamma$ is the tested target
-feedforward gain (the inherited value is \FeedforwardGainDefault{}~m/N). The
-assignment is re-solved once per
+feedforward gain (the inherited value is \FeedforwardGainDefault{}~m/N). A
+pre-declared sweep substitutes \LambdaGridSize{} values of $\lambda$ at run
+time on the same seeds, forces and frozen sources and is reported in
+Results. The assignment is re-solved once per
 simulated second over unfinished pairs; the replanning count is defined by
 Eq.~\eqref{eq:replanning}:
 \begin{equation}
@@ -238,9 +240,9 @@ paired within seed, not a comparison of independent samples. Across
 \NEpisodesOracle{} episodes.
 
 The paired seed is the inferential unit for every primary and support comparison;
-episode rows are retained for audit and visualization but are not treated as
+episode rows are retained for audit and visualization and are not treated as
 independent samples. The exact test, interval construction and multiplicity rule
-are stated once in the Statistical analysis subsection below.
+are stated once, with the statistical analysis.
 
 For clarity, the estimand at force $w$ is the seed-level paired contrast defined
 in Eq.~\eqref{eq:paired-estimand}:
@@ -621,8 +623,11 @@ The executed design satisfies the hypothesis of Proposition~\ref{prop:tol} with
 a margin large enough to make the repeat set stable: \NRepeats{} pairs of
 seeds lie within \WidestRepeat{} degrees of one another and the next-closest
 pair is \NearestDistinct{} degrees apart, so every tolerance between those two
-numbers admits the same \NRepeats{} pairs. We state $\varepsilon = \RepeatTol{}$
-degrees and report the interval beside it as the pre-specified operating rule.
+numbers admits the same \NRepeats{} pairs. The tolerance $\varepsilon = \RepeatTol{}$
+degrees was not fixed in advance; it is a post-hoc reading rule adopted for this
+repeat reading after the record was inspected, and we report the interval beside
+it because Proposition~\ref{prop:tol} makes the result identical for every
+tolerance in that gap.
 
 \begin{corollary}[Paired units are preserved]\label{cor:notn}
 The comparison is paired within seed, so the units of the signed-rank test are

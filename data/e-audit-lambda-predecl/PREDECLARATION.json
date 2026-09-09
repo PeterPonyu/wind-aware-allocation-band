@@ -1,0 +1,77 @@
+{
+  "schema": "001-audit20260909-lambda-predeclaration/v1",
+  "declared_utc": "2026-09-09T07:28:52Z",
+  "card": "001-wind-knee-under-estimated-wind",
+  "cycle": "WRITE-IN-3 compute (owner-approved); scout docs/reports/2026-09-09-scout-001-lambda-a5b.md section 5",
+  "status": "written before any grid episode in this directory was executed. The only simulation output present at write time is smoke_lambda.json: 2 episodes at the bound reference lambda = 0.25 (0.15 N, seed 0, both arms) run solely to verify the driver reproduces bound A7 rows bit-for-bit; it reveals nothing about any lambda != 0.25.",
+  "git_head": "6625b7970b5d34b627b4313927c779f5edf46c69",
+  "environment": {
+    "interpreter": "~/miniconda3/envs/drone-swarm/bin/python (same conda env as audit20260907; RECEIPT.json versions python 3.10.20)",
+    "python": "3.10.20",
+    "pybullet": "3.2.7",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "gym_pybullet_drones_commit": "e712698"
+  },
+  "driver_sha256": {
+    "audit20260909_lambda/lambda_sweep.py": "4fcb9dbd70fd9a35eed0074160172872d265ffcba5bd6d8f48fd8d368651cbba",
+    "audit20260907/audit_common.py (imported read-only, unchanged)": "bbbb29a3e53775411b1bfb1b0d28f6a2a3a8242e151379c10f329a82bb2a24e2"
+  },
+  "frozen_sources_sha256": {
+    "source-tree/001-drone-swarm/run_experiment.py": "be5b80e14cd0914d58be9673a447999d73956088e8c50366c503bb22b672a2bc",
+    "source-tree/001-drone-swarm/gym-pybullet-drones/gym_pybullet_drones/control/DSLPIDControl.py": "5cd645d9b27f84342721863399fd5b4e36ce8493fb9ecce3e076b492004f6605",
+    "source-tree/001-drone-swarm/wind_models.py": "b63bc92296fa1898770e9d1afca2539ace2dfd8ac3b568c7bd1387e729141a8e"
+  },
+  "frozen_sources_identical_to_audit20260907_predeclaration": true,
+  "reference": {
+    "bound_A7_summary": "audit20260907/a7_assignment_divergence.json sha256 68fb0d622bcc4e8fccb518a5c7199d3409d32c0a5867914ce44dfd496310bd09",
+    "bound_A7_rows": "audit20260907/a7_assignment_log.jsonl sha256 302f2cfbee035472ef4add58a1b78ea14d53a5c6a3bc6a68ecb657c489e89007",
+    "lambda_reference_m_per_N": 0.25,
+    "bound_totals_to_reproduce": {"aware_arm_initial_divergence_episodes": 0, "aware_arm_episodes_with_any_divergence": 7, "aware_arm_episodes": 210}
+  },
+  "grid": {
+    "lambda_m_per_N": [0.0, 0.05, 0.1, 0.25, 0.5, 1.0, 2.0],
+    "forces_N": [0.0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3],
+    "seeds": "0-29 (primary subset 0-9 reported separately)",
+    "arms": {"wind_aware": "all 7 lambda values (210 episodes per lambda, 1470 total)", "baseline": "once, 210 episodes (lambda-independent: the frozen code passes wind_penalty = 0 in this arm; logged with the reference lambda for the counterfactual penalised assignment)"},
+    "T_s": 6.0,
+    "radius_m": 0.15,
+    "controller": "stock DSLPIDControl (Ki_xy 0.05, clamp 2)",
+    "replan_period_s": 1.0,
+    "episodes": 1680
+  },
+  "patch": "runtime wrapper hungarian_assign_lambda installed on run_experiment.hungarian_assign inside each worker after audit_common.apply_patches; substitutes the cell lambda whenever the frozen call passes wind_penalty > 0 (aware arm; run_experiment.py L252 literal 0.25), leaves wind_penalty = 0 untouched (baseline arm); records used / euclid / penalised(lambda, true wind) at t = 0 and every 1 s replan exactly as audit_common.hungarian_assign_logged; RecordingWindyCtrlAviary from audit_common exposes the true wind; source files untouched",
+  "endpoints": {
+    "E1_initial_divergence_count": "aware episodes (of 210 per lambda) whose t = 0 used assignment differs from the Euclidean assignment; reported with Clopper-Pearson 95% interval on the proportion",
+    "E2_used_divergence_count": "aware episodes (of 210 per lambda) with any call (t = 0 or replan) where the used assignment differs from Euclidean; Clopper-Pearson 95% interval; also split at 0.15 N and on primary seeds 0-9",
+    "E3_completion_0p15N": "aware completion_rate at 0.15 N per lambda (mean over 30 seeds), paired by seed against (a) the stock baseline and (b) the lambda = 0.25 aware arm, with 95% t and bootstrap intervals on the paired delta"
+  },
+  "primary_test": "none confirmatory. This is a descriptive sensitivity analysis; E1 and E2 are exact counts, E3 is reported with intervals. Wilcoxon / sign-test p-values emitted by audit_common.paired_summary are descriptive only and drive no reading rule.",
+  "reading_rules_prestated": {
+    "K1": "if E1 > 0 at any lambda != 0.25 in the grid: the abstract qualifier 'At the only tested penalty weight (lambda = 0.25)' stays as the bound scope and MUST NOT be widened; the body sentence 'That inertness is at the inherited penalty weight lambda = 0.25 only; no lambda sweep was run.' (body.tex:913-914) is replaced by the measured lambda range at which E1 == 0",
+    "K2": "if E1 == 0 at every lambda in the grid: the qualifier may be widened to the tested range [0, 2] m/N; the phrase 'never changes an assignment' remains forbidden (claim-register.md:182)",
+    "note": "the choice between K1 and K2 is fixed by E1 alone; E2 and E3 are reported but do not change the rule"
+  },
+  "stop_rule": "before any lambda != 0.25 result is read, the lambda = 0.25 aware rows (210) and the baseline rows (210) must be bit-identical to bound A7 on completion_rate, num_finished, replan_events, mean_min_dist_to_target_m, max_min_dist_to_target_m and on the logged used / euclid / penalised_true assignments, and the reproduced totals must equal 0 / 210 initial and 7 used-divergence episodes. If not, the driver exits non-zero and no result is reported.",
+  "cross_checks": {
+    "lambda_0.25_vs_A7": "as in stop_rule; 420 rows",
+    "lambda_0_vs_factorial_allocation_off": "NOT performed in this cycle (scout Unknown 4: the factorial ran with estimators; comparability of only the oracle/constant cell unconfirmed); lambda = 0 rows are compared to the stock baseline within this run instead"
+  },
+  "constraints": {
+    "no_existing_file_modified": true,
+    "outputs_only_under": "source-tree/001-drone-swarm/audit20260909_lambda/ (plus the report docs/reports/2026-09-09-writein3-001-lambda-result.md)",
+    "papers_tree_untouched": true,
+    "bind_evidence_not_run": true,
+    "max_worker_processes": 10,
+    "cpu_only_pybullet_direct": true,
+    "predeclaration_immutable_after_run_start": true
+  },
+  "tex_sentences_at_stake_verbatim_not_edited_this_cycle": {
+    "abstract.tex:19-22": "At the only tested penalty weight ($\\lambda=0.25$), initial assignment never differs from Euclidean (\\AuditInitialDivergence{} of \\AuditAwareEpisodes{}) while replans diverge in \\AuditUsedDivergence{} episodes.",
+    "body.tex:908": "The assignment path does not carry the gain.",
+    "body.tex:913-914": "That inertness is at the inherited penalty weight $\\lambda=0.25$ only; no $\\lambda$ sweep was run.",
+    "body.tex:951-952": "Assignment inertness is measured at $\\lambda=0.25$ only.",
+    "methods.tex:212": "Here $\\lambda=0.25$ in the aware arm",
+    "claim-register.md:184": "分配惰性没有做 λ 扫描，正文必须保留「只在 λ = 0.25」。"
+  }
+}

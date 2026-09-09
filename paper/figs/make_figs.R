@@ -1113,6 +1113,153 @@ if (!identical(as.integer(A7_TOTALS$aware_arm_initial_divergence_episodes), 0L) 
   stop("A7 assignment-divergence totals do not match the bound receipt")
 }
 
+## ---------------------------------------------------------------------------
+## Pre-declared assignment-penalty (lambda) sweep (audit20260909_lambda).  The
+## grid, the endpoints and the reading rules were frozen before the first grid
+## episode; the sweep is descriptive by declaration, so nothing below is a
+## confirmatory test.  The lambda = 0.25 row must reproduce bound A7 exactly or
+## the sweep is not read at all.
+## ---------------------------------------------------------------------------
+
+audit_lambda_predecl <- read_audit("E-AUDIT-LAMBDA-PREDECL")
+audit_lambda <- read_audit("E-AUDIT-LAMBDA")
+audit_lambda_receipt <- read_audit("E-AUDIT-LAMBDA-RECEIPT")
+assert_audit_jsonl(audit_lambda, "E-AUDIT-LAMBDA-RAW", "lambda sweep")
+invisible(audit_lambda_receipt)
+
+# The summary must have been computed against the bound predeclaration, not a
+# later edit of it.
+LAMBDA_PREDECL_SHA <- digest::digest(read_bound$path("E-AUDIT-LAMBDA-PREDECL"),
+                                     algo = "sha256", file = TRUE)
+if (!identical(as.character(audit_lambda$predeclaration_sha256), LAMBDA_PREDECL_SHA)) {
+  stop("lambda sweep summary does not hash the bound predeclaration")
+}
+
+LAMBDA_GRID_DECLARED <- as.numeric(unlist(audit_lambda_predecl$grid$lambda_m_per_N))
+LAMBDA_GRID_EXPECTED <- c(0, 0.05, 0.10, 0.25, 0.50, 1.0, 2.0)
+if (!isTRUE(all.equal(LAMBDA_GRID_DECLARED, LAMBDA_GRID_EXPECTED))) {
+  stop("pre-declared lambda grid is not the seven-value grid the manuscript describes")
+}
+LAMBDA_TABLE <- do.call(rbind, lapply(audit_lambda$table, function(row) {
+  data.frame(
+    lambda = as.numeric(row$lambda_m_per_N),
+    initial = as.integer(row$E1_initial_divergence),
+    used = as.integer(row$E2_used_divergence_episodes),
+    completion = as.numeric(row$E3_aware_completion_0p15N),
+    stringsAsFactors = FALSE
+  )
+}))
+LAMBDA_TABLE <- LAMBDA_TABLE[order(LAMBDA_TABLE$lambda), ]
+if (!isTRUE(all.equal(LAMBDA_TABLE$lambda, LAMBDA_GRID_DECLARED))) {
+  stop("lambda sweep table does not cover exactly the pre-declared grid")
+}
+LAMBDA_REF <- as.numeric(audit_lambda$definitions$lambda_reference_m_per_N)
+assert_near(LAMBDA_REF, 0.25, "lambda reference")
+lambda_row <- function(value) {
+  hit <- LAMBDA_TABLE[abs(LAMBDA_TABLE$lambda - value) < 1e-9, ]
+  if (nrow(hit) != 1L) stop("lambda sweep is missing lambda = ", value)
+  hit
+}
+LAMBDA_N_AWARE <- vapply(audit_lambda$per_lambda, function(x) as.integer(x$n_aware_episodes),
+                         integer(1))
+if (!all(LAMBDA_N_AWARE == as.integer(A7_TOTALS$aware_arm_episodes))) {
+  stop("lambda sweep does not run 210 aware episodes at every lambda")
+}
+
+# Stop rule: the reference row is bound A7, bit for bit.
+LAMBDA_REPRO <- audit_lambda$reproduction_of_bound_A7
+if (!isTRUE(LAMBDA_REPRO$passed) || !isTRUE(LAMBDA_REPRO$rows_bit_identical)) {
+  stop("lambda sweep did not reproduce bound A7 at lambda = 0.25; the sweep may not be read")
+}
+LAMBDA_XCHECK <- audit_lambda$cross_check_vs_a7
+if (!identical(as.integer(LAMBDA_XCHECK$checked), 420L) ||
+    !identical(as.integer(LAMBDA_XCHECK$identical_fields), 420L) ||
+    !identical(as.integer(LAMBDA_XCHECK$identical_assignment_logs), 420L) ||
+    length(LAMBDA_XCHECK$mismatches) != 0L) {
+  stop("lambda sweep cross-check against A7 is not 420/420 with no mismatches")
+}
+LAMBDA_AT_REF <- lambda_row(LAMBDA_REF)
+if (!identical(LAMBDA_AT_REF$initial, as.integer(A7_TOTALS$aware_arm_initial_divergence_episodes)) ||
+    !identical(LAMBDA_AT_REF$used, as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence))) {
+  stop("lambda = 0.25 row does not equal the bound A7 totals (0 initial, 7 used)")
+}
+
+# Reading rule K1: E1 == 0 through lambda = 0.5, E1 > 0 at 1.0 and 2.0.
+LAMBDA_INERT <- LAMBDA_TABLE$lambda[LAMBDA_TABLE$initial == 0L]
+LAMBDA_DIVERGENT <- LAMBDA_TABLE$lambda[LAMBDA_TABLE$initial > 0L]
+if (!isTRUE(all.equal(LAMBDA_INERT, c(0, 0.05, 0.10, 0.25, 0.50))) ||
+    !isTRUE(all.equal(LAMBDA_DIVERGENT, c(1.0, 2.0)))) {
+  stop("lambda sweep initial divergence is not zero through 0.5 and positive at 1.0 and 2.0")
+}
+LAMBDA_INERT_MAX <- max(LAMBDA_INERT)
+LAMBDA_FIRST_DIVERGENCE <- min(LAMBDA_DIVERGENT)
+if (!identical(as.character(audit_lambda$reading_rule_fired), "K1")) {
+  stop("lambda sweep summary does not record reading rule K1")
+}
+if (!isTRUE(all.equal(sort(as.numeric(unlist(audit_lambda$E1_zero_lambdas_m_per_N))),
+                      LAMBDA_INERT))) {
+  stop("lambda sweep E1-zero list disagrees with the table")
+}
+if (!identical(lambda_row(1.0)$initial, 3L) || !identical(lambda_row(2.0)$initial, 19L)) {
+  stop("lambda sweep initial divergence at 1.0 / 2.0 is not 3 / 19")
+}
+if (!identical(lambda_row(0)$used, 0L) || !identical(lambda_row(2.0)$used, 80L)) {
+  stop("lambda sweep used divergence at 0 / 2.0 is not 0 / 80")
+}
+if (any(diff(LAMBDA_TABLE$used) < 0L)) {
+  stop("lambda sweep used divergence is not monotone in lambda")
+}
+# E3 is descriptive by declaration; the only thing asserted is the fact the
+# text states: the 0.15 N aware completion is identical across the inert range.
+LAMBDA_COMPLETION_INERT <- LAMBDA_TABLE$completion[LAMBDA_TABLE$initial == 0L]
+if (diff(range(LAMBDA_COMPLETION_INERT)) > 1e-9) {
+  stop("0.15 N aware completion is not flat across the inert lambda range")
+}
+LAMBDA_COMPLETION_FLAT <- LAMBDA_COMPLETION_INERT[[1]]
+assert_near(LAMBDA_COMPLETION_FLAT, 0.633333, "lambda-inert 0.15 N completion")
+if (!grepl("^none confirmatory", as.character(audit_lambda_predecl$primary_test))) {
+  stop("lambda predeclaration does not declare the sweep descriptive")
+}
+
+## A5b: the fine 0.01 N force grid over the same seven radii.  Not
+## pre-declared; bound as a labelled post-hoc resolution sensitivity and never
+## as a replacement for the pre-declared A5 slope.
+audit_a5b <- read_audit("E-AUDIT-A5B")
+if (!isFALSE(audit_a5b$provenance$design$predeclared)) {
+  stop("A5b is recorded as pre-declared; the manuscript labels it post hoc")
+}
+A5B_REG <- audit_a5b$regressions$baseline_F50_logistic_on_rc
+A5B_SLOPE_CI <- audit_ci(A5B_REG$slope_ci95)
+A5B_P4 <- audit_a5b$prediction_P4_fine_resolution
+if (!identical(as.character(A5B_P4$overall), "MIXED")) {
+  stop("A5b P4 reading is not MIXED")
+}
+if (!isTRUE(all.equal(as.numeric(A5B_P4$baseline_F50_slope_N_per_m), as.numeric(A5B_REG$slope))) ||
+    !isTRUE(all.equal(audit_ci(A5B_P4$baseline_F50_slope_ci95), A5B_SLOPE_CI))) {
+  stop("A5b P4 block and regression block disagree on the slope")
+}
+assert_near(A5B_REG$slope, 0.704849, "A5b radius slope")
+assert_near(A5B_SLOPE_CI[1], 0.625894, "A5b radius slope lo")
+assert_near(A5B_SLOPE_CI[2], 0.783803, "A5b radius slope hi")
+if (!(A5B_SLOPE_CI[1] < A5B_REG$slope && A5B_REG$slope < A5B_SLOPE_CI[2])) {
+  stop("A5b slope is not inside its own interval")
+}
+if (!(A5_SLOPE_CI[1] <= A5B_SLOPE_CI[1] && A5B_SLOPE_CI[2] <= A5_SLOPE_CI[2])) {
+  stop("A5b interval is not inside the pre-declared A5 interval")
+}
+if (!(A5B_SLOPE_CI[2] < 1)) stop("A5b radius-slope interval does not exclude 1.0")
+if (!isTRUE(all.equal(as.numeric(unlist(audit_a5b$provenance$design$success_radii_m)),
+                      as.numeric(A5_REG$x)))) {
+  stop("A5b does not use the seven A5 radii")
+}
+A5B_FORCES <- as.numeric(unlist(audit_a5b$provenance$design$forces_N))
+A5B_FORCE_STEP <- unique(round(diff(A5B_FORCES), 6))
+if (length(A5B_FORCE_STEP) != 1L) stop("A5b force grid is not uniform")
+if (!identical(as.integer(audit_a5b$rows), 8820L) ||
+    !identical(as.integer(audit_a5b$provenance$design$expected_rows), 8820L)) {
+  stop("A5b row count is not 8820")
+}
+
 AUDIT_A1_GAIN <- do.call(rbind, lapply(audit_a1$gain_at_0p15N_by_setting, function(row) {
   ci <- audit_ci(row$gain_ci95_t)
   data.frame(
@@ -1152,7 +1299,7 @@ for (unit in c("fig0_system_overview.R", "fig1_wind_band.R", "fig2_noise_sensiti
                "fig10_geometry_factorial.R", "fig11_swarm_scale.R",
                "fig12_endpoint_radius.R", "fig13_pathway_safety.R",
                "fig14_evidence_summary.R", "fig14_integral_gain.R",
-               "fig15_horizon.R")) {
+               "fig15_horizon.R", "fig16_lambda_sweep.R")) {
   source(file.path("figs", "panels", unit))
 }
 
@@ -1491,7 +1638,31 @@ write_generated(c(
   macro("AuditAwareEpisodes", as.integer(A7_TOTALS$aware_arm_episodes)),
   macro("AuditUsedDivergence", as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence)),
   macro("AuditUsedDivergencePrimary", as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence_primary_seeds)),
-  macro("AuditUsedDivergenceKnee", as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence_at_0p15N))
+  macro("AuditUsedDivergenceKnee", as.integer(A7_TOTALS$aware_arm_episodes_with_any_divergence_at_0p15N)),
+  ## Pre-declared lambda sweep (audit20260909_lambda); descriptive by declaration.
+  macro("LambdaGrid", paste(format(LAMBDA_GRID_DECLARED, drop0trailing = TRUE, trim = TRUE),
+                            collapse = ", ")),
+  macro("LambdaGridSize", length(LAMBDA_GRID_DECLARED)),
+  macro("LambdaGridMax", format(max(LAMBDA_GRID_DECLARED), drop0trailing = TRUE)),
+  macro("LambdaReference", fmt(LAMBDA_REF, 2)),
+  macro("LambdaInertMax", format(LAMBDA_INERT_MAX, drop0trailing = TRUE)),
+  macro("LambdaFirstDivergence", fmt(LAMBDA_FIRST_DIVERGENCE, 1)),
+  macro("LambdaInitialDivAtOne", lambda_row(1.0)$initial),
+  macro("LambdaInitialDivAtTwo", lambda_row(2.0)$initial),
+  macro("LambdaUsedDivAtZero", lambda_row(0)$used),
+  macro("LambdaUsedDivAtQuarter", LAMBDA_AT_REF$used),
+  macro("LambdaUsedDivAtTwo", lambda_row(2.0)$used),
+  macro("LambdaAwareEpisodes", as.integer(A7_TOTALS$aware_arm_episodes)),
+  macro("LambdaEpisodes", format(as.integer(audit_lambda$rows), big.mark = ",")),
+  macro("LambdaCompletionFlat", fmt(LAMBDA_COMPLETION_FLAT, 2)),
+  ## A5b: labelled post-hoc fine-grid radius sensitivity (not pre-declared).
+  ## Three decimals by rule (spec 2026-09-09 §3.2 prints 0.705): at two decimals
+  ## 0.7048 rounds to 0.70, and rounding the printed 0.705 again would give 0.71.
+  macro("AFiveBSlope", fmt(A5B_REG$slope, 3)),
+  macro("AFiveBSlopeLo", fmt(A5B_SLOPE_CI[[1]], 2)),
+  macro("AFiveBSlopeHi", fmt(A5B_SLOPE_CI[[2]], 2)),
+  macro("AFiveBForceStepN", fmt(A5B_FORCE_STEP, 2)),
+  macro("AFiveBEpisodes", format(as.integer(audit_a5b$rows), big.mark = ","))
 ), "generated_numbers.tex")
 
 ## Endpoint-radius sensitivity: the whole grid, so the reader can see the

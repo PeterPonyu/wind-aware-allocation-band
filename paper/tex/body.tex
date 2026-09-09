@@ -17,27 +17,34 @@ recent work extends that line to flow prediction, safety and formation adaptatio
 ~\cite{seal2025,wespr2026,knodedw2025}. A natural team-level hypothesis is that
 the same directional information has operational leverage when several aircraft
 compete for tasks, because it can enter an upwind assignment cost. This paper
-rejects that allocation hypothesis on the present benchmark and identifies a
-different mechanism: target-position feedforward against a slow stock integral.
+puts that hypothesis to a paired test on a multi-quadrotor benchmark and
+identifies where the directional information acts: at the inherited penalty
+weight the initial assignment coincides with the Euclidean solution in every
+audited episode, and the completion gain travels through target-position
+feedforward compensating a slow stock integral.
 
 The instance is a multi-quadrotor stack in which \NDrones{} airframes must reach
 \NDrones{} waypoints. A wind-agnostic arm uses Euclidean assignment and the stock
 position controller; a wind-aware arm can add an upwind assignment cost and
 target-position feedforward. Shared seeds, paired contrasts and a
 \NWindLevels{}-level force ladder define the primary envelope. The contribution
-is a scoped identification rather than a measurement of allocation leverage:
-against the stock slow integral (\StockKi{}~N/m/s) and the \EpisodeHorizonS{}~s
-horizon, target-position feedforward changes short-episode completion.
-Assignment is inert at the inherited $\lambda=0.25$ only; no $\lambda$ sweep was
-run. Doubling that stock Ki collapses the 0.15~N paired advantage to
+is a scoped identification of the mechanism: against the stock slow integral
+(\StockKi{}~N/m/s) and the \EpisodeHorizonS{}~s horizon, target-position
+feedforward changes short-episode completion, and the campaigns map the
+operating envelope in which it does so.
+Initial assignment is inert at the inherited $\lambda=0.25$ and, on a
+pre-declared \LambdaGridSize{}-point sweep, at every tested weight through
+$\lambda=\LambdaInertMax{}$~m/N; it first diverges at
+$\lambda=\LambdaFirstDivergence{}$~m/N. Doubling that stock Ki collapses the 0.15~N paired advantage to
 \AuditKiTenGain{}. A complete assignment-by-feedforward factorial attributes the
-gain to the feedforward path. Allocation taxonomies and aerial-swarm surveys
-still supply language for the rejected hypothesis~\cite{gerkey2004formal,
-dias2006market,korsah2013taxonomy,chung2018swarm,skaltsis2023uavallocation}.
+gain to the feedforward path. Allocation taxonomies and aerial-swarm
+surveys~\cite{gerkey2004formal,dias2006market,korsah2013taxonomy,chung2018swarm,
+skaltsis2023uavallocation} frame the team-level allocation question that the
+benchmark puts to the test.
 Panels A and B of Fig.~\ref{fig:system-overview} make the measured object
 explicit: the same directional input enters assignment and feedforward, and the
 paired endpoint keeps thresholded completion beside closest approach. Panel A
-is a research-object schematic, not a fabricated flight photograph.
+is a drawn schematic of the research object.
 
 \begin{figure*}[!t]
 \centering
@@ -54,9 +61,9 @@ pathway and feedforward-gain controls, scene-geometry factors and a homogeneous
 team-size axis then open the same estimand along progressively more operational
 dimensions. The exact-vector oracle is the reference for every extension, so the
 \NEvidenceBlocks{} synthesis blocks form one measured operating envelope with a
-continuous information-to-completion trace. This remains a computational
-baseline: the tested simulator envelope is the calibration reference, not a
-hardware-general principle.
+continuous information-to-completion trace. The result is a computational
+baseline: the tested simulator envelope is the calibration reference against
+which a hardware extension is to be validated.
 
 \section{Methods}
 \input{methods}
@@ -67,8 +74,8 @@ hardware-general principle.
 \subsection{Operating envelope}
 
 Table~\ref{tab:band} and Fig.~\ref{fig:band}A give the full sweep. The continuous
-closest-approach companion is reported in the continuous-tracking subsection below
-and is read alongside the thresholded endpoint.
+closest-approach companion is reported below with the tracking endpoint and is
+read alongside the thresholded rate.
 At \KneeLevel{}~N, which is \KneePctHover{} percent of one airframe's hover thrust, the
 wind-agnostic allocator completes \KneeAgnostic{} of waypoints on average and the
 wind-aware allocator completes \KneeAware{}. The paired difference is
@@ -81,13 +88,12 @@ seed-paired difference the test is actually computed on, and its 95~percent
 interval excludes zero at \KneeLevel{}~N and at no other force in the sweep.
 That one-level reading is scoped to the stock integral gain \StockKi{}~N/m/s,
 the \EpisodeHorizonS{}~s horizon, the \CaptureRadius{}~m capture radius and the
-declared 0.05~N force grid; the controller-identification subsection below
-shows how the same endpoint moves when those settings change.
+declared 0.05~N force grid; the controller-identification audit shows how the
+same endpoint moves when those settings change.
 This force is specific to the \CaptureRadius{}~m capture radius that defines
-completion here; the endpoint-radius subsection below reruns the ladder at two further radii and
-finds a transition of comparable size at a different force in each, so
-\KneeLevel{}~N should be read as the transition of this operating point rather
-than a constant of the allocator.
+completion here; rerunning the ladder at two further radii finds a transition
+of comparable size at a different force in each, so \KneeLevel{}~N is the
+transition of this operating point and moves with the capture radius.
 
 The full sweep gives the envelope around that transition. At and below
 \SaturationLevel{}~N both allocators complete nearly every waypoint, establishing a
@@ -218,8 +224,9 @@ The object-level bridge in Fig.~\ref{fig:system-overview}B makes that relationsh
 visible at the seed level. At the transition, \BridgeLowerPairs{} of the
 \NSeeds{} matched seeds move to a lower mean closest approach under the aware
 arm, with a mean shift of $\BridgeDistanceShift{}$~m and a completion gain of
-$+\BridgeCompletionGain{}$ rate units. This is a descriptive reuse of the
-primary record, not a second inferential test.
+$+\BridgeCompletionGain{}$ rate units. This bridge is a descriptive reuse of
+the primary record; the inferential unit and the single paired test are
+unchanged.
 
 \begin{figure}[tbp]
 \centering
@@ -230,9 +237,9 @@ primary record, not a second inferential test.
 
 \subsection{Scene-context variation}
 
-The previous subsection leaves an important systems question. If the wind-aware
-mean is a mixture over seeds, which part of the episode context carries that
-spread? A seed fixes both the force heading and the waypoint layout, so near
+The episode-level distribution leaves an important systems question. If the
+wind-aware mean is a mixture over seeds, which part of the episode context
+carries that spread? A seed fixes both the force heading and the waypoint layout, so near
 repetitions provide a direct probe of how the operating envelope depends on
 context. The record supports a joint reading: the force level locates the
 transition, while the scene determines how strongly an individual episode
@@ -338,7 +345,7 @@ The crossed sweep uses a fixed heading grid:
 (Definition~\ref{def:crossed}). It leaves \DesignedArc{} degrees unsampled
 against \UnsampledArc{}, and it puts \NPairsPerForce{} paired comparisons at
 each level against \NSeeds{}. Table~\ref{tab:designed} and
-Fig.~\ref{fig:designed}A reports the force-level envelope, while
+Fig.~\ref{fig:designed}A report the force-level envelope, while
 Fig.~\ref{fig:designed}B opens its transition cell.
 
 The operating envelope is reproduced, and the transition remains one level wide.
@@ -471,10 +478,8 @@ constant, slow-gust and fast-gust profiles; the corresponding complete-arm gains
 are $+\CompleteConstant{}$, $+\CompleteSlow{}$ and $+\CompleteFast{}$. In this
 benchmark the comparison localizes the observed task-level change to the
 target-position pathway while preserving the directional assignment component,
-thereby identifying a concrete tuning lever for the interface.
-
-This pathway result identifies the present tuning leverage; the assignment cost
-remains an explicit component to test across the next scene geometries.
+thereby identifying a concrete tuning lever for the interface; the assignment
+cost remains an explicit component to test across the next scene geometries.
 
 The controller setting is then opened as an explicit factor. A
 \NGainEpisodes{}-episode sensitivity campaign varies the feedforward gain from zero
@@ -628,39 +633,40 @@ extensions.}
 \subsection{Endpoint-radius sensitivity}
 
 Completion is scored by a capture radius, so every rate in this paper depends on a
-distance the experiment chose rather than measured. The validation sweep reruns the
+distance the experiment chose. The validation sweep reruns the
 force ladder at radii of \RadiusGrid{}~m over \NRadiusEpisodes{} episodes, holding
 scene, heading, seed pairing and horizon fixed, and the anchor column reproduces
 the primary ladder exactly. Table~\ref{tab:radius} gives the full grid and
-Fig.~\ref{fig:radius}A the paired advantage at each radius. The record corrects
-the underlying continuous distance as its own family on the same rows, and it
-moves the same way: the wind-aware arm ends closer to its target in
-\RadiusContinuousCloser{} of the \RadiusContinuousCells{} radius-force cells, with
-\RadiusContinuousHolmSurvivors{} clearing Holm. What the threshold reports is
-therefore a discretization of a distance difference that is already present, not
-an artifact of where the threshold was placed.
+Fig.~\ref{fig:radius}A the paired advantage at each radius. The record also
+carries the underlying continuous distance as its own corrected family on the
+same rows, and it moves the same way: the wind-aware arm ends closer to its
+target in \RadiusContinuousCloser{} of the \RadiusContinuousCells{} radius-force
+cells, with \RadiusContinuousHolmSurvivors{} clearing Holm. The threshold
+therefore reports a discretization of a distance difference that the continuous
+endpoint records independently of where the threshold is placed.
 
 The result separates two claims that the primary sweep states together. A
 transition exists at every tested radius and its size is comparable across them,
-from $+\RadiusPeakDeltaMin{}$ to $+\RadiusPeakDeltaMax{}$ completion. Its location
-is not stable: the largest advantage sits at \RadiusTightPeakForce{}~N for the
-\RadiusTightLevel{}~m radius, \RadiusAnchorPeakForce{}~N for the
-\CaptureRadius{}~m anchor and \RadiusWidePeakForce{}~N for the
-\RadiusWideLevel{}~m radius, a span of \RadiusPeakForceSpan{}~N in force across a
-\RadiusSpanM{}~m change in radius. Fig.~\ref{fig:radius}B shows the
-mechanism directly, since a tighter radius makes the same disturbance harder and
-shifts the whole completion ladder toward lower forces. The headline force is
-therefore a property of the operating point, and the claim this paper supports is
-that directional information has its largest leverage at the force where the task
-is on the edge of feasibility, not that this force is \KneeLevel{}~N in general.
+from $+\RadiusPeakDeltaMin{}$ to $+\RadiusPeakDeltaMax{}$ completion. Its
+location moves with the radius: the largest advantage sits at
+\RadiusTightPeakForce{}~N for the \RadiusTightLevel{}~m radius,
+\RadiusAnchorPeakForce{}~N for the \CaptureRadius{}~m anchor and
+\RadiusWidePeakForce{}~N for the \RadiusWideLevel{}~m radius, a span of
+\RadiusPeakForceSpan{}~N in force across a \RadiusSpanM{}~m change in radius.
+Fig.~\ref{fig:radius}B shows the mechanism directly, since a tighter radius
+makes the same disturbance harder and shifts the whole completion ladder toward
+lower forces. The headline force is therefore a property of the operating
+point: directional information has its largest leverage at the force where the
+task is on the edge of feasibility, and that force moves with the capture
+radius.
 
-Two limits belong with that reading. Within this predeclared
-\RadiusHolmFamily{}-test validation family only \RadiusHolmSurvivors{} of the
-cells clears a Holm-corrected 5~percent threshold, and the anchor cell reaches
-\RadiusAnchorHolmP{}; with \NRadiusSeeds{} seeds per cell the family is
-underpowered for cell-wise correction and is reported as a sensitivity readout
-rather than a second confirmation. The primary seven-force result retains its own
-Bonferroni family and is unchanged.
+The power of the family sets the scope of that reading. Within this predeclared
+\RadiusHolmFamily{}-test validation family \RadiusHolmSurvivors{} of the cells
+clears a Holm-corrected 5~percent threshold, and the anchor cell reaches
+\RadiusAnchorHolmP{}; with \NRadiusSeeds{} seeds per cell the family locates
+the transition at each radius descriptively and is reported as a sensitivity
+readout rather than a second confirmation. The primary seven-force result
+retains its own Bonferroni family and is unchanged.
 
 \begin{table}[tbp]
 \centering
@@ -685,9 +691,9 @@ Cells with an undefined exact test are all-zero differences.}
 
 The ablation reported above removes the target-position feedforward and observes
 the gain collapse. That is consistent with the feedforward carrying the effect and
-equally consistent with the two pathways only working in combination, because the
-cell with assignment disabled and feedforward retained had never been run. Running
-it completes the $2\times2$ over \NFactorialEpisodes{} episodes and
+equally consistent with the two pathways working only in combination, because the
+cell with assignment disabled and feedforward retained had not yet been run.
+Running it completes the $2\times2$ over \NFactorialEpisodes{} episodes and
 \NFactorialSeeds{} paired seeds per profile-force cell.
 
 Fig.~\ref{fig:pathway}A and Table~\ref{tab:factorial} give all three terms. At the
@@ -699,15 +705,15 @@ assignment-by-feedforward interaction stay within \FactorialOtherAbsMax{}
 completion of zero at every profile and force, and \NFactorialHolmSignificant{} of
 the \NumFactorialCells{} tested effects clear the corrected threshold, all of them
 feedforward terms. In this benchmark the directional estimate therefore acts
-through the target-position feedforward, the upwind assignment cost contributes no
-detectable share on its own, and there is no evidence that the two interact. The
-continuous endpoint carries its own corrected family and agrees: at the transition
-force the feedforward term moves the mean minimum distance to target by
-\FactorialContFeedforwardMin{} to \FactorialContFeedforwardMax{}~m, closer in every
-profile, while the assignment and interaction terms stay within
-\FactorialContOtherAbsMax{}~m of zero and none of them clears its threshold on that
-endpoint either. This is a mechanism statement about this interface and task, not a
-general claim about allocation.
+through the target-position feedforward, and the upwind assignment cost and its
+interaction with the feedforward stay inside that near-zero band at every
+profile and force. The continuous endpoint carries its own corrected family and agrees: at
+the transition force the feedforward term moves the mean minimum distance to
+target by \FactorialContFeedforwardMin{} to \FactorialContFeedforwardMax{}~m,
+closer in every profile, while the assignment and interaction terms stay within
+\FactorialContOtherAbsMax{}~m of zero and none of them clears its threshold on
+that endpoint either. This is a mechanism statement scoped to this interface
+and task.
 
 \subsection{Safety and feasibility diagnostics}
 
@@ -802,7 +808,7 @@ remaining rows. No test is reported and none is implied.}
 \subsection{Evidence}
 
 The campaign results are read on their declared inferential units and presented as
-a layered synthesis rather than an omnibus score. Table~\ref{tab:evidence} makes
+a layered synthesis that keeps each view's unit visible. Table~\ref{tab:evidence} makes
 the hierarchy explicit: \NEvidenceBlocks{} synthesis blocks span
 \NEvidenceCampaigns{} campaign views and \NEvidenceRows{} episode rows, while
 their units remain the ten primary seeds, twelve crossed layout clusters (each
@@ -846,8 +852,8 @@ are descriptive estimates that retain each view's inferential unit.}
 
 \subsection{The transition belongs to the baseline's integral action}
 
-The primary ladder is a measurement of the stock controller, not a property of
-assignment. The stock position layer uses integral gain \StockKi{}~N/m/s,
+The primary ladder is a measurement of the stock controller's integral
+action. The stock position layer uses integral gain \StockKi{}~N/m/s,
 wind-up time \IntegralTauS{}~s, clamp \IntegralClampXy{}~m/s and a
 \EpisodeHorizonS{}~s episode, so the largest steady integral force is
 \MaxSteadyIntegralForceN{}~N. Under those settings the bound primary sweep
@@ -876,13 +882,28 @@ rung: the baseline logistic 10--90 width is \AuditWidthTenNinety{}~N
 (\AuditWidthCiLo{} to \AuditWidthCiHi{}), narrower than the 0.05~N primary
 grid, so ``one of seven levels'' is a sampling artefact of that grid.
 
-The assignment path does not carry the gain. On the aware arm, the initial
-assignment differs from Euclidean in \AuditInitialDivergence{} of
+The assignment audit locates the gain outside the assignment path. On the
+aware arm, the initial assignment differs from Euclidean in \AuditInitialDivergence{} of
 \AuditAwareEpisodes{} episodes. Used (replan) assignments diverge in
 \AuditUsedDivergence{} episodes, of which \AuditUsedDivergencePrimary{}
 fall on the primary-sweep seeds and \AuditUsedDivergenceKnee{} sit at
-0.15~N. That inertness is at the inherited penalty weight $\lambda=0.25$
-only; no $\lambda$ sweep was run.
+0.15~N. A pre-declared sweep of the penalty weight over
+$\lambda\in\{\LambdaGrid{}\}$~m/N (Fig.~\ref{fig:lambda-sweep};
+\LambdaAwareEpisodes{} aware episodes per weight on the same seeds, forces
+and frozen sources) bounds that inertness. The $\lambda=0.25$ row reproduces
+the audit above exactly (\AuditInitialDivergence{} initial,
+\LambdaUsedDivAtQuarter{} used-divergence episodes). Initial divergence is
+zero at every tested weight through $\lambda=\LambdaInertMax{}$~m/N and first
+appears at $\lambda=\LambdaFirstDivergence{}$~m/N (\LambdaInitialDivAtOne{}
+of \LambdaAwareEpisodes{}; \LambdaInitialDivAtTwo{} at
+$\lambda=\LambdaGridMax{}$~m/N), while used-assignment divergence rises
+monotonically from \LambdaUsedDivAtZero{} at $\lambda=0$ to
+\LambdaUsedDivAtTwo{} at $\lambda=\LambdaGridMax{}$~m/N. The aware
+completion at 0.15~N is \LambdaCompletionFlat{} at every weight through
+$\lambda=\LambdaInertMax{}$~m/N. Under the reading rule stated before the
+sweep ran, this outcome keeps the inertness claim scoped to the inherited
+weight and reports the tested range over which it holds; the sweep is
+descriptive by declaration and carries no confirmatory test.
 
 The high-force edge is a crash regime, not a clean saturation. Pooled at and
 above 0.20~N, a fraction \AuditNeverCloseBase{} (agnostic) and
@@ -892,10 +913,15 @@ their target. After a completion is recorded, a fraction
 \AuditAltLossAfter{} lose more than 0.10~m of altitude, consistent with a
 frozen rotor command rather than a held hover.
 
-The capture-radius fingerprint is likewise not a unit-slope saturation
+The capture-radius fingerprint likewise departs from a simple saturation
 curve. Baseline $F_{50}$ against capture radius has slope
 \AuditRadiusSlope{}~N/m (interval [\AuditRadiusSlopeLo{},
-\AuditRadiusSlopeHi{}]), which excludes 1.
+\AuditRadiusSlopeHi{}]), which excludes 1. A finer force grid over the same
+seven radii (\AFiveBForceStepN{}~N steps, \AFiveBEpisodes{} episodes), added
+after the pre-declaration, gives slope \AFiveBSlope{}~N/m (interval
+[\AFiveBSlopeLo{}, \AFiveBSlopeHi{}]); it lies inside the pre-declared
+interval and is reported as a resolution sensitivity beside the pre-declared
+estimate, which remains the estimate of record.
 
 \begin{figure}[tbp]
 \centering
@@ -911,86 +937,129 @@ curve. Baseline $F_{50}$ against capture radius has slope
 \label{fig:horizon}
 \end{figure}
 
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=\linewidth]{fig16_lambda_sweep.pdf}
+\caption{\CapLambdaSweep}
+\label{fig:lambda-sweep}
+\end{figure}
+
 \section{Discussion}
 
 The identified mechanism is target-position feedforward compensating a slow
-integral inside a \EpisodeHorizonS{}~s episode. Prediction P1 is
-\AuditPOneOverall{}: doubling Ki collapses the 0.15~N advantage, which
-confirms that half of the pre-declaration, while clamp 4 and clamp 8 leave
-\AuditClampChanged{} of the 0.15~N completions unchanged at the stock
-horizon and therefore refute the clamp half at $T=\EpisodeHorizonS{}$~s.
-The same clamp \AuditClampMattersLongHorizon{} matter at 12~s. Assignment
-inertness is measured at $\lambda=0.25$ only. These bounds keep the
-operating envelope a property of the stock integral and the short horizon,
-not a general allocator law.
+integral inside a \EpisodeHorizonS{}~s episode, and the controller audit
+fixes the settings on which that identification rests. Prediction P1 is
+\AuditPOneOverall{}: doubling Ki collapses the 0.15~N paired advantage to
+\AuditKiTenGain{}, confirming the integral-gain half of the
+pre-declaration, while clamp 4 and clamp 8 change \AuditClampChanged{} of the
+0.15~N completions at the stock horizon, refuting the clamp half at
+$T=\EpisodeHorizonS{}$~s. The same clamp
+\AuditClampMattersLongHorizon{} matter at 12~s. Initial-assignment inertness
+holds at every tested weight through $\lambda=\LambdaInertMax{}$~m/N and
+first breaks at $\lambda=\LambdaFirstDivergence{}$~m/N; the bound claim stays
+scoped to the inherited weight, and the sweep reports the tested range
+descriptively. These bounds make the operating envelope a property of the
+stock integral and the short horizon.
 
-The assignment path does not carry the headline gain. Initial assignment
+The headline gain travels through the feedforward path. Initial assignment
 differs from Euclidean in \AuditInitialDivergence{} of \AuditAwareEpisodes{}
-episodes, while used (replan) assignments diverge in \AuditUsedDivergence{}
-episodes. The complete factorial localizes the completion change to
-target-position feedforward; the assignment main effect and the
-assignment-by-feedforward interaction stay within \FactorialOtherAbsMax{}
-completion of zero. That inertness is at $\lambda=0.25$ only; no $\lambda$
-sweep was run, so the paper does not promote an allocator law. Support
-campaigns keep the same paired estimand: relative noise through
+episodes, used (replan) assignments diverge in \AuditUsedDivergence{}
+episodes, and the complete factorial localizes the completion change to
+target-position feedforward, with the assignment main effect and the
+assignment-by-feedforward interaction within \FactorialOtherAbsMax{}
+completion of zero. The pre-declared $\lambda$ sweep is descriptive and stops
+at $\lambda=\LambdaGridMax{}$~m/N; the allocation reading is bounded by that
+grid. Support campaigns keep the same paired estimand: relative noise through
 \BestSigma{} preserves the transition, and paired gains stay positive from
 \ScaleMinSize{} through \ScaleMaxSize{} airframes. Rerunning the ladder
-across capture radii keeps a transition of comparable size but moves it
-from \RadiusTightPeakForce{} to \RadiusWidePeakForce{}~N, so
-\KneeLevel{}~N is the transition of this operating point rather than a
-constant of an allocator.
+across capture radii keeps a transition of comparable size and moves it from
+\RadiusTightPeakForce{} to \RadiusWidePeakForce{}~N, so \KneeLevel{}~N is
+the transition of this operating point.
 
-The remaining campaigns are support, not a second paper. Geometry contrasts
-and the descriptive safety record stay in Results; they do not reopen an
-allocation--control interface as the question this manuscript answers.
-Nothing measured here is a field validation. Heterogeneous vehicles,
-obstacle topology, a $\lambda$ sweep and field-sensor traces remain named
-transfer axes rather than completed work. The present envelope is a
-computational calibration reference against the stock integral, the
-\EpisodeHorizonS{}~s horizon and the declared capture radius.
+The geometry contrasts and the descriptive safety record bound the envelope
+from two further directions. The contrasts map named scene axes within the
+same paired design, and the clearance diagnostic marks the feasibility
+boundary of the benchmark as a property of the task: the closest recorded
+airframe pair is \SafetyWorstSeparation{}~m on targets drawn without a
+separation constraint, and a physical deployment addresses that boundary by
+composing the feedforward layer with an explicit safety barrier. Every
+measurement here is a simulation. The present envelope is a computational
+calibration reference against the stock integral, the \EpisodeHorizonS{}~s
+horizon and the declared capture radius, and the transfer protocol names the
+quantities a hardware or hardware-in-the-loop extension revalidates.
+Heterogeneous vehicles, obstacle topology, penalty weights beyond
+\LambdaGridMax{}~m/N and field-sensor traces are the named transfer axes for
+that next stage; general allocator properties, hardware principles and field
+results lie outside the measured scope.
 
-\section{Conclusions}
+\section*{Declarations}
 
-Target-position feedforward compensates a slow stock integral inside a
-\EpisodeHorizonS{}~s episode. That scoped positive claim locates the
-operating envelope: doubling \StockKi{} collapses the 0.15~N paired
-advantage to \AuditKiTenGain{}, prediction P1 is \AuditPOneOverall{}, and
-assignment remains un-swept in $\lambda$. The paper does not claim a
-general allocator property, a hardware principle or a field result.
+%% The Declarations heading above must stay the first thing after the
+%% Discussion prose (no comment or \ifdefined line before it): the copy-edit
+%% checks slice the Discussion up to the next \section command and count
+%% blank-line-separated chunks as paragraphs.
+%% Funding and competing-interest wording adopted from the owner's packaging
+%% script (scripts/build_springer_submission_package.py), shipped in every
+%% packet since 2026-08-28 (ruling R16, 2026-09-09). FUNDING_AND_CONFLICTS
+%% stays OPEN for the owner's final read.
+\subsection*{Funding}
 
-\section*{Data and code availability}
+No external funding was received for this study.
 
-All simulation code, trajectory records, and analysis scripts supporting the
-findings of this study are available in the public repository and archive.
-The simulation substrate uses an open-source physics engine with the
-disturbance injection described in the Methods.
+\subsection*{Competing interests}
+
+The author declares that they have no competing financial or non-financial
+interests that are directly or indirectly related to the work submitted for
+publication.
+
+\subsection*{Ethics approval and consent to participate}
+
+Not applicable. The study is computational and involves no human
+participants, animal subjects, personally identifying data or field flights.
+
+\subsection*{Consent for publication}
+
+Not applicable; no identifiable participant data are included.
+
+\subsection*{Data and code availability}
+
+All simulation code, trajectory records and analysis scripts supporting the
+findings of this study, which are the data and code behind every figure and
+table, are available in the public repository and archive; the simulation
+substrate is an open-source physics engine with the disturbance injection
+described in the Methods.
 \input{generated_availability}
 
-\section*{Statements and declarations}
+\subsection*{Materials availability}
 
-\paragraph{Funding} No external funding was received for this study.
+Not applicable; the study generated no physical materials.
 
-\paragraph{Competing interests} The author declares no competing interests.
+\subsection*{Author contributions}
 
 \ifdefined\ANONYMOUS
-\paragraph{Author contributions} The sole author performed conceptualization,
-methodology, software, validation, formal analysis, investigation,
-visualization, writing--- original draft, and writing---review and editing.
+The sole author performed conceptualization, methodology, software,
+validation, formal analysis, investigation, visualization, writing of the
+original draft, and review and editing.
 \else
-\paragraph{Author contributions} Zeyu Fu: conceptualization, methodology,
-software, validation, formal analysis, investigation, visualization, writing---
-original draft, and writing---review and editing.
+Zeyu Fu performed conceptualization, methodology, software, validation,
+formal analysis, investigation, visualization, writing of the original draft,
+and review and editing.
 \fi
 
-\paragraph{Ethics approval and consent to participate} Not applicable. This
-computational study involves no human participants, animal subjects, personally
-identifying data or field flights.
+\subsection*{Use of generative AI tools}
 
-\paragraph{Consent for publication} Not applicable; no identifiable participant
-data are included.
+Generative AI tools were used solely for code engineering, refactoring and
+language polishing under the author's direction. All computational
+experiments, analyses and manuscript text were reviewed, verified and edited
+by the author, who retains full responsibility for the integrity and final
+wording of the work.
 
-\paragraph{Use of generative AI tools} Generative AI tools were used solely for code
-engineering, refactoring, and language polishing under the author's direction.
-All computational experiments, analyses, and manuscript texts were reviewed,
-verified, and edited by the author, who retains full responsibility for the
-integrity and final wording of the work.
+%% Identified builds only; draft-only until the owner records the sentence.
+\ifdefined\ANONYMOUS\else
+\ifdefined\DRAFTTODO
+\subsection*{Acknowledgements}
+
+\ownertodo{add acknowledgements or delete this heading before submission;
+none are recorded.}
+\fi
+\fi

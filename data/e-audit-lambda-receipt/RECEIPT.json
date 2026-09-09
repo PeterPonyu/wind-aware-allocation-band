@@ -1,0 +1,171 @@
+{
+  "completed_utc": "2026-09-09T07:31:00+00:00",
+  "declared_utc": "2026-09-09T07:28:52Z",
+  "directory": "source-tree/001-drone-swarm/audit20260909_lambda",
+  "driver_and_input_hashes_match_predeclaration_and_summary": {
+    "PREDECLARATION.json_matches_summary": true,
+    "audit_common.py": true,
+    "lambda_sweep.jsonl_matches_summary": true,
+    "lambda_sweep.py": true
+  },
+  "expected_episode_rows": 1680,
+  "frozen_sources_sha256_at_receipt": {
+    "BaseAviary.py": "2f27256e8431886ca61a16e4a12300411be4c46599ca1e753386423fec0dbee8",
+    "DSLPIDControl.py": "5cd645d9b27f84342721863399fd5b4e36ce8493fb9ecce3e076b492004f6605",
+    "run_experiment.py": "be5b80e14cd0914d58be9673a447999d73956088e8c50366c503bb22b672a2bc",
+    "scene_geometry.py": "17beb2a48512431f384477eeb54ff7b3b766943587db519e2d6bf31e2c929c7d",
+    "wind_models.py": "b63bc92296fa1898770e9d1afca2539ace2dfd8ac3b568c7bd1387e729141a8e"
+  },
+  "frozen_sources_unchanged_since_predeclaration": {
+    "DSLPIDControl.py": true,
+    "run_experiment.py": true,
+    "wind_models.py": true
+  },
+  "git_head": "6625b7970b5d34b627b4313927c779f5edf46c69",
+  "git_head_matches_predeclaration": true,
+  "git_status_experiments_001": [
+    "?? source-tree/001-drone-swarm/audit20260909_lambda/"
+  ],
+  "host": "zeyufu-ROG-Strix-SCAR-18-G835LX-G835LX",
+  "interpreter": "~/miniconda3/envs/drone-swarm/bin/python",
+  "max_workers_used": 10,
+  "nproc": 24,
+  "outputs": [
+    {
+      "bytes": 7055,
+      "file": "PREDECLARATION.json",
+      "sha256": "11d4f2a294cdbc4bafc7c61c11586ff5b5162336dda205df4d5b1df80a1f9733"
+    },
+    {
+      "bytes": 1884,
+      "file": "lambda_run.log",
+      "sha256": "00d499d0b32daf4d616572a0955ed6e73589d2deaeb5a005b3820c0cdf58f10a"
+    },
+    {
+      "bytes": 96215,
+      "file": "lambda_summary.json",
+      "sha256": "526a831fcc394d55366f14bc27234cb9a98a3231c6a6b25b98b915d222e1561d"
+    },
+    {
+      "bytes": 5843135,
+      "episode_rows": 1680,
+      "file": "lambda_sweep.jsonl",
+      "sha256": "a30acba9bb57ee7cc22a01b0dcb534b287864a8d7ee10a101356bceed0617c47"
+    },
+    {
+      "bytes": 23378,
+      "file": "lambda_sweep.py",
+      "sha256": "4fcb9dbd70fd9a35eed0074160172872d265ffcba5bd6d8f48fd8d368651cbba"
+    },
+    {
+      "bytes": 823,
+      "file": "smoke_lambda.json",
+      "sha256": "af83531528a6ae4561bf573beaaada70f8efa8c97fee48f980ba72b65a798780"
+    },
+    {
+      "bytes": 6687,
+      "file": "write_receipt.py",
+      "sha256": "78ae80facdad1ac50fbe604e306b9c9fe5b7830d89f02996667cac8444734f5f"
+    }
+  ],
+  "reference_a7_hashes_match_summary": {
+    "a7_assignment_divergence.json": true,
+    "a7_assignment_log.jsonl": true
+  },
+  "run_started_utc": "2026-09-09T07:29:52+00:00",
+  "sched_getaffinity_cpus": 24,
+  "schema": "001-audit20260909-lambda-receipt/v1",
+  "summary": {
+    "E1_zero_lambdas_m_per_N": [
+      0.0,
+      0.05,
+      0.1,
+      0.25,
+      0.5
+    ],
+    "cross_check_vs_a7": {
+      "checked": 420,
+      "identical_assignment_logs": 420,
+      "identical_fields": 420,
+      "mismatches": []
+    },
+    "reading_rule_fired": "K1",
+    "reproduction_of_bound_A7": {
+      "expected_from_bound_A7": {
+        "aware_arm_episodes": 210,
+        "aware_arm_episodes_with_any_divergence": 7,
+        "aware_arm_initial_divergence_episodes": 0
+      },
+      "observed_at_reference_lambda": {
+        "aware_arm_episodes": 210,
+        "aware_arm_episodes_with_any_divergence": 7,
+        "aware_arm_initial_divergence_episodes": 0
+      },
+      "passed": true,
+      "rows_bit_identical": true
+    },
+    "rows": 1680,
+    "table": [
+      {
+        "E1_initial_divergence": 0,
+        "E2_used_divergence_episodes": 0,
+        "E3_aware_completion_0p15N": 0.6333333333333333,
+        "lambda_m_per_N": 0.0
+      },
+      {
+        "E1_initial_divergence": 0,
+        "E2_used_divergence_episodes": 0,
+        "E3_aware_completion_0p15N": 0.6333333333333333,
+        "lambda_m_per_N": 0.05
+      },
+      {
+        "E1_initial_divergence": 0,
+        "E2_used_divergence_episodes": 1,
+        "E3_aware_completion_0p15N": 0.6333333333333333,
+        "lambda_m_per_N": 0.1
+      },
+      {
+        "E1_initial_divergence": 0,
+        "E2_used_divergence_episodes": 7,
+        "E3_aware_completion_0p15N": 0.6333333333333333,
+        "lambda_m_per_N": 0.25
+      },
+      {
+        "E1_initial_divergence": 0,
+        "E2_used_divergence_episodes": 12,
+        "E3_aware_completion_0p15N": 0.6333333333333333,
+        "lambda_m_per_N": 0.5
+      },
+      {
+        "E1_initial_divergence": 3,
+        "E2_used_divergence_episodes": 35,
+        "E3_aware_completion_0p15N": 0.625,
+        "lambda_m_per_N": 1.0
+      },
+      {
+        "E1_initial_divergence": 19,
+        "E2_used_divergence_episodes": 80,
+        "E3_aware_completion_0p15N": 0.6,
+        "lambda_m_per_N": 2.0
+      }
+    ]
+  },
+  "total_episode_rows": 1680,
+  "versions": {
+    "cpu_count": 24,
+    "gym_pybullet_drones_commit": "e712698",
+    "gym_pybullet_drones_version": "2.1.0",
+    "hostname": "zeyufu-ROG-Strix-SCAR-18-G835LX-G835LX",
+    "numpy": "2.2.6",
+    "platform": "Linux-7.0.0-31-generic-x86_64-with-glibc2.39",
+    "pybullet": "3.2.7",
+    "python": "3.10.20",
+    "scipy": "1.15.3"
+  },
+  "wall_clock_from_log": {
+    "episodes": 1680,
+    "wall_clock_sec": 67.4
+  },
+  "wall_clock_sec_from_summary": 67.35697197914124,
+  "written_utc": "2026-09-09T07:37:46+00:00"
+}

@@ -1,7 +1,7 @@
 {
   "schema": "evidence-manifest/v1",
   "state": "BOUND",
-  "bound_utc": "2026-09-08T13:03:10Z",
+  "bound_utc": "2026-09-09T08:30:22Z",
   "allowed_roots": [
     "data",
     "paper/evidence"
@@ -327,6 +327,46 @@
       "note": "420 episodes, assignment-log instrumentation of used, Euclidean and penalised solutions",
       "bytes": 1275783,
       "sha256": "302f2cfbee035472ef4add58a1b78ea14d53a5c6a3bc6a68ecb657c489e89007"
+    },
+    {
+      "id": "E-AUDIT-LAMBDA-PREDECL",
+      "path": "data/e-audit-lambda-predecl/PREDECLARATION.json",
+      "role": "derived_table",
+      "note": "pre-declared lambda grid, endpoints E1-E3, stop rule and reading rules K1/K2, frozen before the first grid episode",
+      "bytes": 7048,
+      "sha256": "11d4f2a294cdbc4bafc7c61c11586ff5b5162336dda205df4d5b1df80a1f9733"
+    },
+    {
+      "id": "E-AUDIT-LAMBDA",
+      "path": "data/e-audit-lambda/lambda_summary.json",
+      "role": "derived_table",
+      "note": "assignment-penalty sweep over seven lambda values: initial and used divergence counts, 0.15 N completion, bit-identical reproduction of A7 at lambda 0.25, rule K1 fired",
+      "bytes": 96165,
+      "sha256": "526a831fcc394d55366f14bc27234cb9a98a3231c6a6b25b98b915d222e1561d"
+    },
+    {
+      "id": "E-AUDIT-LAMBDA-RECEIPT",
+      "path": "data/e-audit-lambda-receipt/RECEIPT.json",
+      "role": "derived_table",
+      "note": "lambda-sweep receipt: output hashes, frozen-source hashes, timing and environment",
+      "bytes": 5398,
+      "sha256": "7478ac1bb2b67357cb38564808b2a6d816ba2645eba42316b1d5af3164518693"
+    },
+    {
+      "id": "E-AUDIT-LAMBDA-RAW",
+      "path": "data/e-audit-lambda-raw/lambda_sweep.jsonl",
+      "role": "raw_episode_log",
+      "note": "1680 episodes, 7 lambda values x 7 forces x 30 seeds on the aware arm plus one baseline arm, with per-call assignment logs",
+      "bytes": 5843085,
+      "sha256": "a30acba9bb57ee7cc22a01b0dcb534b287864a8d7ee10a101356bceed0617c47"
+    },
+    {
+      "id": "E-AUDIT-A5B",
+      "path": "data/e-audit-a5b/a5b_summary.json",
+      "role": "derived_table",
+      "note": "fine-grid (0.01 N) capture-radius sensitivity; not pre-declared, labelled post-hoc resolution upgrade of A5; baseline F50 slope on radius with 95 percent interval",
+      "bytes": 185958,
+      "sha256": "45651a795cb6ccc353eae99ddcf4b8c4f4cc3cfed9a5939a33ae0350ce46ea24"
     }
   ]
 }

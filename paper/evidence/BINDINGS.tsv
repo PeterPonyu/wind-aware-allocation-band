@@ -41,3 +41,8 @@ E-AUDIT-A7	data/e-audit-a7/a7_assignment_divergence.json	derived_table	used-vers
 E-AUDIT-A1-RAW	data/e-audit-a1-raw/a1_gain_sweep.jsonl	raw_episode_log	2520 episodes, Ki and clamp sweep on the seven-level force ladder
 E-AUDIT-A2-RAW	data/e-audit-a2-raw/a2_horizon_sweep.jsonl	raw_episode_log	2100 episodes, stock-controller horizon sweep
 E-AUDIT-A7-RAW	data/e-audit-a7-raw/a7_assignment_log.jsonl	raw_episode_log	420 episodes, assignment-log instrumentation of used, Euclidean and penalised solutions
+E-AUDIT-LAMBDA-PREDECL	data/e-audit-lambda-predecl/PREDECLARATION.json	derived_table	pre-declared lambda grid, endpoints E1-E3, stop rule and reading rules K1/K2, frozen before the first grid episode
+E-AUDIT-LAMBDA	data/e-audit-lambda/lambda_summary.json	derived_table	assignment-penalty sweep over seven lambda values: initial and used divergence counts, 0.15 N completion, bit-identical reproduction of A7 at lambda 0.25, rule K1 fired
+E-AUDIT-LAMBDA-RECEIPT	data/e-audit-lambda-receipt/RECEIPT.json	derived_table	lambda-sweep receipt: output hashes, frozen-source hashes, timing and environment
+E-AUDIT-LAMBDA-RAW	data/e-audit-lambda-raw/lambda_sweep.jsonl	raw_episode_log	1680 episodes, 7 lambda values x 7 forces x 30 seeds on the aware arm plus one baseline arm, with per-call assignment logs
+E-AUDIT-A5B	data/e-audit-a5b/a5b_summary.json	derived_table	fine-grid (0.01 N) capture-radius sensitivity; not pre-declared, labelled post-hoc resolution upgrade of A5; baseline F50 slope on radius with 95 percent interval

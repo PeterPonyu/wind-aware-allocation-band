@@ -72,3 +72,7 @@ checks.
 | `data/e-audit-predecl/PREDECLARATION.json` | 3 | 0 | `24fc6eea07f00770…` | `583b7d8efe219ecc…` |
 | `data/e-audit-receipt/RECEIPT.json` | 5 | 2 | `0c7faba8f3c74876…` | `df07c961450cd24c…` |
 | `data/e-audit-a1/a1_summary.json` | 2 | 0 | `481916c76cbbdd20…` | `ed70975035f73a3b…` |
+| `data/e-audit-lambda-predecl/PREDECLARATION.json` | 7 | 0 | `ac832203d2b08cb5…` | `11d4f2a294cdbc4b…` |
+| `data/e-audit-lambda/lambda_summary.json` | 2 | 0 | `518b9a239de9b9de…` | `526a831fcc394d55…` |
+| `data/e-audit-lambda-receipt/RECEIPT.json` | 4 | 3 | `311d88fcc490f2d6…` | `7478ac1bb2b67357…` |
+| `data/e-audit-lambda-raw/lambda_sweep.jsonl` | 2 | 0 | `1b17d73fb44b61a8…` | `a30acba9bb57ee7c…` |

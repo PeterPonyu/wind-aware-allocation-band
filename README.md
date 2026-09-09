@@ -1,4 +1,4 @@
-# From directional sensing to task completion: mapping the operating envelope of wind-aware quadrotor allocation and control
+# From directional sensing to task completion: the operating envelope of target-position feedforward against a slow integral in wind-disturbed quadrotor waypoint capture
 
 Simulation logs, derived statistical tables, figure code and manuscript source for a 17-figure, 12-table study measuring the disturbance band in which a wind-aware allocation-and-control stack helps a four-quadrotor swarm, with estimate quality, temporal profiles, pathway sensitivity, scene geometry and homogeneous team-size transfer. Parent-child and air-ground handoff claims are outside scope.
 
@@ -11,7 +11,7 @@ Repository: https://github.com/PeterPonyu/wind-aware-allocation-band
 - `paper/tex/` — manuscript source
 - `paper/figs/` — the R code that draws the figures and writes the printed numbers
 - `paper/evidence/` — a file list with SHA-256 hashes
-- `data/` — the 40 data files named in that list
+- `data/` — the 45 data files named in that list
 
 ## Not included
 
@@ -29,8 +29,8 @@ The build checks every data file against its hash and stops if a file has
 changed. Figures and printed numbers are generated from those files, not typed
 in by hand.
 
-Requires `python3`, `Rscript` with `digest`, `ggplot2`, `jsonlite`, `patchwork`
-and `systemfonts`, and a TeX distribution with `latexmk`.
+Requires `python3`, `Rscript` with `digest`, `ggplot2`, `jsonlite`,
+`patchwork`, `scales` and `systemfonts`, and a TeX distribution with `latexmk`.
 
 ## Status
 

@@ -105,6 +105,13 @@ volume <- panel_label(
 
 save_fig(
   (forest | volume) + plot_layout(widths = c(1.5, 1), guides = "collect") &
-    theme(legend.position = "bottom", legend.box = "horizontal"),
+    theme(
+      legend.position = "bottom",
+      legend.box = "horizontal",
+      legend.text = element_text(size = 6.8, family = FIGURE_FONT_FAMILY),
+      legend.title = element_text(size = 7.2, face = "bold", family = FIGURE_FONT_FAMILY),
+      legend.key.width = unit(0.35, "cm"),
+      legend.spacing.x = unit(0.12, "cm")
+    ),
   "fig14_evidence_summary", FIGURE_CANVAS_WIDTH_IN, 5.05
 )
