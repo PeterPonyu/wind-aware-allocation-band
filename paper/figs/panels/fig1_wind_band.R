@@ -121,4 +121,4 @@ contrast <- panel_label(
 
 save_fig(ladder / contrast + plot_layout(heights = c(1.06, 1), guides = "collect") &
            theme(legend.position = "bottom", legend.box = "horizontal"),
-         "fig1_wind_band", FIGURE_CANVAS_WIDTH_IN, 5.90)
+         "fig1_wind_band", FIGURE_CANVAS_WIDTH_IN, 5.60)

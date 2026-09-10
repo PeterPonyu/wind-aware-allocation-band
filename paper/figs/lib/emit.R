@@ -4,12 +4,15 @@
 save_fig <- function(plot, name, width, height) {
   # Fail early if a panel forgot to source the shared, embedded-font theme.
   figure_font_family()
-  # Every figure is included at \linewidth, so a canvas that is not the text
-  # width is rescaled by TeX and its type no longer matches the shared theme.
-  # Only the height is a per-figure decision.
-  if (!isTRUE(all.equal(width, FIGURE_CANVAS_WIDTH_IN))) {
-    stop(sprintf("%s: canvas width %.3f in must be the shared %.3f in text width",
-                 name, width, FIGURE_CANVAS_WIDTH_IN))
+  # Every figure is included at exactly its canvas width, so a canvas that is
+  # neither the text width nor the single-column width would be rescaled by
+  # TeX and its type would no longer match the shared theme.  Which of the two
+  # a figure uses is declared in FIGURE_LAYOUT.tsv and mirrored by the
+  # \includegraphics width; only the height is a free per-figure decision.
+  allowed <- c(FIGURE_CANVAS_WIDTH_IN, FIGURE_COLUMN_WIDTH_IN)
+  if (!any(vapply(allowed, function(w) isTRUE(all.equal(width, w)), logical(1)))) {
+    stop(sprintf("%s: canvas width %.3f in must be the text width %.3f in or the column width %.3f in",
+                 name, width, FIGURE_CANVAS_WIDTH_IN, FIGURE_COLUMN_WIDTH_IN))
   }
   ggplot2::ggsave(file.path("figs", "out", paste0(name, ".pdf")), plot,
                   width = width, height = height, units = "in", device = cairo_pdf)

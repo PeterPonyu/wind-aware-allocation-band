@@ -7,6 +7,15 @@ temporal_plot_data$profile_label <- factor(
 )
 temporal_plot_data$estimator_label <- unname(estimator_label[as.character(temporal_plot_data$estimator)])
 
+# One colour and one marker per estimate condition, shared by both panels and
+# drawn from the paper-wide secondary palette (no red or blue, which belong to
+# the two allocation arms).
+ESTIMATOR_LEVELS <- unname(estimator_label[TEMPORAL_ESTIMATORS])
+estimator_colours <- secondary_colours(ESTIMATOR_LEVELS)
+estimator_shapes <- secondary_shapes(ESTIMATOR_LEVELS)
+temporal_plot_data$estimator_label <- factor(temporal_plot_data$estimator_label,
+                                             levels = ESTIMATOR_LEVELS)
+
 left <- ggplot(temporal_plot_data,
                aes(force_N, delta, colour = estimator_label, shape = estimator_label,
                    group = estimator_label)) +
@@ -16,12 +25,15 @@ left <- ggplot(temporal_plot_data,
   geom_line(position = position_dodge(width = 0.006), linewidth = 0.45) +
   geom_point(position = position_dodge(width = 0.006), size = 1.65, fill = "white", stroke = 0.45) +
   facet_wrap(~profile_label, nrow = 1) +
-  scale_colour_manual(values = c("Oracle" = "#2166AC", "Causal" = "#1B7837",
-                                 "Causal + bias" = "#B2182B"), name = "Estimate") +
-  scale_shape_manual(values = c("Oracle" = 21, "Causal" = 22, "Causal + bias" = 24), name = "Estimate") +
-  scale_x_continuous(name = "True horizontal force (N)", breaks = sort(unique(temporal_plot_data$force_N))) +
+  scale_colour_manual(values = estimator_colours, breaks = ESTIMATOR_LEVELS,
+                      name = "Estimate") +
+  scale_shape_manual(values = estimator_shapes, breaks = ESTIMATOR_LEVELS,
+                     name = "Estimate") +
+  scale_x_continuous(name = "True horizontal force (N)",
+                     breaks = sort(unique(temporal_plot_data$force_N)),
+                     expand = expansion(mult = 0.16)) +
   scale_y_continuous(name = "Paired completion gain", limits = c(-0.16, 0.86),
-                     breaks = seq(-0.1, 0.8, by = 0.2)) +
+                     breaks = seq(0, 0.8, by = 0.2)) +
   rtx_theme() +
   theme(legend.position = "bottom", legend.box = "horizontal",
         strip.text = element_text(family = FIGURE_FONT_FAMILY,
@@ -29,7 +41,7 @@ left <- ggplot(temporal_plot_data,
         # The outermost tick of one facet and the innermost tick of the next
         # each overhang their panel by half a label, so the gap has to be wider
         # than one label or 0.20 and 0.10 print as a single run of digits.
-        panel.spacing.x = grid::unit(16, "pt"),
+        panel.spacing.x = grid::unit(22, "pt"),
         axis.text.x = element_text(family = FIGURE_FONT_FAMILY,
                                    size = FIGURE_AXIS_TEXT_SIZE))
 left <- panel_label(
@@ -42,7 +54,10 @@ tracking_plot_data$profile_label <- factor(
   unname(profile_label[as.character(tracking_plot_data$profile)]),
   levels = unname(profile_label[TEMPORAL_PROFILES])
 )
-tracking_plot_data$estimator_label <- unname(estimator_label[as.character(tracking_plot_data$estimator)])
+tracking_plot_data$estimator_label <- factor(
+  unname(estimator_label[as.character(tracking_plot_data$estimator)]),
+  levels = ESTIMATOR_LEVELS
+)
 tracking_plot_data$error_pct <- tracking_plot_data$mean_relative_error_mean * 100
 
 right <- ggplot(tracking_plot_data,
@@ -61,10 +76,8 @@ right <- ggplot(tracking_plot_data,
            label = "No oracle bar: its error is zero by construction",
            size = FIGURE_ANNOTATION_SIZE, family = FIGURE_FONT_FAMILY,
            colour = "grey30", hjust = 0) +
-  scale_fill_manual(values = c("Oracle" = "#2166AC", "Causal" = "#1B7837",
-                               "Causal + bias" = "#B2182B"), guide = "none") +
-  scale_colour_manual(values = c("Oracle" = "#2166AC", "Causal" = "#1B7837",
-                                 "Causal + bias" = "#B2182B"), guide = "none") +
+  scale_fill_manual(values = estimator_colours, guide = "none") +
+  scale_colour_manual(values = estimator_colours, guide = "none") +
   scale_y_continuous(name = "Mean relative tracking error (%)", limits = c(0, 33.5),
                      breaks = seq(0, 30, by = 10)) +
   labs(x = NULL) +

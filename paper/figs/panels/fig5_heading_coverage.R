@@ -94,7 +94,10 @@ spectrum <- ggplot(f5_spectrum, aes(rank, sep, colour = kept, shape = kept)) +
   scale_colour_manual(values = c(`TRUE` = "#2166AC", `FALSE` = "grey45"), guide = "none") +
   scale_shape_manual(values = c(`TRUE` = 16, `FALSE` = 21), guide = "none") +
   scale_x_continuous(name = "Pair rank") +
-  scale_y_log10(name = "Heading separation (degrees)") +
+  # Decade ticks print as 0.1, 1, 10, 100 rather than 0.1, 1.0, 10.0, 100.0.
+  scale_y_log10(name = "Heading separation (degrees)",
+                labels = function(x) format(x, drop0trailing = TRUE, trim = TRUE,
+                                            scientific = FALSE)) +
   rtx_theme() +
   theme()
 spectrum <- panel_label(
@@ -102,6 +105,9 @@ spectrum <- panel_label(
   "Repeat cluster and next gap"
 )
 
-save_fig((dial | spectrum) + plot_layout(widths = c(1, 1), guides = "collect") &
+# The dial is drawn at a fixed aspect and letterboxed inside its cell, so its
+# cell is trimmed to roughly the width the dial can fill at this height and
+# the spectrum takes the remainder.
+save_fig((dial | spectrum) + plot_layout(widths = c(0.92, 1.08), guides = "collect") &
            theme(legend.position = "bottom", legend.box = "horizontal"),
          "fig5_heading_coverage", FIGURE_CANVAS_WIDTH_IN, 3.05)

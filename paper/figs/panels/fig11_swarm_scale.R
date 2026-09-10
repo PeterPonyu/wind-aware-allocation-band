@@ -11,6 +11,12 @@ scale_plot_data$force_label <- factor(
   levels = sprintf("%.2f N", SCALE_FORCES)
 )
 
+# The same three force levels carry the same colours wherever they appear
+# (fig2 draws two of them); the arm red/blue stay with the two allocators in
+# Panel B.
+force_level_colours <- secondary_colours(sprintf("%.2f N", SCALE_FORCES))
+force_level_shapes <- secondary_shapes(sprintf("%.2f N", SCALE_FORCES))
+
 curve <- ggplot(
   scale_plot_data,
   aes(num_drones, delta, colour = force_label, shape = force_label,
@@ -21,14 +27,12 @@ curve <- ggplot(
                 linewidth = 0.35) +
   geom_line(linewidth = 0.5) +
   geom_point(size = 1.9, fill = "white", stroke = 0.5) +
-  scale_colour_manual(values = c("0.10 N" = "#4D9221", "0.15 N" = "#2166AC",
-                                 "0.20 N" = "#B2182B"), name = "True force") +
-  scale_shape_manual(values = c("0.10 N" = 21, "0.15 N" = 22, "0.20 N" = 24),
-                     name = "True force") +
+  scale_colour_manual(values = force_level_colours, name = "True force") +
+  scale_shape_manual(values = force_level_shapes, name = "True force") +
   scale_x_continuous(name = "Swarm size (airframes)", breaks = SCALE_SIZES,
                      minor_breaks = NULL) +
   scale_y_continuous(name = "Paired completion gain", limits = c(-0.12, 0.84),
-                     breaks = seq(-0.1, 0.8, by = 0.2)) +
+                     breaks = seq(0, 0.8, by = 0.2)) +
   rtx_theme() +
   theme(legend.position = "bottom", legend.box = "horizontal")
 curve <- panel_label(

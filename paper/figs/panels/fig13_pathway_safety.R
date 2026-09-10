@@ -12,9 +12,10 @@
 # carries the worst case rather than the average, because a clearance statistic
 # summarised by its mean answers a question nobody asked about a swarm.
 
-effect_colours <- c("Assignment cost" = "#999999",
-                    "Target feedforward" = "#2166AC",
-                    "Interaction" = "#B2182B")
+# Factorial terms take the paper-wide secondary palette; the arm red/blue are
+# reserved for the two allocators drawn in Panel B.
+EFFECT_LEVELS <- c("Assignment cost", "Target feedforward", "Interaction")
+effect_colours <- secondary_colours(EFFECT_LEVELS)
 effect_shapes <- c("Assignment cost" = 22, "Target feedforward" = 21,
                    "Interaction" = 24)
 
@@ -34,7 +35,7 @@ pathway <- ggplot(FACTORIAL_EFFECTS,
   scale_x_continuous(name = "True horizontal force (N)",
                      breaks = FACTORIAL_FORCES) +
   scale_y_continuous(name = "Paired completion effect", limits = c(-0.16, 0.86),
-                     breaks = seq(-0.1, 0.8, by = 0.2)) +
+                     breaks = seq(0, 0.8, by = 0.2)) +
   rtx_theme() +
   theme(legend.position = "bottom", legend.margin = margin(2, 0, 0, 0),
         strip.text = element_text(family = FIGURE_FONT_FAMILY,
@@ -46,7 +47,7 @@ pathway <- ggplot(FACTORIAL_EFFECTS,
                                    size = FIGURE_LEGEND_TEXT_SIZE),
         legend.key.size = unit(0.30, "cm"))
 pathway <- panel_label(
-  pathway, "A", "Complete 2 x 2 pathway decomposition",
+  pathway, "A", "Complete 2 \u00d7 2 pathway decomposition",
   sprintf("95%% intervals over %d paired seeds", FACTORIAL_SEEDS)
 )
 
@@ -81,4 +82,4 @@ separation <- panel_label(
 
 save_fig(pathway / separation + plot_layout(heights = c(1, 1), guides = "collect") &
            theme(legend.position = "bottom", legend.box = "horizontal"),
-         "fig13_pathway_safety", FIGURE_CANVAS_WIDTH_IN, 6.30)
+         "fig13_pathway_safety", FIGURE_CANVAS_WIDTH_IN, 5.90)

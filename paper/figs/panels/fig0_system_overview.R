@@ -145,5 +145,5 @@ endpoint <- panel_label(
 save_fig(
   (scene | endpoint) + plot_layout(widths = c(1, 1), guides = "collect") &
     theme(legend.position = "bottom", legend.box = "horizontal"),
-  "fig0_system_overview", FIGURE_CANVAS_WIDTH_IN, 3.70
+  "fig0_system_overview", FIGURE_CANVAS_WIDTH_IN, 3.50
 )

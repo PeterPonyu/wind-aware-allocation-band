@@ -46,25 +46,33 @@ top <- ggplot(annotated, aes(sigma, delta)) +
   scale_x_continuous(name = "Relative wind-estimate noise σ/|w|",
                      breaks = annotated$sigma, expand = expansion(mult = 0.07)) +
   scale_y_continuous(name = "Paired advantage", limits = Y_RANGE) +
-  rtx_theme()
+  rtx_theme() +
+  # The two panels are stacked on one noise axis; the axis title is printed
+  # once, under the lower panel, and the tick labels stay on both.
+  theme(axis.title.x = element_blank())
 top <- panel_label(
   top, "A", "Transition-force noise profile",
   "Paired gain; 95% interval"
 )
 
+# The three force levels that recur across the paper keep one colour each
+# (0.10 N, 0.15 N, 0.20 N in shared-palette order); this panel draws two.
+force_level_colours <- secondary_colours(c("0.10 N", "0.15 N", "0.20 N"))
+force_level_shapes <- secondary_shapes(c("0.10 N", "0.15 N", "0.20 N"))
+
 bottom <- ggplot(f2b_data, aes(sigma, delta, colour = level, shape = level)) +
   geom_hline(yintercept = 0, colour = "grey20", linewidth = 0.4) +
   geom_line(linewidth = 0.5) +
   geom_point(size = 1.8, fill = "white", stroke = 0.5) +
-  scale_colour_manual(values = c("0.10 N" = "#4D9221", "0.20 N" = "#762A83"),
+  scale_colour_manual(values = force_level_colours[levels(f2b_data$level)],
                       name = "Wind force") +
-  scale_shape_manual(values = c(21, 22), name = "Wind force") +
+  scale_shape_manual(values = force_level_shapes[levels(f2b_data$level)],
+                     name = "Wind force") +
   scale_x_continuous(name = "Relative wind-estimate noise σ/|w|",
                      breaks = unique(f2b_data$sigma), expand = expansion(mult = 0.07)) +
   scale_y_continuous(name = "Paired advantage", limits = Y_RANGE) +
   rtx_theme() +
-  theme(legend.position = c(0.99, 0.99), legend.justification = c(1, 1),
-        legend.background = element_blank(),
+  theme(legend.background = element_blank(),
         legend.box.background = element_blank(),
         legend.margin = margin(2, 4, 2, 4))
 bottom <- panel_label(
@@ -72,6 +80,6 @@ bottom <- panel_label(
   "Same scale; transition localized"
 )
 
-save_fig(top / bottom + plot_layout(heights = c(1.25, 1), guides = "collect") &
+save_fig(top / bottom + plot_layout(heights = c(1.3, 1), guides = "collect") &
            theme(legend.position = "bottom", legend.box = "horizontal"),
-         "fig2_noise_sensitivity", FIGURE_CANVAS_WIDTH_IN, 6.10)
+         "fig2_noise_sensitivity", FIGURE_CANVAS_WIDTH_IN, 5.20)

@@ -38,15 +38,13 @@ p <- ggplot(f6_data, aes(wind_N, drones)) +
   geom_col(aes(colour = drones > 0), width = 0.030, fill = "#B2182B",
            linewidth = 0.25) +
   scale_colour_manual(values = c(`TRUE` = "grey20", `FALSE` = NA), guide = "none") +
-  # A bar tall enough to hold its own label takes it, so that the annotation
-  # above the tallest bar has somewhere to sit.
-  geom_text(aes(label = ifelse(drones >= 2, label, ""), y = drones - 0.14),
-            size = FIGURE_ANNOTATION_SIZE, family = FIGURE_FONT_FAMILY,
-            colour = "white", vjust = 1, lineheight = 0.95) +
-  geom_text(aes(label = ifelse(drones >= 2, "", label), y = drones + 0.12),
+  # On a single-column canvas a bar is narrower than the word "differ", so
+  # every count sits above its bar in the same grey, and the transition
+  # annotation is lifted clear of the tallest bar's label.
+  geom_text(aes(label = label, y = drones + 0.12),
             size = FIGURE_ANNOTATION_SIZE, family = FIGURE_FONT_FAMILY,
             colour = "grey25", vjust = 0, lineheight = 0.95) +
-  annotate("text", x = KNEE_N, y = 3.46, label = "transition",
+  annotate("text", x = KNEE_N, y = 4.05, label = "transition",
            size = FIGURE_ANNOTATION_SIZE, family = FIGURE_FONT_FAMILY,
            colour = "grey20", hjust = 0.5) +
   scale_fill_manual(values = c(`TRUE` = "grey55", `FALSE` = "grey92"),
@@ -56,7 +54,7 @@ p <- ggplot(f6_data, aes(wind_N, drones)) +
   scale_x_continuous(name = "Steady horizontal wind force (N)",
                      breaks = f6_data$wind_N, limits = c(-0.028, 0.328)) +
   scale_y_continuous(name = sprintf("Repeat gap (airframes, of %d)", N_DRONES),
-                     limits = c(STRIP[1], 4.1), breaks = 0:4) +
+                     limits = c(STRIP[1], 4.4), breaks = 0:4) +
   rtx_theme() +
   guides(fill = guide_legend(nrow = 1, title.position = "top")) +
   # The key belongs under the axis it describes, and every other legend in the
@@ -69,4 +67,4 @@ p <- ggplot(f6_data, aes(wind_N, drones)) +
                                    size = FIGURE_LEGEND_TEXT_SIZE),
         legend.key.size = unit(0.30, "cm"))
 
-save_fig(p, "fig6_replicate_gap", FIGURE_CANVAS_WIDTH_IN, 3.55)
+save_fig(p, "fig6_replicate_gap", FIGURE_COLUMN_WIDTH_IN, 2.95)

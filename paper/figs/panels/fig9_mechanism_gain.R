@@ -6,6 +6,11 @@ gain_plot_data$profile_label <- factor(
   levels = unname(profile_label[TEMPORAL_PROFILES])
 )
 
+# One colour per true-force profile from the paper-wide secondary palette; the
+# arm red/blue are reserved for the two allocators drawn in Panel B.
+PROFILE_LEVELS <- unname(profile_label[TEMPORAL_PROFILES])
+profile_colours <- secondary_colours(PROFILE_LEVELS)
+
 left <- ggplot(gain_plot_data,
                aes(gain_m_per_N, delta, colour = profile_label, group = profile_label)) +
   geom_hline(yintercept = 0, colour = "grey45", linewidth = 0.3) +
@@ -22,18 +27,18 @@ left <- ggplot(gain_plot_data,
               colour = NA, show.legend = FALSE) +
   geom_line(linewidth = 0.5) +
   geom_pointrange(aes(ymin = delta_lo, ymax = delta_hi), linewidth = 0.35, size = 0.3) +
-  scale_colour_manual(values = c("Constant" = "#2166AC", "Slow gust" = "#1B7837",
-                                 "Fast gust" = "#B2182B"), name = "True-force profile") +
-  scale_fill_manual(values = c("Constant" = "#2166AC", "Slow gust" = "#1B7837",
-                               "Fast gust" = "#B2182B"), guide = "none") +
+  scale_colour_manual(values = profile_colours, name = "True-force profile") +
+  scale_fill_manual(values = profile_colours, guide = "none") +
+  # The grid is printed with only the digits each value needs (0, 0.175, 0.35,
+  # ...) so the seven labels fit upright without a rotation.
   scale_x_continuous(name = "Target feedforward gain (m/N)",
-                     breaks = sort(unique(gain_plot_data$gain_m_per_N))) +
+                     breaks = sort(unique(gain_plot_data$gain_m_per_N)),
+                     labels = function(x) formatC(x, format = "g")) +
   scale_y_continuous(name = "Paired completion gain", limits = c(-0.16, 0.86),
-                     breaks = seq(-0.1, 0.8, by = 0.2)) +
+                     breaks = seq(0, 0.8, by = 0.2)) +
   rtx_theme() +
   theme(legend.position = "bottom", legend.box = "horizontal",
         axis.text.x = element_text(family = FIGURE_FONT_FAMILY,
-                                   angle = 45, hjust = 1,
                                    size = FIGURE_AXIS_TEXT_SIZE))
 left <- panel_label(
   left, "A", "Gain sensitivity",
@@ -62,7 +67,7 @@ right <- ggplot(ab_long, aes(profile_label, mean, fill = mechanism)) +
   scale_fill_manual(values = c("Allocation cost only" = "#999999", "Complete arm" = "#2166AC"),
                     name = NULL) +
   scale_y_continuous(name = "Paired completion gain", limits = c(-0.16, 0.86),
-                     breaks = seq(-0.1, 0.8, by = 0.2)) +
+                     breaks = seq(0, 0.8, by = 0.2)) +
   labs(x = NULL) +
   rtx_theme() +
   theme(axis.text.x = element_text(family = FIGURE_FONT_FAMILY,

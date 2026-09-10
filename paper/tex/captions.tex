@@ -252,11 +252,11 @@ panels share one horizon axis. %
 }
 
 \newcommand{\CapLambdaSweep}{%
-Pre-declared sweep of the assignment penalty weight $\lambda$ over
-$\{\LambdaGrid{}\}$~m/N under the stock controller at the
+Pre-declared sweep of the assignment penalty weight
+$\lambda\in\{\LambdaGrid{}\}$~m/N under the stock controller at the
 \EpisodeHorizonS{}~s horizon, \LambdaAwareEpisodes{} aware-arm episodes per
 weight. Circles count episodes whose initial ($t=0$) assignment differs from
-the Euclidean assignment; triangles count episodes in which any call,
+the Euclidean assignment; squares count episodes in which any call,
 initial or replan, differs. The dashed line marks the inherited weight
 $\lambda=\LambdaReference{}$, at which the counts reproduce the bound
 assignment audit exactly. Initial divergence is zero through

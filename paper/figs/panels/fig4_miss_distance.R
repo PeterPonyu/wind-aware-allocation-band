@@ -31,14 +31,18 @@ p <- ggplot(f4_data, aes(wind_shown, mean, colour = arm, shape = arm)) +
                 width = 0.008, linewidth = 0.35) +
   geom_line(linewidth = 0.5) +
   geom_point(size = 1.9, fill = "white", stroke = 0.5) +
-  scale_colour_manual(values = arm_colours, name = NULL) +
-  scale_shape_manual(values = c(21, 24), name = NULL) +
+  # Single-column canvas: arm names by their distinguishing word, as in the
+  # other half-width panels; the caption gives them in full.
+  scale_colour_manual(values = arm_colours, name = NULL,
+                      labels = c("Wind-agnostic", "Wind-aware")) +
+  scale_shape_manual(values = c(21, 24), name = NULL,
+                     labels = c("Wind-agnostic", "Wind-aware")) +
   scale_x_continuous(name = "Steady horizontal wind force (N)", breaks = mr$wind_N) +
-  scale_y_continuous(name = "Mean closest approach to target (m)") +
+  scale_y_continuous(name = "Mean closest approach (m)") +
   rtx_theme() +
   theme(legend.position = "bottom", legend.box = "horizontal",
         legend.background = element_blank(),
         legend.box.background = element_blank(),
         legend.margin = margin(2, 4, 2, 4))
 
-save_fig(p, "fig4_miss_distance", FIGURE_CANVAS_WIDTH_IN, 3.75)
+save_fig(p, "fig4_miss_distance", FIGURE_COLUMN_WIDTH_IN, 2.75)

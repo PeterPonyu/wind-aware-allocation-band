@@ -209,7 +209,7 @@ Eq.~\eqref{eq:target-feedforward}:
   \label{eq:target-feedforward}
 \end{equation}
 Equation~\eqref{eq:target-feedforward} defines the target supplied to the stock
-position controller in each arm. Here $\lambda=0.25$ in the aware arm and $\gamma$ is the tested target
+position controller in each arm. Here $\lambda=\LambdaReference{}$ in the aware arm and $\gamma$ is the tested target
 feedforward gain (the inherited value is \FeedforwardGainDefault{}~m/N). A
 pre-declared sweep substitutes \LambdaGridSize{} values of $\lambda$ at run
 time on the same seeds, forces and frozen sources and is reported in

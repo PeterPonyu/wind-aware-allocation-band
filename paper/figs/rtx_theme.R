@@ -13,23 +13,58 @@ FIGURE_FONT_FAMILY <- "Arial"
 # labels with larger ad-hoc annotations.  ggplot2 sizes are in points for
 # theme elements and millimetres for geom text.
 #
-# These are printed sizes, not nominal ones.  Every canvas is emitted at
-# FIGURE_CANVAS_WIDTH_IN and included at \linewidth, so the manuscript scales
-# each figure by 1.0 and a value here reaches the page unchanged.  A panel that
-# emits a different canvas width would silently rescale its own type and
-# reintroduce the size drift this constant exists to prevent.
+# These are printed sizes, not nominal ones.  Every canvas is emitted at one of
+# two physical widths and included at exactly that width, so the manuscript
+# scales each figure by 1.0 and a value here reaches the page unchanged.
+# FIGURE_CANVAS_WIDTH_IN is the text width of the binding (composed and
+# faceted figures); FIGURE_COLUMN_WIDTH_IN is the journal's 84 mm single
+# column, used for the simple single-panel plots so that production does not
+# have to shrink a text-width canvas -- and its type -- by half to fit one
+# column.  A panel that emits any other width would silently rescale its own
+# type and reintroduce the size drift these constants exist to prevent.
 FIGURE_CANVAS_WIDTH_IN <- 6.5
+FIGURE_COLUMN_WIDTH_IN <- 3.31
 FIGURE_BASE_SIZE <- 9.8
 FIGURE_AXIS_TITLE_SIZE <- 8.9
 FIGURE_AXIS_TEXT_SIZE <- 8.0
 FIGURE_LEGEND_TITLE_SIZE <- 8.2
 FIGURE_LEGEND_TEXT_SIZE <- 7.8
 FIGURE_STRIP_TEXT_SIZE <- 8.4
-FIGURE_TITLE_SIZE <- 10.7
+FIGURE_TITLE_SIZE <- 9.8
 FIGURE_SUBTITLE_SIZE <- 8.2
-FIGURE_ANNOTATION_SIZE <- 2.40
-FIGURE_CELL_SIZE <- 2.25
-FIGURE_PANEL_LABEL_SIZE <- 11.6
+# geom text sizes are in millimetres: 2.55 mm is 7.3 pt and 2.50 mm is 7.1 pt,
+# both above the 7 pt floor for type inside a figure at final size.
+FIGURE_ANNOTATION_SIZE <- 2.55
+FIGURE_CELL_SIZE <- 2.50
+FIGURE_PANEL_LABEL_SIZE <- 10.0
+
+# One colour-blind-safe palette (Okabe & Ito) for every categorical scale
+# that is not the two allocation arms.  The arms keep their red/blue pair,
+# which the captions name; every other grouping (force profile, estimator,
+# force level, capture radius, factorial term, clamp, sweep endpoint, evidence
+# block) draws from this vector in order, so a colour never means one thing in
+# one panel and another thing in the next, and no panel pairs a red with a
+# green.  Vermillion and blue are omitted because they sit too close to the
+# arm colours that share several figures.
+OKABE_ITO <- c(
+  orange = "#E69F00", skyblue = "#56B4E9", green = "#009E73",
+  yellow = "#F0E442", blue = "#0072B2", vermillion = "#D55E00",
+  purple = "#CC79A7", black = "#000000"
+)
+FIGURE_SECONDARY_COLOURS <- unname(OKABE_ITO[c("orange", "green", "purple",
+                                               "skyblue", "black")])
+secondary_colours <- function(levels) {
+  levels <- as.character(levels)
+  if (length(levels) > length(FIGURE_SECONDARY_COLOURS)) {
+    stop("more categorical levels than the shared secondary palette carries")
+  }
+  stats::setNames(FIGURE_SECONDARY_COLOURS[seq_along(levels)], levels)
+}
+# Matching open-marker shapes, so colour is never the only channel.
+secondary_shapes <- function(levels) {
+  levels <- as.character(levels)
+  stats::setNames(c(21, 22, 24, 23, 25)[seq_along(levels)], levels)
+}
 
 # Clearance between the panel label and the panel's top-left spine corner.  A
 # label flush on the corner reads as part of the frame at print size, so the

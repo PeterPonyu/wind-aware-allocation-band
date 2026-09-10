@@ -22,17 +22,25 @@ f7_curve <- data.frame(
 )
 f7_drawn <- data.frame(wind_N = kr$wind_N, delta = kr$paired_delta_mean)
 
+# The crossed series is the paired advantage of the wind-aware arm and keeps
+# the blue that quantity carries throughout; the drawn-seed crosses are a
+# second record of the same quantity, not the wind-agnostic arm, so they take
+# a shared secondary colour (the one dark enough to carry its own text label)
+# rather than the arm red.
+DRAWN_SEED_COLOUR <- unname(OKABE_ITO["green"])
+
 curve <- ggplot(f7_curve, aes(wind_N, delta)) +
   geom_hline(yintercept = 0, linewidth = 0.25, colour = "grey55") +
   geom_ribbon(aes(ymin = lo, ymax = hi), fill = "#2166AC", alpha = 0.18) +
   geom_line(colour = "#2166AC", linewidth = 0.5) +
   geom_point(colour = "#2166AC", size = 1.5) +
-  geom_point(data = f7_drawn, shape = 4, size = 1.6, stroke = 0.5, colour = "#B2182B") +
+  geom_point(data = f7_drawn, shape = 4, size = 1.7, stroke = 0.6,
+             colour = DRAWN_SEED_COLOUR) +
   annotate("text", x = 0.238, y = 0.50, size = FIGURE_ANNOTATION_SIZE,
            family = FIGURE_FONT_FAMILY, hjust = 0, colour = "#2166AC",
            label = sprintf("%d pairs\nper level", N_PAIRS_PER_FORCE)) +
   annotate("text", x = 0.238, y = 0.29, size = FIGURE_ANNOTATION_SIZE,
-           family = FIGURE_FONT_FAMILY, hjust = 0, colour = "#B2182B",
+           family = FIGURE_FONT_FAMILY, hjust = 0, colour = DRAWN_SEED_COLOUR,
            label = sprintf("%d drawn\nseeds", N_SEEDS)) +
   scale_x_continuous(name = "Steady horizontal wind force (N)",
                      breaks = f7_curve$wind_N) +
@@ -63,12 +71,11 @@ rect <- ggplot(cells, aes(factor(scene), heading, fill = delta)) +
   theme(
         axis.text.x = element_text(family = FIGURE_FONT_FAMILY,
                                    size = FIGURE_AXIS_TEXT_SIZE),
-        legend.position = "bottom",
         legend.direction = "horizontal",
         legend.background = element_blank(),
         legend.box.background = element_blank(),
-        legend.key.width = unit(0.65, "cm"),
-        legend.key.height = unit(0.24, "cm"),
+        legend.key.width = unit(0.9, "cm"),
+        legend.key.height = unit(0.26, "cm"),
         legend.title = element_text(family = FIGURE_FONT_FAMILY,
                                     size = FIGURE_LEGEND_TITLE_SIZE, vjust = 0.85),
         legend.text = element_text(family = FIGURE_FONT_FAMILY,
@@ -78,5 +85,8 @@ rect <- panel_label(
   "Interaction shown by cell"
 )
 
-save_fig((curve | rect) + plot_layout(widths = c(1.08, 1)),
+# The colour bar is the only guide in the figure; collecting it centres it
+# under both panels instead of leaving Panel A a blank strip beside it.
+save_fig((curve | rect) + plot_layout(widths = c(1.08, 1), guides = "collect") &
+           theme(legend.position = "bottom"),
          "fig7_designed_replicates", FIGURE_CANVAS_WIDTH_IN, 3.35)

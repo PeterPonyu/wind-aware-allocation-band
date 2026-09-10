@@ -32,7 +32,7 @@ is a scoped identification of the mechanism: against the stock slow integral
 (\StockKi{}~N/m/s) and the \EpisodeHorizonS{}~s horizon, target-position
 feedforward changes short-episode completion, and the campaigns map the
 operating envelope in which it does so.
-Initial assignment is inert at the inherited $\lambda=0.25$ and, on a
+Initial assignment is inert at the inherited $\lambda=\LambdaReference{}$ and, on a
 pre-declared \LambdaGridSize{}-point sweep, at every tested weight through
 $\lambda=\LambdaInertMax{}$~m/N; it first diverges at
 $\lambda=\LambdaFirstDivergence{}$~m/N. Doubling that stock Ki collapses the 0.15~N paired advantage to
@@ -114,12 +114,12 @@ identifies a saturated all-zero level where no signed-rank statistic is defined.
 \generatedtable{generated_table_band}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig1_wind_band.pdf}
 \caption{\CapBand}
 \label{fig:band}
-\end{figure}
+\end{figure*}
 
 \subsection{Estimate-noise robustness}
 
@@ -164,12 +164,12 @@ $p$ values are exact two-sided signed-rank tests.}
 \generatedtable{generated_table_noise}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig2_noise_sensitivity.pdf}
 \caption{\CapNoise}
 \label{fig:noise}
-\end{figure}
+\end{figure*}
 
 \subsection{Episode-level distribution}
 
@@ -190,7 +190,7 @@ episode-level expectations.
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\linewidth]{fig3_seed_spread.pdf}
+\includegraphics[width=3.31in]{fig3_seed_spread.pdf}
 \caption{\CapSpread}
 \label{fig:spread}
 \end{figure}
@@ -230,7 +230,7 @@ unchanged.
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\linewidth]{fig4_miss_distance.pdf}
+\includegraphics[width=3.31in]{fig4_miss_distance.pdf}
 \caption{\CapMiss}
 \label{fig:miss}
 \end{figure}
@@ -313,16 +313,16 @@ at that force, distinguishing informative gaps from saturated levels.}
 \generatedtable{generated_table_repeats}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig5_heading_coverage.pdf}
 \caption{\CapHeadings}
 \label{fig:headings}
-\end{figure}
+\end{figure*}
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\linewidth]{fig6_replicate_gap.pdf}
+\includegraphics[width=3.31in]{fig6_replicate_gap.pdf}
 \caption{\CapRepeats}
 \label{fig:repeats}
 \end{figure}
@@ -407,12 +407,12 @@ shares computed from the displayed crossed cells.}
 \generatedtable{generated_table_designed}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig7_designed_replicates.pdf}
 \caption{\CapDesigned}
 \label{fig:designed}
-\end{figure}
+\end{figure*}
 
 \subsection{Temporal operating profiles}
 
@@ -459,12 +459,12 @@ first-order update, and the biased-causal condition adds the stated bias and noi
 \generatedtable{generated_table_temporal}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig8_temporal_envelope.pdf}
 \caption{\CapTemporal}
 \label{fig:temporal}
-\end{figure}
+\end{figure*}
 
 \subsection{Pathway and gain}
 
@@ -504,12 +504,12 @@ columns summarize the tested gain grid. Entries are paired completion gains.}
 \generatedtable{generated_table_mechanism}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig9_mechanism_gain.pdf}
 \caption{\CapMechanism}
 \label{fig:mechanism}
-\end{figure}
+\end{figure*}
 
 \subsection{Scene-geometry factors}
 
@@ -575,12 +575,12 @@ transformations; nominal--near--aligned is the legacy compatibility cell.}
 \generatedtable{generated_table_geometry}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig10_geometry_factorial.pdf}
 \caption{\CapGeometry}
 \label{fig:geometry}
-\end{figure}
+\end{figure*}
 
 \subsection{Team-size transfer}
 
@@ -623,12 +623,12 @@ extensions.}
 \generatedtable{generated_table_scale}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig11_swarm_scale.pdf}
 \caption{\CapScale}
 \label{fig:scale}
-\end{figure}
+\end{figure*}
 
 \subsection{Endpoint-radius sensitivity}
 
@@ -680,12 +680,12 @@ Cells with an undefined exact test are all-zero differences.}
 \generatedtable{generated_table_radius}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig12_endpoint_radius.pdf}
 \caption{\CapRadius}
 \label{fig:radius}
-\end{figure}
+\end{figure*}
 
 \subsection{Complete pathway factorial}
 
@@ -798,12 +798,12 @@ remaining rows. No test is reported and none is implied.}
 \generatedtable{generated_table_safety}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig13_pathway_safety.pdf}
 \caption{\CapPathwaySafety}
 \label{fig:pathway}
-\end{figure}
+\end{figure*}
 
 \subsection{Evidence}
 
@@ -843,12 +843,12 @@ are descriptive estimates that retain each view's inferential unit.}
 \generatedtable{generated_table_evidence}
 \end{table}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig14_evidence_summary.pdf}
 \caption{\CapEvidence}
 \label{fig:evidence}
-\end{figure}
+\end{figure*}
 
 \subsection{The transition belongs to the baseline's integral action}
 
@@ -890,7 +890,7 @@ fall on the primary-sweep seeds and \AuditUsedDivergenceKnee{} sit at
 0.15~N. A pre-declared sweep of the penalty weight over
 $\lambda\in\{\LambdaGrid{}\}$~m/N (Fig.~\ref{fig:lambda-sweep};
 \LambdaAwareEpisodes{} aware episodes per weight on the same seeds, forces
-and frozen sources) bounds that inertness. The $\lambda=0.25$ row reproduces
+and frozen sources) bounds that inertness. The $\lambda=\LambdaReference{}$ row reproduces
 the audit above exactly (\AuditInitialDivergence{} initial,
 \LambdaUsedDivAtQuarter{} used-divergence episodes). Initial divergence is
 zero at every tested weight through $\lambda=\LambdaInertMax{}$~m/N and first
@@ -925,21 +925,21 @@ estimate, which remains the estimate of record.
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\linewidth]{fig14_integral_gain.pdf}
+\includegraphics[width=3.31in]{fig14_integral_gain.pdf}
 \caption{\CapIntegralGain}
 \label{fig:integral-gain}
 \end{figure}
 
-\begin{figure}[tbp]
+\begin{figure*}[tbp]
 \centering
 \includegraphics[width=\linewidth]{fig15_horizon.pdf}
 \caption{\CapHorizon}
 \label{fig:horizon}
-\end{figure}
+\end{figure*}
 
 \begin{figure}[tbp]
 \centering
-\includegraphics[width=\linewidth]{fig16_lambda_sweep.pdf}
+\includegraphics[width=3.31in]{fig16_lambda_sweep.pdf}
 \caption{\CapLambdaSweep}
 \label{fig:lambda-sweep}
 \end{figure}

@@ -18,10 +18,10 @@ RADIUS_COMPLETION$radius_label <- factor(radius_label(RADIUS_COMPLETION$radius_m
 RADIUS_PEAK$radius_label <- factor(radius_label(RADIUS_PEAK$radius_m),
                                    levels = radius_label(RADIUS_GRID_M))
 
-radius_colours <- setNames(c("#D6604D", "#2166AC", "#1B7837")[seq_along(RADIUS_GRID_M)],
-                           radius_label(RADIUS_GRID_M))
-radius_shapes <- setNames(c(21, 22, 24)[seq_along(RADIUS_GRID_M)],
-                          radius_label(RADIUS_GRID_M))
+# Radii take the paper-wide secondary palette; the arm red/blue are reserved
+# for the two allocators in Panel B.
+radius_colours <- secondary_colours(radius_label(RADIUS_GRID_M))
+radius_shapes <- secondary_shapes(radius_label(RADIUS_GRID_M))
 
 gain <- ggplot(RADIUS_COMPLETION,
                aes(force_N, delta, colour = radius_label, shape = radius_label,
@@ -43,14 +43,14 @@ gain <- ggplot(RADIUS_COMPLETION,
             hjust = 0.5, show.legend = FALSE) +
   scale_colour_manual(values = radius_colours, name = "Capture radius") +
   scale_shape_manual(values = radius_shapes, name = "Capture radius") +
+  # Panel B below is faceted on a different force grid, so this axis is titled
+  # in its own right rather than borrowing the facets' title.
   scale_x_continuous(name = "Steady horizontal wind force (N)",
                      breaks = sort(unique(RADIUS_COMPLETION$force_N))) +
   scale_y_continuous(name = "Paired advantage",
-                     limits = c(-0.14, 0.94), breaks = seq(0, 0.8, 0.2)) +
+                     limits = c(-0.14, 0.88), breaks = seq(0, 0.8, 0.2)) +
   rtx_theme() +
-  theme(axis.title.x = element_blank(),
-        legend.position = c(0.985, 0.97), legend.justification = c(1, 1),
-        legend.background = element_blank(),
+  theme(legend.background = element_blank(),
         legend.box.background = element_blank(),
         legend.margin = margin(2, 4, 2, 4),
         legend.title = element_text(family = FIGURE_FONT_FAMILY,
@@ -100,4 +100,4 @@ ladders <- panel_label(
 
 save_fig(gain / ladders + plot_layout(heights = c(1.15, 1), guides = "collect") &
            theme(legend.position = "bottom", legend.box = "horizontal"),
-         "fig12_endpoint_radius", FIGURE_CANVAS_WIDTH_IN, 6.05)
+         "fig12_endpoint_radius", FIGURE_CANVAS_WIDTH_IN, 5.80)
